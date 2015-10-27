@@ -1719,8 +1719,31 @@ err_:
 
         End Select
 
+        ' esq 151026 картриждж и формат: обновление
+        Dim sSPRAV As String
+        Dim pSQL As String
+        'Dim rs1 As Recordset
+        If RSExists("MFU", "name", Trim(frmComputers.cmbPRN.Text)) Then
+            sSPRAV = "SPR_MFU"
+        End If
+        If RSExists("PRINTERY", "name", Trim(frmComputers.cmbPRN.Text)) Then
+            sSPRAV = "SPR_PRINTER"
+        End If
+        If RSExists("KOPIRY", "name", Trim(frmComputers.cmbPRN.Text)) Then
+            sSPRAV = "SPR_KOPIR"
+        End If
+        pSQL = "UPDATE " & sSPRAV & " SET A='" & frmComputers.cmbFormat.Text & "', B='" & frmComputers.cmbModCartr.Text &
+                "' WHERE Name ='" & Trim(frmComputers.cmbPRN.Text) & "'"
+        DB7.Execute(pSQL)
+
+        If (RSExists("CARTR", "name", frmComputers.cmbModCartr.Text)) Then
+            pSQL = "UPDATE spr_cart SET A='" & frmComputers.cmbTIPCartridg.Text & "' WHERE Name ='" & Trim(frmComputers.cmbModCartr.Text) & "'"
+            DB7.Execute(pSQL)
+        End If
+        ' esq 151026
+
         If Not (RSExists("CARTR", "name", frmComputers.cmbModCartr.Text)) Then
-            AddTwoPar(frmComputers.cmbModCartr.Text, frmComputers.PROiZV38.Text, "spr_cart", frmComputers.cmbModCartr)
+            AddTreePar(frmComputers.cmbModCartr.Text, frmComputers.cmbTIPCartridg.Text, frmComputers.PROiZV38.Text, "spr_cart", frmComputers.cmbModCartr) ' esq 151026
         End If
 
         Select Case TipTehn
@@ -1793,7 +1816,8 @@ sAR:
 
             Case False
 
-                sSQL = "INSERT INTO kompy (PRINTER_NAME_1,PRINTER_SN_1,Ser_N_SIS,PRINTER_PROIZV_1,port_1,INV_NO_PRINTER,TIPtehn,PCL,D_T,os,NET_IP_1,NET_MAC_1,port_2) VALUES ('" &
+                sSQL = "INSERT INTO kompy (PRINTER_NAME_1,PRINTER_SN_1,Ser_N_SIS,PRINTER_PROIZV_1,port_1," &
+                    "INV_NO_PRINTER,TIPtehn,PCL,D_T,os,NET_IP_1,NET_MAC_1,port_2) VALUES ('" &
                     frmComputers.cmbPRN.Text & "','" &
                     frmComputers.txtPRNSN.Text & "','" &
                     frmComputers.txtPRNSN.Text & "','" &
@@ -1810,7 +1834,12 @@ sAR:
 
             Case True
 
-                sSQL = "UPDATE kompy SET PRINTER_NAME_1='" & frmComputers.cmbPRN.Text & "', PRINTER_SN_1='" & frmComputers.txtPRNSN.Text & "', Ser_N_SIS='" & frmComputers.txtPRNSN.Text & "', PRINTER_PROIZV_1='" & frmComputers.PROiZV38.Text & "', port_1='" & frmComputers.cmbFormat.Text & "', INV_NO_PRINTER='" & frmComputers.txtPRNinnumber.Text & "', PCL=" & unaPCL & ", os='" & frmComputers.cmbModCartr.Text & "', NET_IP_1='" & frmComputers.txtPrnIP.Text & "',NET_MAC_1='" & frmComputers.txtPRNMAC.Text & "',port_2='" & frmComputers.cmbPRNConnect.Text & "' WHERE id =" & sSID
+                sSQL = "UPDATE kompy SET PRINTER_NAME_1='" & frmComputers.cmbPRN.Text & "', PRINTER_SN_1='" &
+                    frmComputers.txtPRNSN.Text & "', Ser_N_SIS='" & frmComputers.txtPRNSN.Text & "', PRINTER_PROIZV_1='" &
+                    frmComputers.PROiZV38.Text & "', port_1='" & frmComputers.cmbFormat.Text & "', INV_NO_PRINTER='" &
+                    frmComputers.txtPRNinnumber.Text & "', PCL=" & unaPCL & ", os='" & frmComputers.cmbModCartr.Text &
+                    "', NET_IP_1='" & frmComputers.txtPrnIP.Text & "',NET_MAC_1='" & frmComputers.txtPRNMAC.Text &
+                    "',port_2='" & frmComputers.cmbPRNConnect.Text & "' WHERE id =" & sSID
 
         End Select
 
@@ -3678,24 +3707,52 @@ Error_:
                         sADD = True
                         Call SaveActivityToLogDB("Добавление принтера в результате разделения " & sTEMP0)
 
+                        ' esq 151026 картриждж и формат
+                        Dim formatP As String
+                        Dim cartrP As String
+                        Dim sSPRAV As String
+                        sSPRAV = ""
+                        If RSExists("MFU", "name", Trim(rsdb.Fields("PRINTER_NAME_1").Value)) Then
+                            sSPRAV = "SPR_MFU"
+                        End If
+                        If RSExists("PRINTERY", "name", Trim(rsdb.Fields("PRINTER_NAME_1").Value)) Then
+                            sSPRAV = "SPR_PRINTER"
+                        End If
+                        If RSExists("KOPIRY", "name", Trim(rsdb.Fields("PRINTER_NAME_1").Value)) Then
+                            sSPRAV = "SPR_KOPIR"
+                        End If
+                        If sSPRAV <> "" Then
+                            rs = New Recordset
+                            rs.Open("SELECT * FROM " & sSPRAV & " where Name='" & Trim(rsdb.Fields("PRINTER_NAME_1").Value) & "'", DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
+                            With rs
+                                formatP = .Fields("A").Value
+                                cartrP = .Fields("B").Value
+                            End With
+                            rs.Close()
+                            rs = Nothing
+                        End If
+                        ' esq 151026
+
                         Dim sSQL As String
 
                         sSQL = "INSERT INTO kompy (D_T,TIPtehn,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1" &
-                               ",INV_NO_PRINTER,port_1,FILIAL,mesto,kabn,OTvetstvennyj,TELEPHONE,NET_IP_1,NET_MAC_1,OS,NET_NAME,PSEVDONIM,PCL,port_2," &
+                               ",INV_NO_PRINTER,port_1,FILIAL,mesto,kabn,OTvetstvennyj,TELEPHONE,NET_IP_1,NET_MAC_1,OS," &
+                               "NET_NAME,PSEVDONIM,PCL,port_2," &
                                "SFAktNo,CenaRub,StoimRub,Zaiavk,DataVVoda,dataSF,Spisan,Balans) VALUES ('" &
                                Date.Today &
                                 "', 'Printer', '" &
                                 rsdb.Fields("PRINTER_NAME_1").Value & "','" &
                                 rsdb.Fields("PRINTER_SN_1").Value & "','" &
                                 rsdb.Fields("PRINTER_PROIZV_1").Value & "','" &
-                                rsdb.Fields("INV_NO_PRINTER").Value & "'," &
-                                "'','" &
+                                rsdb.Fields("INV_NO_PRINTER").Value & "','" &
+                                formatP & "','" &
                                 sBranch & "','" &
                                 sDepartment & "','" &
                                 sOffice & "','" &
                                 rsdb.Fields("OTvetstvennyj").Value & "','" &
                                 rsdb.Fields("TELEPHONE").Value & "'," &
-                                "'', '', '','" &
+                                "'', '', '" &
+                                cartrP & "','" &
                                 rsdb.Fields("PRINTER_NAME_1").Value & "','" &
                                 rsdb.Fields("PRINTER_NAME_1").Value & "'," &
                                 sSID & ",'" &
@@ -3703,7 +3760,7 @@ Error_:
                                 "','0','0','0','0','" &
                                 rsdb.Fields("DataVVoda").Value & "','" &
                                 rsdb.Fields("dataSF").Value &
-                                "',0,0)"
+                                "',0,0)" 'esq 151026
 
                         DB7.Execute(sSQL)
 

@@ -5930,6 +5930,8 @@ err_:
         Handles ВернутьПерефериюToolStripMenuItem.Click
 
         Call under_prn()
+        lstGroups.Nodes.Clear() 'esq 151026
+        Me.BeginInvoke(New MethodInvoker(AddressOf R_T_LOAD)) 'esq 151026
     End Sub
 
     Private Sub ПрисоеденитьПерефериюToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) _
