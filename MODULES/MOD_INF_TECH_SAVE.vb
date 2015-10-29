@@ -1170,7 +1170,7 @@ sAR:
 
         DB7.Execute(sSQL)
 
-        Call UPDATE_OPLATA(frmComputers.txtPCSfN.Text, frmComputers.txtPCcash.Text, frmComputers.txtPCSUMM.Text, frmComputers.txtPCZay.Text, frmComputers.dtPCdataVvoda.Value, frmComputers.dtPCSFdate.Value, _chkPRNspis, _chkPRNNNb, frmComputers.dtOTHSpisanie.Value, sSID)
+        Call UPDATE_OPLATA(frmComputers.txtPCSfN.Text, frmComputers.txtPCcash.Text, frmComputers.txtPCSumm.Text, frmComputers.txtPCZay.Text, frmComputers.dtPCdataVvoda.Value, frmComputers.dtPCSFdate.Value, _chkPRNspis, _chkPRNNNb, frmComputers.dtSpisanie.Value, sSID)
 
         Select Case frmComputers.EDT
 
