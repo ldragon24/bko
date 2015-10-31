@@ -1411,6 +1411,39 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Ищет локализованную строку, похожую на [GENERAL] 
+        '''language = England 
+        '''author = Alex Plotnikov 
+        '''
+        '''[Frm_os3] 
+        '''frm_os3 = data to write-off 
+        '''Label1 = ID Act 
+        '''Label2 = Date of discharge 
+        '''Label3 = accessory 
+        '''Label4 = Model 
+        '''Label5 = Year 
+        '''Label6 = Date Added 
+        '''Label7 = Book value 
+        '''Label8 = Number of restoration 
+        '''Label9 = Date of last overhaul 
+        '''Label10 = Defects 
+        '''Button1 = Debit 
+        '''Button2 = Cancel 
+        '''cmbCPL1 = Optical drive 
+        '''cmbCPL2 = Power supply 
+        '''cmbCPL3 = Video Card 
+        '''cmbCPL4 = Hard Drive 
+        '''cmbCPL5 = Sound Card 
+        '''cmbCPL6 = UPS 
+        '''cmbCP [остаток строки не уместился]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property en() As String
+            Get
+                Return ResourceManager.GetString("en", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Поиск локализованного ресурса типа System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property F1() As System.Drawing.Bitmap
@@ -2221,6 +2254,37 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Ищет локализованную строку, похожую на [GENERAL]
+        '''language = Russian
+        '''author = Alex Plotnikov
+        '''
+        '''[frm_os3]
+        '''frm_os3 = Данные для списания
+        '''Label1 = Номер акта
+        '''Label2 = Дата выписки
+        '''Label3 = Комплектующая
+        '''Label4 = Модель
+        '''Label5 = Год изготовления
+        '''Label6 = Дата поступления
+        '''Label7 = Балансовая стоимость
+        '''Label8 = Количество кап.ремонтов
+        '''Label9 = Дата последнего кап.ремонта
+        '''Label10 = Дефекты
+        '''Button1 = Списать
+        '''Button2 = Отмена
+        '''cmbCPL1 = Оптический привод
+        '''cmbCPL2 = Блок питания
+        '''cmbCPL3 = Видео карта
+        '''cmbCPL4 = Жесткий диск
+        '''cmbCPL5 = Звук [остаток строки не уместился]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property ru() As String
+            Get
+                Return ResourceManager.GetString("ru", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Поиск локализованного ресурса типа System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property save() As System.Drawing.Bitmap
@@ -2327,6 +2391,68 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("splash", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Ищет локализованную строку, похожую на [GENERAL]
+        '''language = TransLit
+        '''author = Alex Plotnikov
+        '''
+        '''[frm_os3]
+        '''frm_os3 = Dannye dlja spisanija
+        '''Label1 = Nomer akta
+        '''Label2 = Data vypiski
+        '''Label3 = Komplektujushhaja
+        '''Label4 = Model&apos;
+        '''Label5 = God izgotovlenija
+        '''Label6 = Data postuplenija
+        '''Label7 = Balansovaja stoimost&apos;
+        '''Label8 = Kolichestvo kap.remontov
+        '''Label9 = Data poslednego kap.remonta
+        '''Label10 = Defekty
+        '''Button1 = Spisat&apos;
+        '''Button2 = Otmena
+        '''cmbCPL1 = Opticheskij privod
+        '''cmbCPL2 = Blok pitanija
+        '''cmbCPL3 = Video karta
+        '''cmbCPL4 = Zhestkij disk
+        ''' [остаток строки не уместился]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property tr() As String
+            Get
+                Return ResourceManager.GetString("tr", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Ищет локализованную строку, похожую на [GENERAL]
+        '''language = Ukrainian
+        '''author = Taras Brin
+        '''
+        '''[frm_os3]
+        '''frm_os3 = Данні для списання
+        '''Label1 = Номер акту
+        '''Label2 = Дата виписки
+        '''Label3 = Комплектуюча
+        '''Label4 = Модель
+        '''Label5 = Рік виготовлення
+        '''Label6 = Дата поступлення
+        '''Label7 = Балансова вартість
+        '''Label8 = Кількість кап.ремонтів
+        '''Label9 = Дата останнього кап.ремонту
+        '''Label10 = Дефекти
+        '''Button1 = Списати
+        '''Button2 = Відміна
+        '''cmbCPL1 = Оптичний привід
+        '''cmbCPL2 = Блок живлення
+        '''cmbCPL3 = Відео карта
+        '''cmbCPL4 = Жорсткий диск
+        '''cmbCPL5 = Звукова ка [остаток строки не уместился]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property ua() As String
+            Get
+                Return ResourceManager.GetString("ua", resourceCulture)
             End Get
         End Property
         

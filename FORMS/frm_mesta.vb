@@ -59,41 +59,41 @@ Err_:
                     frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (kompy.tiptehn) = 'MFU'"
+                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (tiptehn) = 'MFU'"
                     'sSQL =
                     '    "SELECT net_name, COUNT(net_name) as tot_num FROM kompy WHERE tiptehn = 'OT' group by net_name"
 
                     sSQL =
-                        "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                        "tiptehn = 'OT' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                        "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                        "tiptehn = 'OT' and net_name='" & frmReports.tmp_mesta & "' " &
+                        "order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT net_name, COUNT(net_name) as tot_num FROM kompy WHERE kompy.FILIAL='" &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT net_name, COUNT(net_name) as tot_num FROM kompy WHERE FILIAL='" &
                         '       frmReports.cmbReport2fil.Text & "' AND tiptehn = 'OT' group by net_name"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'OT' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'OT' and net_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT net_name, COUNT(net_name) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                        '       frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT net_name, COUNT(net_name) as tot_num FROM kompy WHERE FILIAL='" &
+                        '       frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '       "' AND tiptehn = 'OT' group by net_name"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'OT' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'OT' and net_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -105,41 +105,41 @@ Err_:
                     frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (kompy.tiptehn) = 'MFU'"
+                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (tiptehn) = 'MFU'"
                     'sSQL =
                     '    "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'MFU' group by net_name"
 
                     sSQL =
-                        "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                        "tiptehn = 'MFU' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                        "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                        "tiptehn = 'MFU' and net_name='" & frmReports.tmp_mesta & "' " &
+                        "order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
                         '       frmReports.cmbReport2fil.Text & "' AND tiptehn = 'MFU' group by net_name"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'MFU' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'MFU' and net_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                        '       frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
+                        '       frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '       "' AND tiptehn = 'MFU' group by net_name"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'MFU' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'MFU' and net_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -151,41 +151,41 @@ Err_:
                     frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (kompy.tiptehn) = 'MFU'"
+                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (tiptehn) = 'MFU'"
                     'sSQL =
                     '    "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'PHOTO' group by net_name"
 
                     sSQL =
-                        "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                        "tiptehn = 'PHOTO' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                        "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                        "tiptehn = 'PHOTO' and net_name='" & frmReports.tmp_mesta & "' " &
+                        "order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
                         '       frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PHOTO' group by net_name"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PHOTO' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PHOTO' and net_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                        '       frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
+                        '       frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '       "' AND tiptehn = 'PHOTO' group by net_name"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PHOTO' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PHOTO' and net_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -196,41 +196,41 @@ Err_:
                     frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (kompy.tiptehn) = 'MFU'"
+                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (tiptehn) = 'MFU'"
                     'sSQL =
                     '    "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'FAX' group by net_name"
 
                     sSQL =
-                        "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                        "tiptehn = 'FAX' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                        "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                        "tiptehn = 'FAX' and net_name='" & frmReports.tmp_mesta & "' " &
+                        "order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
                         '       frmReports.cmbReport2fil.Text & "' AND tiptehn = 'FAX' group by net_name"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'FAX' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'FAX' and net_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                        '       frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
+                        '       frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '       "' AND tiptehn = 'FAX' group by net_name"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'FAX' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'FAX' and net_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -243,41 +243,41 @@ Err_:
                     frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (kompy.tiptehn) = 'MFU'"
+                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (tiptehn) = 'MFU'"
                     'sSQL =
                     '    "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'KOpir' group by net_name"
 
                     sSQL =
-                        "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                        "tiptehn = 'KOpir' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                        "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                        "tiptehn = 'KOpir' and net_name='" & frmReports.tmp_mesta & "' " &
+                        "order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
                         '       frmReports.cmbReport2fil.Text & "' AND tiptehn = 'KOpir' group by net_name"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'KOpir' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'KOpir' and net_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                        '       frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
+                        '       frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '       "' AND tiptehn = 'KOpir' group by net_name"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'KOpir' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'KOpir' and net_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -289,41 +289,41 @@ Err_:
                     frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (kompy.tiptehn) = 'MFU'"
+                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (tiptehn) = 'MFU'"
                     'sSQL =
                     '    "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'PHONE' group by net_name"
 
                     sSQL =
-                        "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                        "tiptehn = 'PHONE' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                        "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                        "tiptehn = 'PHONE' and net_name='" & frmReports.tmp_mesta & "' " &
+                        "order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
                         '       frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PHONE' group by net_name"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PHONE' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PHONE' and net_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                        '       frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT net_name, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
+                        '       frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '       "' AND tiptehn = 'PHONE' group by net_name"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PHONE' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PHONE' and net_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -341,64 +341,64 @@ Err_:
 
                     sSQL =
                         "SELECT * FROM " &
-                        "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.cpu1='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.cpu2='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.cpu3='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.cpu4='" & frmReports.tmp_mesta & "' " &
-                        ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and cpu1='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and cpu2='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and cpu3='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and cpu4='" & frmReports.tmp_mesta & "' " &
+                        ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         'sSQL =
-                        '    "SELECT cpus.cpu1, Count(*) AS tot_num FROM (SELECT cpu1 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "SELECT cpus.cpu1, Count(*) AS tot_num FROM (SELECT cpu1 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT cpu2 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "' AND tiptehn = 'PC' union all SELECT cpu2 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC'  union all SELECT cpu3 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "' AND tiptehn = 'PC'  union all SELECT cpu3 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC'  union all SELECT cpu4 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "' AND tiptehn = 'PC'  union all SELECT cpu4 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.cpu1"
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.cpu1='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.cpu2='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.cpu3='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.cpu4='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and cpu1='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and cpu2='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and cpu3='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and cpu4='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
                         'sSQL =
-                        '    "SELECT cpus.cpu1, Count(*) AS tot_num FROM (SELECT cpu1 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT cpu2 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT cpu3 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT cpu4 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "SELECT cpus.cpu1, Count(*) AS tot_num FROM (SELECT cpu1 FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' AND tiptehn = 'PC' union all SELECT cpu2 FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' AND tiptehn = 'PC' union all SELECT cpu3 FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' AND tiptehn = 'PC' union all SELECT cpu4 FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '    "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.cpu1"
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.cpu1='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.cpu2='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.cpu3='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.cpu4='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and cpu1='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and cpu2='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and cpu3='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and cpu4='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -413,69 +413,45 @@ Err_:
                         If _
                             frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                             frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
-                            'sSQL =
-                            '    "SELECT cpu1, count(*) as tot_num FROM (SELECT CONCAT(cpu1,' ', cpumhz1) as cpu1 FROM kompy union all SELECT CONCAT(cpu2,' ', cpumhz2) FROM kompy union all SELECT CONCAT(cpu3,' ', cpumhz3) FROM kompy union all SELECT CONCAT(cpu4,' ', cpumhz4) FROM kompy) AS cpus group by cpu1"
-
                             sSQL =
                                 "SELECT * FROM " &
-                                "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(kompy.cpu1,' ',kompy.cpumhz1)='" & frmReports.tmp_mesta & "' " &
-                                "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(kompy.cpu2,' ',kompy.cpumhz2)='" & frmReports.tmp_mesta & "' " &
-                                "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(kompy.cpu3,' ',kompy.cpumhz3)='" & frmReports.tmp_mesta & "' " &
-                                "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(kompy.cpu4,' ',kompy.cpumhz4)='" & frmReports.tmp_mesta & "' " &
-                                ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                                "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(cpu1,' ',cpumhz1)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(cpu2,' ',cpumhz2)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(cpu3,' ',cpumhz3)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(cpu4,' ',cpumhz4)='" & frmReports.tmp_mesta & "' " &
+                                ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                         Else
 
                             If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
-                                'sSQL =
-                                '    "SELECT cpu1, count(*) as tot_num FROM (SELECT CONCAT(cpu1,' ', cpumhz1) as cpu1 FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT CONCAT(cpu2,' ', cpumhz2) FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text &
-                                '    "' AND tiptehn = 'PC'  union all SELECT CONCAT(cpu3,' ', cpumhz3) FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text &
-                                '    "' AND tiptehn = 'PC'  union all SELECT CONCAT(cpu4,' ', cpumhz4) FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus group by cpu1"
-
                                 sSQL =
                                     "SELECT * FROM " &
-                                    "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(kompy.cpu1,' ',kompy.cpumhz1)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(kompy.cpu2,' ',kompy.cpumhz2)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(kompy.cpu3,' ',kompy.cpumhz3)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(kompy.cpu4,' ',kompy.cpumhz4)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(cpu1,' ',cpumhz1)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(cpu2,' ',cpumhz2)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(cpu3,' ',cpumhz3)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(cpu4,' ',cpumhz4)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                             Else
-                                'sSQL =
-                                '    "SELECT cpu1, count(*) as tot_num FROM (SELECT CONCAT(cpu1,' ', cpumhz1) as cpu1 FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT CONCAT(cpu2,' ', cpumhz2) FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT CONCAT(cpu3,' ', cpumhz3) FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT CONCAT(cpu4,' ', cpumhz4) FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                                '    "' AND tiptehn = 'PC') AS cpus group by cpu1"
-
                                 sSQL =
                                     "SELECT * FROM " &
-                                    "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(kompy.cpu1,' ',kompy.cpumhz1)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(kompy.cpu2,' ',kompy.cpumhz2)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(kompy.cpu3,' ',kompy.cpumhz3)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(kompy.cpu4,' ',kompy.cpumhz4)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                                    ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(cpu1,' ',cpumhz1)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(cpu2,' ',cpumhz2)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(cpu3,' ',cpumhz3)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(cpu4,' ',cpumhz4)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
 
 
                             End If
@@ -487,73 +463,48 @@ Err_:
                         If _
                             frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                             frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
-                            'sSQL =
-                            '    "SELECT cpu1, count(*) as tot_num FROM (SELECT (cpu1+' '+ cpumhz1) as cpu1 FROM kompy union all SELECT (cpu2+' '+ cpumhz2) FROM kompy union all SELECT (cpu3+' '+ cpumhz3) FROM kompy union all SELECT (cpu4+' '+ cpumhz4) FROM kompy) AS cpus group by cpu1"
-
                             sSQL =
                                 "SELECT * FROM " &
-                                "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and (kompy.cpu1+' '+ kompy.cpumhz1)='" & frmReports.tmp_mesta & "' " &
-                                "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and (kompy.cpu2+' '+ kompy.cpumhz2)='" & frmReports.tmp_mesta & "' " &
-                                "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and (kompy.cpu3+' '+ kompy.cpumhz3)='" & frmReports.tmp_mesta & "' " &
-                                "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and (kompy.cpu4+' '+ kompy.cpumhz4)='" & frmReports.tmp_mesta & "' " &
-                                ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                                "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (cpu1+' '+ cpumhz1)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (cpu2+' '+ cpumhz2)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (cpu3+' '+ cpumhz3)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (cpu4+' '+ cpumhz4)='" & frmReports.tmp_mesta & "' " &
+                                ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                         Else
 
                             If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
-                                'sSQL =
-                                '    "SELECT cpu1, count(*) as tot_num FROM (SELECT (cpu1+' '+ cpumhz1) as cpu1 FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT (cpu2+' '+ cpumhz2) FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text &
-                                '    "' AND tiptehn = 'PC'  union all SELECT (cpu3+' '+ cpumhz3) FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text &
-                                '    "' AND tiptehn = 'PC'  union all SELECT (cpu4+' '+ cpumhz4) FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC') AS cpus group by cpu1"
-
                                 sSQL =
                                     "SELECT * FROM " &
-                                    "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and (kompy.cpu1+' '+ kompy.cpumhz1)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and (kompy.cpu2+' '+ kompy.cpumhz2)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and (kompy.cpu3+' '+ kompy.cpumhz3)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and (kompy.cpu4+' '+ kompy.cpumhz4)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (cpu1+' '+ cpumhz1)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (cpu2+' '+ cpumhz2)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (cpu3+' '+ cpumhz3)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (cpu4+' '+ cpumhz4)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                             Else
-                                'sSQL =
-                                '    "SELECT cpu1, count(*) as tot_num FROM (SELECT (cpu1+' '+ cpumhz1) as cpu1 FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT (cpu2+' '+ cpumhz2) FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT (cpu3+' '+ cpumhz3) FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT (cpu4+' '+ cpumhz4) FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                                '    "' AND tiptehn = 'PC') AS cpus group by cpu1"
-
                                 sSQL =
                                     "SELECT * FROM " &
-                                    "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and (kompy.cpu1+' '+ kompy.cpumhz1)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and (kompy.cpu2+' '+ kompy.cpumhz2)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and (kompy.cpu3+' '+ kompy.cpumhz3)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and (kompy.cpu4+' '+ kompy.cpumhz4)='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                                    ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (cpu1+' '+ cpumhz1)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (cpu2+' '+ cpumhz2)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (cpu3+' '+ cpumhz3)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (cpu4+' '+ cpumhz4)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                             End If
                         End If
-
 
                 End Select
 
@@ -566,36 +517,36 @@ Err_:
                     'sSQL = "SELECT Mb_name, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'PC' group by mb"
 
                     sSQL =
-                        "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                        "tiptehn = 'PC' and kompy.Mb_name='" & frmReports.tmp_mesta & "' " &
-                        "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                        "tiptehn = 'PC' and Mb_name='" & frmReports.tmp_mesta & "' " &
+                        "order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
 
-                        'sSQL = "SELECT Mb_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
+                        'sSQL = "SELECT Mb_name, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
                         '       frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC' group by mb"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PC' and kompy.Mb_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PC' and Mb_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
 
-                        'sSQL = "SELECT Mb_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                        '       frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        'sSQL = "SELECT Mb_name, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
+                        '       frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '       "' AND tiptehn = 'PC' group by mb"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PC' and kompy.Mb_name='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PC' and Mb_name='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -607,41 +558,41 @@ Err_:
                     frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (kompy.tiptehn) = 'MFU'"
+                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (tiptehn) = 'MFU'"
                     'sSQL =
                     '    "SELECT SVGA_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'PC' group by SVGA_NAME"
 
                     sSQL =
-                        "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                        "tiptehn = 'PC' and kompy.SVGA_NAME='" & frmReports.tmp_mesta & "' " &
-                        "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                        "tiptehn = 'PC' and SVGA_NAME='" & frmReports.tmp_mesta & "' " &
+                        "order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT SVGA_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT SVGA_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
                         '       frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC' group by SVGA_NAME"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PC' and kompy.SVGA_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PC' and SVGA_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT SVGA_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                        '       frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT SVGA_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
+                        '       frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '       "' AND tiptehn = 'PC' group by SVGA_NAME"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PC' and kompy.SVGA_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PC' and SVGA_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -655,72 +606,72 @@ Err_:
 
                     'sSQL = "SELECT cpus.HDD_Name_1, Count(*) AS tot_num FROM (SELECT HDD_Name_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT HDD_Name_2 FROM kompy union all SELECT HDD_Name_3 FROM kompy union all SELECT  HDD_Name_4 FROM kompy) AS cpus GROUP BY cpus.HDD_Name_1"
                     'sSQL =
-                    '    "SELECT cpus.HDD_Name_1, Count(*) AS tot_num FROM (SELECT HDD_Name_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT HDD_Name_2 FROM kompy WHERE kompy.FILIAL='" &
+                    '    "SELECT cpus.HDD_Name_1, Count(*) AS tot_num FROM (SELECT HDD_Name_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT HDD_Name_2 FROM kompy WHERE FILIAL='" &
                     '    frmReports.cmbReport2fil.Text &
-                    '    "' AND tiptehn = 'PC' union all SELECT HDD_Name_3 FROM kompy WHERE kompy.FILIAL='" &
+                    '    "' AND tiptehn = 'PC' union all SELECT HDD_Name_3 FROM kompy WHERE FILIAL='" &
                     '    frmReports.cmbReport2fil.Text &
                     '    "' AND tiptehn = 'PC' union all SELECT  HDD_Name_4 FROM kompy WHERE tiptehn = 'PC' ) AS cpus GROUP BY cpus.HDD_Name_1"
 
                     sSQL =
                         "SELECT * FROM " &
-                        "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_Name_1='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_Name_2='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_Name_3='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_Name_4='" & frmReports.tmp_mesta & "' " &
-                        ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_Name_1='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_Name_2='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_Name_3='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_Name_4='" & frmReports.tmp_mesta & "' " &
+                        ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         'sSQL =
-                        '    "SELECT cpus.HDD_Name_1, Count(*) AS tot_num FROM (SELECT HDD_Name_1 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "SELECT cpus.HDD_Name_1, Count(*) AS tot_num FROM (SELECT HDD_Name_1 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT HDD_Name_2 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "' AND tiptehn = 'PC' union all SELECT HDD_Name_2 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT HDD_Name_3 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "' AND tiptehn = 'PC' union all SELECT HDD_Name_3 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT  HDD_Name_4 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "' AND tiptehn = 'PC' union all SELECT  HDD_Name_4 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus GROUP BY cpus.HDD_Name_1"
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_Name_1='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_Name_2='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_Name_3='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_Name_4='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_Name_1='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_Name_2='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_Name_3='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_Name_4='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
                         'sSQL =
-                        '    "SELECT cpus.HDD_Name_1, Count(*) AS tot_num FROM (SELECT HDD_Name_1 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC'union all SELECT HDD_Name_2 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC'union all SELECT HDD_Name_3 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT HDD_Name_4 FROM kompy  WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "SELECT cpus.HDD_Name_1, Count(*) AS tot_num FROM (SELECT HDD_Name_1 FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' AND tiptehn = 'PC'union all SELECT HDD_Name_2 FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' AND tiptehn = 'PC'union all SELECT HDD_Name_3 FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' AND tiptehn = 'PC' union all SELECT HDD_Name_4 FROM kompy  WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '    "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.HDD_Name_1"
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_Name_1='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_Name_2='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_Name_3='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_Name_4='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_Name_1='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_Name_2='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_Name_3='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_Name_4='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -737,44 +688,44 @@ Err_:
 
                     sSQL =
                         "SELECT * FROM " &
-                        "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.NET_NAME_1='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.NET_NAME_2='" & frmReports.tmp_mesta & "' " &
-                        ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and NET_NAME_1='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and NET_NAME_2='" & frmReports.tmp_mesta & "' " &
+                        ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         'sSQL =
-                        '    "SELECT cpus.NET_NAME_1, Count(*) AS tot_num FROM (SELECT NET_NAME_1 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "SELECT cpus.NET_NAME_1, Count(*) AS tot_num FROM (SELECT NET_NAME_1 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT NET_NAME_2 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "' AND tiptehn = 'PC' union all SELECT NET_NAME_2 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus GROUP BY cpus.NET_NAME_1"
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.NET_NAME_1='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.NET_NAME_2='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and NET_NAME_1='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and NET_NAME_2='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
                         'sSQL =
-                        '    "SELECT cpus.NET_NAME_1, Count(*) AS tot_num FROM (SELECT NET_NAME_1 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC'union all SELECT NET_NAME_2 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "SELECT cpus.NET_NAME_1, Count(*) AS tot_num FROM (SELECT NET_NAME_1 FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' AND tiptehn = 'PC'union all SELECT NET_NAME_2 FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '    "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.NET_NAME_1"
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.NET_NAME_1='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.NET_NAME_2='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and NET_NAME_1='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and NET_NAME_2='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -789,35 +740,35 @@ Err_:
                     '    "SELECT MODEM_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'PC' group by MODEM_NAME"
 
                     sSQL =
-                        "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                        "tiptehn = 'PC' and kompy.MODEM_NAME='" & frmReports.tmp_mesta & "' " &
-                        "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                        "tiptehn = 'PC' and MODEM_NAME='" & frmReports.tmp_mesta & "' " &
+                        "order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                        sSQL = "SELECT MODEM_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
+                        sSQL = "SELECT MODEM_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
                                frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC' group by MODEM_NAME"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PC' and kompy.MODEM_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PC' and MODEM_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
 
-                        'sSQL = "SELECT MODEM_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                        '       frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        'sSQL = "SELECT MODEM_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
+                        '       frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '       "' AND tiptehn = 'PC' group by MODEM_NAME"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PC' and kompy.MODEM_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PC' and MODEM_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -833,36 +784,36 @@ Err_:
                     '    "SELECT USB_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'PC' group by USB_NAME"
 
                     sSQL =
-                        "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                        "tiptehn = 'PC' and kompy.USB_NAME='" & frmReports.tmp_mesta & "' " &
-                        "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                        "tiptehn = 'PC' and USB_NAME='" & frmReports.tmp_mesta & "' " &
+                        "order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
 
-                        'sSQL = "SELECT USB_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
+                        'sSQL = "SELECT USB_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
                         '       frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC' group by USB_NAME"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PC' and kompy.USB_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PC' and USB_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
 
-                        'sSQL = "SELECT USB_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                        '       frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        'sSQL = "SELECT USB_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
+                        '       frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '       "' AND tiptehn = 'PC' group by USB_NAME"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PC' and kompy.USB_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PC' and USB_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -878,36 +829,36 @@ Err_:
                     '    "SELECT PCI_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'PC' group by PCI_NAME"
 
                     sSQL =
-                        "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                        "tiptehn = 'PC' and kompy.PCI_NAME='" & frmReports.tmp_mesta & "' " &
-                        "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                        "tiptehn = 'PC' and PCI_NAME='" & frmReports.tmp_mesta & "' " &
+                        "order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
 
-                        'sSQL = "SELECT PCI_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
+                        'sSQL = "SELECT PCI_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
                         '       frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC' group by PCI_NAME"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PC' and kompy.PCI_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PC' and PCI_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
 
-                        'sSQL = "SELECT PCI_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                        '       frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        'sSQL = "SELECT PCI_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
+                        '       frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '       "' AND tiptehn = 'PC' group by PCI_NAME"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PC' and kompy.PCI_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PC' and PCI_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -924,53 +875,53 @@ Err_:
 
                     sSQL =
                         "SELECT * FROM " &
-                        "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.CD_NAME='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.CDRW_NAME='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.DVD_NAME='" & frmReports.tmp_mesta & "' " &
-                        ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CD_NAME='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CDRW_NAME='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and DVD_NAME='" & frmReports.tmp_mesta & "' " &
+                        ") order by FILIAL, MESTO, kabn, NET_NAME"
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         'sSQL =
-                        '    "SELECT cpus.CD_NAME, Count(*) AS tot_num FROM (SELECT CD_NAME FROM kompy WHERE kompy.FILIAL='" &
+                        '    "SELECT cpus.CD_NAME, Count(*) AS tot_num FROM (SELECT CD_NAME FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT CDRW_NAME FROM kompy WHERE kompy.FILIAL='" &
+                        '    "' AND tiptehn = 'PC' union all SELECT CDRW_NAME FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC'  union all SELECT DVD_NAME FROM kompy WHERE kompy.FILIAL='" &
+                        '    "' AND tiptehn = 'PC'  union all SELECT DVD_NAME FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.CD_NAME"
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.CD_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.CDRW_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.DVD_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CD_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CDRW_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and DVD_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
                         'sSQL =
-                        '    "SELECT cpus.CD_NAME, Count(*) AS tot_num FROM (SELECT CD_NAME FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT CDRW_NAME FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT DVD_NAME FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "SELECT cpus.CD_NAME, Count(*) AS tot_num FROM (SELECT CD_NAME FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' AND tiptehn = 'PC' union all SELECT CDRW_NAME FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' AND tiptehn = 'PC' union all SELECT DVD_NAME FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '    "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.CD_NAME"
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.CD_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.CDRW_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.DVD_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CD_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CDRW_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and DVD_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -987,40 +938,40 @@ Err_:
 
                     sSQL =
                         "SELECT * FROM " &
-                        "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE kompy.MONITOR_NAME='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE kompy.MONITOR_NAME2='" & frmReports.tmp_mesta & "' " &
-                        ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE MONITOR_NAME='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE MONITOR_NAME2='" & frmReports.tmp_mesta & "' " &
+                        ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         'sSQL =
-                        '    "SELECT cpus.MONITOR_NAME, Count(*) AS tot_num FROM (SELECT MONITOR_NAME FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' union all SELECT MONITOR_NAME2 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "SELECT cpus.MONITOR_NAME, Count(*) AS tot_num FROM (SELECT MONITOR_NAME FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' union all SELECT MONITOR_NAME2 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text & "') AS cpus GROUP BY cpus.MONITOR_NAME"
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE kompy.MONITOR_NAME='" & frmReports.tmp_mesta & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE kompy.MONITOR_NAME2='" & frmReports.tmp_mesta & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE MONITOR_NAME='" & frmReports.tmp_mesta & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE MONITOR_NAME2='" & frmReports.tmp_mesta & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
                         'sSQL =
-                        '    "SELECT cpus.MONITOR_NAME, Count(*) AS tot_num FROM (SELECT MONITOR_NAME FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' union all SELECT MONITOR_NAME2 FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text &
-                        '    "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "') AS cpus GROUP BY cpus.MONITOR_NAME"
+                        '    "SELECT cpus.MONITOR_NAME, Count(*) AS tot_num FROM (SELECT MONITOR_NAME FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' union all SELECT MONITOR_NAME2 FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text &
+                        '    "' and MESTO='" & frmReports.cmbReport2Department.Text & "') AS cpus GROUP BY cpus.MONITOR_NAME"
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE kompy.MONITOR_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE kompy.MONITOR_NAME2='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE MONITOR_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE MONITOR_NAME2='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -1032,41 +983,41 @@ Err_:
                     frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (kompy.tiptehn) = 'MFU'"
+                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (tiptehn) = 'MFU'"
                     'sSQL =
                     '    "SELECT SOUND_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'PC' group by SOUND_NAME"
 
                     sSQL =
-                        "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                        "tiptehn = 'PC' and kompy.SOUND_NAME='" & frmReports.tmp_mesta & "' " &
-                        "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                        "tiptehn = 'PC' and SOUND_NAME='" & frmReports.tmp_mesta & "' " &
+                        "order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT SOUND_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT SOUND_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
                         '       frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC' group by SOUND_NAME"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PC' and kompy.SOUND_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PC' and SOUND_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT SOUND_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                        '       frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT SOUND_NAME, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
+                        '       frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '       "' AND tiptehn = 'PC' group by SOUND_NAME"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'PC' and kompy.SOUND_NAME='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'PC' and SOUND_NAME='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -1077,79 +1028,148 @@ Err_:
                 If _
                     frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
-                    'sSQL = "SELECT cpus.RAM_1, Count(*) AS tot_num FROM (SELECT RAM_1 FROM kompy union all SELECT RAM_2 FROM kompy union all SELECT RAM_3 FROM kompy union all SELECT  RAM_4 FROM kompy) AS cpus GROUP BY cpus.RAM_1"
-                    'sSQL =
-                    '    "SELECT cpus.RAM_1, Count(*) AS tot_num FROM (SELECT RAM_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT RAM_2 FROM kompy WHERE kompy.FILIAL='" &
-                    '    frmReports.cmbReport2fil.Text &
-                    '    "' AND tiptehn = 'PC' union all SELECT RAM_3 FROM kompy WHERE kompy.FILIAL='" &
-                    '    frmReports.cmbReport2fil.Text &
-                    '    "' AND tiptehn = 'PC' union all SELECT  RAM_4 FROM kompy WHERE tiptehn = 'PC' ) AS cpus GROUP BY cpus.RAM_1"
-
                     sSQL =
                         "SELECT * FROM " &
-                        "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.RAM_1='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.RAM_2='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.RAM_3='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.RAM_4='" & frmReports.tmp_mesta & "' " &
-                        ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_1='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_2='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_3='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_4='" & frmReports.tmp_mesta & "' " &
+                        ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
-                        'sSQL =
-                        '    "SELECT cpus.RAM_1, Count(*) AS tot_num FROM (SELECT RAM_1 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT RAM_2 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT RAM_3 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT  RAM_4 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus GROUP BY cpus.RAM_1"
-
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.RAM_1='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.RAM_2='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.RAM_3='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.RAM_4='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_1='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_2='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_3='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_4='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
-                        'sSQL =
-                        '    "SELECT cpus.RAM_1, Count(*) AS tot_num FROM (SELECT RAM_1 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC'union all SELECT RAM_2 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC'union all SELECT RAM_3 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT RAM_4 FROM kompy  WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.RAM_1"
-
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.RAM_1='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.RAM_2='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.RAM_3='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.RAM_4='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_1='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_2='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_3='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_4='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
 
-                'SELECT cpus.CPU1 as [Наименование], cpus.CPUProizv1 as [Производитель], Count(*) AS [Количество] FROM (SELECT CPU1,CPUProizv1 FROM kompy WHERE tiptehn = 'PC' and CPU1 <> ''  union all SELECT CPU2,CPUProizv2 FROM kompy WHERE tiptehn = 'PC'  and CPU2<> '' union all  SELECT CPU3,CPUProizv3 FROM kompy WHERE tiptehn = 'PC'  and CPU3 <> '' union all  SELECT CPU4,CPUProizv4 FROM kompy WHERE tiptehn = 'PC' and CPU4 <> ''  ) AS cpus GROUP BY cpus.CPU1, cpus.CPUProizv1 
+            Case langIni.GetString("frmReports", "MSG46", "Тип ОЗУ")
+
+                Select Case DB_N
+
+                    Case "MySQL"
+                        If _
+                            frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
+                            frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                            sSQL =
+                                "SELECT * FROM " &
+                                "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_speed_1,' / ',RAM_1)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_speed_2,' / ',RAM_2)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_speed_3,' / ',RAM_3)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_speed_4,' / ',RAM_4)='" & frmReports.tmp_mesta & "' " &
+                                ") order by FILIAL, MESTO, kabn, NET_NAME"
+
+                        Else
+
+                            If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                                sSQL =
+                                    "SELECT * FROM " &
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_speed_1,' / ',RAM_1)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_speed_2,' / ',RAM_2)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_speed_3,' / ',RAM_3)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_speed_4,' / ',RAM_4)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
+
+                            Else
+                                sSQL =
+                                    "SELECT * FROM " &
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_speed_1,' / ',RAM_1)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_speed_2,' / ',RAM_2)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_speed_3,' / ',RAM_3)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_speed_4,' / ',RAM_4)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
+
+                            End If
+                        End If
+
+                    Case Else
+                        If _
+                            frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
+                            frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                            sSQL =
+                                "SELECT * FROM " &
+                                "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_speed_1+' / '+RAM_1)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_speed_2+' / '+RAM_2)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_speed_3+' / '+RAM_3)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_speed_4+' / '+RAM_4)='" & frmReports.tmp_mesta & "' " &
+                                ") order by FILIAL, MESTO, kabn, NET_NAME"
+
+                        Else
+
+                            If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                                sSQL =
+                                    "SELECT * FROM " &
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_speed_1+' / '+RAM_1)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_speed_2+' / '+RAM_2)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_speed_3+' / '+RAM_3)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_speed_4+' / '+RAM_4)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
+
+                            Else
+                                sSQL =
+                                    "SELECT * FROM " &
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_speed_1+' / '+RAM_1)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_speed_2+' / '+RAM_2)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_speed_3+' / '+RAM_3)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_speed_4+' / '+RAM_4)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
+
+                            End If
+                        End If
+
+                End Select
 
 
             Case langIni.GetString("frmReports", "MSG12", "Производители жестких дисков")
@@ -1159,72 +1179,72 @@ Err_:
                     frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                     'sSQL = "SELECT cpus.HDD_PROIZV_1, Count(*) AS tot_num FROM (SELECT HDD_PROIZV_1 FROM kompy union all SELECT HDD_PROIZV_2 FROM kompy union all SELECT HDD_PROIZV_3 FROM kompy union all SELECT  HDD_PROIZV_4 FROM kompy) AS cpus GROUP BY cpus.HDD_PROIZV_1"
                     'sSQL =
-                    '    "SELECT cpus.HDD_PROIZV_1, Count(*) AS tot_num FROM (SELECT HDD_PROIZV_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT HDD_PROIZV_2 FROM kompy WHERE kompy.FILIAL='" &
+                    '    "SELECT cpus.HDD_PROIZV_1, Count(*) AS tot_num FROM (SELECT HDD_PROIZV_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT HDD_PROIZV_2 FROM kompy WHERE FILIAL='" &
                     '    frmReports.cmbReport2fil.Text &
-                    '    "' AND tiptehn = 'PC' union all SELECT HDD_PROIZV_3 FROM kompy WHERE kompy.FILIAL='" &
+                    '    "' AND tiptehn = 'PC' union all SELECT HDD_PROIZV_3 FROM kompy WHERE FILIAL='" &
                     '    frmReports.cmbReport2fil.Text &
                     '    "' AND tiptehn = 'PC' union all SELECT  HDD_PROIZV_4 FROM kompy WHERE tiptehn = 'PC' ) AS cpus GROUP BY cpus.HDD_PROIZV_1"
 
                     sSQL =
                         "SELECT * FROM " &
-                        "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_PROIZV_1='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_PROIZV_2='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_PROIZV_3='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_PROIZV_4='" & frmReports.tmp_mesta & "' " &
-                        ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_PROIZV_1='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_PROIZV_2='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_PROIZV_3='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_PROIZV_4='" & frmReports.tmp_mesta & "' " &
+                        ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         'sSQL =
-                        '    "SELECT cpus.HDD_PROIZV_1, Count(*) AS tot_num FROM (SELECT HDD_PROIZV_1 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "SELECT cpus.HDD_PROIZV_1, Count(*) AS tot_num FROM (SELECT HDD_PROIZV_1 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT HDD_PROIZV_2 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "' AND tiptehn = 'PC' union all SELECT HDD_PROIZV_2 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT HDD_PROIZV_3 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "' AND tiptehn = 'PC' union all SELECT HDD_PROIZV_3 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT  HDD_PROIZV_4 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "' AND tiptehn = 'PC' union all SELECT  HDD_PROIZV_4 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus GROUP BY cpus.HDD_PROIZV_1"
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_PROIZV_1='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_PROIZV_2='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_PROIZV_3='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_PROIZV_4='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_PROIZV_1='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_PROIZV_2='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_PROIZV_3='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_PROIZV_4='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
                         'sSQL =
-                        '    "SELECT cpus.HDD_PROIZV_1, Count(*) AS tot_num FROM (SELECT HDD_PROIZV_1 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC'union all SELECT HDD_PROIZV_2 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC'union all SELECT HDD_PROIZV_3 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT HDD_PROIZV_4 FROM kompy  WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "SELECT cpus.HDD_PROIZV_1, Count(*) AS tot_num FROM (SELECT HDD_PROIZV_1 FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' AND tiptehn = 'PC'union all SELECT HDD_PROIZV_2 FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' AND tiptehn = 'PC'union all SELECT HDD_PROIZV_3 FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' AND tiptehn = 'PC' union all SELECT HDD_PROIZV_4 FROM kompy  WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '    "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.HDD_PROIZV_1"
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_PROIZV_1='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_PROIZV_2='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_PROIZV_3='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.HDD_PROIZV_4='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_PROIZV_1='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_PROIZV_2='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_PROIZV_3='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and HDD_PROIZV_4='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
                 End If
@@ -1248,34 +1268,34 @@ Err_:
                             '    "SELECT net_name as cpus, COUNT(tiptehn) as tot_num  FROM kompy WHERE tiptehn = 'Printer' group by net_name"
 
                             sSQL =
-                                "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                                "tiptehn = 'Printer' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                                "order by kompy.FILIAL, kompy.MESTO, kompy.kabn,kompy.NET_NAME"
+                                "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                                "tiptehn = 'Printer' and net_name='" & frmReports.tmp_mesta & "' " &
+                                "order by FILIAL, MESTO, kabn,NET_NAME"
                         Else
 
                             If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                                 'sSQL =
-                                '    "SELECT net_name as cpus, COUNT(tiptehn) as tot_num  FROM kompy WHERE kompy.FILIAL='" &
+                                '    "SELECT net_name as cpus, COUNT(tiptehn) as tot_num  FROM kompy WHERE FILIAL='" &
                                 '    frmReports.cmbReport2fil.Text & "' AND tiptehn = 'Printer' group by net_name"
 
                                 sSQL =
-                                    "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                                    "tiptehn = 'Printer' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "order by kompy.FILIAL, kompy.MESTO, kompy.kabn,kompy.NET_NAME"
+                                    "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                                    "tiptehn = 'Printer' and net_name='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "order by FILIAL, MESTO, kabn,NET_NAME"
 
                             Else
                                 'sSQL =
-                                '    "SELECT net_name as cpus, COUNT(tiptehn) as tot_num  FROM kompy WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                                '    "SELECT net_name as cpus, COUNT(tiptehn) as tot_num  FROM kompy WHERE FILIAL='" &
+                                '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                                 '    "' AND tiptehn = 'Printer' group by net_name"
 
                                 sSQL =
-                                    "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                                    "tiptehn = 'Printer' and kompy.net_name='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                                    "order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                                    "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                                    "tiptehn = 'Printer' and net_name='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "order by FILIAL, MESTO, kabn, NET_NAME"
 
                             End If
                         End If
@@ -1287,64 +1307,64 @@ Err_:
                             frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                             sSQL =
                                 "SELECT * FROM " &
-                                "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.PRINTER_NAME_1='" & frmReports.tmp_mesta & "' " &
-                                "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.PRINTER_NAME_2='" & frmReports.tmp_mesta & "' " &
-                                "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.PRINTER_NAME_3='" & frmReports.tmp_mesta & "' " &
-                                "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.PRINTER_NAME_4='" & frmReports.tmp_mesta & "' " &
-                                ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                                "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and PRINTER_NAME_1='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and PRINTER_NAME_2='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and PRINTER_NAME_3='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and PRINTER_NAME_4='" & frmReports.tmp_mesta & "' " &
+                                ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                         Else
 
                             If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                                 'sSQL =
-                                '    "SELECT cpus.PRINTER_NAME_1, Count(*) AS tot_num FROM (SELECT PRINTER_NAME_1 FROM kompy WHERE kompy.FILIAL='" &
+                                '    "SELECT cpus.PRINTER_NAME_1, Count(*) AS tot_num FROM (SELECT PRINTER_NAME_1 FROM kompy WHERE FILIAL='" &
                                 '    frmReports.cmbReport2fil.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_2 FROM kompy WHERE kompy.FILIAL='" &
+                                '    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_2 FROM kompy WHERE FILIAL='" &
                                 '    frmReports.cmbReport2fil.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_3 FROM kompy WHERE kompy.FILIAL='" &
+                                '    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_3 FROM kompy WHERE FILIAL='" &
                                 '    frmReports.cmbReport2fil.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT  PRINTER_NAME_4 FROM kompy WHERE kompy.FILIAL='" &
+                                '    "' AND tiptehn = 'PC' union all SELECT  PRINTER_NAME_4 FROM kompy WHERE FILIAL='" &
                                 '    frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus GROUP BY cpus.PRINTER_NAME_1"
 
                                 sSQL =
                                     "SELECT * FROM " &
-                                    "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.PRINTER_NAME_1='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.PRINTER_NAME_2='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.PRINTER_NAME_3='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.PRINTER_NAME_4='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and PRINTER_NAME_1='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and PRINTER_NAME_2='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and PRINTER_NAME_3='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and PRINTER_NAME_4='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                             Else
                                 'sSQL =
-                                '    "SELECT cpus.PRINTER_NAME_1, Count(*) AS tot_num FROM (SELECT PRINTER_NAME_1 FROM kompy WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_2 FROM kompy WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_3 FROM kompy WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                                '    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_4 FROM kompy  WHERE kompy.FILIAL='" &
-                                '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                                '    "SELECT cpus.PRINTER_NAME_1, Count(*) AS tot_num FROM (SELECT PRINTER_NAME_1 FROM kompy WHERE FILIAL='" &
+                                '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                                '    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_2 FROM kompy WHERE FILIAL='" &
+                                '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                                '    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_3 FROM kompy WHERE FILIAL='" &
+                                '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                                '    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_4 FROM kompy  WHERE FILIAL='" &
+                                '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                                 '    "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.PRINTER_NAME_1"
 
                                 sSQL =
                                     "SELECT * FROM " &
-                                    "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.PRINTER_NAME_1='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.PRINTER_NAME_2='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.PRINTER_NAME_3='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                                    "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.PRINTER_NAME_4='" & frmReports.tmp_mesta & "' " &
-                                    "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                                    "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                                    ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and PRINTER_NAME_1='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and PRINTER_NAME_2='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and PRINTER_NAME_3='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and PRINTER_NAME_4='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                             End If
                         End If
@@ -1361,24 +1381,24 @@ Err_:
                     frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
                     sSQL =
-                        "SELECT SOFT_INSTALL.VERS, kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=kompy.ID " &
-                        "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, kompy.FILIAL, kompy.MESTO, kompy.kabn,kompy.NET_NAME"
+                        "SELECT SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=ID " &
+                        "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, FILIAL, MESTO, kabn,NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
                         sSQL =
-                             "SELECT SOFT_INSTALL.VERS, kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=kompy.ID " &
-                             "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                             "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, kompy.FILIAL, kompy.MESTO, kompy.kabn,kompy.NET_NAME"
+                             "SELECT SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=ID " &
+                             "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                             "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, FILIAL, MESTO, kabn,NET_NAME"
                     Else
 
                         sSQL =
-                            "SELECT SOFT_INSTALL.VERS, kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=kompy.ID " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, kompy.FILIAL, kompy.MESTO, kompy.kabn,kompy.NET_NAME"
+                            "SELECT SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=ID " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, FILIAL, MESTO, kabn,NET_NAME"
 
                     End If
 
@@ -1404,9 +1424,9 @@ Err_:
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         'sSQL =
-                        '    "SELECT cpus.Monitor_dum, Count(*) AS tot_num FROM (SELECT Monitor_dum FROM kompy WHERE kompy.FILIAL='" &
+                        '    "SELECT cpus.Monitor_dum, Count(*) AS tot_num FROM (SELECT Monitor_dum FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text &
-                        '    "' AND tiptehn = 'PC' union all SELECT Monitor_dum2 FROM kompy WHERE kompy.FILIAL='" &
+                        '    "' AND tiptehn = 'PC' union all SELECT Monitor_dum2 FROM kompy WHERE FILIAL='" &
                         '    frmReports.cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus GROUP BY cpus.Monitor_dum"
 
                         sSQL =
@@ -1419,10 +1439,10 @@ Err_:
 
                     Else
                         'sSQL =
-                        '    "SELECT cpus.Monitor_dum, Count(*) AS tot_num FROM (SELECT Monitor_dum FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
-                        '    "' AND tiptehn = 'PC'union all SELECT Monitor_dum2 FROM kompy WHERE kompy.FILIAL='" &
-                        '    frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "SELECT cpus.Monitor_dum, Count(*) AS tot_num FROM (SELECT Monitor_dum FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
+                        '    "' AND tiptehn = 'PC'union all SELECT Monitor_dum2 FROM kompy WHERE FILIAL='" &
+                        '    frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '    "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.Monitor_dum"
 
                         sSQL =
@@ -1443,41 +1463,41 @@ Err_:
                     frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (kompy.tiptehn) = 'MFU'"
+                    'sSQL = "SELECT NET_NAME FROM kompy WHERE (tiptehn) = 'MFU'"
                     'sSQL =
                     '    "SELECT PRINTER_SN_1, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'NET' group by PRINTER_SN_1"
 
                     sSQL =
-                        "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'NET' and kompy.PRINTER_SN_1='" & frmReports.tmp_mesta & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn,kompy.NET_NAME"
+                        "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'NET' and PRINTER_SN_1='" & frmReports.tmp_mesta & "' " &
+                            "order by FILIAL, MESTO, kabn,NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT PRINTER_SN_1, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT PRINTER_SN_1, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
                         '       frmReports.cmbReport2fil.Text & "' AND tiptehn = 'NET' group by PRINTER_SN_1"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'NET' and kompy.PRINTER_SN_1='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn,kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'NET' and PRINTER_SN_1='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "order by FILIAL, MESTO, kabn,NET_NAME"
 
                     Else
-                        'sSQL = "SELECT NET_NAME FROM kompy WHERE kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' AND kompy.tiptehn = 'MFU'"
-                        'sSQL = "SELECT PRINTER_SN_1, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                        '       frmReports.cmbReport2fil.Text & "' and kompy.MESTO='" & frmReports.cmbReport2Department.Text &
+                        'sSQL = "SELECT NET_NAME FROM kompy WHERE FILIAL='" & frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text & "' AND tiptehn = 'MFU'"
+                        'sSQL = "SELECT PRINTER_SN_1, COUNT(tiptehn) as tot_num FROM kompy WHERE FILIAL='" &
+                        '       frmReports.cmbReport2fil.Text & "' and MESTO='" & frmReports.cmbReport2Department.Text &
                         '       "' AND tiptehn = 'NET' group by PRINTER_SN_1"
 
                         sSQL =
-                            "SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE " &
-                            "tiptehn = 'NET' and kompy.PRINTER_SN_1='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "order by kompy.FILIAL, kompy.MESTO, kompy.kabn,kompy.NET_NAME"
+                            "SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE " &
+                            "tiptehn = 'NET' and PRINTER_SN_1='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "order by FILIAL, MESTO, kabn,NET_NAME"
 
                     End If
                 End If
@@ -1490,29 +1510,29 @@ Err_:
                     frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
                     'sSQL =
-                    '   "SELECT SOFT_INSTALL.Soft, COUNT(SOFT_INSTALL.Soft) as tot_num FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=kompy.ID and SOFT_INSTALL.TIP='" &
+                    '   "SELECT SOFT_INSTALL.Soft, COUNT(SOFT_INSTALL.Soft) as tot_num FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=ID and SOFT_INSTALL.TIP='" &
                     '   frmReports.cmnReport2Compl.Text & "' group by SOFT_INSTALL.Soft order by SOFT_INSTALL.Soft"
 
                     sSQL =
-                         "SELECT SOFT_INSTALL.VERS, kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=kompy.ID " &
-                         "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                         "SELECT SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=ID " &
+                         "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
                         sSQL =
-                            "SELECT SOFT_INSTALL.VERS, kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=kompy.ID " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=ID " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
 
                         sSQL =
-                            "SELECT SOFT_INSTALL.VERS, kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=kompy.ID " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "SELECT SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=ID " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME"
 
                     End If
 

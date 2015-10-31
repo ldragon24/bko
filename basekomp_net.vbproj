@@ -376,6 +376,18 @@
     </Compile>
     <Compile Include="MODULES\MOD_ALTER_DB.vb" />
     <Compile Include="MODULES\MOD_ASTRA_LOAD.vb" />
+    <None Include="lang\en.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="lang\ru.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="lang\tr.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="lang\ua.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="MODULES\MOD_CSV.vb" />
     <Compile Include="MODULES\MOD_GAR_CPL.vb" />
     <Compile Include="MODULES\MOD_INF_TECH_LOAD.vb" />
