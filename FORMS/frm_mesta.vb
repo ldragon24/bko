@@ -9,7 +9,7 @@
     Private Sub frm_mesta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim tt As String
         tt = frmReports.tmp_mesta
-        Me.Text = Me.Text & " ''" & tt & "''"
+        Me.Text = " ''" & tt & "''"
 
         Call Report()
 
@@ -1396,9 +1396,9 @@ Err_:
 
                     sSQL =
                         "SELECT * FROM " &
-                        "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.Monitor_dum='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.Monitor_dum2='" & frmReports.tmp_mesta & "' " &
-                        ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                        "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE (tiptehn = 'PC' or tiptehn = 'MONITOR') and Monitor_dum='" & frmReports.tmp_mesta & "' " &
+                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE (tiptehn = 'PC' or tiptehn = 'MONITOR') and Monitor_dum2='" & frmReports.tmp_mesta & "' " &
+                        ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
 
@@ -1411,11 +1411,11 @@ Err_:
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.Monitor_dum='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.Monitor_dum2='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE (tiptehn = 'PC' or tiptehn = 'MONITOR') and Monitor_dum='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE (tiptehn = 'PC' or tiptehn = 'MONITOR') and Monitor_dum2='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
                         'sSQL =
@@ -1427,13 +1427,13 @@ Err_:
 
                         sSQL =
                             "SELECT * FROM " &
-                            "(SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.Monitor_dum='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME FROM kompy WHERE tiptehn = 'PC' and kompy.Monitor_dum2='" & frmReports.tmp_mesta & "' " &
-                            "and kompy.FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and kompy.MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            ") order by kompy.FILIAL, kompy.MESTO, kompy.kabn, kompy.NET_NAME"
+                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE (tiptehn = 'PC' or tiptehn = 'MONITOR') and Monitor_dum='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE (tiptehn = 'PC' or tiptehn = 'MONITOR') and Monitor_dum2='" & frmReports.tmp_mesta & "' " &
+                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                            ") order by FILIAL, MESTO, kabn, NET_NAME"
                     End If
                 End If
 
@@ -1585,5 +1585,9 @@ Error_:
 
         ' Добавьте все инициализирующие действия после вызова InitializeComponent().
 
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Me.Close()
     End Sub
 End Class

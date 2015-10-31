@@ -897,8 +897,9 @@ Error_:
 
             Case langIni.GetString("frmReports", "MSG1", "Все")
                 cmbReport2Department.Items.Add(langIni.GetString("frmReports", "MSG1", "Все"))
+                cmbReport2Department.SelectedIndex = cmbReport2Department.FindString(langIni.GetString("frmReports", "MSG1", "Все")) 'esq 151031
+                Me.BeginInvoke(New MethodInvoker(AddressOf LOAD_REPORT_COMPL)) 'esq 151031
                 Exit Sub
-
         End Select
 
         Dim rs As Recordset
@@ -916,6 +917,9 @@ Error_:
         End With
 
         cmbReport2Department.Items.Add(langIni.GetString("frmReports", "MSG1", "Все"))
+
+        cmbReport2Department.SelectedIndex = cmbReport2Department.FindString(langIni.GetString("frmReports", "MSG1", "Все")) 'esq 151031
+        Me.BeginInvoke(New MethodInvoker(AddressOf LOAD_REPORT_COMPL)) 'esq 151031
 
         rs.Close()
         rs = Nothing
@@ -1136,43 +1140,52 @@ err:
 
 
             Case langIni.GetString("frmReports", "MSG13", "Процессоры")
-
+                'esq 151031
                 If _
                     cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                     'sSQL = "SELECT cpus.cpu1, Count(*) AS tot_num FROM (SELECT cpu1 FROM kompy union all SELECT cpu2 FROM kompy union all SELECT cpu3 FROM kompy union all SELECT cpu4 FROM kompy) AS cpus GROUP BY cpus.cpu1"
+                    'sSQL = "SELECT cpus.cpu1, Count(*) AS tot_num FROM (SELECT cpu1 FROM kompy WHERE tiptehn = 'PC' union all SELECT cpu2 FROM kompy WHERE tiptehn = 'PC'  union all SELECT cpu3 FROM kompy WHERE tiptehn = 'PC'  union all SELECT cpu4 FROM kompy WHERE tiptehn = 'PC') AS cpus GROUP BY cpus.cpu1"
                     sSQL =
-                        "SELECT cpus.cpu1, Count(*) AS tot_num FROM (SELECT cpu1 FROM kompy WHERE tiptehn = 'PC' union all SELECT cpu2 FROM kompy WHERE tiptehn = 'PC'  union all SELECT cpu3 FROM kompy WHERE tiptehn = 'PC'  union all SELECT cpu4 FROM kompy WHERE tiptehn = 'PC') AS cpus GROUP BY cpus.cpu1"
-                    'sSQL = "SELECT cpus.cpu1, Count(*) AS tot_num FROM (SELECT cpu1 FROM kompy union all SELECT cpu2 FROM kompy union all SELECT cpu3 FROM kompy union all SELECT cpu4 FROM kompy) AS cpus GROUP BY cpus.cpu1"
+                        "SELECT cpus.name, Count(*) AS tot_num FROM ( " &
+                        "SELECT cpu1 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT cpu2 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT cpu3 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT cpu4 as name FROM kompy WHERE tiptehn = 'PC') " &
+                        "AS cpus GROUP BY cpus.name"
                 Else
 
                     If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         sSQL =
-                            "SELECT cpus.cpu1, Count(*) AS tot_num FROM (SELECT cpu1 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC' union all SELECT cpu2 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC'  union all SELECT cpu3 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC'  union all SELECT cpu4 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.cpu1"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM ( " &
+                            "SELECT cpu1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT cpu2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT cpu3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT cpu4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "') " &
+                            "AS cpus GROUP BY cpus.name"
                     Else
                         sSQL =
-                            "SELECT cpus.cpu1, Count(*) AS tot_num FROM (SELECT cpu1 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC' union all SELECT cpu2 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC' union all SELECT cpu3 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC' union all SELECT cpu4 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.cpu1"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM ( " &
+                            "SELECT cpu1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT cpu2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT cpu3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT cpu4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "') " &
+                            "AS cpus GROUP BY cpus.name"
+
                     End If
                 End If
 
 
             Case langIni.GetString("frmReports", "MSG15", "Тип и частота процессора")
-
+                'esq 151031
                 Select Case DB_N
 
                     Case "MySQL"
@@ -1180,32 +1193,41 @@ err:
                         If _
                             cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                             cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                            'sSQL = "SELECT cpu1, count(*) as tot_num FROM (SELECT CONCAT(cpu1,' ', cpumhz1) as cpu1 FROM kompy union all SELECT CONCAT(cpu2,' ', cpumhz2) FROM kompy union all SELECT CONCAT(cpu3,' ', cpumhz3) FROM kompy union all SELECT CONCAT(cpu4,' ', cpumhz4) FROM kompy) AS cpus group by cpu1"
                             sSQL =
-                                "SELECT cpu1, count(*) as tot_num FROM (SELECT CONCAT(cpu1,' ', cpumhz1) as cpu1 FROM kompy union all SELECT CONCAT(cpu2,' ', cpumhz2) FROM kompy union all SELECT CONCAT(cpu3,' ', cpumhz3) FROM kompy union all SELECT CONCAT(cpu4,' ', cpumhz4) FROM kompy) AS cpus group by cpu1"
+                                "SELECT cpus.name, Count(*) AS tot_num FROM ( " &
+                                "SELECT CONCAT(cpu1,' / ',cpumhz1) as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT CONCAT(cpu2,' / ',cpumhz2) as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT CONCAT(cpu3,' / ',cpumhz3) as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT CONCAT(cpu4,' / ',cpumhz4) as name FROM kompy WHERE tiptehn = 'PC') " &
+                                "AS cpus WHERE cpus.name<>' / ' GROUP BY cpus.name"
 
                         Else
-
                             If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                                 sSQL =
-                                    "SELECT cpu1, count(*) as tot_num FROM (SELECT CONCAT(cpu1,' ', cpumhz1) as cpu1 FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT CONCAT(cpu2,' ', cpumhz2) FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text &
-                                    "' AND tiptehn = 'PC'  union all SELECT CONCAT(cpu3,' ', cpumhz3) FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text &
-                                    "' AND tiptehn = 'PC'  union all SELECT CONCAT(cpu4,' ', cpumhz4) FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus group by cpu1"
+                                    "SELECT cpus.name, Count(*) AS tot_num FROM ( " &
+                                    "SELECT CONCAT(cpu1,' / ',cpumhz1) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT CONCAT(cpu2,' / ',cpumhz2) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT CONCAT(cpu3,' / ',cpumhz3) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT CONCAT(cpu4,' / ',cpumhz4) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "') " &
+                                    "AS cpus WHERE cpus.name<>' / ' GROUP BY cpus.name"
                             Else
                                 sSQL =
-                                    "SELECT cpu1, count(*) as tot_num FROM (SELECT CONCAT(cpu1,' ', cpumhz1) as cpu1 FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT CONCAT(cpu2,' ', cpumhz2) FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT CONCAT(cpu3,' ', cpumhz3) FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT CONCAT(cpu4,' ', cpumhz4) FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                                    "' AND tiptehn = 'PC') AS cpus group by cpu1"
+                                    "SELECT cpus.name, Count(*) AS tot_num FROM ( " &
+                                    "SELECT CONCAT(cpu1,' / ',cpumhz1) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT CONCAT(cpu2,' / ',cpumhz2) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT CONCAT(cpu3,' / ',cpumhz3) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT CONCAT(cpu4,' / ',cpumhz4) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "') " &
+                                    "AS cpus WHERE cpus.name<>' / ' GROUP BY cpus.name"
+
                             End If
                         End If
 
@@ -1215,33 +1237,41 @@ err:
                         If _
                             cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                             cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                            'sSQL = "SELECT cpu1, count(*) as tot_num FROM (SELECT (cpu1+' '+ cpumhz1) as cpu1 FROM kompy union all SELECT (cpu2+' '+ cpumhz2) FROM kompy union all SELECT (cpu3+' '+ cpumhz3) FROM kompy union all SELECT (cpu4+' '+ cpumhz4) FROM kompy) AS cpus group by cpu1"
                             sSQL =
-                                "SELECT cpu1, count(*) as tot_num FROM (SELECT (cpu1+' '+ cpumhz1) as cpu1 FROM kompy union all SELECT (cpu2+' '+ cpumhz2) FROM kompy union all SELECT (cpu3+' '+ cpumhz3) FROM kompy union all SELECT (cpu4+' '+ cpumhz4) FROM kompy) AS cpus group by cpu1"
+                                "SELECT cpus.name, Count(*) AS tot_num FROM ( " &
+                                "SELECT (cpu1+' / '+cpumhz1) as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT (cpu2+' / '+cpumhz2) as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT (cpu3+' / '+cpumhz3) as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT (cpu4+' / '+cpumhz4) as name FROM kompy WHERE tiptehn = 'PC') " &
+                                "AS cpus WHERE cpus.name<>' / ' GROUP BY cpus.name"
 
                         Else
-
                             If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                                 sSQL =
-                                    "SELECT cpu1, count(*) as tot_num FROM (SELECT (cpu1+' '+ cpumhz1) as cpu1 FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT (cpu2+' '+ cpumhz2) FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text &
-                                    "' AND tiptehn = 'PC'  union all SELECT (cpu3+' '+ cpumhz3) FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text &
-                                    "' AND tiptehn = 'PC'  union all SELECT (cpu4+' '+ cpumhz4) FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' AND tiptehn = 'PC') AS cpus group by cpu1"
+                                    "SELECT cpus.name, Count(*) AS tot_num FROM ( " &
+                                    "SELECT (cpu1+' / '+cpumhz1) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT (cpu2+' / '+cpumhz2) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT (cpu3+' / '+cpumhz3) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT (cpu4+' / '+cpumhz4) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "') " &
+                                    "AS cpus WHERE cpus.name<>' / ' GROUP BY cpus.name"
 
                             Else
                                 sSQL =
-                                    "SELECT cpu1, count(*) as tot_num FROM (SELECT (cpu1+' '+ cpumhz1) as cpu1 FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT (cpu2+' '+ cpumhz2) FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT (cpu3+' '+ cpumhz3) FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT (cpu4+' '+ cpumhz4) FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                                    "' AND tiptehn = 'PC') AS cpus group by cpu1"
+                                    "SELECT cpus.name, Count(*) AS tot_num FROM ( " &
+                                    "SELECT (cpu1+' / '+cpumhz1) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT (cpu2+' / '+cpumhz2) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT (cpu3+' / '+cpumhz3) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT (cpu4+' / '+cpumhz4) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "') " &
+                                    "AS cpus WHERE cpus.name<>' / ' GROUP BY cpus.name"
 
                             End If
                         End If
@@ -1304,71 +1334,82 @@ err:
 
 
             Case langIni.GetString("frmReports", "MSG5", "Жесткие диски")
-
+                'esq 151031
                 If _
                     cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
                     'sSQL = "SELECT cpus.HDD_Name_1, Count(*) AS tot_num FROM (SELECT HDD_Name_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT HDD_Name_2 FROM kompy union all SELECT HDD_Name_3 FROM kompy union all SELECT  HDD_Name_4 FROM kompy) AS cpus GROUP BY cpus.HDD_Name_1"
                     sSQL =
-                        "SELECT cpus.HDD_Name_1, Count(*) AS tot_num FROM (SELECT HDD_Name_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT HDD_Name_2 FROM kompy WHERE kompy.FILIAL='" &
-                        cmbReport2fil.Text &
-                        "' AND tiptehn = 'PC' union all SELECT HDD_Name_3 FROM kompy WHERE kompy.FILIAL='" &
-                        cmbReport2fil.Text &
-                        "' AND tiptehn = 'PC' union all SELECT  HDD_Name_4 FROM kompy WHERE tiptehn = 'PC' ) AS cpus GROUP BY cpus.HDD_Name_1"
+                        "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                        "SELECT HDD_Name_1 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT HDD_Name_2 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT HDD_Name_3 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT HDD_Name_4 as name FROM kompy WHERE tiptehn = 'PC')" &
+                        "AS cpus GROUP BY cpus.name"
                 Else
 
                     If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         sSQL =
-                            "SELECT cpus.HDD_Name_1, Count(*) AS tot_num FROM (SELECT HDD_Name_1 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC' union all SELECT HDD_Name_2 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC' union all SELECT HDD_Name_3 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC' union all SELECT  HDD_Name_4 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus GROUP BY cpus.HDD_Name_1"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                            "SELECT HDD_Name_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT HDD_Name_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT HDD_Name_3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT HDD_Name_4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "')" &
+                            "AS cpus GROUP BY cpus.name"
 
                     Else
                         sSQL =
-                            "SELECT cpus.HDD_Name_1, Count(*) AS tot_num FROM (SELECT HDD_Name_1 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC'union all SELECT HDD_Name_2 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC'union all SELECT HDD_Name_3 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC' union all SELECT HDD_Name_4 FROM kompy  WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.HDD_Name_1"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                            "SELECT HDD_Name_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT HDD_Name_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT HDD_Name_3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT HDD_Name_4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "')" &
+                            "AS cpus GROUP BY cpus.name"
 
                     End If
                 End If
 
 
             Case langIni.GetString("frmReports", "MSG14", "Сетевые карты")
-
+                'esq 151031
                 If _
                     cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                     'sSQL = "SELECT cpus.NET_NAME_1, Count(*) AS tot_num FROM (SELECT NET_NAME_1 FROM kompy union all SELECT NET_NAME_2 FROM kompy) AS cpus GROUP BY cpus.NET_NAME_1"
+                    'sSQL = "SELECT cpus.NET_NAME_1, Count(*) AS tot_num FROM (SELECT NET_NAME_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT NET_NAME_2 FROM kompy WHERE tiptehn = 'PC' ) AS cpus GROUP BY cpus.NET_NAME_1"
                     sSQL =
-                        "SELECT cpus.NET_NAME_1, Count(*) AS tot_num FROM (SELECT NET_NAME_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT NET_NAME_2 FROM kompy WHERE tiptehn = 'PC' ) AS cpus GROUP BY cpus.NET_NAME_1"
+                        "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                        "SELECT NET_NAME_1 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT NET_NAME_2 as name FROM kompy WHERE tiptehn = 'PC') " &
+                        "AS cpus GROUP BY cpus.name"
                 Else
 
                     If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         sSQL =
-                            "SELECT cpus.NET_NAME_1, Count(*) AS tot_num FROM (SELECT NET_NAME_1 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC' union all SELECT NET_NAME_2 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus GROUP BY cpus.NET_NAME_1"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                            "SELECT NET_NAME_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT NET_NAME_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "') " &
+                            "AS cpus GROUP BY cpus.name"
 
                     Else
                         sSQL =
-                            "SELECT cpus.NET_NAME_1, Count(*) AS tot_num FROM (SELECT NET_NAME_1 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC'union all SELECT NET_NAME_2 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.NET_NAME_1"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                            "SELECT NET_NAME_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT NET_NAME_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "') " &
+                            "AS cpus GROUP BY cpus.name"
 
                     End If
                 End If
@@ -1455,58 +1496,76 @@ err:
 
 
             Case langIni.GetString("frmReports", "MSG19", "Оптические накопители")
-
+                'esq 151031
                 If _
                     cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                     'sSQL = "SELECT cpus.CD_NAME, Count(*) AS tot_num FROM (SELECT CD_NAME FROM kompy union all SELECT CDRW_NAME FROM kompy union all SELECT DVD_NAME FROM kompy) AS cpus GROUP BY cpus.CD_NAME"
+                    'sSQL = "SELECT cpus.CD_NAME, Count(*) AS tot_num FROM (SELECT CD_NAME FROM kompy WHERE tiptehn = 'PC' union all SELECT CDRW_NAME FROM kompy WHERE tiptehn = 'PC'  union all SELECT DVD_NAME FROM kompy WHERE tiptehn = 'PC') AS cpus GROUP BY cpus.CD_NAME"
                     sSQL =
-                        "SELECT cpus.CD_NAME, Count(*) AS tot_num FROM (SELECT CD_NAME FROM kompy WHERE tiptehn = 'PC' union all SELECT CDRW_NAME FROM kompy WHERE tiptehn = 'PC'  union all SELECT DVD_NAME FROM kompy WHERE tiptehn = 'PC') AS cpus GROUP BY cpus.CD_NAME"
+                        "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                        "SELECT CD_NAME as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT CDRW_NAME as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT DVD_NAME as name FROM kompy WHERE tiptehn = 'PC') " &
+                        "AS cpus GROUP BY cpus.name"
                 Else
 
                     If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         sSQL =
-                            "SELECT cpus.CD_NAME, Count(*) AS tot_num FROM (SELECT CD_NAME FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC' union all SELECT CDRW_NAME FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC'  union all SELECT DVD_NAME FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.CD_NAME"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                            "SELECT CD_NAME as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT CDRW_NAME as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT DVD_NAME as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "') " &
+                            "AS cpus GROUP BY cpus.name"
                     Else
                         sSQL =
-                            "SELECT cpus.CD_NAME, Count(*) AS tot_num FROM (SELECT CD_NAME FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC' union all SELECT CDRW_NAME FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC' union all SELECT DVD_NAME FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.CD_NAME"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                            "SELECT CD_NAME as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT CDRW_NAME as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT DVD_NAME as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "') " &
+                            "AS cpus GROUP BY cpus.name"
+
                     End If
                 End If
 
 
             Case langIni.GetString("frmReports", "MSG9", "Монитор")
-
+                'esq 151031
                 If _
                     cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                     'sSQL = "SELECT cpus.MONITOR_NAME, Count(*) AS tot_num FROM (SELECT MONITOR_NAME FROM kompy union all SELECT MONITOR_NAME2 FROM kompy) AS cpus GROUP BY cpus.MONITOR_NAME"
+                    'sSQL = "SELECT cpus.MONITOR_NAME, Count(*) AS tot_num FROM (SELECT MONITOR_NAME FROM kompy union all SELECT MONITOR_NAME2 FROM kompy) AS cpus GROUP BY cpus.MONITOR_NAME"
                     sSQL =
-                        "SELECT cpus.MONITOR_NAME, Count(*) AS tot_num FROM (SELECT MONITOR_NAME FROM kompy union all SELECT MONITOR_NAME2 FROM kompy) AS cpus GROUP BY cpus.MONITOR_NAME"
+                        "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                        "SELECT MONITOR_NAME as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT MONITOR_NAME2 as name FROM kompy WHERE tiptehn = 'PC') " &
+                        "AS cpus GROUP BY cpus.name"
                 Else
 
                     If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         sSQL =
-                            "SELECT cpus.MONITOR_NAME, Count(*) AS tot_num FROM (SELECT MONITOR_NAME FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' union all SELECT MONITOR_NAME2 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "') AS cpus GROUP BY cpus.MONITOR_NAME"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                            "SELECT MONITOR_NAME as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT MONITOR_NAME2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "') " &
+                            "AS cpus GROUP BY cpus.name"
 
                     Else
                         sSQL =
-                            "SELECT cpus.MONITOR_NAME, Count(*) AS tot_num FROM (SELECT MONITOR_NAME FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' union all SELECT MONITOR_NAME2 FROM kompy WHERE kompy.FILIAL='" & cmbReport2fil.Text &
-                            "' and kompy.MESTO='" & cmbReport2Department.Text & "') AS cpus GROUP BY cpus.MONITOR_NAME"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                            "SELECT MONITOR_NAME as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT MONITOR_NAME2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "') " &
+                            "AS cpus GROUP BY cpus.name"
 
                     End If
                 End If
@@ -1541,42 +1600,43 @@ err:
 
 
             Case langIni.GetString("frmReports", "MSG10", "Память ОЗУ")
-
+                'esq 151031
                 If _
                     cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                     'sSQL = "SELECT cpus.RAM_1, Count(*) AS tot_num FROM (SELECT RAM_1 FROM kompy union all SELECT RAM_2 FROM kompy union all SELECT RAM_3 FROM kompy union all SELECT  RAM_4 FROM kompy) AS cpus GROUP BY cpus.RAM_1"
                     sSQL =
-                        "SELECT cpus.RAM_1, Count(*) AS tot_num FROM (SELECT RAM_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT RAM_2 FROM kompy WHERE kompy.FILIAL='" &
-                        cmbReport2fil.Text &
-                        "' AND tiptehn = 'PC' union all SELECT RAM_3 FROM kompy WHERE kompy.FILIAL='" &
-                        cmbReport2fil.Text &
-                        "' AND tiptehn = 'PC' union all SELECT  RAM_4 FROM kompy WHERE tiptehn = 'PC' ) AS cpus GROUP BY cpus.RAM_1"
-
+                        "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                        "SELECT RAM_1 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT RAM_2 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT RAM_3 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT RAM_4 as name FROM kompy WHERE tiptehn = 'PC') AS cpus GROUP BY cpus.name"
                 Else
 
                     If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         sSQL =
-                            "SELECT cpus.RAM_1, Count(*) AS tot_num FROM (SELECT RAM_1 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC' union all SELECT RAM_2 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC' union all SELECT RAM_3 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC' union all SELECT  RAM_4 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus GROUP BY cpus.RAM_1"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                            "SELECT RAM_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT RAM_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT RAM_3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT RAM_4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "') AS cpus GROUP BY cpus.name"
 
                     Else
                         sSQL =
-                            "SELECT cpus.RAM_1, Count(*) AS tot_num FROM (SELECT RAM_1 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC'union all SELECT RAM_2 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC'union all SELECT RAM_3 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC' union all SELECT RAM_4 FROM kompy  WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.RAM_1"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                            "SELECT RAM_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT RAM_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT RAM_3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT RAM_4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "') " &
+                            "AS cpus GROUP BY cpus.name"
 
                     End If
                 End If
@@ -1585,41 +1645,45 @@ err:
 
 
             Case langIni.GetString("frmReports", "MSG12", "Производители жестких дисков")
-
+                'esq 151031
                 If _
                     cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                     'sSQL = "SELECT cpus.HDD_PROIZV_1, Count(*) AS tot_num FROM (SELECT HDD_PROIZV_1 FROM kompy union all SELECT HDD_PROIZV_2 FROM kompy union all SELECT HDD_PROIZV_3 FROM kompy union all SELECT  HDD_PROIZV_4 FROM kompy) AS cpus GROUP BY cpus.HDD_PROIZV_1"
                     sSQL =
-                        "SELECT cpus.HDD_PROIZV_1, Count(*) AS tot_num FROM (SELECT HDD_PROIZV_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT HDD_PROIZV_2 FROM kompy WHERE kompy.FILIAL='" &
-                        cmbReport2fil.Text &
-                        "' AND tiptehn = 'PC' union all SELECT HDD_PROIZV_3 FROM kompy WHERE kompy.FILIAL='" &
-                        cmbReport2fil.Text &
-                        "' AND tiptehn = 'PC' union all SELECT  HDD_PROIZV_4 FROM kompy WHERE tiptehn = 'PC' ) AS cpus GROUP BY cpus.HDD_PROIZV_1"
+                        "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                        "SELECT HDD_PROIZV_1 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT HDD_PROIZV_2 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT HDD_PROIZV_3 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                        "SELECT HDD_PROIZV_4 as name FROM kompy WHERE tiptehn = 'PC')" &
+                        "AS cpus GROUP BY cpus.name"
                 Else
 
                     If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                         sSQL =
-                            "SELECT cpus.HDD_PROIZV_1, Count(*) AS tot_num FROM (SELECT HDD_PROIZV_1 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC' union all SELECT HDD_PROIZV_2 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC' union all SELECT HDD_PROIZV_3 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC' union all SELECT  HDD_PROIZV_4 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus GROUP BY cpus.HDD_PROIZV_1"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                            "SELECT HDD_PROIZV_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT HDD_PROIZV_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT HDD_PROIZV_3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' union all " &
+                            "SELECT HDD_PROIZV_4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "')" &
+                            "AS cpus GROUP BY cpus.name"
 
                     Else
                         sSQL =
-                            "SELECT cpus.HDD_PROIZV_1, Count(*) AS tot_num FROM (SELECT HDD_PROIZV_1 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC'union all SELECT HDD_PROIZV_2 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC'union all SELECT HDD_PROIZV_3 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC' union all SELECT HDD_PROIZV_4 FROM kompy  WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.HDD_PROIZV_1"
+                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                            "SELECT HDD_PROIZV_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT HDD_PROIZV_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT HDD_PROIZV_3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                            "SELECT HDD_PROIZV_4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "')" &
+                            "AS cpus GROUP BY cpus.name"
 
                     End If
                 End If
@@ -1659,37 +1723,45 @@ err:
                         End If
 
                     Case 1
-
+                        'esq 151031
                         If _
                             cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                             cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                            'sSQL = "SELECT cpus.PRINTER_NAME_1, Count(*) AS tot_num FROM (SELECT PRINTER_NAME_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT PRINTER_NAME_2 FROM kompy WHERE tiptehn = 'PC' union all SELECT PRINTER_NAME_3 FROM kompy WHERE tiptehn = 'PC' union all SELECT  PRINTER_NAME_4 FROM kompy WHERE tiptehn = 'PC') AS cpus GROUP BY cpus.PRINTER_NAME_1"
                             sSQL =
-                                "SELECT cpus.PRINTER_NAME_1, Count(*) AS tot_num FROM (SELECT PRINTER_NAME_1 FROM kompy WHERE tiptehn = 'PC' union all SELECT PRINTER_NAME_2 FROM kompy WHERE tiptehn = 'PC' union all SELECT PRINTER_NAME_3 FROM kompy WHERE tiptehn = 'PC' union all SELECT  PRINTER_NAME_4 FROM kompy WHERE tiptehn = 'PC') AS cpus GROUP BY cpus.PRINTER_NAME_1"
+                                "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                                "SELECT PRINTER_NAME_1 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT PRINTER_NAME_2 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT PRINTER_NAME_3 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT PRINTER_NAME_4 as name FROM kompy WHERE tiptehn = 'PC')" &
+                                "AS cpus GROUP BY cpus.name"
 
                         Else
-
                             If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
                                 sSQL =
-                                    "SELECT cpus.PRINTER_NAME_1, Count(*) AS tot_num FROM (SELECT PRINTER_NAME_1 FROM kompy WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_2 FROM kompy WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_3 FROM kompy WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT  PRINTER_NAME_4 FROM kompy WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus GROUP BY cpus.PRINTER_NAME_1"
+                                    "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                                    "SELECT PRINTER_NAME_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT PRINTER_NAME_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT PRINTER_NAME_3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT PRINTER_NAME_4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "')" &
+                                    "AS cpus GROUP BY cpus.name"
 
                             Else
                                 sSQL =
-                                    "SELECT cpus.PRINTER_NAME_1, Count(*) AS tot_num FROM (SELECT PRINTER_NAME_1 FROM kompy WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_2 FROM kompy WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_3 FROM kompy WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                                    "' AND tiptehn = 'PC' union all SELECT PRINTER_NAME_4 FROM kompy  WHERE kompy.FILIAL='" &
-                                    cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                                    "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.PRINTER_NAME_1"
+                                    "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                                    "SELECT PRINTER_NAME_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT PRINTER_NAME_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT PRINTER_NAME_3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT PRINTER_NAME_4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "')" &
+                                    "AS cpus GROUP BY cpus.name"
 
                             End If
                         End If
@@ -1730,29 +1802,35 @@ err:
 
 
             Case langIni.GetString("frmReports", "MSG17", "Тип и диагональ монитора")
-
+                'esq 151028
                 If _
                     cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
-                    'sSQL = "SELECT cpus.Monitor_dum, Count(*) AS tot_num FROM (SELECT Monitor_dum FROM kompy union all SELECT Monitor_dum2 FROM kompy) AS cpus GROUP BY cpus.Monitor_dum"
+                    'sSQL = "SELECT cpus.Monitor_dum, Count(*) AS tot_num FROM 
+                    '(SELECT Monitor_dum FROM kompy union all SELECT Monitor_dum2 FROM kompy) AS cpus GROUP BY cpus.Monitor_dum"
+                    'sSQL = "SELECT cpus.Monitor_dum, Count(*) AS tot_num FROM (SELECT Monitor_dum FROM kompy WHERE tiptehn = 'PC' or tiptehn = 'MONITOR'" & " union all SELECT Monitor_dum2 FROM kompy WHERE tiptehn = 'PC' or tiptehn = 'MONITOR' ) AS cpus GROUP BY cpus.Monitor_dum"
                     sSQL =
-                        "SELECT cpus.Monitor_dum, Count(*) AS tot_num FROM (SELECT Monitor_dum FROM kompy WHERE tiptehn = 'PC' union all SELECT Monitor_dum2 FROM kompy WHERE tiptehn = 'PC' ) AS cpus GROUP BY cpus.Monitor_dum"
+                        "SELECT cpus.dum, Count(cpus.dum) AS tot_num FROM (SELECT tiptehn, Monitor_name as name, Monitor_dum as dum" &
+                        " FROM kompy union all SELECT tiptehn, Monitor_name2 as name, Monitor_dum2 as dum FROM kompy) AS cpus" &
+                        " WHERE cpus.name<>'' And (cpus.tiptehn = 'PC' or cpus.tiptehn = 'MONITOR') GROUP BY cpus.dum"
+
                 Else
 
                     If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                        'sSQL = "SELECT cpus.Monitor_dum, Count(*) AS tot_num FROM (SELECT Monitor_dum FROM kompy WHERE kompy.FILIAL='" & cmbReport2fil.Text & "' AND tiptehn = 'PC' or tiptehn = 'MONITOR' union all SELECT Monitor_dum2 FROM kompy WHERE kompy.FILIAL='" & cmbReport2fil.Text & "' AND tiptehn = 'PC' or tiptehn = 'MONITOR' ) AS cpus GROUP BY cpus.Monitor_dum"
                         sSQL =
-                            "SELECT cpus.Monitor_dum, Count(*) AS tot_num FROM (SELECT Monitor_dum FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text &
-                            "' AND tiptehn = 'PC' union all SELECT Monitor_dum2 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' AND tiptehn = 'PC' ) AS cpus GROUP BY cpus.Monitor_dum"
+                            "SELECT cpus.dum, Count(cpus.dum) AS tot_num FROM (SELECT tiptehn, FILIAL, Monitor_name as name, Monitor_dum as dum" &
+                            " FROM kompy union all SELECT tiptehn, FILIAL, Monitor_name2 as name, Monitor_dum2 as dum FROM kompy) AS cpus" &
+                            " WHERE cpus.FILIAL='" & cmbReport2fil.Text &
+                            "' AND cpus.name<>'' And (cpus.tiptehn = 'PC' or cpus.tiptehn = 'MONITOR') GROUP BY cpus.dum"
 
                     Else
+                        'sSQL = "SELECT cpus.Monitor_dum, Count(*) AS tot_num FROM (SELECT Monitor_dum FROM kompy WHERE kompy.FILIAL='" & cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text & "' AND tiptehn = 'PC' or tiptehn = 'MONITOR' union all SELECT Monitor_dum2 FROM kompy WHERE kompy.FILIAL='" & cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text & "' AND tiptehn = 'PC' or tiptehn = 'MONITOR') AS cpus GROUP BY cpus.Monitor_dum"
                         sSQL =
-                            "SELECT cpus.Monitor_dum, Count(*) AS tot_num FROM (SELECT Monitor_dum FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC'union all SELECT Monitor_dum2 FROM kompy WHERE kompy.FILIAL='" &
-                            cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                            "' AND tiptehn = 'PC') AS cpus GROUP BY cpus.Monitor_dum"
+                            "SELECT cpus.dum, Count(cpus.dum) AS tot_num FROM (SELECT tiptehn, FILIAL, MESTO, Monitor_name as name, Monitor_dum as dum" &
+                            " FROM kompy union all SELECT tiptehn, FILIAL, MESTO, Monitor_name2 as name, Monitor_dum2 as dum FROM kompy) AS cpus" &
+                            " WHERE cpus.FILIAL='" & cmbReport2fil.Text & "' and cpus.MESTO='" & cmbReport2Department.Text &
+                            "' AND cpus.name<>'' And (cpus.tiptehn = 'PC' or cpus.tiptehn = 'MONITOR') GROUP BY cpus.dum"
 
                     End If
                 End If

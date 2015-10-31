@@ -55,7 +55,7 @@ Partial Class frmSQL
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(992, 616)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(992, 621)
         Me.TableLayoutPanel1.TabIndex = 21
         '
         'TableLayoutPanel2
@@ -128,6 +128,7 @@ Partial Class frmSQL
         'txtQ
         '
         Me.txtQ.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtQ.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.txtQ.Location = New System.Drawing.Point(3, 3)
         Me.txtQ.Multiline = True
         Me.txtQ.Name = "txtQ"
@@ -155,7 +156,7 @@ Partial Class frmSQL
         Me.LvQ.MultiSelect = False
         Me.LvQ.Name = "LvQ"
         Me.LvQ.ShowItemToolTips = True
-        Me.LvQ.Size = New System.Drawing.Size(753, 442)
+        Me.LvQ.Size = New System.Drawing.Size(753, 445)
         Me.LvQ.TabIndex = 24
         Me.LvQ.UseCompatibleStateImageBehavior = False
         Me.LvQ.View = System.Windows.Forms.View.Details
@@ -168,14 +169,14 @@ Partial Class frmSQL
         Me.lstTable.ItemHeight = 16
         Me.lstTable.Location = New System.Drawing.Point(762, 173)
         Me.lstTable.Name = "lstTable"
-        Me.lstTable.Size = New System.Drawing.Size(227, 442)
+        Me.lstTable.Size = New System.Drawing.Size(227, 445)
         Me.lstTable.TabIndex = 26
         '
         'frmSQL
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(992, 616)
+        Me.ClientSize = New System.Drawing.Size(992, 621)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.MinimumSize = New System.Drawing.Size(1000, 650)
         Me.Name = "frmSQL"

@@ -192,7 +192,7 @@ Partial Class frmReports
         Me.sSTAB1.Location = New System.Drawing.Point(0, 0)
         Me.sSTAB1.Name = "sSTAB1"
         Me.sSTAB1.SelectedIndex = 0
-        Me.sSTAB1.Size = New System.Drawing.Size(945, 562)
+        Me.sSTAB1.Size = New System.Drawing.Size(945, 571)
         Me.sSTAB1.TabIndex = 0
         '
         'TabPage1
@@ -201,7 +201,7 @@ Partial Class frmReports
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(937, 536)
+        Me.TabPage1.Size = New System.Drawing.Size(937, 545)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Комплектующие по отделам"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -240,7 +240,7 @@ Partial Class frmReports
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(931, 530)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(931, 539)
         Me.TableLayoutPanel3.TabIndex = 23
         '
         'Label6
@@ -283,7 +283,7 @@ Partial Class frmReports
         Me.TableLayoutPanel3.SetColumnSpan(Me.gbSN, 2)
         Me.gbSN.Controls.Add(Me.TableLayoutPanel7)
         Me.gbSN.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.gbSN.Location = New System.Drawing.Point(3, 183)
+        Me.gbSN.Location = New System.Drawing.Point(3, 192)
         Me.gbSN.Name = "gbSN"
         Me.gbSN.Size = New System.Drawing.Size(348, 344)
         Me.gbSN.TabIndex = 20
@@ -646,7 +646,7 @@ Partial Class frmReports
         Me.LvKompOtd.MultiSelect = False
         Me.LvKompOtd.Name = "LvKompOtd"
         Me.LvKompOtd.ShowItemToolTips = True
-        Me.LvKompOtd.Size = New System.Drawing.Size(925, 93)
+        Me.LvKompOtd.Size = New System.Drawing.Size(925, 102)
         Me.LvKompOtd.TabIndex = 19
         Me.LvKompOtd.UseCompatibleStateImageBehavior = False
         Me.LvKompOtd.View = System.Windows.Forms.View.Details
@@ -676,7 +676,7 @@ Partial Class frmReports
         '
         Me.gbPer.Controls.Add(Me.TableLayoutPanel8)
         Me.gbPer.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.gbPer.Location = New System.Drawing.Point(357, 183)
+        Me.gbPer.Location = New System.Drawing.Point(357, 192)
         Me.gbPer.Name = "gbPer"
         Me.gbPer.Size = New System.Drawing.Size(153, 344)
         Me.gbPer.TabIndex = 21
@@ -830,7 +830,7 @@ Partial Class frmReports
         '
         Me.gbInf.Controls.Add(Me.TableLayoutPanel9)
         Me.gbInf.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.gbInf.Location = New System.Drawing.Point(516, 183)
+        Me.gbInf.Location = New System.Drawing.Point(516, 192)
         Me.gbInf.Name = "gbInf"
         Me.gbInf.Size = New System.Drawing.Size(205, 344)
         Me.gbInf.TabIndex = 22
@@ -1013,7 +1013,7 @@ Partial Class frmReports
         'btnUpdate
         '
         Me.btnUpdate.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnUpdate.Location = New System.Drawing.Point(727, 504)
+        Me.btnUpdate.Location = New System.Drawing.Point(727, 513)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(75, 23)
         Me.btnUpdate.TabIndex = 23
@@ -1023,7 +1023,7 @@ Partial Class frmReports
         'btnSendToOffice
         '
         Me.btnSendToOffice.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnSendToOffice.Location = New System.Drawing.Point(849, 504)
+        Me.btnSendToOffice.Location = New System.Drawing.Point(849, 513)
         Me.btnSendToOffice.Name = "btnSendToOffice"
         Me.btnSendToOffice.Size = New System.Drawing.Size(75, 23)
         Me.btnSendToOffice.TabIndex = 44
@@ -1077,7 +1077,7 @@ Partial Class frmReports
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(937, 536)
+        Me.TabPage2.Size = New System.Drawing.Size(937, 545)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Комплектующие"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -1106,7 +1106,7 @@ Partial Class frmReports
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(931, 530)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(931, 539)
         Me.TableLayoutPanel2.TabIndex = 25
         '
         'lblReport2Cl
@@ -1122,7 +1122,7 @@ Partial Class frmReports
         'chkReport2Prn
         '
         Me.chkReport2Prn.AutoSize = True
-        Me.chkReport2Prn.Location = New System.Drawing.Point(603, 483)
+        Me.chkReport2Prn.Location = New System.Drawing.Point(603, 492)
         Me.chkReport2Prn.Name = "chkReport2Prn"
         Me.chkReport2Prn.Size = New System.Drawing.Size(325, 17)
         Me.chkReport2Prn.TabIndex = 21
@@ -1142,7 +1142,7 @@ Partial Class frmReports
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(303, 483)
+        Me.Button2.Location = New System.Drawing.Point(303, 492)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 19
@@ -1163,12 +1163,13 @@ Partial Class frmReports
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(3, 483)
+        Me.Button1.Location = New System.Drawing.Point(3, 492)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 18
         Me.Button1.Text = "Выход"
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'Label1
         '
@@ -1190,7 +1191,7 @@ Partial Class frmReports
         Me.lvReport2Cl.MultiSelect = False
         Me.lvReport2Cl.Name = "lvReport2Cl"
         Me.lvReport2Cl.ShowItemToolTips = True
-        Me.lvReport2Cl.Size = New System.Drawing.Size(925, 425)
+        Me.lvReport2Cl.Size = New System.Drawing.Size(925, 434)
         Me.lvReport2Cl.TabIndex = 17
         Me.lvReport2Cl.UseCompatibleStateImageBehavior = False
         Me.lvReport2Cl.View = System.Windows.Forms.View.Details
@@ -1221,7 +1222,7 @@ Partial Class frmReports
         Me.TabPage3.Controls.Add(Me.TableLayoutPanel1)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(937, 536)
+        Me.TabPage3.Size = New System.Drawing.Size(937, 545)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Ремонты"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -1261,7 +1262,7 @@ Partial Class frmReports
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(937, 536)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(937, 545)
         Me.TableLayoutPanel1.TabIndex = 33
         '
         'Label3
@@ -1283,7 +1284,7 @@ Partial Class frmReports
         Me.lvRemont.Location = New System.Drawing.Point(3, 63)
         Me.lvRemont.MultiSelect = False
         Me.lvRemont.Name = "lvRemont"
-        Me.lvRemont.Size = New System.Drawing.Size(931, 470)
+        Me.lvRemont.Size = New System.Drawing.Size(931, 479)
         Me.lvRemont.TabIndex = 18
         Me.lvRemont.UseCompatibleStateImageBehavior = False
         Me.lvRemont.View = System.Windows.Forms.View.Details
@@ -1425,7 +1426,7 @@ Partial Class frmReports
         Me.TabPage4.Controls.Add(Me.TableLayoutPanel5)
         Me.TabPage4.Location = New System.Drawing.Point(4, 22)
         Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Size = New System.Drawing.Size(937, 536)
+        Me.TabPage4.Size = New System.Drawing.Size(937, 545)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Гарантия"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -1445,7 +1446,7 @@ Partial Class frmReports
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.TableLayoutPanel5.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel5.Size = New System.Drawing.Size(937, 536)
+        Me.TableLayoutPanel5.Size = New System.Drawing.Size(937, 545)
         Me.TableLayoutPanel5.TabIndex = 23
         '
         'Label8
@@ -1480,7 +1481,7 @@ Partial Class frmReports
         Me.lvGar.Name = "lvGar"
         Me.TableLayoutPanel5.SetRowSpan(Me.lvGar, 2)
         Me.lvGar.ShowItemToolTips = True
-        Me.lvGar.Size = New System.Drawing.Size(931, 500)
+        Me.lvGar.Size = New System.Drawing.Size(931, 509)
         Me.lvGar.TabIndex = 21
         Me.lvGar.UseCompatibleStateImageBehavior = False
         Me.lvGar.View = System.Windows.Forms.View.Details
@@ -1490,7 +1491,7 @@ Partial Class frmReports
         Me.TabPage5.Controls.Add(Me.TableLayoutPanel6)
         Me.TabPage5.Location = New System.Drawing.Point(4, 22)
         Me.TabPage5.Name = "TabPage5"
-        Me.TabPage5.Size = New System.Drawing.Size(937, 536)
+        Me.TabPage5.Size = New System.Drawing.Size(937, 545)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Выборка по ответственным"
         Me.TabPage5.UseVisualStyleBackColor = True
@@ -1512,7 +1513,7 @@ Partial Class frmReports
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel6.Size = New System.Drawing.Size(937, 536)
+        Me.TableLayoutPanel6.Size = New System.Drawing.Size(937, 545)
         Me.TableLayoutPanel6.TabIndex = 28
         '
         'Label9
@@ -1536,7 +1537,7 @@ Partial Class frmReports
         Me.lvOTV.Name = "lvOTV"
         Me.TableLayoutPanel6.SetRowSpan(Me.lvOTV, 2)
         Me.lvOTV.ShowItemToolTips = True
-        Me.lvOTV.Size = New System.Drawing.Size(931, 500)
+        Me.lvOTV.Size = New System.Drawing.Size(931, 509)
         Me.lvOTV.TabIndex = 24
         Me.lvOTV.UseCompatibleStateImageBehavior = False
         Me.lvOTV.View = System.Windows.Forms.View.Details
@@ -1568,7 +1569,7 @@ Partial Class frmReports
         Me.TabPage6.Controls.Add(Me.TableLayoutPanel4)
         Me.TabPage6.Location = New System.Drawing.Point(4, 22)
         Me.TabPage6.Name = "TabPage6"
-        Me.TabPage6.Size = New System.Drawing.Size(937, 536)
+        Me.TabPage6.Size = New System.Drawing.Size(937, 545)
         Me.TabPage6.TabIndex = 5
         Me.TabPage6.Text = "Затраты"
         Me.TabPage6.UseVisualStyleBackColor = True
@@ -1597,7 +1598,7 @@ Partial Class frmReports
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32.0!))
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(937, 536)
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(937, 545)
         Me.TableLayoutPanel4.TabIndex = 34
         '
         'Label12
@@ -1619,7 +1620,7 @@ Partial Class frmReports
         Me.lvCashe.MultiSelect = False
         Me.lvCashe.Name = "lvCashe"
         Me.lvCashe.ShowItemToolTips = True
-        Me.lvCashe.Size = New System.Drawing.Size(931, 478)
+        Me.lvCashe.Size = New System.Drawing.Size(931, 487)
         Me.lvCashe.TabIndex = 28
         Me.lvCashe.UseCompatibleStateImageBehavior = False
         Me.lvCashe.View = System.Windows.Forms.View.Details
@@ -1698,7 +1699,7 @@ Partial Class frmReports
         Me.TabPage7.Controls.Add(Me.TableLayoutPanel10)
         Me.TabPage7.Location = New System.Drawing.Point(4, 22)
         Me.TabPage7.Name = "TabPage7"
-        Me.TabPage7.Size = New System.Drawing.Size(937, 536)
+        Me.TabPage7.Size = New System.Drawing.Size(937, 545)
         Me.TabPage7.TabIndex = 6
         Me.TabPage7.Text = "Планово предупредительный ремонт"
         Me.TabPage7.UseVisualStyleBackColor = True
@@ -1720,7 +1721,7 @@ Partial Class frmReports
         Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel10.Size = New System.Drawing.Size(937, 536)
+        Me.TableLayoutPanel10.Size = New System.Drawing.Size(937, 545)
         Me.TableLayoutPanel10.TabIndex = 0
         '
         'lstvPPR
@@ -1733,7 +1734,7 @@ Partial Class frmReports
         Me.lstvPPR.MultiSelect = False
         Me.lstvPPR.Name = "lstvPPR"
         Me.lstvPPR.ShowItemToolTips = True
-        Me.lstvPPR.Size = New System.Drawing.Size(931, 481)
+        Me.lstvPPR.Size = New System.Drawing.Size(931, 490)
         Me.lstvPPR.TabIndex = 29
         Me.lstvPPR.UseCompatibleStateImageBehavior = False
         Me.lstvPPR.View = System.Windows.Forms.View.Details
@@ -1776,7 +1777,7 @@ Partial Class frmReports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(945, 562)
+        Me.ClientSize = New System.Drawing.Size(945, 571)
         Me.Controls.Add(Me.sSTAB1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimumSize = New System.Drawing.Size(900, 600)

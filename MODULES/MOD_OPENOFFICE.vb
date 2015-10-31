@@ -4469,10 +4469,7 @@ err_:
 
         objServiceManager = CreateObject("com.sun.star.ServiceManager")
         objCoreReflection = objServiceManager.createInstance("com.sun.star.reflection.CoreReflection")
-
-
         objDesktop = objServiceManager.createInstance("com.sun.star.frame.Desktop")
-
 
         Dim args(-1) As Object
 
@@ -4483,9 +4480,7 @@ err_:
         Dim CurrentHeader As ColumnHeader
 
         oDoc = objDesktop.loadComponentFROMURL("private:factory/scalc", "_blank", 0, args)
-
         oSheet = oDoc.getSheets().getByIndex(0)
-
 
         Dim intj As Integer = 0
         Dim a, b As String
@@ -4497,24 +4492,22 @@ err_:
         'oRange.Merge(True)
         'oRange.ParaAdjust = intParaAdjust
 
-
         intj = 1
         a = "A1" '& intj
 
-
-        'oSheet.getCellByPosition(intj - 1, 0).setString(sTXT)
+        oSheet.getCellRangeByPosition(0, 0, listV.Columns.Count - 1, 0).Merge(True)
+        oSheet.getCellByPosition(intj - 1, 0).CharWeight = 150
+        oSheet.getCellByPosition(intj - 1, 0).setString(sTXT)
         'intj = 3
 
         For Each CurrentHeader In listV.Columns
-
-            a = "A" & intj
+            'a = "A" & intj
             b = CurrentHeader.Text
-            oSheet.getCellByPosition(intj - 1, 0).setString(b)
-
-
+            oSheet.getCellByPosition(intj - 1, 1).CharWeight = 150
+            oSheet.getCellByPosition(intj - 1, 1).CharPosture = 2
+            oSheet.getCellByPosition(intj - 1, 1).setString(b)
             intj = intj + 1
         Next
-
 
         Dim STrX As Integer
         STrX = intj - 2
@@ -4526,9 +4519,9 @@ err_:
             listV.Items(intj).EnsureVisible()
 
             For INTZ = 1 To STrX
-                Cell = oSheet.getCellByPosition(0, intj + 1).setString(listV.Items.Item(intj).Text)
+                Cell = oSheet.getCellByPosition(0, intj + 2).setString(listV.Items.Item(intj).Text)
 
-                Cell = oSheet.getCellByPosition(INTZ, intj + 1).setString(listV.Items(intj).SubItems(INTZ).Text)
+                Cell = oSheet.getCellByPosition(INTZ, intj + 2).setString(listV.Items(intj).SubItems(INTZ).Text)
 
                 oCol = oSheet.getColumns().getByIndex(INTZ - 1)
                 oCol.optimalWidth = True 'Autofit
@@ -5624,81 +5617,49 @@ err_:
     Public Sub ExportListViewToExcel(ByVal MyListView As ListView, ByVal sTXT As String)
 
         'Dim ExcelReport As Excel.ApplicationClass
-
         ' Const MAX_COLOURS As Int16 = 40
 
         Const MAX_COLUMS As Int16 = 254
-
         Dim i As Integer
-
         Dim New_Item As ListViewItem
-
         Dim TempColum As Int16
-
         Dim ColumLetter As String
-
         Dim TempRow As Int16
-
         Dim TempColum2 As Int16
-
         Dim AddedColours As Int16 = 1
-
         Dim MyColours As Hashtable = New Hashtable
-
         Dim AddNewBackColour As Boolean = True
-
         Dim AddNewFrontColour As Boolean = True
 
         'Dim BackColour As String
-
         'Dim FrontColour As String
 
-
         '##########################
-
         Dim chartRange As Excel.Range
-
         '##########################
-
 
         Dim ExcelReport As Excel.Application
-
         'ExcelReport = New Excel.ApplicationClass
-
         ExcelReport = New Excel.Application
-
         ExcelReport.Visible = True
-
         ExcelReport.Workbooks.Add()
 
-
         'ExcelReport.Worksheets("Sheet1").Select()
-
         'ExcelReport.Sheets("Sheet1").Name = sTXT
 
-
         i = 0
-
         Do Until i = MyListView.Columns.Count
-
             If i > MAX_COLUMS Then
-
                 MsgBox("Too many Colums added")
-
                 Exit Do
-
             End If
 
             TempColum = i
-
             TempColum2 = 0
 
             Do While TempColum > 25
-
                 TempColum -= 26
-
                 TempColum2 += 1
-
             Loop
 
             ColumLetter = Chr(97 + TempColum)
@@ -5706,173 +5667,107 @@ err_:
             If TempColum2 > 0 Then ColumLetter = Chr(96 + TempColum2) & ColumLetter
 
             ExcelReport.Range(ColumLetter & 3).Value = MyListView.Columns(i).Text
-
             'ExcelReport.Range(ColumLetter & 3).Font.Name = MyListView.Font.Name
-
             ' ExcelReport.Range(ColumLetter & 3).Font.Size = MyListView.Font.Size + 2
-
             ExcelReport.Range(ColumLetter & 3).Font.Bold = True
-
             chartRange = ExcelReport.Range(ColumLetter & 3)
-
             chartRange.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlMedium,
                                     XlColorIndex.xlColorIndexAutomatic, XlColorIndex.xlColorIndexAutomatic)
-
             i += 1
-
         Loop
 
         '###############################################
-
         'Вставляем заголовок
-
         '###############################################
 
         'Устанавливаем диапазон ячеек
-
         chartRange = ExcelReport.Range("A1", ColumLetter & 2)
 
         'Объединяем ячейки
-
         chartRange.Merge()
 
         'Вставляем текст
-
         chartRange.FormulaR1C1 = sTXT
 
         'Выравниваем по центру
-
         chartRange.HorizontalAlignment = 3
-
         chartRange.VerticalAlignment = 2
 
         'Устанавливаем шрифт
-
         ExcelReport.Range("A1").Font.Name = MyListView.Font.Name
 
         'Увеличиваем шрифт
-
         ExcelReport.Range("A1").Font.Size = MyListView.Font.Size + 4
 
         'Делаем шрифт жирным
-
         ExcelReport.Range("A1").Font.Bold = True
 
         '###############################################
 
         '###############################################
 
-
         TempRow = 4
-
         For Each New_Item In MyListView.Items
-
             i = 0
-
             Do Until i = New_Item.SubItems.Count
-
                 If i > MAX_COLUMS Then
-
                     MsgBox("Too many Colums added")
-
                     Exit Do
-
                 End If
 
                 TempColum = i
-
                 TempColum2 = 0
-
                 Do While TempColum > 25
-
                     TempColum -= 26
-
                     TempColum2 += 1
-
                 Loop
 
                 ColumLetter = Chr(97 + TempColum)
-
                 If TempColum2 > 0 Then ColumLetter = Chr(96 + TempColum2) & ColumLetter
 
                 ExcelReport.Range(ColumLetter & TempRow).Value = New_Item.SubItems(i).Text
-
                 'ExcelReport.Range(ColumLetter & TempRow).Font.Name = New_Item.Font.Name
-
                 'ExcelReport.Range(ColumLetter & TempRow).Font.Size = New_Item.Font.Size
-
                 chartRange = ExcelReport.Range(ColumLetter & TempRow)
-
                 chartRange.BorderAround(XlLineStyle.xlContinuous, XlBorderWeight.xlMedium,
                                         XlColorIndex.xlColorIndexAutomatic, XlColorIndex.xlColorIndexAutomatic)
 
                 'AddNewFrontColour = False
-
                 'AddNewBackColour = False
-
                 'Try
-
                 '    BackColour = MyColours(New_Item.BackColor.ToString)
-
                 '    If BackColour = "" Then AddNewBackColour = True
-
                 '    FrontColour = MyColours(New_Item.ForeColor.ToString)
-
                 '    If FrontColour = "" Then AddNewFrontColour = True
-
                 'Catch ex As Exception
-
                 '    AddNewFrontColour = False
-
                 '    AddNewBackColour = False
-
                 'End Try
-
                 'If AddedColours < MAX_COLOURS And (AddNewFrontColour Or AddNewBackColour) And (New_Item.BackColor.ToArgb <> -1) Then
-
                 '    If AddNewBackColour Then
-
                 '        MyColours.Add(New_Item.BackColor.ToString, AddedColours)
-
                 '        ExcelReport.Workbooks.Item(1).Colors(AddedColours) = RGB(New_Item.BackColor.R, New_Item.BackColor.G, New_Item.BackColor.B)
-
                 '        AddedColours += 1
-
                 '    End If
-
                 '    If AddNewFrontColour Then
-
                 '        MyColours.Add(New_Item.ForeColor.ToString, AddedColours)
-
                 '        ExcelReport.Workbooks.Item(1).Colors(AddedColours) = RGB(New_Item.ForeColor.R, New_Item.ForeColor.G, New_Item.ForeColor.B)
-
                 '        AddedColours += 1
-
                 '    End If
-
                 'End If
-
                 'ExcelReport.Rows(TempRow & ":" & TempRow).select()
-
                 'ExcelReport.Selection.Interior.ColorIndex = MyColours(New_Item.BackColor.ToString)
-
                 'ExcelReport.Selection.Font.ColorIndex = MyColours(New_Item.ForeColor.ToString)
 
                 i += 1
-
             Loop
 
             TempRow += 1
-
         Next
 
-
         ExcelReport.Cells.Select()
-
         ExcelReport.Cells.EntireColumn.AutoFit()
-
         ExcelReport.Cells.Range("A1").Select()
 
     End Sub
-
 End Module

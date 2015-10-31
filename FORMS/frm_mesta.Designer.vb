@@ -37,14 +37,14 @@ Partial Class frm_mesta
         Me.lvReport2Cl.MultiSelect = False
         Me.lvReport2Cl.Name = "lvReport2Cl"
         Me.lvReport2Cl.ShowItemToolTips = True
-        Me.lvReport2Cl.Size = New System.Drawing.Size(650, 489)
+        Me.lvReport2Cl.Size = New System.Drawing.Size(531, 517)
         Me.lvReport2Cl.TabIndex = 18
         Me.lvReport2Cl.UseCompatibleStateImageBehavior = False
         Me.lvReport2Cl.View = System.Windows.Forms.View.Details
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(561, 510)
+        Me.Button2.Location = New System.Drawing.Point(202, 533)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 20
@@ -53,22 +53,25 @@ Partial Class frm_mesta
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 510)
+        Me.Button1.Location = New System.Drawing.Point(434, 533)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 21
         Me.Button1.Text = "Выход"
         Me.Button1.UseVisualStyleBackColor = True
-        Me.Button1.Visible = False
         '
         'frm_mesta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(650, 545)
+        Me.ClientSize = New System.Drawing.Size(531, 568)
+        Me.ControlBox = False
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.lvReport2Cl)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frm_mesta"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Места установки"
