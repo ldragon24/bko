@@ -709,6 +709,7 @@ Error_:
         Dim langfile As New IniFile(sLANGPATH)
 
         gbSoftEd.Visible = False
+        Me.TableLayoutPanel10.RowStyles.Item(0).Height = 0 'esq 151118
 
         Call selectTECMesto()
 
@@ -777,9 +778,11 @@ Error_:
                 rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
                 With rs
+                    If Not .EOF Then
+                        TipTehn = .Fields("tiptehn").Value
+                    Else
 
-                    TipTehn = .Fields("tiptehn").Value
-
+                    End If
                 End With
 
                 rs.Close()
@@ -1822,6 +1825,7 @@ err_:
         FillComboNET(Me.cmbSoftware, "Name", "SPR_PO", "", False, True)
 
         gbSoftEd.Visible = True
+        Me.TableLayoutPanel10.RowStyles.Item(0).Height = 195 'esq 151118
 
         Dim z As Integer
 
@@ -1859,6 +1863,8 @@ err_:
             If Not IsDBNull(.Fields("d_p").Value) Then sSw = .Fields("d_p").Value
             If Not IsDBNull(.Fields("d_o").Value) Then sSw2 = .Fields("d_o").Value
 
+            If Not IsDBNull(.Fields("WO_SETUP").Value) Then Me.CheckBox3_manual.Checked = .Fields("WO_SETUP").Value 'esq 151118
+
             If Len(sSw) = 0 Then
                 sSw = Date.Today
             End If
@@ -1884,6 +1890,8 @@ A:
         DTInstall.Value = Date.Today
         dtGok.Value = Date.Today
         gbSoftEd.Visible = False
+        Me.TableLayoutPanel10.RowStyles.Item(0).Height = 0 'esq 151118
+
     End Sub
 
     Private Sub zCOUNT_LOAD(ByVal lvNote As ListView)
@@ -6520,6 +6528,8 @@ Err_:
 
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
         gbSoftEd.Visible = False
+        Me.TableLayoutPanel10.RowStyles.Item(0).Height = 0 'esq 151118
+
         On Error GoTo err_
 
         If Len(cmbSoftware.Text) = 0 Then Exit Sub
@@ -6548,8 +6558,9 @@ Err_:
                     "d_o='" & dtGok.Value & "'," &
                     "Id_Comp=" & sCOUNT & "," &
                     "Publisher='" & cmbSoftPr.Text & "'," &
-                    "TIP='" & cmbTipPo.Text & "' " &
-                    "WHERE Id=" & SoftCOUNT
+                    "TIP='" & cmbTipPo.Text & "', " &
+                    "WO_SETUP=" & Me.CheckBox3_manual.Checked & " " &
+                    "WHERE Id=" & SoftCOUNT 'esq 151118
 
             DB7.Execute(sSQL)
 
@@ -6559,8 +6570,9 @@ Err_:
                     LNGIniFile.GetString("frmSoftware", "MSG6", "Добавление программного обеспечения для") & " " &
                     Me.lstGroups.SelectedNode.Text)
 
-            sSQL = "INSERT INTO SOFT_INSTALL (Soft,t_lic,L_key,d_p,d_o,Publisher,TIP,Id_Comp) VALUES ('" & cmbSoftware.Text &
-                 "','" & cmbTipLicense.Text & "','" & txtLicKey.Text & "','" & DTInstall.Value & "','" & dtGok.Value & "','" & cmbSoftPr.Text & "','" & cmbTipPo.Text & "'," & sCOUNT & ")"
+            sSQL = "INSERT INTO SOFT_INSTALL (Soft,t_lic,L_key,d_p,d_o,Publisher,TIP,WO_SETUP,Id_Comp) VALUES ('" & cmbSoftware.Text &
+                 "','" & cmbTipLicense.Text & "','" & txtLicKey.Text & "','" & DTInstall.Value & "','" & dtGok.Value &
+                 "','" & cmbSoftPr.Text & "','" & cmbTipPo.Text & "'," & CheckBox3_manual.Checked & "," & sCOUNT & ")" 'esq 151118
             DB7.Execute(sSQL)
 
         End If
@@ -6573,6 +6585,7 @@ Err_:
         cmbSoftPr.Text = ""
         DTInstall.Value = Date.Today
         dtGok.Value = Date.Today
+        Me.CheckBox3_manual.Checked = False 'esq 151118
 
         Call LOAD_SOFT(sCOUNT, Me.lstSoftware)
         Exit Sub
@@ -6668,6 +6681,8 @@ err_:
         DTInstall.Value = Date.Today
         dtGok.Value = Date.Today
         gbSoftEd.Visible = False
+        Me.TableLayoutPanel10.RowStyles.Item(0).Height = 0 'esq 151118
+        Me.CheckBox3_manual.Checked = False 'esq 151118
     End Sub
 
     Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click

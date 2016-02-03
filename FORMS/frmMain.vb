@@ -2558,7 +2558,8 @@ err_:
                   "P.S. Предложения принимаются на форуме. После полного одобрения " + _
                   "функция будет реализована и в импорте из эвереста.", vbOKCancel) = 2 Then GoTo ПропустимВерсии
         'sSQL = "SELECT * FROM SOFT_INSTALL WHERE Soft not like '%update%' and Soft not like '%Обновление%' ORDER BY Soft DESC"
-        sSQL = "SELECT * FROM SOFT_INSTALL ORDER BY Soft DESC"
+
+        sSQL = "SELECT * FROM SOFT_INSTALL ORDER BY Soft DESC" ' первый проход - по установленному ПО
         rs = New Recordset
         rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
         With rs
@@ -2574,6 +2575,8 @@ err_:
                 '    .Fields("VERS").Value = F1
                 '.Update()
                 F1 = ""
+                ' извлечение версии и запись в соотв. поле
+                Upd = False
                 Call GetVers(.Fields("Soft").Value, F1, Upd)
                 If Upd = True Then
                     .Fields("VERS").Value = F1
@@ -2584,6 +2587,8 @@ err_:
         End With
         rs.Close()
         rs = Nothing
+
+        ' второй проход - по списку "шаблонов" ПО
         sSQL = "SELECT * FROM SPR_PO ORDER BY Name DESC"
         rs = New Recordset
         rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
@@ -2593,6 +2598,7 @@ err_:
             Catch ex As Exception
             End Try
             Do While Not .EOF
+                ' удаление версии ПО из названия
                 If InStr(.Fields("Name").Value, "<") > 0 And InStr(.Fields("Name").Value, ">") = Len(.Fields("Name").Value) Then
                     .Fields("Name").Value = Trim(Mid(.Fields("Name").Value, 1, InStr(.Fields("Name").Value, "<") - 1))
                     .Update()
@@ -2604,14 +2610,14 @@ err_:
         rs = Nothing
 
 ПропустимВерсии:
-        ' сжатие SPR_PO
+
+        ' сжатие списка "шаблонов" ПО
         sSQL = "SELECT * FROM SPR_PO ORDER BY Name"
         rs = New Recordset
         rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
         With rs
             H1 = ""
             Try
-                '.MovePrevious()
                 .MoveFirst()
             Catch ex As Exception
             End Try
@@ -2778,6 +2784,7 @@ err_:
     End Sub
 
     'esq *********
+    'извлечение номера версии ПО из названия, полученного при импорте эвереста
     Public Sub GetVers(ByRef POname As String, Optional ByRef POvers As String = "", Optional ByRef Upd As Boolean = False)
 
         If InStr(POname, "<") > 0 And InStr(POname, ">") = Len(POname) Then

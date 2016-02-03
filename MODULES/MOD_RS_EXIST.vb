@@ -7,8 +7,7 @@
         sGroupName = Replace(sGroupName, "'", " ")
         If Len(sGroupName) = 0 Then Exit Function
 
-        sSQL2 = "SELECT COUNT(*) AS total_number FROM SOFT_INSTALL WHERE Id_Comp= " & sSID & " AND Soft='" & sGroupName &
-                "'"
+        sSQL2 = "SELECT COUNT(*) AS total_number FROM SOFT_INSTALL WHERE Id_Comp= " & sSID & " AND Soft='" & sGroupName & "'"
 
         Dim rs As Recordset
         rs = New Recordset

@@ -45,6 +45,8 @@ Public Class IniFile
         Dim objResult As New StringBuilder(256)
         intCharCount = GetPrivateProfileString(Section, Key, [Default], objResult, objResult.Capacity, strFilename)
         If intCharCount > 0 Then GetString = Left(objResult.ToString, intCharCount)
+        ' замена вертикального апострофа (который ломает SQL-запрос) на обратный
+        GetString = Replace(GetString, "'", "`")
         err_:
     End Function
 

@@ -869,7 +869,7 @@ A:
                 .Fields("Id_Comp").Value = frmComputers.sCOUNT
                 .Fields("Publisher").Value = cmbSoftPr.Text
                 .Fields("TIP").Value = cmbTipPo.Text
-.Fields("NomerSoftKomp").Value = Me.lstSoftware.Items.Count + 1 'esq
+                .Fields("NomerSoftKomp").Value = Me.lstSoftware.Items.Count + 1 'esq
                 .Fields("WO_SETUP").Value = Me.CheckBox3_manual.Checked 'esq
                 .Update()
             End With
@@ -972,7 +972,7 @@ err_:
         cmbSoftPr.Text = ""
         DTInstall.Value = Date.Today
         dtGok.Value = Date.Today
- Me.CheckBox3_manual.Checked = False 'esq
+        Me.CheckBox3_manual.Checked = False 'esq
     End Sub
 
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click

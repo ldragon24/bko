@@ -1514,7 +1514,7 @@ Err_:
                     '   frmReports.cmnReport2Compl.Text & "' group by SOFT_INSTALL.Soft order by SOFT_INSTALL.Soft"
 
                     sSQL =
-                         "SELECT SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=ID " &
+                         "SELECT SOFT_INSTALL.VERS, SOFT_INSTALL.L_key, FILIAL, MESTO, kabn, NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=kompy.ID " &
                          "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME"
 
                 Else
@@ -1522,14 +1522,14 @@ Err_:
                     If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
                         sSQL =
-                            "SELECT SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=ID " &
+                            "SELECT SOFT_INSTALL.VERS, SOFT_INSTALL.L_key, FILIAL, MESTO, kabn, NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=kompy.ID " &
                             "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
                             "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME"
 
                     Else
 
                         sSQL =
-                            "SELECT SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=ID " &
+                            "SELECT SOFT_INSTALL.VERS, SOFT_INSTALL.L_key, FILIAL, MESTO, kabn, NET_NAME FROM SOFT_INSTALL, kompy WHERE SOFT_INSTALL.Id_Comp=kompy.ID " &
                             "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
                             "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
                             "and SOFT_INSTALL.Soft='" & frmReports.tmp_mesta & "' order by SOFT_INSTALL.VERS, FILIAL, MESTO, kabn, NET_NAME"
@@ -1549,6 +1549,9 @@ Err_:
         If InStr(rs.Source, "VERS") > 0 Then
             Me.lvReport2Cl.Columns.Add("Версия", 100, HorizontalAlignment.Left)
         End If
+        If InStr(rs.Source, "L_key") > 0 Then
+            Me.lvReport2Cl.Columns.Add("Лиценз. ключ", 300, HorizontalAlignment.Left)
+        End If
         Me.lvReport2Cl.Columns.Add("Филиал", 100, HorizontalAlignment.Left)
         Me.lvReport2Cl.Columns.Add("Отдел", 100, HorizontalAlignment.Left)
         Me.lvReport2Cl.Columns.Add("Кабинет", 100, HorizontalAlignment.Left)
@@ -1558,18 +1561,36 @@ Err_:
             Do While Not .EOF
 
                 If InStr(.Source, "VERS") > 0 Then
-                    If IsDBNull(.Fields(0).Value) Then
-                        Me.lvReport2Cl.Items.Add("")
-                        Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(1).Value)
-                        Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(2).Value)
-                        Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(3).Value)
-                        Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(4).Value)
+                    If InStr(.Source, "L_key") > 0 Then
+                        If IsDBNull(.Fields(0).Value) Then
+                            Me.lvReport2Cl.Items.Add("")
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(1).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(2).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(3).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(4).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(5).Value)
+                        Else
+                            Me.lvReport2Cl.Items.Add(Trim(.Fields(0).Value))
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(1).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(2).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(3).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(4).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(5).Value)
+                        End If
                     Else
-                        Me.lvReport2Cl.Items.Add(Trim(.Fields(0).Value))
-                        Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(1).Value)
-                        Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(2).Value)
-                        Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(3).Value)
-                        Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(4).Value)
+                        If IsDBNull(.Fields(0).Value) Then
+                            Me.lvReport2Cl.Items.Add("")
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(1).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(2).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(3).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(4).Value)
+                        Else
+                            Me.lvReport2Cl.Items.Add(Trim(.Fields(0).Value))
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(1).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(2).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(3).Value)
+                            Me.lvReport2Cl.Items(intj).SubItems.Add(.Fields(4).Value)
+                        End If
                     End If
                     intj = intj + 1
                 ElseIf Not IsDBNull(.Fields(0).Value) Then
@@ -1584,7 +1605,7 @@ Err_:
 
                 End If
 
-                .MoveNext()
+                    .MoveNext()
             Loop
         End With
         rs.Close()

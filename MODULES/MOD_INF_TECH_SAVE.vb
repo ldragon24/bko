@@ -1279,7 +1279,7 @@ err_:
         ' A1 = 1
         Dim sSQL As String
 
-        For intj = 0 To lstV.Items.Count - 2
+        For intj = 0 To lstV.Items.Count - 1 'TODO почему было "2"?
 
             Select Case Len(lstV.Items(intj).SubItems(0).Text)
 
@@ -1382,10 +1382,26 @@ err_:
 
                                 'esq ************************
                             Else
+                                'esq 151118 [
+                                Dim rs As Recordset
+                                Dim WOSETUP, lkey As String
+                                rs = New Recordset
+                                sSQL = "SELECT WO_SETUP,L_key FROM SOFT_INSTALL WHERE Id_Comp= " & sSID & " AND Soft='" & txtPROGRAM & "'"
+                                rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
+                                WOSETUP = rs.Fields("WO_SETUP").Value
+                                lkey = rs.Fields("L_key").Value
+                                rs.Close()
+                                rs = Nothing
+                                If WOSETUP Then
+                                    sSQL = "UPDATE SOFT_INSTALL SET VERS='" & txtVERSIA & "', d_p='" & txtDateInstall & "', d_o='" & txtDate_OK & "' WHERE Id_Comp= " & sSID & " AND Soft='" & txtPROGRAM & "'"
+                                Else
+                                    'TODO делать ли проверку изменения ключа? логика?
+                                    sSQL = "UPDATE SOFT_INSTALL SET VERS='" & txtVERSIA & "', t_lic='" & txtLICENCE & "', L_key='" & txtLICKEY & "', d_p='" & txtDateInstall & "', d_o='" & txtDate_OK & "' WHERE Id_Comp= " & sSID & " AND Soft='" & txtPROGRAM & "'"
+                                End If
+                                'esq 151118 ]
 
                                 ' sSQL = "UPDATE SOFT_INSTALL SET NomerSoftKomp='" & intj + 1 & "' WHERE Id_Comp= " & sSID & " AND Soft='" & H1 & "'"
-                                ' DB7.Execute(sSQL)
-
+                                DB7.Execute(sSQL)
                                 'esq ************************
                             End If
 
