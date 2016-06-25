@@ -1350,7 +1350,7 @@ Partial Class frmSetup
         Me.TableLayoutPanel10.ColumnCount = 3
         Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.21795!))
         Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.78205!))
-        Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62.0!))
+        Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63.0!))
         Me.TableLayoutPanel10.Controls.Add(Me.btnServiceColor, 2, 1)
         Me.TableLayoutPanel10.Controls.Add(Me.btnNbColor, 2, 2)
         Me.TableLayoutPanel10.Controls.Add(Me.btnSpisanColor, 2, 3)
@@ -1381,7 +1381,7 @@ Partial Class frmSetup
         Me.btnServiceColor.AutoSize = True
         Me.btnServiceColor.BackColor = System.Drawing.Color.Olive
         Me.btnServiceColor.ForeColor = System.Drawing.Color.Yellow
-        Me.btnServiceColor.Location = New System.Drawing.Point(310, 102)
+        Me.btnServiceColor.Location = New System.Drawing.Point(309, 102)
         Me.btnServiceColor.Name = "btnServiceColor"
         Me.btnServiceColor.Size = New System.Drawing.Size(50, 26)
         Me.btnServiceColor.TabIndex = 24
@@ -1392,7 +1392,7 @@ Partial Class frmSetup
         '
         Me.btnNbColor.AutoSize = True
         Me.btnNbColor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.btnNbColor.Location = New System.Drawing.Point(310, 134)
+        Me.btnNbColor.Location = New System.Drawing.Point(309, 134)
         Me.btnNbColor.Name = "btnNbColor"
         Me.btnNbColor.Size = New System.Drawing.Size(50, 26)
         Me.btnNbColor.TabIndex = 26
@@ -1403,7 +1403,7 @@ Partial Class frmSetup
         '
         Me.btnSpisanColor.AutoSize = True
         Me.btnSpisanColor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.btnSpisanColor.Location = New System.Drawing.Point(310, 166)
+        Me.btnSpisanColor.Location = New System.Drawing.Point(309, 166)
         Me.btnSpisanColor.Name = "btnSpisanColor"
         Me.btnSpisanColor.Size = New System.Drawing.Size(50, 26)
         Me.btnSpisanColor.TabIndex = 25
@@ -1416,7 +1416,7 @@ Partial Class frmSetup
         Me.GroupBox5.Controls.Add(Me.TableLayoutPanel9)
         Me.GroupBox5.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(301, 93)
+        Me.GroupBox5.Size = New System.Drawing.Size(300, 93)
         Me.GroupBox5.TabIndex = 27
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Отображение в дереве"
@@ -1436,7 +1436,7 @@ Partial Class frmSetup
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
-        Me.TableLayoutPanel9.Size = New System.Drawing.Size(295, 73)
+        Me.TableLayoutPanel9.Size = New System.Drawing.Size(294, 73)
         Me.TableLayoutPanel9.TabIndex = 23
         '
         'RadioButton1
@@ -1538,7 +1538,7 @@ Partial Class frmSetup
         '
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"24*24", "32*32"})
-        Me.ComboBox1.Location = New System.Drawing.Point(310, 198)
+        Me.ComboBox1.Location = New System.Drawing.Point(309, 198)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(56, 23)
         Me.ComboBox1.TabIndex = 0
@@ -1547,7 +1547,7 @@ Partial Class frmSetup
         '
         Me.Label13.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(197, 201)
+        Me.Label13.Location = New System.Drawing.Point(196, 201)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(107, 16)
         Me.Label13.TabIndex = 29

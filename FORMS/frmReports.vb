@@ -140,6 +140,8 @@ Public Class frmReports
 
         Dim intj As Integer
 
+        cmbYearCashe.Items.Add("Все")
+
         For intj = 1998 To Date.Today.Year
 
             cmbYearCashe.Items.Add(intj)
@@ -1602,46 +1604,88 @@ err:
 
             Case langIni.GetString("frmReports", "MSG10", "Память ОЗУ")
                 'esq 151031
-                If _
-                    cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
-                    cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
-                    'sSQL = "SELECT cpus.RAM_1, Count(*) AS tot_num FROM (SELECT RAM_1 FROM kompy union all SELECT RAM_2 FROM kompy union all SELECT RAM_3 FROM kompy union all SELECT  RAM_4 FROM kompy) AS cpus GROUP BY cpus.RAM_1"
-                    sSQL =
-                        "SELECT cpus.name, Count(*) AS tot_num FROM (" &
-                        "SELECT RAM_1 as name FROM kompy WHERE tiptehn = 'PC' union all " &
-                        "SELECT RAM_2 as name FROM kompy WHERE tiptehn = 'PC' union all " &
-                        "SELECT RAM_3 as name FROM kompy WHERE tiptehn = 'PC' union all " &
-                        "SELECT RAM_4 as name FROM kompy WHERE tiptehn = 'PC') AS cpus GROUP BY cpus.name"
-                Else
+                Select Case DB_N
+                    Case "MySQL"
+                        If _
+                            cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
+                            cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                            'sSQL = "SELECT cpus.RAM_1, Count(*) AS tot_num FROM (SELECT RAM_1 FROM kompy union all SELECT RAM_2 FROM kompy union all SELECT RAM_3 FROM kompy union all SELECT  RAM_4 FROM kompy) AS cpus GROUP BY cpus.RAM_1"
+                            sSQL =
+                                "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                                "SELECT CONCAT(RAM_1,' ',RAM_speed_1) as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT CONCAT(RAM_2,' ',RAM_speed_2) as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT CONCAT(RAM_3,' ',RAM_speed_3) as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT CONCAT(RAM_4,' ',RAM_speed_4) as name FROM kompy WHERE tiptehn = 'PC') AS cpus GROUP BY cpus.name"
+                        Else
 
-                    If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
-                        sSQL =
-                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
-                            "SELECT RAM_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
-                            cmbReport2fil.Text & "' union all " &
-                            "SELECT RAM_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
-                            cmbReport2fil.Text & "' union all " &
-                            "SELECT RAM_3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
-                            cmbReport2fil.Text & "' union all " &
-                            "SELECT RAM_4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
-                            cmbReport2fil.Text & "') AS cpus GROUP BY cpus.name"
+                            If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                                sSQL =
+                                    "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                                    "SELECT CONCAT(RAM_1,' ',RAM_speed_1) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT CONCAT(RAM_2,' ',RAM_speed_2) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT CONCAT(RAM_3,' ',RAM_speed_3) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT CONCAT(RAM_4,' ',RAM_speed_4) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "') AS cpus GROUP BY cpus.name"
 
-                    Else
-                        sSQL =
-                            "SELECT cpus.name, Count(*) AS tot_num FROM (" &
-                            "SELECT RAM_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
-                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
-                            "SELECT RAM_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
-                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
-                            "SELECT RAM_3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
-                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
-                            "SELECT RAM_4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
-                            cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "') " &
-                            "AS cpus GROUP BY cpus.name"
+                            Else
+                                sSQL =
+                                    "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                                    "SELECT CONCAT(RAM_1,' ',RAM_speed_1) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT CONCAT(RAM_2,' ',RAM_speed_2) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT CONCAT(RAM_3,' ',RAM_speed_3) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT CONCAT(RAM_4,' ',RAM_speed_4) as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "') " &
+                                    "AS cpus GROUP BY cpus.name"
 
-                    End If
-                End If
+                            End If
+                        End If
+                    Case Else
+                        If _
+                            cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
+                            cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                            'sSQL = "SELECT cpus.RAM_1, Count(*) AS tot_num FROM (SELECT RAM_1 FROM kompy union all SELECT RAM_2 FROM kompy union all SELECT RAM_3 FROM kompy union all SELECT  RAM_4 FROM kompy) AS cpus GROUP BY cpus.RAM_1"
+                            sSQL =
+                                "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                                "SELECT RAM_1+' '+RAM_speed_1 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT RAM_2+' '+RAM_speed_2 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT RAM_3+' '+RAM_speed_3 as name FROM kompy WHERE tiptehn = 'PC' union all " &
+                                "SELECT RAM_4+' '+RAM_speed_4 as name FROM kompy WHERE tiptehn = 'PC') AS cpus GROUP BY cpus.name"
+                        Else
 
+                            If cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                                sSQL =
+                                    "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                                    "SELECT RAM_1+' '+RAM_speed_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT RAM_2+' '+RAM_speed_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT RAM_3+' '+RAM_speed_3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' union all " &
+                                    "SELECT RAM_4+' '+RAM_speed_4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "') AS cpus GROUP BY cpus.name"
+
+                            Else
+                                sSQL =
+                                    "SELECT cpus.name, Count(*) AS tot_num FROM (" &
+                                    "SELECT RAM_1+' '+RAM_speed_1 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT RAM_2+' '+RAM_speed_2 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT RAM_3+' '+RAM_speed_3 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "' union all " &
+                                    "SELECT RAM_4+' '+RAM_speed_4 as name FROM kompy WHERE tiptehn = 'PC' AND FILIAL='" &
+                                    cmbReport2fil.Text & "' and MESTO='" & cmbReport2Department.Text & "') " &
+                                    "AS cpus GROUP BY cpus.name"
+
+                            End If
+                        End If
+                End Select
 
             Case langIni.GetString("frmReports", "MSG46", "Тип ОЗУ")
                 'esq 151101
@@ -5618,33 +5662,61 @@ err:
         Dim rs As Recordset
         Dim sSQL, sSQL2 As String
 
+        If cmbYearCashe.Text = "Все" Then
+            If _
+                cmbBrancheCashe.Text = langIni.GetString("frmReports", "MSG1", "Все") And
+                cmbDepartmentCashe.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-        If _
-            cmbBrancheCashe.Text = langIni.GetString("frmReports", "MSG1", "Все") And
-            cmbDepartmentCashe.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                sSQL = "SELECT * FROM kompy"
+                sSQL2 = ("SELECT count(*) as t_n FROM kompy")
+            End If
 
-            sSQL = "SELECT * FROM kompy where DataVVoda like '%" & cmbYearCashe.Text & "%'"
-            sSQL2 = ("SELECT count(*) as t_n FROM kompy where DataVVoda like '%" & cmbYearCashe.Text & "%'")
-        End If
+            If _
+                cmbBrancheCashe.Text <> langIni.GetString("frmReports", "MSG1", "Все") And
+                cmbDepartmentCashe.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-        If _
-            cmbBrancheCashe.Text <> langIni.GetString("frmReports", "MSG1", "Все") And
-            cmbDepartmentCashe.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                sSQL = "SELECT * FROM kompy where filial ='" & cmbBrancheCashe.Text & "'"
+                sSQL2 = "SELECT count(*) as t_n FROM kompy where where filial ='" & cmbBrancheCashe.Text &
+                        "'"
+            End If
 
-            sSQL = "SELECT * FROM kompy where filial ='" & cmbBrancheCashe.Text & "' AND DataVVoda like '%" &
-                   cmbYearCashe.Text & "%'"
-            sSQL2 = "SELECT count(*) as t_n FROM kompy where where filial ='" & cmbBrancheCashe.Text &
-                    "' AND DataVVoda like '%" & cmbYearCashe.Text & "%'"
-        End If
+            If _
+                cmbBrancheCashe.Text <> langIni.GetString("frmReports", "MSG1", "Все") And
+                cmbDepartmentCashe.Text <> langIni.GetString("frmReports", "MSG1", "Все") Then
 
-        If _
-            cmbBrancheCashe.Text <> langIni.GetString("frmReports", "MSG1", "Все") And
-            cmbDepartmentCashe.Text <> langIni.GetString("frmReports", "MSG1", "Все") Then
+                sSQL = "SELECT * FROM kompy where filial ='" & cmbBrancheCashe.Text & "' AND mesto='" &
+                       cmbDepartmentCashe.Text & "'"
+                sSQL2 = "SELECT count(*) as t_n FROM kompy where filial ='" & cmbBrancheCashe.Text & "' AND mesto='" &
+                        cmbDepartmentCashe.Text & "'"
+            End If
+        Else
+            If _
+                 cmbBrancheCashe.Text = langIni.GetString("frmReports", "MSG1", "Все") And
+                 cmbDepartmentCashe.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-            sSQL = "SELECT * FROM kompy where filial ='" & cmbBrancheCashe.Text & "' AND mesto='" &
-                   cmbDepartmentCashe.Text & "' AND DataVVoda like '%" & cmbYearCashe.Text & "%'"
-            sSQL2 = "SELECT count(*) as t_n FROM kompy where filial ='" & cmbBrancheCashe.Text & "' AND mesto='" &
-                    cmbDepartmentCashe.Text & "' AND DataVVoda like '%" & cmbYearCashe.Text & "%'"
+                sSQL = "SELECT * FROM kompy where DataVVoda like '%" & cmbYearCashe.Text & "%'"
+                sSQL2 = ("SELECT count(*) as t_n FROM kompy where DataVVoda like '%" & cmbYearCashe.Text & "%'")
+            End If
+
+            If _
+                cmbBrancheCashe.Text <> langIni.GetString("frmReports", "MSG1", "Все") And
+                cmbDepartmentCashe.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+
+                sSQL = "SELECT * FROM kompy where filial ='" & cmbBrancheCashe.Text & "' AND DataVVoda like '%" &
+                       cmbYearCashe.Text & "%'"
+                sSQL2 = "SELECT count(*) as t_n FROM kompy where where filial ='" & cmbBrancheCashe.Text &
+                        "' AND DataVVoda like '%" & cmbYearCashe.Text & "%'"
+            End If
+
+            If _
+                cmbBrancheCashe.Text <> langIni.GetString("frmReports", "MSG1", "Все") And
+                cmbDepartmentCashe.Text <> langIni.GetString("frmReports", "MSG1", "Все") Then
+
+                sSQL = "SELECT * FROM kompy where filial ='" & cmbBrancheCashe.Text & "' AND mesto='" &
+                       cmbDepartmentCashe.Text & "' AND DataVVoda like '%" & cmbYearCashe.Text & "%'"
+                sSQL2 = "SELECT count(*) as t_n FROM kompy where filial ='" & cmbBrancheCashe.Text & "' AND mesto='" &
+                        cmbDepartmentCashe.Text & "' AND DataVVoda like '%" & cmbYearCashe.Text & "%'"
+            End If
         End If
 
         Dim Uname(10) As String

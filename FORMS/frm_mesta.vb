@@ -1024,57 +1024,104 @@ Err_:
 
 
             Case langIni.GetString("frmReports", "MSG10", "Память ОЗУ")
+                Select Case DB_N
+                    Case "MySQL"
+                        If _
+                            frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
+                            frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                            sSQL =
+                                "SELECT * FROM " &
+                                "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_1,' ',RAM_speed_1)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_2,' ',RAM_speed_2)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_3,' ',RAM_speed_3)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_4,' ',RAM_speed_4)='" & frmReports.tmp_mesta & "' " &
+                                ") order by FILIAL, MESTO, kabn, NET_NAME"
 
-                If _
-                    frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
-                    frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
-                    sSQL =
-                        "SELECT * FROM " &
-                        "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_1='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_2='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_3='" & frmReports.tmp_mesta & "' " &
-                        "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_4='" & frmReports.tmp_mesta & "' " &
-                        ") order by FILIAL, MESTO, kabn, NET_NAME"
+                        Else
 
-                Else
+                            If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                                sSQL =
+                                    "SELECT * FROM " &
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_1,' ',RAM_speed_1)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_2,' ',RAM_speed_2)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_3,' ',RAM_speed_3)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_4,' ',RAM_speed_4)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
 
-                    If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
-                        sSQL =
-                            "SELECT * FROM " &
-                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_1='" & frmReports.tmp_mesta & "' " &
-                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_2='" & frmReports.tmp_mesta & "' " &
-                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_3='" & frmReports.tmp_mesta & "' " &
-                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_4='" & frmReports.tmp_mesta & "' " &
-                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            ") order by FILIAL, MESTO, kabn, NET_NAME"
+                            Else
+                                sSQL =
+                                    "SELECT * FROM " &
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_1,' ',RAM_speed_1)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_2,' ',RAM_speed_2)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_3,' ',RAM_speed_3)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and CONCAT(RAM_4,' ',RAM_speed_4)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
 
-                    Else
-                        sSQL =
-                            "SELECT * FROM " &
-                            "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_1='" & frmReports.tmp_mesta & "' " &
-                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_2='" & frmReports.tmp_mesta & "' " &
-                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_3='" & frmReports.tmp_mesta & "' " &
-                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and RAM_4='" & frmReports.tmp_mesta & "' " &
-                            "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
-                            "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
-                            ") order by FILIAL, MESTO, kabn, NET_NAME"
+                            End If
+                        End If
+                    Case Else
+                        If _
+                            frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
+                            frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                            sSQL =
+                                "SELECT * FROM " &
+                                "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_1+' '+RAM_speed_1)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_2+' '+RAM_speed_2)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_3+' '+RAM_speed_3)='" & frmReports.tmp_mesta & "' " &
+                                "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_4+' '+RAM_speed_4)='" & frmReports.tmp_mesta & "' " &
+                                ") order by FILIAL, MESTO, kabn, NET_NAME"
 
-                    End If
-                End If
+                        Else
+
+                            If frmReports.cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
+                                sSQL =
+                                    "SELECT * FROM " &
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_1+' '+RAM_speed_1)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_2+' '+RAM_speed_2)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_3+' '+RAM_speed_3)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_4+' '+RAM_speed_4)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
+
+                            Else
+                                sSQL =
+                                    "SELECT * FROM " &
+                                    "(SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_1+' '+RAM_speed_1)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_2+' '+RAM_speed_2)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_3+' '+RAM_speed_3)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    "union all SELECT FILIAL, MESTO, kabn, NET_NAME FROM kompy WHERE tiptehn = 'PC' and (RAM_4+' '+RAM_speed_4)='" & frmReports.tmp_mesta & "' " &
+                                    "and FILIAL='" & frmReports.cmbReport2fil.Text & "' " &
+                                    "and MESTO='" & frmReports.cmbReport2Department.Text & "' " &
+                                    ") order by FILIAL, MESTO, kabn, NET_NAME"
+
+                            End If
+                        End If
+                End Select
 
             Case langIni.GetString("frmReports", "MSG46", "Тип ОЗУ")
 
                 Select Case DB_N
-
                     Case "MySQL"
                         If _
                             frmReports.cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
@@ -1605,7 +1652,7 @@ Err_:
 
                 End If
 
-                    .MoveNext()
+                .MoveNext()
             Loop
         End With
         rs.Close()
