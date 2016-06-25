@@ -550,7 +550,7 @@ Module modLang
         frmSetup.GroupBox1.Text = LNGIniFile.GetString("frmSetup", "GroupBox1", "Шрифт")
         frmSetup.Label9.Text = LNGIniFile.GetString("frmSetup", "Label9", "База Компьютеров Организации")
         frmSetup.Button2.Text = LNGIniFile.GetString("frmSetup", "Button2", "Выбрать")
-        frmSetup.gbTree_o.Text = LNGIniFile.GetString("frmSetup", "gbTree_o", "Отображение в дереве")
+        'esq 160307 frmSetup.gbTree_o.Text = LNGIniFile.GetString("frmSetup", "gbTree_o", "Отображение в дереве")
         frmSetup.RadioButton1.Text = LNGIniFile.GetString("frmSetup", "RadioButton1", "Имя компьютера")
         frmSetup.RadioButton2.Text = LNGIniFile.GetString("frmSetup", "RadioButton2", "Псевдоним компьютера")
         frmSetup.RadioButton3.Text = LNGIniFile.GetString("frmSetup", "RadioButton3", "Имя компьютера (Псевдоним)")
@@ -605,7 +605,7 @@ Module modLang
 
 
         frmSetup.chkFullScreen.Text = LNGIniFile.GetString("frmSetup", "chkFullScreen", "На весь экран")
-        frmSetup.GroupBox3.Text = LNGIniFile.GetString("frmSetup", "GroupBox3", "Размер иконок в дереве")
+        'esq 160307 frmSetup.GroupBox3.Text = LNGIniFile.GetString("frmSetup", "GroupBox3", "Размер иконок в дереве")
         frmSetup.chkFonts.Text = LNGIniFile.GetString("frmSetup", "chkFonts", "Использовать изменение шрифта")
 
         frmSetup.GroupBox4.Text = LNGIniFile.GetString("frmSetup", "GroupBox4", "Дерево:")
@@ -617,9 +617,9 @@ Module modLang
 
 
 
-        frmSetup.btnServiceColor.Text = LNGIniFile.GetString("frmSetup", "btnServiceColor", "В ремонте")
-        frmSetup.btnNbColor.Text = LNGIniFile.GetString("frmSetup", "btnNbColor", "Не на балансе")
-        frmSetup.btnSpisanColor.Text = LNGIniFile.GetString("frmSetup", "btnSpisanColor", "Списан")
+        'esq 160307 frmSetup.btnServiceColor.Text = LNGIniFile.GetString("frmSetup", "btnServiceColor", "В ремонте")
+        'esq 160307 frmSetup.btnNbColor.Text = LNGIniFile.GetString("frmSetup", "btnNbColor", "Не на балансе")
+        'esq 160307 frmSetup.btnSpisanColor.Text = LNGIniFile.GetString("frmSetup", "btnSpisanColor", "Списан")
 
 
         frmSetup.gbSMTP.Text = LNGIniFile.GetString("frmSetup", "gbSMTP", "Настройки SMTP:")

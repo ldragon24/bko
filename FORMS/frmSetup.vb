@@ -11,6 +11,8 @@ Public Class frmSetup
         ' Dim wndFont As FontDialog
         Dim DialogResult As DialogResult
 
+        If fontS = 0 Then fontS = 9 'esq 160307
+        If FontN Is Nothing Then FontN = "Microsoft Sans Serif" 'esq 160307
 
         FontWindow.Font = New Font(FontN, fontS, FontSt, FontD, FontB)
 
@@ -1335,8 +1337,9 @@ err_:
         Dim objIniFile As New IniFile(PrPath & "base.ini")
 
         objIniFile.WriteString("general", "FontColor", FontC)
+        Call SendFonts(Me) 'esq 160307
 
-        Call FONT_LOAD(Me)
+        'esq 160307 Call FONT_LOAD(Me)
     End Sub
 
     Public Function changeColor(ByVal FontWindow As ColorDialog, ByVal str As Control)
@@ -1359,46 +1362,49 @@ err_:
     Private Sub FONT_LOAD(ByVal ControlContainer As Object)
 
         'SendFonts(Me)
+        'esq 160307
+        'If fontS = 0 Then fontS = 9 'esq 160307
+        'If FontN Is Nothing Then FontN = "Microsoft Sans Serif" 'esq 160307
 
-        For Each Ctl As Object In ControlContainer.Controls
-            Try
-                If Not Ctl.Controls Is Nothing Then
-                    FONT_LOAD(Ctl)
-                    If TypeOf Ctl Is Form Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
-                    If TypeOf Ctl Is TextBox Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
-                    If TypeOf Ctl Is ComboBox Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
-                    If TypeOf Ctl Is Label Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
-                    If TypeOf Ctl Is ListView Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
-                    If TypeOf Ctl Is TreeView Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
-                    If TypeOf Ctl Is TabPage Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
-                    If TypeOf Ctl Is GroupBox Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
-                    If TypeOf Ctl Is DateTimePicker Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
-                    If TypeOf Ctl Is NumericUpDown Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
-                    If TypeOf Ctl Is Button Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
-                    If TypeOf Ctl Is CheckBox Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
-                    If TypeOf Ctl Is RadioButton Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
-                    If TypeOf Ctl Is ListBox Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        'For Each Ctl As Object In ControlContainer.Controls
+        '    Try
+        '        If Not Ctl.Controls Is Nothing Then
+        '            FONT_LOAD(Ctl)
+        '            If TypeOf Ctl Is Form Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        '            If TypeOf Ctl Is TextBox Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        '            If TypeOf Ctl Is ComboBox Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        '            If TypeOf Ctl Is Label Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        '            If TypeOf Ctl Is ListView Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        '            If TypeOf Ctl Is TreeView Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        '            If TypeOf Ctl Is TabPage Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        '            If TypeOf Ctl Is GroupBox Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        '            If TypeOf Ctl Is DateTimePicker Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        '            If TypeOf Ctl Is NumericUpDown Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        '            If TypeOf Ctl Is Button Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        '            If TypeOf Ctl Is CheckBox Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        '            If TypeOf Ctl Is RadioButton Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
+        '            If TypeOf Ctl Is ListBox Then Ctl.Font = New Font(FontN, fontS, FontSt, 0, FontB)
 
-                    If TypeOf Ctl Is TabControl Then Ctl.Font = New Font(FontN, fontS)
+        '            If TypeOf Ctl Is TabControl Then Ctl.Font = New Font(FontN, fontS)
 
-                    If TypeOf Ctl Is MenuStrip Then Ctl.Font = New Font(FontN, fontS)
-                    If TypeOf Ctl Is ToolStrip Then Ctl.Font = New Font(FontN, fontS)
-                    If TypeOf Ctl Is StatusStrip Then Ctl.Font = New Font(FontN, fontS)
+        '            If TypeOf Ctl Is MenuStrip Then Ctl.Font = New Font(FontN, fontS)
+        '            If TypeOf Ctl Is ToolStrip Then Ctl.Font = New Font(FontN, fontS)
+        '            If TypeOf Ctl Is StatusStrip Then Ctl.Font = New Font(FontN, fontS)
 
-                    If TypeOf Ctl Is Button Then Ctl.autosize = True
-                    If TypeOf Ctl Is Label Then Ctl.autosize = True
-                    If TypeOf Ctl Is TableLayoutPanel Then Ctl.autosize = True
-                    If TypeOf Ctl Is GroupBox Then Ctl.autosize = True
+        '            If TypeOf Ctl Is Button Then Ctl.autosize = True
+        '            If TypeOf Ctl Is Label Then Ctl.autosize = True
+        '            If TypeOf Ctl Is TableLayoutPanel Then Ctl.autosize = True
+        '            If TypeOf Ctl Is GroupBox Then Ctl.autosize = True
 
-                End If
+        '        End If
 
-            Catch ex As Exception
-                MsgBox(ex.Message)
-            End Try
-        Next
+        '    Catch ex As Exception
+        '        MsgBox(ex.Message)
+        '    End Try
+        'Next
 
 
-        Call COLOR_LOAD(Me)
+        'Call COLOR_LOAD(Me)
     End Sub
 
 
@@ -1492,10 +1498,6 @@ err_:
     End Sub
 
     Private Sub chkUpdate_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkUpdate.CheckedChanged
-    End Sub
-
-    Private Sub TableLayoutPanel1_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles TableLayoutPanel1.Paint
-
     End Sub
 
     Private Sub RadioButton10_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioButton10.CheckedChanged
@@ -1640,5 +1642,5 @@ err_:
 
     End Sub
 
-  
+
 End Class

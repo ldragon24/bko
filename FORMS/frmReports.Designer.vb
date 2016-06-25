@@ -1465,7 +1465,7 @@ Partial Class frmReports
         Me.cmbGar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
         Me.cmbGar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbGar.FormattingEnabled = True
-        Me.cmbGar.Location = New System.Drawing.Point(72, 3)
+        Me.cmbGar.Location = New System.Drawing.Point(72, 4)
         Me.cmbGar.Name = "cmbGar"
         Me.cmbGar.Size = New System.Drawing.Size(386, 21)
         Me.cmbGar.TabIndex = 20
@@ -1558,7 +1558,7 @@ Partial Class frmReports
         Me.cmbOTV.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
         Me.cmbOTV.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbOTV.FormattingEnabled = True
-        Me.cmbOTV.Location = New System.Drawing.Point(113, 3)
+        Me.cmbOTV.Location = New System.Drawing.Point(113, 4)
         Me.cmbOTV.Name = "cmbOTV"
         Me.cmbOTV.Size = New System.Drawing.Size(305, 21)
         Me.cmbOTV.Sorted = True
