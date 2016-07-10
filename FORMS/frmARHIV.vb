@@ -51,10 +51,10 @@ Public Class frmARHIV
 
     Private Sub find_file()
 
-        lbArh.Items.Clear()
+        'lbArh.Items.Clear()
         Me.lvArh.Items.Clear()
         Me.lvArh.Columns.Clear()
-        Me.lvArh.Columns.Add("сорт", 3)
+        Me.lvArh.Columns.Add("сорт", 0)
         Me.lvArh.Columns.Add("Дата", 120, HorizontalAlignment.Left)
         Me.lvArh.Columns.Add("Имя", 200, HorizontalAlignment.Left)
         'Me.lvArh.HeaderStyle() = ColumnHeaderStyle.Nonclickable
@@ -62,22 +62,22 @@ Public Class frmARHIV
         Me.lvArh.ListViewItemSorter() = New ListViewItemComparer(0)
 
 
+
         Try
             ' Only get files that begin with the letter "c."
             Dim dirs As String() = Directory.GetFiles(PrPath, "arhiv\*.zip")
             ' Console.WriteLine("The number of files starting with c is {0}.", dirs.Length)
             Dim dir As String
-            Dim cnt As Integer
-
+            
             For Each dir In dirs
                 Dim d() As String
                 d = Split(dir, "\")
 
-                lbArh.Items.Add(d(d.Length - 1))
-                lvArh.Items.Add(Format(FileSystem.FileDateTime(dir), "yyMMddHHmmss"))
-                cnt = lvArh.Items.Count - 1
-                lvArh.Items(cnt).SubItems.Add(FileSystem.FileDateTime(dir))
-                lvArh.Items(cnt).SubItems.Add(d(d.Length - 1))
+                'lbArh.Items.Add(d(d.Length - 1))
+                With lvArh.Items.Add(Format(FileSystem.FileDateTime(dir), "yyMMddHHmmss"))
+                    .SubItems.Add(FileSystem.FileDateTime(dir))
+                    .SubItems.Add(d(d.Length - 1))
+                End With
             Next
             lvArh.Sort()
         Catch e1 As Exception
