@@ -2173,9 +2173,9 @@ A:
                 Me.txtModSB.Text = ""
                 Me.txtSNSB.Text = ""
                 Me.txtSBSN.Text = ""
-                Me.txtMSN.Text = ""
-                Me.IN_IBP.Text = ""
-                Me.IN_PRN.Text = ""
+                '   Me.txtMSN.Text = ""
+                ' Me.IN_IBP.Text = ""
+                ' Me.IN_PRN.Text = ""
 
             Case "Printer"
                 txtPRNSN.Text = ""
@@ -3446,7 +3446,6 @@ err_:
 
                     SAVE_DRAG_DROP(Me.sCOUNT, sBranch_, sDepartment_, sOffice_, Me.lstGroups.SelectedNode.Text)
 
-
                     Me.BeginInvoke(New MethodInvoker(AddressOf T_LOAD_T_1))
                     Me.BeginInvoke(New MethodInvoker(AddressOf D_P_LOAD_t))
 
@@ -4151,8 +4150,8 @@ err_:
                 lstGroups.SelectedNode.Text)
     End Sub
 
-    Private Sub cmbBranch_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbBranch.SelectedIndexChanged
+    Private Sub cmbBranch_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbBranch.SelectedIndexChanged
+
         On Error GoTo err_
 
         BrainchLoad(cmbBranch, cmbDepartment)
@@ -4162,8 +4161,8 @@ err_:
         MsgBox(Err.Description, MsgBoxStyle.Information, ProGramName)
     End Sub
 
-    Private Sub cmbDepartment_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbDepartment.SelectedIndexChanged
+    Private Sub cmbDepartment_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbDepartment.SelectedIndexChanged
+
         On Error GoTo err_
 
         DepartmentLoad(cmbBranch, cmbDepartment, cmbOffice)
@@ -4172,8 +4171,7 @@ err_:
 err_:
     End Sub
 
-    Private Sub cmbPRNFil_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbPRNFil.SelectedIndexChanged
+    Private Sub cmbPRNFil_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
         On Error GoTo err_
 
         BrainchLoad(cmbPRNFil, cmbPRNDepart)
@@ -4183,8 +4181,7 @@ err_:
         MsgBox(Err.Description, MsgBoxStyle.Information, ProGramName)
     End Sub
 
-    Private Sub cmbPRNDepart_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbPRNDepart.SelectedIndexChanged
+    Private Sub cmbPRNDepart_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
         On Error GoTo err_
 
         DepartmentLoad(cmbPRNFil, cmbPRNDepart, cmbPRNOffice)
@@ -4193,14 +4190,14 @@ err_:
 err_:
     End Sub
 
-    Private Sub lvPRNCartr_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) _
-        Handles lvPRNCartr.ColumnClick
+    Private Sub lvPRNCartr_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs)
+
 
         SORTING_LV(lvPRNCartr, e)
 
     End Sub
 
-    Private Sub lvPRNCartr_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles lvPRNCartr.DoubleClick
+    Private Sub lvPRNCartr_DoubleClick(ByVal sender As Object, ByVal e As EventArgs)
         Dim z As Integer
         'Dim rCOUNT As Integer
 
@@ -4219,8 +4216,8 @@ err_:
         'frmCRT3.LOAD_CRR(frmCRT3.rCOUNT)
     End Sub
 
-    Private Sub cmbOTH_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbOTH.SelectedIndexChanged
+    Private Sub cmbOTH_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+
         Select Case TipTehn
 
             Case "MONITOR"
@@ -4308,8 +4305,8 @@ err_:
         End Select
     End Sub
 
-    Private Sub cmbOTHFil_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbOTHFil.SelectedIndexChanged
+    Private Sub cmbOTHFil_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+
         BrainchLoad(cmbOTHFil, cmbOTHDepart)
 
         Exit Sub
@@ -4317,8 +4314,8 @@ err_:
         MsgBox(Err.Description, MsgBoxStyle.Information, ProGramName)
     End Sub
 
-    Private Sub cmbOTHDepart_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbOTHDepart.SelectedIndexChanged
+    Private Sub cmbOTHDepart_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+
 
         DepartmentLoad(cmbOTHFil, cmbOTHDepart, cmbOTHOffice)
 
@@ -4558,8 +4555,8 @@ err_:
         ExLoadParTwo(cmbIBP.Text, PROizV43, "SPR_IBP")
     End Sub
 
-    Private Sub cmbNETBranch_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbNETBranch.SelectedIndexChanged
+    Private Sub cmbNETBranch_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+
         On Error GoTo err_
 
         BrainchLoad(cmbNETBranch, cmbNetDepart)
@@ -4569,8 +4566,8 @@ err_:
         MsgBox(Err.Description, MsgBoxStyle.Information, ProGramName)
     End Sub
 
-    Private Sub cmbNetDepart_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbNetDepart.SelectedIndexChanged
+    Private Sub cmbNetDepart_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+
         On Error GoTo err_
 
         DepartmentLoad(cmbNETBranch, cmbNetDepart, cmbNETOffice)
@@ -4579,8 +4576,8 @@ err_:
 err_:
     End Sub
 
-    Private Sub cmbDevNet_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbDevNet.SelectedIndexChanged
+    Private Sub cmbDevNet_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+
         Dim unI As Long
         Dim uname As String
         unI = 0
@@ -4626,8 +4623,8 @@ err_:
 Error_:
     End Sub
 
-    Private Sub cmbPRN_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbPRN.SelectedIndexChanged
+    Private Sub cmbPRN_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+
         Dim sSQL As String
         cmbTIPCartridg.Text = ""
         Select Case TipTehn
@@ -4926,8 +4923,8 @@ Error_:
 
     End Sub
 
-    Private Sub cmbModCartr_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbModCartr.SelectedIndexChanged
+    Private Sub cmbModCartr_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+
         Call Tip_Model_CARTR()
     End Sub
 
@@ -4953,14 +4950,14 @@ Error_:
         rs = Nothing
     End Sub
 
-    Private Sub lvMovement_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) _
-        Handles lvMovement.ColumnClick
+    Private Sub lvMovement_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs)
+
 
         SORTING_LV(lvMovement, e)
 
     End Sub
 
-    Private Sub lvMovement_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs) Handles lvMovement.MouseUp
+    Private Sub lvMovement_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs)
 
         If lvMovement.Items.Count = 0 Then Exit Sub
 
@@ -4972,8 +4969,8 @@ Error_:
         End If
     End Sub
 
-    Private Sub lvMovement_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles lvMovement.SelectedIndexChanged
+    Private Sub lvMovement_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+
 
         If lvMovement.Items.Count = 0 Then Exit Sub
         Dim z As Integer
@@ -6241,7 +6238,7 @@ err_1:
         Me.Cursor = Cursors.Default
     End Sub
 
-    Private Sub chkSNMP_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkSNMP.CheckedChanged
+    Private Sub chkSNMP_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
 
         If chkSNMP.Checked = True And TipTehn = "IBP" Then
 
@@ -6285,8 +6282,8 @@ err_1:
         lstGroups.ExpandAll()
     End Sub
 
-    Private Sub cmbOTHConnect_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbOTHConnect.SelectedIndexChanged
+    Private Sub cmbOTHConnect_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+
         On Error GoTo err_
 
         Dim rs As Recordset 'Объявляем рекордсет
@@ -6813,7 +6810,7 @@ err_:
         DV2 = True 'esq 130706 для обновления дерева при сохранении
     End Sub
 
-    Private Sub lvUSTR_PRINT_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles lvUSTR_PRINT.DoubleClick
+    Private Sub lvUSTR_PRINT_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs)
 
         If lvUSTR_PRINT.Items.Count = 0 Then Exit Sub
 
@@ -6826,10 +6823,25 @@ err_:
         FIND_TREE_TAG(lstGroups.Nodes, "C|" & zCOUNT)
     End Sub
 
+    Private Sub mnuKZ_RB_Click(sender As System.Object, e As System.EventArgs) Handles mnuKZ_RB.Click
+        'Карточка закрепления. На основе кода "Мой бланк"
 
+        Select Case sOfficePACK
 
-    Private Sub txtSearch_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearch.TextChanged
+            Case "OpenOffice.org"
+
+                Call blanks_my_o(PrPath & "\blanks\KZ_RB.doc")
+
+            Case Else
+
+                Call blanks_my_wrd(PrPath & "\blanks\KZ_RB.doc")
+
+        End Select
 
     End Sub
+
+
+  
+
 End Class
 

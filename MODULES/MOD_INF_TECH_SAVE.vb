@@ -190,11 +190,11 @@ err_:
 
     End Sub
 
-    Private Sub UPDATE_INFORMARION(ByVal FILIAL As String, ByVal MESTO As String, ByVal kabn As String, ByVal TELEPHONE As String, ByVal NET_NAME As String, ByVal PSEVDONIM As String, ByVal OTvetstvennyj As String, ByVal sSID As Integer)
+    Private Sub UPDATE_INFORMARION(ByVal FILIAL As String, ByVal MESTO As String, ByVal kabn As String, ByVal TELEPHONE As String, ByVal NET_NAME As String, ByVal PSEVDONIM As String, ByVal OTvetstvennyj As String, ByVal MOL As String, ByVal sSID As Integer)
 
         Dim sSQL As String
 
-        sSQL = "UPDATE kompy SET FILIAL='" & FILIAL & "', MESTO='" & MESTO & "', kabn='" & kabn & "', TELEPHONE='" & TELEPHONE & "', NET_NAME='" & NET_NAME & "', PSEVDONIM='" & PSEVDONIM & "', OTvetstvennyj='" & OTvetstvennyj & "' WHERE id =" & sSID
+        sSQL = "UPDATE kompy SET FILIAL='" & FILIAL & "', MESTO='" & MESTO & "', kabn='" & kabn & "', TELEPHONE='" & TELEPHONE & "', NET_NAME='" & NET_NAME & "', PSEVDONIM='" & PSEVDONIM & "', OTvetstvennyj='" & OTvetstvennyj & "', MOL='" & MOL & "' WHERE id =" & sSID
 
         DB7.Execute(sSQL)
 
@@ -356,7 +356,8 @@ sAR:
             sSID = frmComputers.sCOUNT
         End If
 
-        Call UPDATE_INFORMARION(frmComputers.cmbOTHFil.Text, frmComputers.cmbOTHDepart.Text, frmComputers.cmbOTHOffice.Text, frmComputers.txtOTHphone.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTHotv.Text, sSID)
+
+        Call UPDATE_INFORMARION(frmComputers.cmbOTHFil.Text, frmComputers.cmbOTHDepart.Text, frmComputers.cmbOTHOffice.Text, frmComputers.txtOTHphone.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTHotv.Text, frmComputers.cmbOTHMOL.Text, sSID)
 
         Call UPDATE_OPLATA(frmComputers.txtOTHSfN.Text, frmComputers.txtOTHcash.Text, frmComputers.txtOTHSUMM.Text, frmComputers.txtOTHZay.Text, frmComputers.dtOTHdataVvoda.Value, frmComputers.dtOTHSFdate.Value, _chkOTHspis, _chkOTHNNb, frmComputers.dtOTHSpisanie.Value, sSID)
 
@@ -629,7 +630,7 @@ sAR:
             sSID = frmComputers.sCOUNT
         End If
 
-        Call UPDATE_INFORMARION(frmComputers.cmbOTHFil.Text, frmComputers.cmbOTHDepart.Text, frmComputers.cmbOTHOffice.Text, frmComputers.txtOTHphone.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTHotv.Text, sSID)
+        Call UPDATE_INFORMARION(frmComputers.cmbOTHFil.Text, frmComputers.cmbOTHDepart.Text, frmComputers.cmbOTHOffice.Text, frmComputers.txtOTHphone.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTHotv.Text, frmComputers.cmbOTHMOL.Text, sSID)
 
         Call UPDATE_OPLATA(frmComputers.txtOTHSfN.Text, frmComputers.txtOTHcash.Text, frmComputers.txtOTHSUMM.Text, frmComputers.txtOTHZay.Text, frmComputers.dtOTHdataVvoda.Value, frmComputers.dtOTHSFdate.Value, _chkOTHspis, _chkOTHNNb, frmComputers.dtOTHSpisanie.Value, sSID)
 
@@ -825,14 +826,17 @@ sAR:
 
             Case False
 
-                sSQL = "INSERT INTO kompy (TIP_COMPA,INV_NO_SYSTEM,INV_NO_MONITOR,INV_NO_IBP,INV_NO_PRINTER,PCL,TIPtehn) VALUES ('" &
+                sSQL = "INSERT INTO kompy (TIP_COMPA,INV_NO_SYSTEM,PCL,TIPtehn) VALUES ('" &
                        frmComputers.cmbAppointment.Text & "','" &
-                       frmComputers.txtSBSN.Text & "','" &
-                       frmComputers.txtMSN.Text & "','" &
-                       frmComputers.IN_IBP.Text & "','" &
-                       frmComputers.IN_PRN.Text & "'," &
+                       frmComputers.txtSBSN.Text & "'," &
                        unaPCL & ",'" &
                        TipTehn & "')"
+
+
+                'frmComputers.txtMSN.Text & "','" &
+                '    frmComputers.IN_IBP.Text & "','" &
+                '    frmComputers.IN_PRN.Text & "'," &
+
 
                 DB7.Execute(sSQL)
 
@@ -866,11 +870,14 @@ sAR:
                 sSQL = "UPDATE kompy SET " &
                         "TIP_COMPA='" & frmComputers.cmbAppointment.Text & "'," &
                         "INV_NO_SYSTEM='" & frmComputers.txtSBSN.Text & "'," &
-                        "INV_NO_MONITOR='" & frmComputers.txtMSN.Text & "'," &
-                        "INV_NO_IBP='" & frmComputers.IN_IBP.Text & "'," &
-                        "INV_NO_PRINTER='" & frmComputers.IN_PRN.Text & "'," &
                         "PCL=" & unaPCL & "," &
                         "TIPtehn='" & TipTehn & "' " & " WHERE id =" & sSID
+
+
+                '"INV_NO_MONITOR='" & frmComputers.txtMSN.Text & "'," &
+                '       "INV_NO_IBP='" & frmComputers.IN_IBP.Text & "'," &
+                '       "INV_NO_PRINTER='" & frmComputers.IN_PRN.Text & "'," &
+
 
                 DB7.Execute(sSQL)
 
@@ -878,7 +885,7 @@ sAR:
 
         On Error Resume Next
 
-        Call UPDATE_INFORMARION(frmComputers.cmbBranch.Text, frmComputers.cmbDepartment.Text, frmComputers.cmbOffice.Text, frmComputers.txtPHONE.Text, frmComputers.txtSNAME.Text, frmComputers.txtPSEUDONIM.Text, frmComputers.cmbResponsible.Text, sSID)
+        Call UPDATE_INFORMARION(frmComputers.cmbBranch.Text, frmComputers.cmbDepartment.Text, frmComputers.cmbOffice.Text, frmComputers.txtPHONE.Text, frmComputers.txtSNAME.Text, frmComputers.txtPSEUDONIM.Text, frmComputers.cmbResponsible.Text, frmComputers.cmbMOL.Text, sSID)
 
         sSQL = "UPDATE kompy SET " &
                        "CPU1='" & frmComputers.cmbCPU1.Text & "'," &
@@ -1557,7 +1564,7 @@ err_:
         End If
 
         Dim sSQL As String
-       
+
 
         If frmComputers.cmdUserAdd.Text = langfile.GetString("frmComputers", "MSG30", "Добавить") Then
             Call _
@@ -1900,8 +1907,10 @@ sAR:
             sSID = frmComputers.sCOUNT
         End If
 
-        Call UPDATE_INFORMARION(frmComputers.cmbPRNFil.Text, frmComputers.cmbPRNDepart.Text, frmComputers.cmbPRNOffice.Text, frmComputers.txtPRNphone.Text, frmComputers.cmbPRN.Text, frmComputers.cmbPRN.Text, frmComputers.cmbPRNotv.Text, sSID)
-        Call UPDATE_OPLATA(frmComputers.txtPRNSfN.Text, frmComputers.txtPRNcash.Text, frmComputers.txtPRNSUMM.Text, frmComputers.txtPRNZay.Text, frmComputers.dtPRNdataVvoda.Value, frmComputers.dtPRNSFdate.Value, _chkPRNspis, _chkPRNNNb, frmComputers.dtPRNSpisanie.Value, sSID)
+        Call UPDATE_INFORMARION(frmComputers.cmbPRNFil.Text, frmComputers.cmbPRNDepart.Text, frmComputers.cmbPRNOffice.Text, frmComputers.txtPRNphone.Text, frmComputers.cmbPRN.Text, frmComputers.cmbPRN.Text, frmComputers.cmbPRNotv.Text, frmComputers.cmbPRMOL.Text, sSID)
+
+
+        Call UPDATE_OPLATA(frmComputers.txtPRNSfN.Text, frmComputers.txtPRNcash.Text, frmComputers.txtPRNSumm.Text, frmComputers.txtPRNZay.Text, frmComputers.dtPRNdataVvoda.Value, frmComputers.dtPRNSFdate.Value, _chkPRNspis, _chkPRNNNb, frmComputers.dtPRNSpisanie.Value, sSID)
         Call SAVE_GARANT(sSID, frmComputers.cmbPRNPostav, frmComputers.dtGPRNPr, frmComputers.dtGPRNok)
 
         frmComputers.cmbPRN.BackColor = frmComputers.cmbPRN.BackColor
@@ -2114,7 +2123,7 @@ sAR:
             sSID = frmComputers.sCOUNT
         End If
 
-        Call UPDATE_INFORMARION(frmComputers.cmbNETBranch.Text, frmComputers.cmbNetDepart.Text, frmComputers.cmbNETOffice.Text, frmComputers.txtNETphone.Text, frmComputers.cmbDevNet.Text, frmComputers.cmbNetDev.Text, frmComputers.cmbNETotv.Text, sSID)
+        Call UPDATE_INFORMARION(frmComputers.cmbNETBranch.Text, frmComputers.cmbNetDepart.Text, frmComputers.cmbNETOffice.Text, frmComputers.txtNETphone.Text, frmComputers.cmbDevNet.Text, frmComputers.cmbNetDev.Text, frmComputers.cmbNETotv.Text, frmComputers.cmbNETMOL.Text, sSID)
         Call UPDATE_OPLATA(frmComputers.txtNETSfN.Text, frmComputers.txtNETcash.Text, frmComputers.txtNETSUMM.Text, frmComputers.txtNETZay.Text, frmComputers.dtNETdataVvoda.Value, frmComputers.dtNETSFdate.Value, _chkPRNspis, _chkPRNNNb, frmComputers.dtNETSpisanie.Value, sSID)
         Call SAVE_GARANT(sSID, frmComputers.cmbNETPostav, frmComputers.dtGNETPr, frmComputers.dtGNETok)
 

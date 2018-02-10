@@ -231,7 +231,7 @@ Public Class frmLogin
 
         Select Case sVERSIA
 
-            Case "1.7.5.2"
+            Case "1.7.6.0"
 
 
             Case Else

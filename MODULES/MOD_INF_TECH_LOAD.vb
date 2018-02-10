@@ -56,7 +56,7 @@ Module MOD_INF_TECH_LOAD
             If Not IsDBNull(.Fields("PRINTER_SN_4").Value) Then _
                 frmComputers.txtNetCableCat.Text = .Fields("PRINTER_SN_4").Value
 
-            'If Not IsDBNull(.Fields("OTvetstvennyj").Value) Then frmComputers.txtNetNumberPorts.Text = .Fields("OTvetstvennyj").Value
+            If Not IsDBNull(.Fields("MOL").Value) Then frmComputers.cmbNETMOL.Text = .Fields("MOL").Value
             'If Not IsDBNull(.Fields("telephone").Value) Then frmComputers.cmbNETotv.Text = .Fields("telephone").Value
 
 
@@ -401,6 +401,8 @@ Module MOD_INF_TECH_LOAD
 
 
             If Len(frmComputers.cmbOTH.Text) = 0 Then frmComputers.cmbOTH.Text = .Fields("net_name").Value
+            If Not IsDBNull(.Fields("MOL").Value) Then frmComputers.cmbOTHMOL.Text = .Fields("MOL").Value
+
 
             If Len(.Fields("NET_IP_1").Value) > 4 And TipTehn = "IBP" Then
 
@@ -566,7 +568,7 @@ Module MOD_INF_TECH_LOAD
             If Not IsDBNull(.Fields("OTvetstvennyj")) Then frmComputers.cmbPRNotv.Text = .Fields("OTvetstvennyj").Value
             If Not IsDBNull(.Fields("TELEPHONE")) Then frmComputers.txtPRNphone.Text = .Fields("TELEPHONE").Value
             If Not IsDBNull(.Fields("NET_IP_1")) Then frmComputers.txtPrnIP.Text = .Fields("NET_IP_1").Value
-
+            If Not IsDBNull(.Fields("MOL").Value) Then frmComputers.cmbPrMol.Text = .Fields("MOL").Value
 
             '###################################################################################
             'Ищем устройства использующие принтер
@@ -1736,17 +1738,19 @@ Module MOD_INF_TECH_LOAD
 
             If Not IsDBNull(.Fields("OTvetstvennyj").Value) Then _
                 frmComputers.cmbResponsible.Text = .Fields("OTvetstvennyj").Value
+            If Not IsDBNull(.Fields("MOL").Value) Then frmComputers.cmbMOL.Text = .Fields("MOL").Value
+
             If Not IsDBNull(.Fields("TELEPHONE").Value) Then frmComputers.txtPHONE.Text = .Fields("TELEPHONE").Value
             If Not IsDBNull(.Fields("TIP_COMPA").Value) Then _
                 frmComputers.cmbAppointment.Text = .Fields("TIP_COMPA").Value
 
             If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then _
                 frmComputers.txtSBSN.Text = .Fields("INV_NO_SYSTEM").Value
-            If Not IsDBNull(.Fields("INV_NO_MONITOR").Value) Then _
-                frmComputers.txtMSN.Text = .Fields("INV_NO_MONITOR").Value
-            If Not IsDBNull(.Fields("INV_NO_IBP").Value) Then frmComputers.IN_IBP.Text = .Fields("INV_NO_IBP").Value
-            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then _
-                frmComputers.IN_PRN.Text = .Fields("INV_NO_PRINTER").Value
+            '   If Not IsDBNull(.Fields("INV_NO_MONITOR").Value) Then _
+            'frmComputers.txtMSN.Text = .Fields("INV_NO_MONITOR").Value
+            '  If Not IsDBNull(.Fields("INV_NO_IBP").Value) Then frmComputers.IN_IBP.Text = .Fields("INV_NO_IBP").Value
+            ' If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then _
+            '    frmComputers.IN_PRN.Text = .Fields("INV_NO_PRINTER").Value
 
             If .Fields("TIP_COMPA").Value = "Сервер" Then
                 frmComputers.ChkPDC.Visible = True
@@ -1958,6 +1962,7 @@ Module MOD_INF_TECH_LOAD
             If Not IsDBNull(.Fields("FILIAL").Value) Then frmComputers.cmbOTHFil.Text = .Fields("FILIAL").Value
             If Not IsDBNull(.Fields("MESTO").Value) Then frmComputers.cmbOTHDepart.Text = .Fields("MESTO").Value
             If Not IsDBNull(.Fields("kabn").Value) Then frmComputers.cmbOTHOffice.Text = .Fields("kabn").Value
+            If Not IsDBNull(.Fields("MOL").Value) Then frmComputers.cmbOTHMOL.Text = .Fields("MOL").Value
 
             'sName = .Fields("PRINTER_NAME_1").Value
 

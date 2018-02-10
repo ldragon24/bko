@@ -1,0 +1,6 @@
+syntax: glob
+bin/Debug/lang/en.ini
+bin/Release/database/Impuls.mdb
+bin/Release/database/basekomp(clear)!_.mdb
+bin/Release/base.ini
+_ReSharper.basekomp_net/XmlIndex/mscorlib.xml/74FEFD21.bin

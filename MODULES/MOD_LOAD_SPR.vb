@@ -197,6 +197,14 @@ Module Mod_Load_SPR
         frmComputers.cmbPRNotv.Items.AddRange(obj7)
         frmComputers.cmbOTHotv.Items.AddRange(obj7)
         frmComputers.cmbNETotv.Items.AddRange(obj7)
+        frmComputers.cmbMOL.Items.AddRange(obj7)
+        frmComputers.cmbNETMOL.Items.AddRange(obj7)
+        frmComputers.cmbOTHMOL.Items.AddRange(obj7)
+        frmComputers.cmbPrMol.Items.AddRange(obj7)
+
+
+
+
 
         'Тип компьютера
         FillComboNET(frmComputers.cmbAppointment, "TIP", "SPR_TIP", "", False, True)

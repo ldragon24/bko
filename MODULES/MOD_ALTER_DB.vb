@@ -61,6 +61,10 @@ Module MOD_ALTER_DB
 
                 frmLogin.Invoke(New MethodInvoker(AddressOf ALTER_DB_1752))
 
+            Case "1.7.5.2"
+
+                frmLogin.Invoke(New MethodInvoker(AddressOf ALTER_DB_1760))
+
             Case Else
 
                 _DBALTER = True
@@ -68,6 +72,137 @@ Module MOD_ALTER_DB
         End Select
 
     End Sub
+
+    Public Sub ALTER_DB_1760()
+        On Error GoTo err_
+
+        If _DBALTER = False Then Exit Sub
+
+        Dim sSQL As String
+
+        sSQL = "ALTER TABLE kompy ADD mol TEXT(50)"
+
+        Select Case DB_N
+
+            Case "MS SQL 2008"
+
+                sSQL = "ALTER TABLE " & DBtabl & ".dbo.kompy ADD mol nvarchar(50)"
+                DB7.Execute(sSQL)
+
+                sSQL = "ALTER TABLE " & DBtabl & ".dbo.kompy DROP COLUMN ANTIVIRUS"
+                DB7.Execute(sSQL)
+
+            Case "MS SQL"
+
+                sSQL = "ALTER TABLE " & DBtabl & ".dbo.kompy ADD mol nvarchar(50)"
+                DB7.Execute(sSQL)
+
+                sSQL = "ALTER TABLE " & DBtabl & ".dbo.kompy DROP COLUMN ANTIVIRUS"
+                DB7.Execute(sSQL)
+
+
+            Case "MS Access"
+
+                Call frmMain.COMPARE_DB()
+
+                DB7.Execute(sSQL)
+
+                sSQL = "ALTER TABLE kompy DROP COLUMN ANTIVIRUS"
+                DB7.Execute(sSQL)
+
+
+            Case "MS Access 2007"
+
+                Call frmMain.COMPARE_DB()
+
+                DB7.Execute(sSQL)
+
+                sSQL = "ALTER TABLE kompy DROP COLUMN ANTIVIRUS"
+                DB7.Execute(sSQL)
+
+            Case "MySQL"
+
+                sSQL = "ALTER TABLE kompy ADD COLUMN mol varchar(50)"
+
+                DB7.Execute(sSQL)
+
+                sSQL = "ALTER TABLE kompy DROP COLUMN ANTIVIRUS"
+                DB7.Execute(sSQL)
+
+
+            Case "MySQL (MyODBC 5.1)"
+
+                sSQL = "ALTER TABLE kompy ADD COLUMN mol varchar(50)"
+
+                DB7.Execute(sSQL)
+
+                sSQL = "ALTER TABLE kompy DROP COLUMN ANTIVIRUS"
+                DB7.Execute(sSQL)
+
+
+            Case "PostgreSQL"
+
+                sSQL = "ALTER TABLE kompy ADD COLUMN mol varchar(50)"
+
+                DB7.Execute(sSQL)
+
+                sSQL = "ALTER TABLE kompy DROP COLUMN ANTIVIRUS"
+                DB7.Execute(sSQL)
+
+            Case "SQLLite"
+
+
+            Case "DSN"
+
+                sSQL = "ALTER TABLE kompy ADD COLUMN mol varchar(50)"
+
+                DB7.Execute(sSQL)
+
+                sSQL = "ALTER TABLE kompy DROP COLUMN ANTIVIRUS"
+                DB7.Execute(sSQL)
+
+        End Select
+
+
+        DB7.Execute("Update CONFIGURE SET access='1.7.6.0' WHERE access<>'1.7.6.0'")
+        _DBALTER = False
+
+        '####################################################################
+        '####################################################################
+        '####################################################################
+        ' Убираем поля с NULL
+
+        On Error Resume Next
+
+        Dim rs As Recordset
+        rs = New Recordset
+        rs.Open("select * from kompy", DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
+
+        Dim uname As Integer
+
+        If DB_N <> "MS Access" Or DB_N <> "MS Access 2007" Then uname = 2 Else uname = 1
+
+        For lngCounter = 0 To rs.Fields.Count - uname
+
+            If rs.Fields(lngCounter).Name = "id" Or rs.Fields(lngCounter).Name = "ID" Then
+
+            Else
+
+                DB7.Execute("UPDATE kompy SET " & rs.Fields(lngCounter).Name & "= WHERE " & rs.Fields(lngCounter).Name & " IS NULL")
+
+            End If
+        Next
+
+        rs.Close()
+
+        Exit Sub
+err_:
+        MsgBox(Err.Description)
+
+        _DBALTER = True
+
+    End Sub
+
 
     Public Sub ALTER_DB_17351()
 
@@ -97,13 +232,13 @@ Module MOD_ALTER_DB
 
                 Call frmMain.COMPARE_DB()
 
-                 DB7.Execute(sSQL)
+                DB7.Execute(sSQL)
 
             Case "MS Access 2007"
 
                 Call frmMain.COMPARE_DB()
 
-                 DB7.Execute(sSQL)
+                DB7.Execute(sSQL)
 
             Case "MySQL"
 
@@ -2410,37 +2545,7 @@ err_:
 
         End Select
 
-
-        DB7.Execute("Update CONFIGURE SET access='1.7.5.2' WHERE access<>'1.7.5.2'")
-        _DBALTER = False
-
-        '####################################################################
-        '####################################################################
-        '####################################################################
-        ' Убираем поля с NULL
-
-        On Error Resume Next
-
-        Dim rs As Recordset
-        rs = New Recordset
-        rs.Open("select * from kompy", DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
-
-        Dim uname As Integer
-
-        If DB_N <> "MS Access" Or DB_N <> "MS Access 2007" Then uname = 2 Else uname = 1
-
-        For lngCounter = 0 To rs.Fields.Count - uname
-
-            If rs.Fields(lngCounter).Name = "id" Or rs.Fields(lngCounter).Name = "ID" Then
-
-            Else
-
-                DB7.Execute("UPDATE kompy SET " & rs.Fields(lngCounter).Name & "= WHERE " & rs.Fields(lngCounter).Name & " IS NULL")
-
-            End If
-        Next
-
-        rs.Close()
+        Call ALTER_DB_1760()
 
         Exit Sub
 err_:

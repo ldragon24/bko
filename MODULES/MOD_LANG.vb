@@ -802,11 +802,11 @@ Module modLang
         frmComputers.lblPseudonym.Text = objIniFile.GetString("frmComputers", "lblPseudonym", "Псевдоним")
         frmComputers.lblAppointment.Text = objIniFile.GetString("frmComputers", "lblAppointment", "Назначение")
 
-        frmComputers.gbInNumber.Text = objIniFile.GetString("frmComputers", "gbInNumber", "Инвентарные номера")
-        frmComputers.Label16.Text = objIniFile.GetString("frmComputers", "Label16", "Инвентарный номер системного блока")
-        frmComputers.Label17.Text = objIniFile.GetString("frmComputers", "Label17", "Инвентарный номер монитора")
-        frmComputers.Label18.Text = objIniFile.GetString("frmComputers", "Label18", "Инвентарный номер ИБП")
-        frmComputers.Label19.Text = objIniFile.GetString("frmComputers", "Label19", "Инвентарный номер принтера")
+        ' frmComputers.gbInNumber.Text = objIniFile.GetString("frmComputers", "gbInNumber", "Инвентарные номера")
+        '  frmComputers.Label16.Text = objIniFile.GetString("frmComputers", "Label16", "Инвентарный номер системного блока")
+        ' frmComputers.Label17.Text = objIniFile.GetString("frmComputers", "Label17", "Инвентарный номер монитора")
+        '  frmComputers.Label18.Text = objIniFile.GetString("frmComputers", "Label18", "Инвентарный номер ИБП")
+        '  frmComputers.Label19.Text = objIniFile.GetString("frmComputers", "Label19", "Инвентарный номер принтера")
 
 
         frmComputers.gbMovement.Text = objIniFile.GetString("frmComputers", "gbMovement", "Движение")
@@ -973,7 +973,7 @@ Module modLang
 
         Call _
             INFO_P_LANG(frmComputers.Label32, frmComputers.Label31, frmComputers.Label30, frmComputers.Label29,
-                        frmComputers.Label28, frmComputers.Label86)
+                        frmComputers.Label28, frmComputers.Label87)
 
         frmComputers.gbNetPortMapping.Text = objIniFile.GetString("frmComputers", "gbNetPortMapping", "")
         frmComputers.Label35.Text = objIniFile.GetString("frmComputers", "Label35", "Номер порта:")
@@ -1005,7 +1005,14 @@ Module modLang
                                                                               "Гарантия")
 
         frmComputers.gbOTh.Text = objIniFile.GetString("frmComputers", "gbOTh", "Информация")
-        frmComputers.Label3.Text = objIniFile.GetString("frmComputers", "Label3", "Краткое описание:")
+        frmComputers.lblMOLoth.Text = objIniFile.GetString("frmComputers", "lblMOL", "МОЛ:")
+        frmComputers.lblMOL.Text = objIniFile.GetString("frmComputers", "lblMOL", "МОЛ:")
+        frmComputers.Label19.Text = objIniFile.GetString("frmComputers", "lblMOL", "МОЛ:")
+        frmComputers.Label121.Text = objIniFile.GetString("frmComputers", "lblMOL", "МОЛ:")
+
+
+
+        frmComputers.GroupBox10.Text = objIniFile.GetString("frmComputers", "Label3", "Краткое описание:")
 
         Call _
             INFO_P_LANG(frmComputers.Label9, frmComputers.Label8, frmComputers.Label7, frmComputers.Label6,

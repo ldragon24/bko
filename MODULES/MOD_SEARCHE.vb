@@ -257,6 +257,28 @@
 
         End Select
 
+
+
+
+
+        'Select Case DB_N
+        '    Case "MS Access"
+
+        '        Dim aString As String = Replace(sSQL3_1, "%", "*")
+        '        '   sSQL3_1 = aString
+
+        '    Case "MS Access 2007"
+
+        '        Dim aString As String = Replace(sSQL3_1, "%", "*")
+        '        '  sSQL3_1 = aString
+
+        '    Case Else
+
+        'End Select
+
+
+
+
         Dim rs3 As Recordset 'Объявляем рекордсет
         rs3 = New Recordset
 
@@ -594,7 +616,7 @@ Foundit:
         End Select
 
 
-       
+
 
 
         Exit Sub

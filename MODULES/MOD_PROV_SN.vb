@@ -59,34 +59,34 @@
                     End If
                 End If
 
-                If Len(Trim(frmComputers.txtMSN.Text)) > 0 Then
-                    If .Fields("INV_NO_MONITOR").Value = frmComputers.txtMSN.Text Then
-                        sTEXTmSG = sTEXTmSG & vbCrLf &
-                            LNGIniFile.GetString("MOD_PROV_SN", "MSG1", "Инвентарный номер") & " монитора " &
-                            LNGIniFile.GetString("MOD_PROV_SN", "MSG2", "присутствует в базе,") & vbCrLf &
-                            LNGIniFile.GetString("MOD_PROV_SN", "MSG3", "нужно выбрать другой номер") & vbCrLf &
-                            LNGIniFile.GetString("MOD_PROV_SN", "MSG4", "Компьютер:") & " " & .Fields("NET_NAME").Value &
-                            vbCrLf & LNGIniFile.GetString("MOD_PROV_SN", "MSG5", "Филиал:") & " " &
-                            .Fields("FILIAL").Value & vbCrLf & LNGIniFile.GetString("MOD_PROV_SN", "MSG6", "Отдел:") &
-                            " " & .Fields("MESTO").Value & vbCrLf & "-----------------------------"
-                        intj = intj + 1
-                    End If
-                End If
+                'If Len(Trim(frmComputers.txtMSN.Text)) > 0 Then
+                '    If .Fields("INV_NO_MONITOR").Value = frmComputers.txtMSN.Text Then
+                '        sTEXTmSG = sTEXTmSG & vbCrLf &
+                '            LNGIniFile.GetString("MOD_PROV_SN", "MSG1", "Инвентарный номер") & " монитора " &
+                '            LNGIniFile.GetString("MOD_PROV_SN", "MSG2", "присутствует в базе,") & vbCrLf &
+                '            LNGIniFile.GetString("MOD_PROV_SN", "MSG3", "нужно выбрать другой номер") & vbCrLf &
+                '            LNGIniFile.GetString("MOD_PROV_SN", "MSG4", "Компьютер:") & " " & .Fields("NET_NAME").Value &
+                '            vbCrLf & LNGIniFile.GetString("MOD_PROV_SN", "MSG5", "Филиал:") & " " &
+                '            .Fields("FILIAL").Value & vbCrLf & LNGIniFile.GetString("MOD_PROV_SN", "MSG6", "Отдел:") &
+                '            " " & .Fields("MESTO").Value & vbCrLf & "-----------------------------"
+                '        intj = intj + 1
+                '    End If
+                'End If
 
 
-                If Len(Trim(frmComputers.IN_IBP.Text)) > 0 Then
-                    If .Fields("INV_NO_IBP").Value = frmComputers.IN_IBP.Text Then
-                        sTEXTmSG = sTEXTmSG & vbCrLf &
-                            LNGIniFile.GetString("MOD_PROV_SN", "MSG1", "Инвентарный номер") & " ИБП " &
-                            LNGIniFile.GetString("MOD_PROV_SN", "MSG2", "присутствует в базе,") & vbCrLf &
-                            LNGIniFile.GetString("MOD_PROV_SN", "MSG3", "нужно выбрать другой номер") & vbCrLf &
-                            LNGIniFile.GetString("MOD_PROV_SN", "MSG4", "Компьютер:") & " " & .Fields("NET_NAME").Value &
-                            vbCrLf & LNGIniFile.GetString("MOD_PROV_SN", "MSG5", "Филиал:") & " " &
-                            .Fields("FILIAL").Value & vbCrLf & LNGIniFile.GetString("MOD_PROV_SN", "MSG6", "Отдел:") &
-                            " " & .Fields("MESTO").Value & vbCrLf & "-----------------------------"
-                        intj = intj + 1
-                    End If
-                End If
+                'If Len(Trim(frmComputers.IN_IBP.Text)) > 0 Then
+                '    If .Fields("INV_NO_IBP").Value = frmComputers.IN_IBP.Text Then
+                '        sTEXTmSG = sTEXTmSG & vbCrLf &
+                '            LNGIniFile.GetString("MOD_PROV_SN", "MSG1", "Инвентарный номер") & " ИБП " &
+                '            LNGIniFile.GetString("MOD_PROV_SN", "MSG2", "присутствует в базе,") & vbCrLf &
+                '            LNGIniFile.GetString("MOD_PROV_SN", "MSG3", "нужно выбрать другой номер") & vbCrLf &
+                '            LNGIniFile.GetString("MOD_PROV_SN", "MSG4", "Компьютер:") & " " & .Fields("NET_NAME").Value &
+                '            vbCrLf & LNGIniFile.GetString("MOD_PROV_SN", "MSG5", "Филиал:") & " " &
+                '            .Fields("FILIAL").Value & vbCrLf & LNGIniFile.GetString("MOD_PROV_SN", "MSG6", "Отдел:") &
+                '            " " & .Fields("MESTO").Value & vbCrLf & "-----------------------------"
+                '        intj = intj + 1
+                '    End If
+                'End If
 
 
                 If Len(Trim(frmComputers.txtNETmac1.Text)) > 0 Then

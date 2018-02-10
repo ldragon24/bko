@@ -1,0 +1,1 @@
+Forfiles -p d:\_TEMP\OTHER\BC2.NET\bin\Release\ -s -m *.* -d -90 -c "cmd /c del /q @path"
