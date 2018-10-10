@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Security.Principal
+Imports ZXing
 
 Module MOD_SYS_PRELOAD
     Public new_prov As Boolean
@@ -17,6 +18,7 @@ Module MOD_SYS_PRELOAD
 
     Public RAZDEL As Integer
     Public TREE_UPDATE As Integer = 0
+    Public TREE_REFRESH As Integer = 0
 
     Public KCKey As Integer
     Public DCKey As String
@@ -69,6 +71,10 @@ Module MOD_SYS_PRELOAD
     Public NbColor As String
     Public SpisanColor As String
     Public ServiceColor As String
+
+    Private Property Renderer As Type
+    Private bmg As Bitmap
+    Public pb As PictureBox = New PictureBox
 
     Public Sub Tree_Icons_Feel(ByVal ills As ImageList, ByVal sFRM As String, ByVal sPATH As String)
 
@@ -312,6 +318,11 @@ Module MOD_SYS_PRELOAD
             IO.Directory.CreateDirectory(Directory.GetParent(Application.ExecutablePath).ToString & "\database")
         End If
 
+        If IO.Directory.Exists(Directory.GetParent(Application.ExecutablePath).ToString & "\QR_CODE") Then
+        Else
+            IO.Directory.CreateDirectory(Directory.GetParent(Application.ExecutablePath).ToString & "\QR_CODE")
+        End If
+
         If IO.Directory.Exists(Directory.GetParent(Application.ExecutablePath).ToString & "\arhiv") Then
         Else
             IO.Directory.CreateDirectory(Directory.GetParent(Application.ExecutablePath).ToString & "\arhiv")
@@ -375,6 +386,10 @@ Module MOD_SYS_PRELOAD
         'Как работаем с деревом
         TREE_UPDATE = objIniFile.GetString("General", "TREE_UPDATE", "0")
 
+        'Как работаем с деревом
+        TREE_REFRESH = objIniFile.GetString("General", "TREE_REFRESH", "0")
+
+
         'Выделение в дереве
         remVisible = objIniFile.GetString("TREE", "REM", "0")
         NBVisible = objIniFile.GetString("TREE", "NB", "1")
@@ -401,6 +416,7 @@ Module MOD_SYS_PRELOAD
 
         'esq 160307 frmMain.BeginInvoke(New MethodInvoker(AddressOf iface_preload))
         Call iface_preload() 'esq 160307
+
         Application.DoEvents()
 
         ' Call UNAME_GET()
@@ -641,5 +657,146 @@ Module MOD_SYS_PRELOAD
         oRS.Close()
         oRS = Nothing
     End Sub
+
+    Public Sub QR_CODE_GENERATE(ByVal stPic As PictureBox, Optional ByVal sID As String = "")
+
+        '#################################################################
+        '###########  QR CODE GENERATOR  #################################
+        '#################################################################
+
+        '############################################################################
+        fact = New Factors
+        EncodingOptions = New Common.EncodingOptions With {.Height = 1280, .Width = 1280}
+        Renderer = GetType(Rendering.BitmapRenderer)
+        '############################################################################
+
+
+        Dim objIniFile As New IniFile(sLANGPATH)
+        Try
+
+            EncodingOptions = optQR_CODE()
+
+            EncodingOptions = New QrCodeEncodingOptions With {
+                .DisableECI = True,
+                .CharacterSet = "UTF-8",
+               .Width = 180,
+            .Height = 180
+            }
+
+            Dim writer = New BarcodeWriter With {
+                .Format = CType(BarcodeFormat.QR_CODE, BarcodeFormat),
+                .Options = EncodingOptions,
+                .Renderer = CType(Activator.CreateInstance(Renderer), Rendering.IBarcodeRenderer(Of Bitmap))
+            }
+
+            Dim stmpTEXT As String
+
+
+            Dim sSQL As String
+
+            If sID = "" Then
+                sSQL = "Select * FROM kompy"
+            Else
+                sSQL = "Select * FROM kompy WHERE id=" & sID
+            End If
+
+
+            Dim rs As Recordset
+            rs = New Recordset
+            rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic,
+                     LockTypeEnum.adLockOptimistic)
+
+            With rs
+                .MoveFirst()
+                Do While Not .EOF
+
+                    Select Case .Fields("tiptehn").Value
+
+                        Case "PC"
+
+                            stmpTEXT = "№: " & .Fields("id").Value & vbNewLine &
+                objIniFile.GetString("frmComputers", "lblInNumber", "Инвентарный номер") & ": " & .Fields("INV_NO_SYSTEM").Value & vbNewLine &
+                objIniFile.GetString("frmComputers", "lblNetName", "Имя в сети") & ": " & .Fields("NET_NAME").Value & vbNewLine &
+                objIniFile.GetString("frmComputers", "gbcpu", "Процессор") & ": " & .Fields("CPU1").Value & vbNewLine &
+                objIniFile.GetString("frmComputers", "gbMB", "Материнская плата") & ": " & .Fields("MB_NAME").Value & vbNewLine &
+                objIniFile.GetString("frmComputers", "gbRAM", "Память") & ": " & .Fields("RAM_1").Value & "," & .Fields("RAM_2").Value & "," & .Fields("RAM_3").Value & "," & .Fields("RAM_4").Value & vbNewLine &
+                objIniFile.GetString("frmComputers", "gbHDD", "Жесткий диск") & ": " & .Fields("HDD_Name_1").Value & "," & .Fields("HDD_Name_2").Value & "," & .Fields("HDD_Name_3").Value & "," & .Fields("HDD_Name_4").Value & vbNewLine &
+                objIniFile.GetString("frmComputers", "gbSVGA", "Видео карта") & ": " & .Fields("SVGA_NAME").Value & vbNewLine &
+                objIniFile.GetString("frmReports", "lvRemont7", "Место установки") & ": " & .Fields("FILIAL").Value & "\" & .Fields("MESTO").Value & "\" & .Fields("kabn").Value
+
+                        Case "Printer"
+
+                            stmpTEXT = "№: " & .Fields("id").Value & vbNewLine &
+               objIniFile.GetString("frmComputers", "lblInNumber", "Инвентарный номер") & ": " & .Fields("INV_NO_PRINTER").Value & vbNewLine &
+               objIniFile.GetString("frmComputers", "lblNetName", "Имя в сети") & ": " & .Fields("PRINTER_NAME_1").Value & vbNewLine &
+                                     objIniFile.GetString("frmReports", "lvRemont7", "Место установки") & ": " & .Fields("FILIAL").Value & "\" & .Fields("MESTO").Value & "\" & .Fields("kabn").Value
+
+                        Case "MFU"
+
+                            stmpTEXT = "№: " & .Fields("id").Value & vbNewLine &
+              objIniFile.GetString("frmComputers", "lblInNumber", "Инвентарный номер") & ": " & .Fields("INV_NO_PRINTER").Value & vbNewLine &
+              objIniFile.GetString("frmComputers", "lblNetName", "Имя в сети") & ": " & .Fields("PRINTER_NAME_1").Value & vbNewLine &
+                                    objIniFile.GetString("frmReports", "lvRemont7", "Место установки") & ": " & .Fields("FILIAL").Value & "\" & .Fields("MESTO").Value & "\" & .Fields("kabn").Value
+
+                        Case "KOpir"
+
+                            stmpTEXT = "№: " & .Fields("id").Value & vbNewLine &
+              objIniFile.GetString("frmComputers", "lblInNumber", "Инвентарный номер") & ": " & .Fields("INV_NO_PRINTER").Value & vbNewLine &
+              objIniFile.GetString("frmComputers", "lblNetName", "Имя в сети") & ": " & .Fields("PRINTER_NAME_1").Value & vbNewLine &
+                                    objIniFile.GetString("frmReports", "lvRemont7", "Место установки") & ": " & .Fields("FILIAL").Value & "\" & .Fields("MESTO").Value & "\" & .Fields("kabn").Value
+
+                        Case "MONITOR"
+
+                            stmpTEXT = "№: " & .Fields("id").Value & vbNewLine &
+             objIniFile.GetString("frmComputers", "lblInNumber", "Инвентарный номер") & ": " & .Fields("INV_NO_MONITOR").Value & vbNewLine &
+             objIniFile.GetString("frmComputers", "lblNetName", "Имя в сети") & ": " & .Fields("net_name").Value & vbNewLine &
+                                   objIniFile.GetString("frmReports", "lvRemont7", "Место установки") & ": " & .Fields("FILIAL").Value & "\" & .Fields("MESTO").Value & "\" & .Fields("kabn").Value
+
+                        Case "NET"
+                            stmpTEXT = "№: " & .Fields("id").Value & vbNewLine &
+            objIniFile.GetString("frmComputers", "lblInNumber", "Инвентарный номер") & ": " & .Fields("PRINTER_PROIZV_3").Value & vbNewLine &
+            objIniFile.GetString("frmComputers", "lblNetName", "Имя в сети") & ": " & .Fields("PRINTER_SN_1").Value & vbNewLine &
+                                  objIniFile.GetString("frmReports", "lvRemont7", "Место установки") & ": " & .Fields("FILIAL").Value & "\" & .Fields("MESTO").Value & "\" & .Fields("kabn").Value
+
+                        Case Else
+
+                            stmpTEXT = "№: " & .Fields("id").Value & vbNewLine &
+             objIniFile.GetString("frmComputers", "lblInNumber", "Инвентарный номер") & ": " & .Fields("INV_NO_PRINTER").Value & vbNewLine &
+             objIniFile.GetString("frmComputers", "lblNetName", "Имя в сети") & ": " & .Fields("net_name").Value & vbNewLine &
+                                   objIniFile.GetString("frmReports", "lvRemont7", "Место установки") & ": " & .Fields("FILIAL").Value & "\" & .Fields("MESTO").Value & "\" & .Fields("kabn").Value
+
+                    End Select
+
+
+                    '#################################################################
+                    '############         SAVE IMAGE        ##########################
+                    '#################################################################
+
+                    bmg = writer.Write(stmpTEXT)
+
+                    '  Dim pb As PictureBox = New PictureBox
+
+                    stPic.Image = bmg
+
+                    If stPic.Image IsNot Nothing Then
+                        Dim pth As String = Path.Combine(PrPath & "QR_CODE\", .Fields("id").Value & "_" & .Fields("net_name").Value & ".png") '& "_" & .Fields("net_name").Value
+                        bmg.Save(pth, ImageFormat.Png)
+                    End If
+
+                    .MoveNext()
+                Loop
+            End With
+
+            rs.Close()
+            rs = Nothing
+
+        Catch exc As Exception
+            MessageBox.Show(frmMain, exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.[Error])
+        End Try
+
+        '#################################################################
+    End Sub
+
+
 End Module
 

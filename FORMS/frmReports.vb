@@ -133,7 +133,7 @@ Public Class frmReports
         DTP.Value = Date.Today
         DTPD.Value = Date.Today
 
-        DTP.Value = DTP.Value.AddDays(- 1)
+        DTP.Value = DTP.Value.AddDays(-1)
         DTPD.Value = DTPD.Value.AddDays(1)
 
         FillComboNET(Me.cmbOTV, "Name", "SPR_OTV", "", False, True)
@@ -2485,6 +2485,11 @@ err_:
             cifTeh(intj + 1) = LvKompOtd.Columns.Count
         End If
 
+        'If chk_K53.Checked = True Then
+        '    LvKompOtd.Columns.Add("QR Code", 100, HorizontalAlignment.Left)
+        '    cifTeh(intj + 1) = LvKompOtd.Columns.Count
+        'End If
+
 
         Me.BeginInvoke(New MethodInvoker(AddressOf Pereschet))
         Me.BeginInvoke(New MethodInvoker(AddressOf Refresh_otdellist))
@@ -2833,6 +2838,8 @@ err_:
         Else
             cifTeh(52) = 0
         End If
+
+       
     End Sub
 
     Private Sub Refresh_otdellist()
@@ -2944,10 +2951,14 @@ Error_:
             .MoveFirst()
             Do Until rs.EOF
 
-
                 LvKompOtd.Items.Add(.Fields("NET_NAME").Value) 'col no. 1
 
                 'If Len(.Fields("nomerPC").Value) <> 0 Then unamS = .Fields("nomerPC").Value Else 
+
+                LvKompOtd.Items.Add(.Fields("NET_NAME").Value)
+
+
+
                 unamS = .Fields("Id").Value
 
 
@@ -3174,6 +3185,8 @@ Error_:
                 End If
 
 
+
+
                 'If chkTeh(46) = True Then LvKompOtd.Items(CInt(intj)).SubItems.Add(unamS)
 
                 intj = intj + 1
@@ -3190,6 +3203,31 @@ Error_:
         Debug.Print(Err.Description)
         MsgBox(Err.Description)
     End Sub
+
+    'Private Sub LvKompOtd_DrawColumnHeader(ByVal sender As Object, ByVal e As System.Windows.Forms.DrawListViewColumnHeaderEventArgs) Handles LvKompOtd.DrawColumnHeader
+    '    e.DrawDefault = True
+    'End Sub
+
+    'Private Sub LvKompOtd_DrawSubItem(ByVal sender As Object, ByVal e As System.Windows.Forms.DrawListViewSubItemEventArgs) Handles LvKompOtd.DrawSubItem
+    '    Using txtbrsh As New SolidBrush(e.SubItem.ForeColor)
+    '        If LvKompOtd.SelectedIndices.Contains(e.ItemIndex) And LvKompOtd.Focused Then
+    '            e.Graphics.FillRectangle(New SolidBrush(Color.FromKnownColor(KnownColor.Highlight)), e.Bounds)
+    '            txtbrsh.Color = Color.White
+    '        End If
+    '        If e.Item.SubItems(3) Is e.SubItem Then
+    '            e.DrawDefault = False
+    '            Using sf As New StringFormat With {.Alignment = StringAlignment.Near, .LineAlignment = StringAlignment.Center, .FormatFlags = StringFormatFlags.NoWrap, .Trimming = StringTrimming.EllipsisCharacter}
+    '                If e.SubItem.Text = e.i Then
+    '                    e.Graphics.DrawImage(qrList.Images(e.SubItem.Text), e.Bounds.X, e.Bounds.Y, e.Bounds.Height, e.Bounds.Height)
+    '                End If
+    '                Dim rb As New Rectangle(e.Bounds.X + e.Bounds.Height, e.Bounds.Y, e.Bounds.Width - e.Bounds.Height, e.Bounds.Height)
+    '                e.Graphics.DrawString(e.SubItem.Text, e.SubItem.Font, txtbrsh, rb, sf)
+    '            End Using
+    '        Else
+    '            e.DrawDefault = True
+    '        End If
+    '    End Using
+    'End Sub
 
     Private Sub Refr_KOMPL_OTHER()
 
@@ -6855,7 +6893,7 @@ Err_:
 
                 '.Fields("Summ").Value = RemCashe.Text 'Сумма
 
-                If .Fields("zakryt").Value = - 1 Then
+                If .Fields("zakryt").Value = -1 Then
                     frmService_add.chkClose.Checked = 1
                 Else
 
@@ -7094,6 +7132,60 @@ Err_:
         gbInf.Enabled = False
         cmbOthers.Visible = False
 
+    End Sub
+
+    Private Sub lvRemont_ItemDrag(sender As Object, e As System.Windows.Forms.ItemDragEventArgs) Handles lvRemont.ItemDrag
+
+        'Begins a drag-and-drop operation in the ListView control.
+        lvRemont.DoDragDrop(lvRemont.SelectedItems, DragDropEffects.Move)
+    End Sub
+    Private Sub lvRemont_DragEnter(ByVal sender As Object, ByVal e As  _
+    System.Windows.Forms.DragEventArgs) Handles lvRemont.DragEnter, _
+    lvRemont.DragEnter
+        Dim i As Integer
+        For i = 0 To e.Data.GetFormats().Length - 1
+            If e.Data.GetFormats()(i).Equals("System.Windows.Forms.ListView+SelectedListViewItemCollection") Then
+                'The data from the drag source is moved to the target.
+                e.Effect = DragDropEffects.Move
+            End If
+        Next
+    End Sub
+    Private Sub lvRemont_DragDrop(ByVal sender As Object, ByVal e As  _
+ System.Windows.Forms.DragEventArgs) Handles lvRemont.DragDrop, _
+ lvRemont.DragDrop
+        'Return if the items are not selected in the ListView control.
+        If lvRemont.SelectedItems.Count = 0 Then Return
+        'Returns the location of the mouse pointer in the ListView control.
+        Dim p As Point = lvRemont.PointToClient(New Point(e.X, e.Y))
+        'Obtain the item that is located at the specified location of the mouse pointer.
+        Dim dragToItem As ListViewItem = lvRemont.GetItemAt(p.X, p.Y)
+        If dragToItem Is Nothing Then Return
+        'Obtain the index of the item at the mouse pointer.
+        Dim dragIndex As Integer = dragToItem.Index
+        Dim i As Integer
+        Dim sel(lvRemont.SelectedItems.Count) As ListViewItem
+        For i = 0 To lvRemont.SelectedItems.Count - 1
+            sel(i) = lvRemont.SelectedItems.Item(i)
+        Next
+        For i = 0 To lvRemont.SelectedItems.Count - 1
+            'Obtain the ListViewItem to be dragged to the target location.
+            Dim dragItem As ListViewItem = sel(i)
+            Dim itemIndex As Integer = dragIndex
+            If itemIndex = dragItem.Index Then Return
+            If dragItem.Index < itemIndex Then
+                itemIndex = itemIndex + 1
+            Else
+                itemIndex = dragIndex + i
+            End If
+            'Insert the item in the specified location.
+            Dim insertitem As ListViewItem = dragItem.Clone
+            lvRemont.Items.Insert(itemIndex, insertitem)
+            'Removes the item from the initial location while 
+            'the item is moved to the new location.
+            lvRemont.Items.Remove(dragItem)
+        Next
+
 
     End Sub
+
 End Class

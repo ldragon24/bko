@@ -200,7 +200,6 @@ err_:
 
     End Sub
 
-
     Public Sub SAVE_MON(Optional ByVal sSID As String = "")
         On Error GoTo Err_
 
@@ -296,7 +295,7 @@ sAR:
         Dim _chkOTHNNb As Integer
         If Len(frmComputers.txtOTHSfN.Text) = 0 Then frmComputers.txtOTHSfN.Text = 0
         If Len(frmComputers.txtOTHcash.Text) = 0 Then frmComputers.txtOTHcash.Text = 0
-        If Len(frmComputers.txtOTHSUMM.Text) = 0 Then frmComputers.txtOTHSUMM.Text = 0
+        If Len(frmComputers.txtOTHSumm.Text) = 0 Then frmComputers.txtOTHSumm.Text = 0
         If frmComputers.chkOTHspis.Checked = False Then _chkOTHspis = 0 Else _chkOTHspis = 1
         If frmComputers.chkOTHNNb.Checked = False Then _chkOTHNNb = 0 Else _chkOTHNNb = 1
 
@@ -307,11 +306,11 @@ sAR:
 
             Case False
 
-                sSQL = "INSERT INTO kompy (MONITOR_NAME,MONITOR_DUM,MONITOR_SN,Ser_N_SIS,MONITOR_PROIZV,port_1,INV_NO_MONITOR,FILIAL,MESTO,kabn,TELEPHONE,TIPtehn,NET_NAME,PSEVDONIM,PCL) VALUES ('" & frmComputers.cmbOTH.Text & "','" & frmComputers.txtMonDum.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.PROiZV39.Text & "','" & frmComputers.txtOTHMeMo.Text & "','" & frmComputers.txtOTHinnumber.Text & "','" & frmComputers.cmbOTHFil.Text & "','" & frmComputers.cmbOTHDepart.Text & "','" & frmComputers.cmbOTHOffice.Text & "','" & frmComputers.txtOTHphone.Text & "','" & TipTehn & "','" & frmComputers.cmbOTH.Text & "','" & frmComputers.cmbOTH.Text & "'," & unaPCL & ")"
+                sSQL = "INSERT INTO kompy (MONITOR_NAME,MONITOR_DUM,MONITOR_SN,Ser_N_SIS,MONITOR_PROIZV,port_1,INV_NO_MONITOR,FILIAL,MESTO,kabn,TELEPHONE,TIPtehn,NET_NAME,PSEVDONIM,PCL) VALUES ('" & frmComputers.cmbOTH.Text & "','" & frmComputers.txtMonDum.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.PROiZV39.Text & "','" & frmComputers.txtOTHmemo.Text & "','" & frmComputers.txtOTHinnumber.Text & "','" & frmComputers.cmbOTHFil.Text & "','" & frmComputers.cmbOTHDepart.Text & "','" & frmComputers.cmbOTHOffice.Text & "','" & frmComputers.txtOTHphone.Text & "','" & TipTehn & "','" & frmComputers.cmbOTH.Text & "','" & frmComputers.cmbOTH.Text & "'," & unaPCL & ")"
 
             Case True
 
-                sSQL = "UPDATE kompy SET MONITOR_NAME='" & frmComputers.cmbOTH.Text & "', MONITOR_DUM='" & frmComputers.txtMonDum.Text & "', MONITOR_SN='" & frmComputers.txtOTHSN.Text & "', Ser_N_SIS='" & frmComputers.txtOTHSN.Text & "', MONITOR_PROIZV='" & frmComputers.PROiZV39.Text & "', port_1='" & frmComputers.txtOTHMeMo.Text & "', INV_NO_MONITOR='" & frmComputers.txtOTHinnumber.Text & "', PCL=" & unaPCL & " WHERE id =" & sSID
+                sSQL = "UPDATE kompy SET MONITOR_NAME='" & frmComputers.cmbOTH.Text & "', MONITOR_DUM='" & frmComputers.txtMonDum.Text & "', MONITOR_SN='" & frmComputers.txtOTHSN.Text & "', Ser_N_SIS='" & frmComputers.txtOTHSN.Text & "', MONITOR_PROIZV='" & frmComputers.PROiZV39.Text & "', port_1='" & frmComputers.txtOTHmemo.Text & "', INV_NO_MONITOR='" & frmComputers.txtOTHinnumber.Text & "', PCL=" & unaPCL & " WHERE id =" & sSID
 
         End Select
 
@@ -359,7 +358,7 @@ sAR:
 
         Call UPDATE_INFORMARION(frmComputers.cmbOTHFil.Text, frmComputers.cmbOTHDepart.Text, frmComputers.cmbOTHOffice.Text, frmComputers.txtOTHphone.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTHotv.Text, frmComputers.cmbOTHMOL.Text, sSID)
 
-        Call UPDATE_OPLATA(frmComputers.txtOTHSfN.Text, frmComputers.txtOTHcash.Text, frmComputers.txtOTHSUMM.Text, frmComputers.txtOTHZay.Text, frmComputers.dtOTHdataVvoda.Value, frmComputers.dtOTHSFdate.Value, _chkOTHspis, _chkOTHNNb, frmComputers.dtOTHSpisanie.Value, sSID)
+        Call UPDATE_OPLATA(frmComputers.txtOTHSfN.Text, frmComputers.txtOTHcash.Text, frmComputers.txtOTHSumm.Text, frmComputers.txtOTHZay.Text, frmComputers.dtOTHdataVvoda.Value, frmComputers.dtOTHSFdate.Value, _chkOTHspis, _chkOTHNNb, frmComputers.dtOTHSpisanie.Value, sSID)
 
         Call SAVE_GARANT(sSID, frmComputers.cmbOTHPostav, frmComputers.dtGOTHPr, frmComputers.dtGOTHok)
 

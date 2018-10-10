@@ -9,7 +9,7 @@ Public Class frmLogin
         txtPassword.Focus()
         txtPassword.SelectAll()
         txtPassword.Focus()
-        
+
     End Sub
 
     Private Sub Find_LANG()
@@ -116,7 +116,7 @@ Public Class frmLogin
 
                 sSQL = "INSERT INTO T_User (User_ID,Password,Name,Level) VALUES ('ADMINISTRATOR','SWY\X','ADMINISTRATOR','Admin')"
                 DB7.Execute(sSQL)
-               
+
 
         End Select
 
@@ -126,7 +126,7 @@ Public Class frmLogin
 
         Exit Sub
 
-        err_:
+err_:
 
         MsgBox(Err.Description)
     End Sub
@@ -143,7 +143,7 @@ Public Class frmLogin
     End Sub
 
     Private Sub User_Pro()
-        START:
+START:
 
         Dim objIniFile As New IniFile(PrPath & "base.ini")
         objIniFile.WriteString("general", "DefaultUser", cmbUser.Text)
@@ -277,7 +277,7 @@ Public Class frmLogin
         T_User.Open("SELECT count(*) as t_n FROM T_User where Name ='" & cmbUser.Text & "'", DB7,
                     CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
-      With T_User
+        With T_User
             sCOUNT = .Fields("t_n").Value
         End With
         T_User.Close()
@@ -474,7 +474,7 @@ Public Class frmLogin
 
             Else
             End If
-            
+
         End With
         T_User.Close()
         T_User = Nothing
@@ -543,6 +543,10 @@ err_:
         End Select
     End Sub
 
+    Private Sub frmLogin_Invalidated(sender As Object, e As System.Windows.Forms.InvalidateEventArgs) Handles Me.Invalidated
+
+    End Sub
+
     Private Sub frmLogin_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         Call LANG_frmLogin()
@@ -559,6 +563,27 @@ err_:
 
         Me.Focus()
         txtPassword.Focus()
+
+        '  Dim LNGIniFile As New IniFile(sLANGPATH)
+        WaterMark.ComboBox_SetCueBannerText(cmbSUBD, lblSUBD.Text)
+        WaterMark.ComboBox_SetCueBannerText(cmbBD, lblSUBD.Text)
+        WaterMark.ComboBox_SetCueBannerText(cmbUser, lblUser.Text)
+        WaterMark.ComboBox_SetCueBannerText(cmbLang, Label5.Text)
+        WaterMark.Edit_SetCueBannerTextFocused(txtPassword, False, lblPassword.Text)
+
+        WaterMark.Edit_SetCueBannerTextFocused(TextBox1, False, lblServer.Text)
+        WaterMark.Edit_SetCueBannerTextFocused(TextBox2, False, Label1.Text)
+        WaterMark.Edit_SetCueBannerTextFocused(TextBox3, False, Label2.Text)
+        WaterMark.Edit_SetCueBannerTextFocused(TextBox4, False, Label3.Text)
+        WaterMark.Edit_SetCueBannerTextFocused(TextBox5, False, Label4.Text)
+
+
+
+
+
+
+
+
     End Sub
 
     Private Sub sSUBD()

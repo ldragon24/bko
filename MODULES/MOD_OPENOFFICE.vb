@@ -40,7 +40,7 @@ Module MOD_OPENOFFICE
 
         Dim oSM As Object                 'Root object for accessing OpenOffice FROM VB
         Dim oDesk, oDoc As Object 'First objects FROM the API
-        Dim arg(- 1) As Object                 'Ignore it for the moment !
+        Dim arg(-1) As Object                 'Ignore it for the moment !
         Dim mmerge As Object
         Dim objCoreReflection As Object ' objects from OOo API 
 
@@ -1660,6 +1660,11 @@ Module MOD_OPENOFFICE
                 Wrd.Selection.Find.Replacement.ClearFormatting()
                 'Номер
 
+                'Dim para As Word.Paragraph = WrdDc.Paragraphs.Add()
+                'para.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter
+                'para.Range.InlineShapes.AddPicture(PrPath & "QR_CODE\", sSID & ".png")
+                'para.Range.InsertParagraphAfter()
+
                 Dim rs As Recordset
                 sSQL = "SELECT * FROM kompy WHERE id = " & sSID
                 rs = New Recordset
@@ -3167,7 +3172,9 @@ err_:
             oPara1.Format.SpaceAfter = 24    '24 pt spacing after paragraph.
             oPara1.Range.InsertParagraphAfter()
 
-            oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 7, 2)
+            Dim PIctureLocation As String = PrPath & "\QR_CODE\" & sID & "_" & .Fields("NET_NAME").Value & ".png"
+
+            oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 8, 2)
             oTable.Range.ParagraphFormat.SpaceAfter = 6
             oTable.Borders.Enable = True
 
@@ -3180,6 +3187,7 @@ err_:
             oTable.Cell(5, 1).Range.Text = LNGIniFile.GetString("MOD_OPENOFFICE", "MSG6", "Имя в сети")
             oTable.Cell(6, 1).Range.Text = LNGIniFile.GetString("MOD_OPENOFFICE", "MSG7", "Псевдоним")
             oTable.Cell(7, 1).Range.Text = LNGIniFile.GetString("MOD_OPENOFFICE", "MSG8", "Инвентарный номер")
+            oTable.Cell(8, 1).Range.Text = "QR"
 
             oTable.Cell(1, 2).Range.Text = uname
             oTable.Cell(2, 2).Range.Text = .Fields("filial").Value & "\" & .Fields("mesto").Value & "\" &
@@ -3189,6 +3197,7 @@ err_:
             oTable.Cell(5, 2).Range.Text = .Fields("NET_NAME").Value
             oTable.Cell(6, 2).Range.Text = .Fields("PSEVDONIM").Value
             oTable.Cell(7, 2).Range.Text = .Fields("INV_NO_SYSTEM").Value
+            oTable.Cell(8, 2).Range.InlineShapes.AddPicture(PIctureLocation, LinkToFile:=False, SaveWithDocument:=True)
 
 
             oTable.Rows.Item(1).Range.Font.Bold = True
@@ -4539,7 +4548,6 @@ err_:
         'Debug.Print(oDoc.replaceAll(replacer))
     End Sub
 
-
     Public Sub SRASP(ByVal sSID As String)
         On Error GoTo err_
 
@@ -5077,7 +5085,7 @@ err_:
             Case "OpenOffice.org"
                 Dim oSM As Object            'Root object for accessing OpenOffice FROM VB
                 Dim oDesk, oDoc As Object 'First objects FROM the API
-                Dim arg(- 1) As Object             'Ignore it for the moment !
+                Dim arg(-1) As Object             'Ignore it for the moment !
 
                 oSM = CreateObject("com.sun.star.ServiceManager")
 
@@ -5238,7 +5246,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 Dim d() As String
                 d = Split(sMASTER, " ")
@@ -5255,7 +5263,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#Imaster"
@@ -5269,7 +5277,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
 
                 With Wrd.Selection.Find
@@ -5284,7 +5292,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
 
                 With Wrd.Selection.Find
@@ -5299,7 +5307,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
 
                 '#number
@@ -5315,7 +5323,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
 
                 With Wrd.Selection.Find
@@ -5330,7 +5338,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#branche"
@@ -5344,7 +5352,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#tehn_name"
@@ -5358,7 +5366,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#invnumber"
@@ -5372,7 +5380,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
 
                 With Wrd.Selection.Find
@@ -5387,7 +5395,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
 
                 With Wrd.Selection.Find
@@ -5402,7 +5410,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#tip"
@@ -5416,7 +5424,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#istochnik"
@@ -5430,7 +5438,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#dateisp"
@@ -5444,7 +5452,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
 
                 With Wrd.Selection.Find
@@ -5459,7 +5467,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#raboty"
@@ -5473,7 +5481,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#stoim_Rab"
@@ -5487,7 +5495,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#master"
@@ -5501,7 +5509,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#starttime"
@@ -5515,7 +5523,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#stopdate"
@@ -5529,7 +5537,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#stoptime"
@@ -5543,7 +5551,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#startdate"
@@ -5557,7 +5565,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#date"
@@ -5571,7 +5579,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#time"
@@ -5585,7 +5593,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
                 With Wrd.Selection.Find
                     .Text = "#garant_Rem"
@@ -5599,7 +5607,7 @@ err_:
                     ' .MatchSoundsLike = False
                     .MatchAllWordForms = False
                 End With
-                Wrd.Selection.Find.Execute(Replace := WdReplace.wdReplaceAll)
+                Wrd.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
 
 
                 ' '#garant_Rem
@@ -5610,7 +5618,7 @@ err_:
         End Select
 
         Exit Sub
-        err_:
+err_:
         MsgBox(Err.Description, MsgBoxStyle.Critical, ProGramName)
     End Sub
 
@@ -5770,4 +5778,74 @@ err_:
         ExcelReport.Cells.Range("A1").Select()
 
     End Sub
+
+
+    Public Sub WRD_SEND_PK_INV(ByVal sID As String)
+
+        Dim oWord As Application
+        Dim oDoc As Document
+        Dim oTable As Table
+        '   Dim oPara1 As Paragraph
+
+        'Start Word and open the document template.
+        oWord = CreateObject("Word.Application")
+        oWord.Visible = True
+        oDoc = oWord.Documents.Add
+
+        'Insert a paragraph at the beginning of the document.
+        '  oPara1 = oDoc.Content.Paragraphs.Add
+        ' oPara1.Range.Text = LNGIniFile.GetString("MOD_OPENOFFICE", "MSG1", "Паспорт компьютера №") & " " & sID
+        '  oPara1.Range.Font.Bold = True
+        ' oPara1.Format.SpaceAfter = 24    '24 pt spacing after paragraph.
+        ' oPara1.Range.InsertParagraphAfter()
+
+        oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 2)
+        oTable.Range.ParagraphFormat.SpaceAfter = 6
+        oTable.Borders.Enable = True
+
+        Dim PIctureLocation As String = PrPath & "\QR_CODE\" & sID & ".png"
+
+        oTable.Cell(1, 1).Range.InlineShapes.AddPicture(PIctureLocation, LinkToFile:=False, SaveWithDocument:=True)
+        oTable.Cell(1, 2).Range.Text = frmComputers.txtSBSN.Text
+
+    End Sub
+
+    Public Sub ooo_SEND_PK_INV(ByVal sID As String, ByVal sIDn As String)
+
+        Dim oSM As Object                 'Root object for accessing OpenOffice FROM VB
+        Dim oDesk, oDoc As Object 'First objects FROM the API
+        Dim arg(-1) As Object                 'Ignore it for the moment !
+        Dim mmerge As Object
+        Dim objCoreReflection As Object ' objects from OOo API 
+
+        'Instanciate OOo : this line is mandatory with VB for OOo API
+        oSM = CreateObject("com.sun.star.ServiceManager")
+        'Create the first and most important service
+        objCoreReflection = oSM.createInstance("com.sun.star.reflection.CoreReflection")
+
+        oDesk = oSM.createInstance("com.sun.star.frame.Desktop")
+        'Create a new doc
+
+        oDoc = oDesk.loadComponentFROMURL("private:factory/swriter", "_blank", 0, arg)
+
+        ' jon code
+        Dim objText As Object, objCursor As Object
+
+        Dim objTable As Object ' objects from OOo API 
+        Dim objRows, objRow As Object
+
+        objText = oDoc.GetText
+        objCursor = objText.createTextCursor
+
+        ' replace all
+        Dim oSrch As Object
+
+        insertIntoCell("A1", PrPath & "\QR_CODE\" & sIDn & ".png", objTable)
+        insertIntoCell("B1", frmComputers.txtSBSN.Text, objTable)
+
+        objText.insertControlCharacter(objCursor, 0, False)
+
+
+    End Sub
+
 End Module

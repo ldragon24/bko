@@ -24,9 +24,7 @@ Public Class frmSetup
 
             Return FontWindow.Font
 
-
         Else
-
 
         End If
         'textbox1.font=changefont(wndfont)
@@ -418,6 +416,23 @@ Public Class frmSetup
                 RadioButton10.Checked = True
 
         End Select
+
+        uname = objIniFile.GetString("General", "TREE_REFRESH", "0")
+
+        Select Case uname
+
+            Case "1"
+
+                RadioButton12.Checked = False
+                RadioButton13.Checked = True
+
+            Case "0"
+
+                RadioButton12.Checked = True
+                RadioButton13.Checked = False
+
+        End Select
+
 
         uname = objIniFile.GetString("TREE", "REM", "0")
 
@@ -1643,4 +1658,18 @@ err_:
     End Sub
 
 
+    Private Sub RadioButton12_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles RadioButton12.CheckedChanged
+
+
+        Dim objIniFile As New IniFile(PrPath & "base.ini")
+        objIniFile.WriteString("General", "TREE_REFRESH", "0")
+        TREE_REFRESH = 0
+
+    End Sub
+
+    Private Sub RadioButton13_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles RadioButton13.CheckedChanged
+        Dim objIniFile As New IniFile(PrPath & "base.ini")
+        objIniFile.WriteString("General", "TREE_REFRESH", "1")
+        TREE_REFRESH = 1
+    End Sub
 End Class

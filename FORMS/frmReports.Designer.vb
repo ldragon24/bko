@@ -79,7 +79,6 @@ Partial Class frmReports
         Me.chk_K34 = New System.Windows.Forms.CheckBox()
         Me.gbInf = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
-        Me.chk_K46 = New System.Windows.Forms.CheckBox()
         Me.chk_K52 = New System.Windows.Forms.CheckBox()
         Me.chk_K40 = New System.Windows.Forms.CheckBox()
         Me.chk_K51 = New System.Windows.Forms.CheckBox()
@@ -92,6 +91,7 @@ Partial Class frmReports
         Me.chk_K43 = New System.Windows.Forms.CheckBox()
         Me.chk_K44 = New System.Windows.Forms.CheckBox()
         Me.chk_K45 = New System.Windows.Forms.CheckBox()
+        Me.chk_K46 = New System.Windows.Forms.CheckBox()
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.btnSendToOffice = New System.Windows.Forms.Button()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -247,9 +247,9 @@ Partial Class frmReports
         '
         Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(3, 6)
+        Me.Label6.Location = New System.Drawing.Point(3, 7)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(94, 15)
+        Me.Label6.Size = New System.Drawing.Size(94, 13)
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "Филиал"
         '
@@ -269,9 +269,9 @@ Partial Class frmReports
         Me.optPC.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.optPC.AutoSize = True
         Me.optPC.Checked = True
-        Me.optPC.Location = New System.Drawing.Point(357, 4)
+        Me.optPC.Location = New System.Drawing.Point(357, 5)
         Me.optPC.Name = "optPC"
-        Me.optPC.Size = New System.Drawing.Size(153, 19)
+        Me.optPC.Size = New System.Drawing.Size(153, 17)
         Me.optPC.TabIndex = 4
         Me.optPC.TabStop = True
         Me.optPC.Text = "Только компьютеры"
@@ -347,9 +347,9 @@ Partial Class frmReports
         'chk_K28
         '
         Me.chk_K28.AutoSize = True
-        Me.chk_K28.Location = New System.Drawing.Point(153, 328)
+        Me.chk_K28.Location = New System.Drawing.Point(135, 302)
         Me.chk_K28.Name = "chk_K28"
-        Me.chk_K28.Size = New System.Drawing.Size(158, 19)
+        Me.chk_K28.Size = New System.Drawing.Size(143, 17)
         Me.chk_K28.TabIndex = 27
         Me.chk_K28.Text = "С.Н. системного блока"
         Me.chk_K28.UseVisualStyleBackColor = True
@@ -359,7 +359,7 @@ Partial Class frmReports
         Me.chk_K1.AutoSize = True
         Me.chk_K1.Location = New System.Drawing.Point(3, 3)
         Me.chk_K1.Name = "chk_K1"
-        Me.chk_K1.Size = New System.Drawing.Size(90, 19)
+        Me.chk_K1.Size = New System.Drawing.Size(82, 17)
         Me.chk_K1.TabIndex = 0
         Me.chk_K1.Text = "Процессор"
         Me.chk_K1.UseVisualStyleBackColor = True
@@ -367,9 +367,9 @@ Partial Class frmReports
         'chk_K27
         '
         Me.chk_K27.AutoSize = True
-        Me.chk_K27.Location = New System.Drawing.Point(153, 303)
+        Me.chk_K27.Location = New System.Drawing.Point(135, 279)
         Me.chk_K27.Name = "chk_K27"
-        Me.chk_K27.Size = New System.Drawing.Size(227, 19)
+        Me.chk_K27.Size = New System.Drawing.Size(201, 17)
         Me.chk_K27.TabIndex = 26
         Me.chk_K27.Text = "Производитель системного блока"
         Me.chk_K27.UseVisualStyleBackColor = True
@@ -377,9 +377,9 @@ Partial Class frmReports
         'chk_K15
         '
         Me.chk_K15.AutoSize = True
-        Me.chk_K15.Location = New System.Drawing.Point(153, 3)
+        Me.chk_K15.Location = New System.Drawing.Point(135, 3)
         Me.chk_K15.Name = "chk_K15"
-        Me.chk_K15.Size = New System.Drawing.Size(72, 19)
+        Me.chk_K15.Size = New System.Drawing.Size(65, 17)
         Me.chk_K15.TabIndex = 14
         Me.chk_K15.Text = "RAM (3)"
         Me.chk_K15.UseVisualStyleBackColor = True
@@ -387,9 +387,9 @@ Partial Class frmReports
         'chk_K26
         '
         Me.chk_K26.AutoSize = True
-        Me.chk_K26.Location = New System.Drawing.Point(153, 278)
+        Me.chk_K26.Location = New System.Drawing.Point(135, 256)
         Me.chk_K26.Name = "chk_K26"
-        Me.chk_K26.Size = New System.Drawing.Size(83, 19)
+        Me.chk_K26.Size = New System.Drawing.Size(77, 17)
         Me.chk_K26.TabIndex = 25
         Me.chk_K26.Text = "Дисковод"
         Me.chk_K26.UseVisualStyleBackColor = True
@@ -397,9 +397,9 @@ Partial Class frmReports
         'chk_K2
         '
         Me.chk_K2.AutoSize = True
-        Me.chk_K2.Location = New System.Drawing.Point(3, 28)
+        Me.chk_K2.Location = New System.Drawing.Point(3, 26)
         Me.chk_K2.Name = "chk_K2"
-        Me.chk_K2.Size = New System.Drawing.Size(144, 19)
+        Me.chk_K2.Size = New System.Drawing.Size(126, 17)
         Me.chk_K2.TabIndex = 1
         Me.chk_K2.Text = "Материнская плата"
         Me.chk_K2.UseVisualStyleBackColor = True
@@ -407,9 +407,9 @@ Partial Class frmReports
         'chk_K25
         '
         Me.chk_K25.AutoSize = True
-        Me.chk_K25.Location = New System.Drawing.Point(153, 253)
+        Me.chk_K25.Location = New System.Drawing.Point(135, 233)
         Me.chk_K25.Name = "chk_K25"
-        Me.chk_K25.Size = New System.Drawing.Size(71, 19)
+        Me.chk_K25.Size = New System.Drawing.Size(64, 17)
         Me.chk_K25.TabIndex = 24
         Me.chk_K25.Text = "MAC (2)"
         Me.chk_K25.UseVisualStyleBackColor = True
@@ -417,9 +417,9 @@ Partial Class frmReports
         'chk_K3
         '
         Me.chk_K3.AutoSize = True
-        Me.chk_K3.Location = New System.Drawing.Point(3, 53)
+        Me.chk_K3.Location = New System.Drawing.Point(3, 49)
         Me.chk_K3.Name = "chk_K3"
-        Me.chk_K3.Size = New System.Drawing.Size(100, 19)
+        Me.chk_K3.Size = New System.Drawing.Size(89, 17)
         Me.chk_K3.TabIndex = 2
         Me.chk_K3.Text = "Видео карта"
         Me.chk_K3.UseVisualStyleBackColor = True
@@ -427,9 +427,9 @@ Partial Class frmReports
         'chk_K24
         '
         Me.chk_K24.AutoSize = True
-        Me.chk_K24.Location = New System.Drawing.Point(153, 228)
+        Me.chk_K24.Location = New System.Drawing.Point(135, 210)
         Me.chk_K24.Name = "chk_K24"
-        Me.chk_K24.Size = New System.Drawing.Size(71, 19)
+        Me.chk_K24.Size = New System.Drawing.Size(64, 17)
         Me.chk_K24.TabIndex = 23
         Me.chk_K24.Text = "MAC (1)"
         Me.chk_K24.UseVisualStyleBackColor = True
@@ -437,9 +437,9 @@ Partial Class frmReports
         'chk_K4
         '
         Me.chk_K4.AutoSize = True
-        Me.chk_K4.Location = New System.Drawing.Point(3, 78)
+        Me.chk_K4.Location = New System.Drawing.Point(3, 72)
         Me.chk_K4.Name = "chk_K4"
-        Me.chk_K4.Size = New System.Drawing.Size(118, 19)
+        Me.chk_K4.Size = New System.Drawing.Size(106, 17)
         Me.chk_K4.TabIndex = 3
         Me.chk_K4.Text = "Звуковая карта"
         Me.chk_K4.UseVisualStyleBackColor = True
@@ -447,9 +447,9 @@ Partial Class frmReports
         'chk_K23
         '
         Me.chk_K23.AutoSize = True
-        Me.chk_K23.Location = New System.Drawing.Point(153, 203)
+        Me.chk_K23.Location = New System.Drawing.Point(135, 187)
         Me.chk_K23.Name = "chk_K23"
-        Me.chk_K23.Size = New System.Drawing.Size(56, 19)
+        Me.chk_K23.Size = New System.Drawing.Size(51, 17)
         Me.chk_K23.TabIndex = 22
         Me.chk_K23.Text = "IP (2)"
         Me.chk_K23.UseVisualStyleBackColor = True
@@ -457,9 +457,9 @@ Partial Class frmReports
         'chk_K5
         '
         Me.chk_K5.AutoSize = True
-        Me.chk_K5.Location = New System.Drawing.Point(3, 103)
+        Me.chk_K5.Location = New System.Drawing.Point(3, 95)
         Me.chk_K5.Name = "chk_K5"
-        Me.chk_K5.Size = New System.Drawing.Size(72, 19)
+        Me.chk_K5.Size = New System.Drawing.Size(65, 17)
         Me.chk_K5.TabIndex = 4
         Me.chk_K5.Text = "HDD (1)"
         Me.chk_K5.UseVisualStyleBackColor = True
@@ -467,9 +467,9 @@ Partial Class frmReports
         'chk_K22
         '
         Me.chk_K22.AutoSize = True
-        Me.chk_K22.Location = New System.Drawing.Point(153, 178)
+        Me.chk_K22.Location = New System.Drawing.Point(135, 164)
         Me.chk_K22.Name = "chk_K22"
-        Me.chk_K22.Size = New System.Drawing.Size(56, 19)
+        Me.chk_K22.Size = New System.Drawing.Size(51, 17)
         Me.chk_K22.TabIndex = 21
         Me.chk_K22.Text = "IP (1)"
         Me.chk_K22.UseVisualStyleBackColor = True
@@ -477,9 +477,9 @@ Partial Class frmReports
         'chk_K6
         '
         Me.chk_K6.AutoSize = True
-        Me.chk_K6.Location = New System.Drawing.Point(3, 128)
+        Me.chk_K6.Location = New System.Drawing.Point(3, 118)
         Me.chk_K6.Name = "chk_K6"
-        Me.chk_K6.Size = New System.Drawing.Size(92, 19)
+        Me.chk_K6.Size = New System.Drawing.Size(83, 17)
         Me.chk_K6.TabIndex = 5
         Me.chk_K6.Text = "HDD (1) SN"
         Me.chk_K6.UseVisualStyleBackColor = True
@@ -487,9 +487,9 @@ Partial Class frmReports
         'chk_K21
         '
         Me.chk_K21.AutoSize = True
-        Me.chk_K21.Location = New System.Drawing.Point(153, 153)
+        Me.chk_K21.Location = New System.Drawing.Point(135, 141)
         Me.chk_K21.Name = "chk_K21"
-        Me.chk_K21.Size = New System.Drawing.Size(132, 19)
+        Me.chk_K21.Size = New System.Drawing.Size(115, 17)
         Me.chk_K21.TabIndex = 20
         Me.chk_K21.Text = "Сетевая карта (2)"
         Me.chk_K21.UseVisualStyleBackColor = True
@@ -497,9 +497,9 @@ Partial Class frmReports
         'chk_K7
         '
         Me.chk_K7.AutoSize = True
-        Me.chk_K7.Location = New System.Drawing.Point(3, 153)
+        Me.chk_K7.Location = New System.Drawing.Point(3, 141)
         Me.chk_K7.Name = "chk_K7"
-        Me.chk_K7.Size = New System.Drawing.Size(72, 19)
+        Me.chk_K7.Size = New System.Drawing.Size(65, 17)
         Me.chk_K7.TabIndex = 6
         Me.chk_K7.Text = "HDD (2)"
         Me.chk_K7.UseVisualStyleBackColor = True
@@ -507,9 +507,9 @@ Partial Class frmReports
         'chk_K20
         '
         Me.chk_K20.AutoSize = True
-        Me.chk_K20.Location = New System.Drawing.Point(153, 128)
+        Me.chk_K20.Location = New System.Drawing.Point(135, 118)
         Me.chk_K20.Name = "chk_K20"
-        Me.chk_K20.Size = New System.Drawing.Size(132, 19)
+        Me.chk_K20.Size = New System.Drawing.Size(115, 17)
         Me.chk_K20.TabIndex = 19
         Me.chk_K20.Text = "Сетевая карта (1)"
         Me.chk_K20.UseVisualStyleBackColor = True
@@ -517,9 +517,9 @@ Partial Class frmReports
         'chk_K8
         '
         Me.chk_K8.AutoSize = True
-        Me.chk_K8.Location = New System.Drawing.Point(3, 178)
+        Me.chk_K8.Location = New System.Drawing.Point(3, 164)
         Me.chk_K8.Name = "chk_K8"
-        Me.chk_K8.Size = New System.Drawing.Size(92, 19)
+        Me.chk_K8.Size = New System.Drawing.Size(83, 17)
         Me.chk_K8.TabIndex = 7
         Me.chk_K8.Text = "HDD (2) SN"
         Me.chk_K8.UseVisualStyleBackColor = True
@@ -527,9 +527,9 @@ Partial Class frmReports
         'chk_K19
         '
         Me.chk_K19.AutoSize = True
-        Me.chk_K19.Location = New System.Drawing.Point(153, 103)
+        Me.chk_K19.Location = New System.Drawing.Point(135, 95)
         Me.chk_K19.Name = "chk_K19"
-        Me.chk_K19.Size = New System.Drawing.Size(186, 19)
+        Me.chk_K19.Size = New System.Drawing.Size(163, 17)
         Me.chk_K19.TabIndex = 18
         Me.chk_K19.Text = "Оптический накопитель (3)"
         Me.chk_K19.UseVisualStyleBackColor = True
@@ -537,9 +537,9 @@ Partial Class frmReports
         'chk_K9
         '
         Me.chk_K9.AutoSize = True
-        Me.chk_K9.Location = New System.Drawing.Point(3, 203)
+        Me.chk_K9.Location = New System.Drawing.Point(3, 187)
         Me.chk_K9.Name = "chk_K9"
-        Me.chk_K9.Size = New System.Drawing.Size(72, 19)
+        Me.chk_K9.Size = New System.Drawing.Size(65, 17)
         Me.chk_K9.TabIndex = 8
         Me.chk_K9.Text = "HDD (3)"
         Me.chk_K9.UseVisualStyleBackColor = True
@@ -547,9 +547,9 @@ Partial Class frmReports
         'chk_K10
         '
         Me.chk_K10.AutoSize = True
-        Me.chk_K10.Location = New System.Drawing.Point(3, 228)
+        Me.chk_K10.Location = New System.Drawing.Point(3, 210)
         Me.chk_K10.Name = "chk_K10"
-        Me.chk_K10.Size = New System.Drawing.Size(92, 19)
+        Me.chk_K10.Size = New System.Drawing.Size(83, 17)
         Me.chk_K10.TabIndex = 9
         Me.chk_K10.Text = "HDD (3) SN"
         Me.chk_K10.UseVisualStyleBackColor = True
@@ -557,9 +557,9 @@ Partial Class frmReports
         'chk_K17
         '
         Me.chk_K17.AutoSize = True
-        Me.chk_K17.Location = New System.Drawing.Point(153, 53)
+        Me.chk_K17.Location = New System.Drawing.Point(135, 49)
         Me.chk_K17.Name = "chk_K17"
-        Me.chk_K17.Size = New System.Drawing.Size(186, 19)
+        Me.chk_K17.Size = New System.Drawing.Size(163, 17)
         Me.chk_K17.TabIndex = 16
         Me.chk_K17.Text = "Оптический накопитель (1)"
         Me.chk_K17.UseVisualStyleBackColor = True
@@ -567,9 +567,9 @@ Partial Class frmReports
         'chk_K11
         '
         Me.chk_K11.AutoSize = True
-        Me.chk_K11.Location = New System.Drawing.Point(3, 253)
+        Me.chk_K11.Location = New System.Drawing.Point(3, 233)
         Me.chk_K11.Name = "chk_K11"
-        Me.chk_K11.Size = New System.Drawing.Size(72, 19)
+        Me.chk_K11.Size = New System.Drawing.Size(65, 17)
         Me.chk_K11.TabIndex = 10
         Me.chk_K11.Text = "HDD (4)"
         Me.chk_K11.UseVisualStyleBackColor = True
@@ -577,9 +577,9 @@ Partial Class frmReports
         'chk_K16
         '
         Me.chk_K16.AutoSize = True
-        Me.chk_K16.Location = New System.Drawing.Point(153, 28)
+        Me.chk_K16.Location = New System.Drawing.Point(135, 26)
         Me.chk_K16.Name = "chk_K16"
-        Me.chk_K16.Size = New System.Drawing.Size(72, 19)
+        Me.chk_K16.Size = New System.Drawing.Size(65, 17)
         Me.chk_K16.TabIndex = 15
         Me.chk_K16.Text = "RAM (4)"
         Me.chk_K16.UseVisualStyleBackColor = True
@@ -587,9 +587,9 @@ Partial Class frmReports
         'chk_K12
         '
         Me.chk_K12.AutoSize = True
-        Me.chk_K12.Location = New System.Drawing.Point(3, 278)
+        Me.chk_K12.Location = New System.Drawing.Point(3, 256)
         Me.chk_K12.Name = "chk_K12"
-        Me.chk_K12.Size = New System.Drawing.Size(92, 19)
+        Me.chk_K12.Size = New System.Drawing.Size(83, 17)
         Me.chk_K12.TabIndex = 11
         Me.chk_K12.Text = "HDD (4) SN"
         Me.chk_K12.UseVisualStyleBackColor = True
@@ -597,9 +597,9 @@ Partial Class frmReports
         'chk_K14
         '
         Me.chk_K14.AutoSize = True
-        Me.chk_K14.Location = New System.Drawing.Point(3, 328)
+        Me.chk_K14.Location = New System.Drawing.Point(3, 302)
         Me.chk_K14.Name = "chk_K14"
-        Me.chk_K14.Size = New System.Drawing.Size(72, 19)
+        Me.chk_K14.Size = New System.Drawing.Size(65, 17)
         Me.chk_K14.TabIndex = 13
         Me.chk_K14.Text = "RAM (2)"
         Me.chk_K14.UseVisualStyleBackColor = True
@@ -607,9 +607,9 @@ Partial Class frmReports
         'chk_K13
         '
         Me.chk_K13.AutoSize = True
-        Me.chk_K13.Location = New System.Drawing.Point(3, 303)
+        Me.chk_K13.Location = New System.Drawing.Point(3, 279)
         Me.chk_K13.Name = "chk_K13"
-        Me.chk_K13.Size = New System.Drawing.Size(72, 19)
+        Me.chk_K13.Size = New System.Drawing.Size(65, 17)
         Me.chk_K13.TabIndex = 12
         Me.chk_K13.Text = "RAM (1)"
         Me.chk_K13.UseVisualStyleBackColor = True
@@ -617,9 +617,9 @@ Partial Class frmReports
         'chk_K18
         '
         Me.chk_K18.AutoSize = True
-        Me.chk_K18.Location = New System.Drawing.Point(153, 78)
+        Me.chk_K18.Location = New System.Drawing.Point(135, 72)
         Me.chk_K18.Name = "chk_K18"
-        Me.chk_K18.Size = New System.Drawing.Size(186, 19)
+        Me.chk_K18.Size = New System.Drawing.Size(163, 17)
         Me.chk_K18.TabIndex = 17
         Me.chk_K18.Text = "Оптический накопитель (2)"
         Me.chk_K18.UseVisualStyleBackColor = True
@@ -628,9 +628,9 @@ Partial Class frmReports
         '
         Me.optOTH.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.optOTH.AutoSize = True
-        Me.optOTH.Location = New System.Drawing.Point(516, 4)
+        Me.optOTH.Location = New System.Drawing.Point(516, 5)
         Me.optOTH.Name = "optOTH"
-        Me.optOTH.Size = New System.Drawing.Size(205, 19)
+        Me.optOTH.Size = New System.Drawing.Size(205, 17)
         Me.optOTH.TabIndex = 5
         Me.optOTH.TabStop = True
         Me.optOTH.Text = "Разное"
@@ -655,9 +655,9 @@ Partial Class frmReports
         '
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(3, 33)
+        Me.Label7.Location = New System.Drawing.Point(3, 34)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(94, 15)
+        Me.Label7.Size = New System.Drawing.Size(94, 13)
         Me.Label7.TabIndex = 1
         Me.Label7.Text = "Отдел"
         '
@@ -719,9 +719,9 @@ Partial Class frmReports
         'chk_K39
         '
         Me.chk_K39.AutoSize = True
-        Me.chk_K39.Location = New System.Drawing.Point(3, 253)
+        Me.chk_K39.Location = New System.Drawing.Point(3, 233)
         Me.chk_K39.Name = "chk_K39"
-        Me.chk_K39.Size = New System.Drawing.Size(107, 19)
+        Me.chk_K39.Size = New System.Drawing.Size(95, 17)
         Me.chk_K39.TabIndex = 37
         Me.chk_K39.Text = "Блок питания"
         Me.chk_K39.UseVisualStyleBackColor = True
@@ -731,7 +731,7 @@ Partial Class frmReports
         Me.chk_K29.AutoSize = True
         Me.chk_K29.Location = New System.Drawing.Point(3, 3)
         Me.chk_K29.Name = "chk_K29"
-        Me.chk_K29.Size = New System.Drawing.Size(80, 19)
+        Me.chk_K29.Size = New System.Drawing.Size(70, 17)
         Me.chk_K29.TabIndex = 27
         Me.chk_K29.Text = "Монитор"
         Me.chk_K29.UseVisualStyleBackColor = True
@@ -739,9 +739,9 @@ Partial Class frmReports
         'chk_K38
         '
         Me.chk_K38.AutoSize = True
-        Me.chk_K38.Location = New System.Drawing.Point(3, 228)
+        Me.chk_K38.Location = New System.Drawing.Point(3, 210)
         Me.chk_K38.Name = "chk_K38"
-        Me.chk_K38.Size = New System.Drawing.Size(67, 19)
+        Me.chk_K38.Size = New System.Drawing.Size(62, 17)
         Me.chk_K38.TabIndex = 36
         Me.chk_K38.Text = "Корпус"
         Me.chk_K38.UseVisualStyleBackColor = True
@@ -749,9 +749,9 @@ Partial Class frmReports
         'chk_K30
         '
         Me.chk_K30.AutoSize = True
-        Me.chk_K30.Location = New System.Drawing.Point(3, 28)
+        Me.chk_K30.Location = New System.Drawing.Point(3, 26)
         Me.chk_K30.Name = "chk_K30"
-        Me.chk_K30.Size = New System.Drawing.Size(105, 19)
+        Me.chk_K30.Size = New System.Drawing.Size(93, 17)
         Me.chk_K30.TabIndex = 28
         Me.chk_K30.Text = "СН монитора"
         Me.chk_K30.UseVisualStyleBackColor = True
@@ -759,9 +759,9 @@ Partial Class frmReports
         'chk_K37
         '
         Me.chk_K37.AutoSize = True
-        Me.chk_K37.Location = New System.Drawing.Point(3, 203)
+        Me.chk_K37.Location = New System.Drawing.Point(3, 187)
         Me.chk_K37.Name = "chk_K37"
-        Me.chk_K37.Size = New System.Drawing.Size(63, 19)
+        Me.chk_K37.Size = New System.Drawing.Size(57, 17)
         Me.chk_K37.TabIndex = 35
         Me.chk_K37.Text = "Мышь"
         Me.chk_K37.UseVisualStyleBackColor = True
@@ -769,9 +769,9 @@ Partial Class frmReports
         'chk_K31
         '
         Me.chk_K31.AutoSize = True
-        Me.chk_K31.Location = New System.Drawing.Point(3, 53)
+        Me.chk_K31.Location = New System.Drawing.Point(3, 49)
         Me.chk_K31.Name = "chk_K31"
-        Me.chk_K31.Size = New System.Drawing.Size(96, 19)
+        Me.chk_K31.Size = New System.Drawing.Size(84, 17)
         Me.chk_K31.TabIndex = 29
         Me.chk_K31.Text = "Принтер (1)"
         Me.chk_K31.UseVisualStyleBackColor = True
@@ -779,9 +779,9 @@ Partial Class frmReports
         'chk_K36
         '
         Me.chk_K36.AutoSize = True
-        Me.chk_K36.Location = New System.Drawing.Point(3, 178)
+        Me.chk_K36.Location = New System.Drawing.Point(3, 164)
         Me.chk_K36.Name = "chk_K36"
-        Me.chk_K36.Size = New System.Drawing.Size(96, 19)
+        Me.chk_K36.Size = New System.Drawing.Size(85, 17)
         Me.chk_K36.TabIndex = 34
         Me.chk_K36.Text = "Клавиатура"
         Me.chk_K36.UseVisualStyleBackColor = True
@@ -789,9 +789,9 @@ Partial Class frmReports
         'chk_K32
         '
         Me.chk_K32.AutoSize = True
-        Me.chk_K32.Location = New System.Drawing.Point(3, 78)
+        Me.chk_K32.Location = New System.Drawing.Point(3, 72)
         Me.chk_K32.Name = "chk_K32"
-        Me.chk_K32.Size = New System.Drawing.Size(96, 19)
+        Me.chk_K32.Size = New System.Drawing.Size(84, 17)
         Me.chk_K32.TabIndex = 30
         Me.chk_K32.Text = "Принтер (2)"
         Me.chk_K32.UseVisualStyleBackColor = True
@@ -799,9 +799,9 @@ Partial Class frmReports
         'chk_K35
         '
         Me.chk_K35.AutoSize = True
-        Me.chk_K35.Location = New System.Drawing.Point(3, 153)
+        Me.chk_K35.Location = New System.Drawing.Point(3, 141)
         Me.chk_K35.Name = "chk_K35"
-        Me.chk_K35.Size = New System.Drawing.Size(68, 19)
+        Me.chk_K35.Size = New System.Drawing.Size(61, 17)
         Me.chk_K35.TabIndex = 33
         Me.chk_K35.Text = "Модем"
         Me.chk_K35.UseVisualStyleBackColor = True
@@ -809,9 +809,9 @@ Partial Class frmReports
         'chk_K33
         '
         Me.chk_K33.AutoSize = True
-        Me.chk_K33.Location = New System.Drawing.Point(3, 103)
+        Me.chk_K33.Location = New System.Drawing.Point(3, 95)
         Me.chk_K33.Name = "chk_K33"
-        Me.chk_K33.Size = New System.Drawing.Size(96, 19)
+        Me.chk_K33.Size = New System.Drawing.Size(84, 17)
         Me.chk_K33.TabIndex = 31
         Me.chk_K33.Text = "Принтер (3)"
         Me.chk_K33.UseVisualStyleBackColor = True
@@ -819,9 +819,9 @@ Partial Class frmReports
         'chk_K34
         '
         Me.chk_K34.AutoSize = True
-        Me.chk_K34.Location = New System.Drawing.Point(3, 128)
+        Me.chk_K34.Location = New System.Drawing.Point(3, 118)
         Me.chk_K34.Name = "chk_K34"
-        Me.chk_K34.Size = New System.Drawing.Size(76, 19)
+        Me.chk_K34.Size = New System.Drawing.Size(69, 17)
         Me.chk_K34.TabIndex = 32
         Me.chk_K34.Text = "Колонки"
         Me.chk_K34.UseVisualStyleBackColor = True
@@ -841,7 +841,6 @@ Partial Class frmReports
         '
         Me.TableLayoutPanel9.ColumnCount = 1
         Me.TableLayoutPanel9.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel9.Controls.Add(Me.chk_K46, 0, 12)
         Me.TableLayoutPanel9.Controls.Add(Me.chk_K52, 0, 11)
         Me.TableLayoutPanel9.Controls.Add(Me.chk_K40, 0, 0)
         Me.TableLayoutPanel9.Controls.Add(Me.chk_K51, 0, 10)
@@ -854,10 +853,11 @@ Partial Class frmReports
         Me.TableLayoutPanel9.Controls.Add(Me.chk_K43, 0, 4)
         Me.TableLayoutPanel9.Controls.Add(Me.chk_K44, 0, 5)
         Me.TableLayoutPanel9.Controls.Add(Me.chk_K45, 0, 6)
+        Me.TableLayoutPanel9.Controls.Add(Me.chk_K46, 0, 12)
         Me.TableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel9.Location = New System.Drawing.Point(3, 16)
         Me.TableLayoutPanel9.Name = "TableLayoutPanel9"
-        Me.TableLayoutPanel9.RowCount = 13
+        Me.TableLayoutPanel9.RowCount = 14
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle())
@@ -871,27 +871,17 @@ Partial Class frmReports
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel9.Size = New System.Drawing.Size(199, 325)
         Me.TableLayoutPanel9.TabIndex = 25
-        '
-        'chk_K46
-        '
-        Me.chk_K46.AutoSize = True
-        Me.chk_K46.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.chk_K46.Location = New System.Drawing.Point(3, 308)
-        Me.chk_K46.Name = "chk_K46"
-        Me.chk_K46.Size = New System.Drawing.Size(145, 20)
-        Me.chk_K46.TabIndex = 43
-        Me.chk_K46.Text = "Установить всё"
-        Me.chk_K46.UseVisualStyleBackColor = True
         '
         'chk_K52
         '
         Me.chk_K52.AutoSize = True
         Me.chk_K52.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.chk_K52.Location = New System.Drawing.Point(3, 282)
+        Me.chk_K52.Location = New System.Drawing.Point(3, 256)
         Me.chk_K52.Name = "chk_K52"
-        Me.chk_K52.Size = New System.Drawing.Size(123, 20)
+        Me.chk_K52.Size = New System.Drawing.Size(99, 17)
         Me.chk_K52.TabIndex = 49
         Me.chk_K52.Text = "Пользователь"
         Me.chk_K52.UseVisualStyleBackColor = True
@@ -901,7 +891,7 @@ Partial Class frmReports
         Me.chk_K40.AutoSize = True
         Me.chk_K40.Location = New System.Drawing.Point(3, 3)
         Me.chk_K40.Name = "chk_K40"
-        Me.chk_K40.Size = New System.Drawing.Size(161, 19)
+        Me.chk_K40.Size = New System.Drawing.Size(145, 17)
         Me.chk_K40.TabIndex = 37
         Me.chk_K40.Text = "И.Н. Системного блока"
         Me.chk_K40.UseVisualStyleBackColor = True
@@ -910,9 +900,9 @@ Partial Class frmReports
         '
         Me.chk_K51.AutoSize = True
         Me.chk_K51.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.chk_K51.Location = New System.Drawing.Point(3, 256)
+        Me.chk_K51.Location = New System.Drawing.Point(3, 233)
         Me.chk_K51.Name = "chk_K51"
-        Me.chk_K51.Size = New System.Drawing.Size(110, 20)
+        Me.chk_K51.Size = New System.Drawing.Size(87, 17)
         Me.chk_K51.TabIndex = 48
         Me.chk_K51.Text = "Назначение"
         Me.chk_K51.UseVisualStyleBackColor = True
@@ -920,9 +910,9 @@ Partial Class frmReports
         'chk_K41
         '
         Me.chk_K41.AutoSize = True
-        Me.chk_K41.Location = New System.Drawing.Point(3, 28)
+        Me.chk_K41.Location = New System.Drawing.Point(3, 26)
         Me.chk_K41.Name = "chk_K41"
-        Me.chk_K41.Size = New System.Drawing.Size(114, 19)
+        Me.chk_K41.Size = New System.Drawing.Size(101, 17)
         Me.chk_K41.TabIndex = 38
         Me.chk_K41.Text = "И.Н. Монитора"
         Me.chk_K41.UseVisualStyleBackColor = True
@@ -931,9 +921,9 @@ Partial Class frmReports
         '
         Me.chk_K50.AutoSize = True
         Me.chk_K50.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.chk_K50.Location = New System.Drawing.Point(3, 230)
+        Me.chk_K50.Location = New System.Drawing.Point(3, 210)
         Me.chk_K50.Name = "chk_K50"
-        Me.chk_K50.Size = New System.Drawing.Size(100, 20)
+        Me.chk_K50.Size = New System.Drawing.Size(84, 17)
         Me.chk_K50.TabIndex = 47
         Me.chk_K50.Text = "Поставщик"
         Me.chk_K50.UseVisualStyleBackColor = True
@@ -941,9 +931,9 @@ Partial Class frmReports
         'chk_K42
         '
         Me.chk_K42.AutoSize = True
-        Me.chk_K42.Location = New System.Drawing.Point(3, 53)
+        Me.chk_K42.Location = New System.Drawing.Point(3, 49)
         Me.chk_K42.Name = "chk_K42"
-        Me.chk_K42.Size = New System.Drawing.Size(80, 19)
+        Me.chk_K42.Size = New System.Drawing.Size(74, 17)
         Me.chk_K42.TabIndex = 39
         Me.chk_K42.Text = "И.Н. ИБП"
         Me.chk_K42.UseVisualStyleBackColor = True
@@ -952,9 +942,9 @@ Partial Class frmReports
         '
         Me.chk_K49.AutoSize = True
         Me.chk_K49.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.chk_K49.Location = New System.Drawing.Point(3, 204)
+        Me.chk_K49.Location = New System.Drawing.Point(3, 187)
         Me.chk_K49.Name = "chk_K49"
-        Me.chk_K49.Size = New System.Drawing.Size(103, 20)
+        Me.chk_K49.Size = New System.Drawing.Size(85, 17)
         Me.chk_K49.TabIndex = 46
         Me.chk_K49.Text = "Дата ввода"
         Me.chk_K49.UseVisualStyleBackColor = True
@@ -962,9 +952,9 @@ Partial Class frmReports
         'chk_K47
         '
         Me.chk_K47.AutoSize = True
-        Me.chk_K47.Location = New System.Drawing.Point(3, 78)
+        Me.chk_K47.Location = New System.Drawing.Point(3, 72)
         Me.chk_K47.Name = "chk_K47"
-        Me.chk_K47.Size = New System.Drawing.Size(112, 19)
+        Me.chk_K47.Size = New System.Drawing.Size(100, 17)
         Me.chk_K47.TabIndex = 44
         Me.chk_K47.Text = "И.Н. Принтера"
         Me.chk_K47.UseVisualStyleBackColor = True
@@ -973,9 +963,9 @@ Partial Class frmReports
         '
         Me.chk_K48.AutoSize = True
         Me.chk_K48.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.chk_K48.Location = New System.Drawing.Point(3, 178)
+        Me.chk_K48.Location = New System.Drawing.Point(3, 164)
         Me.chk_K48.Name = "chk_K48"
-        Me.chk_K48.Size = New System.Drawing.Size(61, 20)
+        Me.chk_K48.Size = New System.Drawing.Size(52, 17)
         Me.chk_K48.TabIndex = 45
         Me.chk_K48.Text = "Цена"
         Me.chk_K48.UseVisualStyleBackColor = True
@@ -983,9 +973,9 @@ Partial Class frmReports
         'chk_K43
         '
         Me.chk_K43.AutoSize = True
-        Me.chk_K43.Location = New System.Drawing.Point(3, 103)
+        Me.chk_K43.Location = New System.Drawing.Point(3, 95)
         Me.chk_K43.Name = "chk_K43"
-        Me.chk_K43.Size = New System.Drawing.Size(143, 19)
+        Me.chk_K43.Size = New System.Drawing.Size(127, 17)
         Me.chk_K43.TabIndex = 40
         Me.chk_K43.Text = "Псевдоним техники"
         Me.chk_K43.UseVisualStyleBackColor = True
@@ -993,9 +983,9 @@ Partial Class frmReports
         'chk_K44
         '
         Me.chk_K44.AutoSize = True
-        Me.chk_K44.Location = New System.Drawing.Point(3, 128)
+        Me.chk_K44.Location = New System.Drawing.Point(3, 118)
         Me.chk_K44.Name = "chk_K44"
-        Me.chk_K44.Size = New System.Drawing.Size(121, 19)
+        Me.chk_K44.Size = New System.Drawing.Size(105, 17)
         Me.chk_K44.TabIndex = 41
         Me.chk_K44.Text = "Ответственный"
         Me.chk_K44.UseVisualStyleBackColor = True
@@ -1003,12 +993,23 @@ Partial Class frmReports
         'chk_K45
         '
         Me.chk_K45.AutoSize = True
-        Me.chk_K45.Location = New System.Drawing.Point(3, 153)
+        Me.chk_K45.Location = New System.Drawing.Point(3, 141)
         Me.chk_K45.Name = "chk_K45"
-        Me.chk_K45.Size = New System.Drawing.Size(127, 19)
+        Me.chk_K45.Size = New System.Drawing.Size(113, 17)
         Me.chk_K45.TabIndex = 42
         Me.chk_K45.Text = "Место установки"
         Me.chk_K45.UseVisualStyleBackColor = True
+        '
+        'chk_K46
+        '
+        Me.chk_K46.AutoSize = True
+        Me.chk_K46.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.chk_K46.Location = New System.Drawing.Point(3, 279)
+        Me.chk_K46.Name = "chk_K46"
+        Me.chk_K46.Size = New System.Drawing.Size(121, 17)
+        Me.chk_K46.TabIndex = 43
+        Me.chk_K46.Text = "Установить всё"
+        Me.chk_K46.UseVisualStyleBackColor = True
         '
         'btnUpdate
         '
@@ -1034,9 +1035,9 @@ Partial Class frmReports
         '
         Me.Label13.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(3, 60)
+        Me.Label13.Location = New System.Drawing.Point(3, 61)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(57, 15)
+        Me.Label13.Size = New System.Drawing.Size(49, 13)
         Me.Label13.TabIndex = 45
         Me.Label13.Text = "Кабинет"
         '
@@ -1065,7 +1066,7 @@ Partial Class frmReports
         Me.rbAlltech.AutoSize = True
         Me.rbAlltech.Location = New System.Drawing.Point(357, 30)
         Me.rbAlltech.Name = "rbAlltech"
-        Me.rbAlltech.Size = New System.Drawing.Size(97, 19)
+        Me.rbAlltech.Size = New System.Drawing.Size(87, 17)
         Me.rbAlltech.TabIndex = 48
         Me.rbAlltech.TabStop = True
         Me.rbAlltech.Text = "Вся техника"
@@ -1113,9 +1114,9 @@ Partial Class frmReports
         '
         Me.lblReport2Cl.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblReport2Cl.AutoSize = True
-        Me.lblReport2Cl.Location = New System.Drawing.Point(3, 2)
+        Me.lblReport2Cl.Location = New System.Drawing.Point(3, 3)
         Me.lblReport2Cl.Name = "lblReport2Cl"
-        Me.lblReport2Cl.Size = New System.Drawing.Size(294, 15)
+        Me.lblReport2Cl.Size = New System.Drawing.Size(294, 13)
         Me.lblReport2Cl.TabIndex = 22
         Me.lblReport2Cl.Text = "Отчет"
         '
@@ -1124,7 +1125,7 @@ Partial Class frmReports
         Me.chkReport2Prn.AutoSize = True
         Me.chkReport2Prn.Location = New System.Drawing.Point(603, 492)
         Me.chkReport2Prn.Name = "chkReport2Prn"
-        Me.chkReport2Prn.Size = New System.Drawing.Size(325, 19)
+        Me.chkReport2Prn.Size = New System.Drawing.Size(325, 17)
         Me.chkReport2Prn.TabIndex = 21
         Me.chkReport2Prn.Text = "Показывать принтеры описанные в конфигурации компьютера"
         Me.chkReport2Prn.UseVisualStyleBackColor = True
@@ -1134,9 +1135,9 @@ Partial Class frmReports
         '
         Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(603, 2)
+        Me.Label2.Location = New System.Drawing.Point(603, 3)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(325, 15)
+        Me.Label2.Size = New System.Drawing.Size(325, 13)
         Me.Label2.TabIndex = 24
         Me.Label2.Text = "Отдел"
         '
@@ -1175,9 +1176,9 @@ Partial Class frmReports
         '
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(303, 2)
+        Me.Label1.Location = New System.Drawing.Point(303, 3)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(294, 15)
+        Me.Label1.Size = New System.Drawing.Size(294, 13)
         Me.Label1.TabIndex = 23
         Me.Label1.Text = "Филиал"
         '
@@ -1269,9 +1270,9 @@ Partial Class frmReports
         '
         Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 7)
+        Me.Label3.Location = New System.Drawing.Point(3, 8)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(73, 15)
+        Me.Label3.Size = New System.Drawing.Size(66, 13)
         Me.Label3.TabIndex = 20
         Me.Label3.Text = "Мастер"
         '
@@ -1293,9 +1294,9 @@ Partial Class frmReports
         '
         Me.chkNZ.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkNZ.AutoSize = True
-        Me.chkNZ.Location = New System.Drawing.Point(963, 35)
+        Me.chkNZ.Location = New System.Drawing.Point(932, 36)
         Me.chkNZ.Name = "chkNZ"
-        Me.chkNZ.Size = New System.Drawing.Size(1, 19)
+        Me.chkNZ.Size = New System.Drawing.Size(2, 17)
         Me.chkNZ.TabIndex = 29
         Me.chkNZ.Text = "Не закрытые"
         Me.chkNZ.UseVisualStyleBackColor = True
@@ -1304,9 +1305,9 @@ Partial Class frmReports
         '
         Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(237, 37)
+        Me.Label5.Location = New System.Drawing.Point(229, 38)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(21, 15)
+        Me.Label5.Size = New System.Drawing.Size(19, 13)
         Me.Label5.TabIndex = 31
         Me.Label5.Text = "по"
         '
@@ -1316,7 +1317,7 @@ Partial Class frmReports
         Me.cmbVip.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbVip.Dock = System.Windows.Forms.DockStyle.Fill
         Me.cmbVip.FormattingEnabled = True
-        Me.cmbVip.Location = New System.Drawing.Point(822, 33)
+        Me.cmbVip.Location = New System.Drawing.Point(791, 33)
         Me.cmbVip.Name = "cmbVip"
         Me.cmbVip.Size = New System.Drawing.Size(135, 21)
         Me.cmbVip.TabIndex = 28
@@ -1325,9 +1326,9 @@ Partial Class frmReports
         '
         Me.ChckVip.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ChckVip.AutoSize = True
-        Me.ChckVip.Location = New System.Drawing.Point(664, 35)
+        Me.ChckVip.Location = New System.Drawing.Point(650, 36)
         Me.ChckVip.Name = "ChckVip"
-        Me.ChckVip.Size = New System.Drawing.Size(152, 19)
+        Me.ChckVip.Size = New System.Drawing.Size(135, 17)
         Me.ChckVip.TabIndex = 27
         Me.ChckVip.Text = "Уровень выполнения"
         Me.ChckVip.UseVisualStyleBackColor = True
@@ -1336,9 +1337,9 @@ Partial Class frmReports
         '
         Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(82, 37)
+        Me.Label4.Location = New System.Drawing.Point(75, 38)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(15, 15)
+        Me.Label4.Size = New System.Drawing.Size(14, 13)
         Me.Label4.TabIndex = 30
         Me.Label4.Text = "С"
         '
@@ -1348,7 +1349,7 @@ Partial Class frmReports
         Me.cmbUr.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbUr.Dock = System.Windows.Forms.DockStyle.Fill
         Me.cmbUr.FormattingEnabled = True
-        Me.cmbUr.Location = New System.Drawing.Point(500, 33)
+        Me.cmbUr.Location = New System.Drawing.Point(486, 33)
         Me.cmbUr.Name = "cmbUr"
         Me.cmbUr.Size = New System.Drawing.Size(158, 21)
         Me.cmbUr.TabIndex = 26
@@ -1360,7 +1361,7 @@ Partial Class frmReports
         Me.TableLayoutPanel1.SetColumnSpan(Me.CmbRemont, 4)
         Me.CmbRemont.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CmbRemont.FormattingEnabled = True
-        Me.CmbRemont.Location = New System.Drawing.Point(82, 3)
+        Me.CmbRemont.Location = New System.Drawing.Point(75, 3)
         Me.CmbRemont.Name = "CmbRemont"
         Me.CmbRemont.Size = New System.Drawing.Size(329, 21)
         Me.CmbRemont.TabIndex = 19
@@ -1369,16 +1370,16 @@ Partial Class frmReports
         '
         Me.chkUroven.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkUroven.AutoSize = True
-        Me.chkUroven.Location = New System.Drawing.Point(417, 35)
+        Me.chkUroven.Location = New System.Drawing.Point(410, 36)
         Me.chkUroven.Name = "chkUroven"
-        Me.chkUroven.Size = New System.Drawing.Size(77, 19)
+        Me.chkUroven.Size = New System.Drawing.Size(70, 17)
         Me.chkUroven.TabIndex = 25
         Me.chkUroven.Text = "Уровень"
         Me.chkUroven.UseVisualStyleBackColor = True
         '
         'DTPD
         '
-        Me.DTPD.Location = New System.Drawing.Point(264, 33)
+        Me.DTPD.Location = New System.Drawing.Point(254, 33)
         Me.DTPD.Name = "DTPD"
         Me.DTPD.Size = New System.Drawing.Size(128, 20)
         Me.DTPD.TabIndex = 24
@@ -1388,16 +1389,16 @@ Partial Class frmReports
         '
         Me.chkFltr.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkFltr.AutoSize = True
-        Me.chkFltr.Location = New System.Drawing.Point(3, 35)
+        Me.chkFltr.Location = New System.Drawing.Point(3, 36)
         Me.chkFltr.Name = "chkFltr"
-        Me.chkFltr.Size = New System.Drawing.Size(73, 19)
+        Me.chkFltr.Size = New System.Drawing.Size(66, 17)
         Me.chkFltr.TabIndex = 22
         Me.chkFltr.Text = "Фильтр"
         Me.chkFltr.UseVisualStyleBackColor = True
         '
         'DTP
         '
-        Me.DTP.Location = New System.Drawing.Point(103, 33)
+        Me.DTP.Location = New System.Drawing.Point(95, 33)
         Me.DTP.Name = "DTP"
         Me.DTP.Size = New System.Drawing.Size(128, 20)
         Me.DTP.TabIndex = 23
@@ -1405,7 +1406,7 @@ Partial Class frmReports
         '
         'btnRefresh
         '
-        Me.btnRefresh.Location = New System.Drawing.Point(500, 3)
+        Me.btnRefresh.Location = New System.Drawing.Point(486, 3)
         Me.btnRefresh.Name = "btnRefresh"
         Me.btnRefresh.Size = New System.Drawing.Size(75, 23)
         Me.btnRefresh.TabIndex = 21
@@ -1414,7 +1415,7 @@ Partial Class frmReports
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(664, 3)
+        Me.Button3.Location = New System.Drawing.Point(650, 3)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(71, 23)
         Me.Button3.TabIndex = 32
@@ -1453,9 +1454,9 @@ Partial Class frmReports
         '
         Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(3, 7)
+        Me.Label8.Location = New System.Drawing.Point(3, 8)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(63, 15)
+        Me.Label8.Size = New System.Drawing.Size(54, 13)
         Me.Label8.TabIndex = 22
         Me.Label8.Text = "Гарантия"
         '
@@ -1465,7 +1466,7 @@ Partial Class frmReports
         Me.cmbGar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
         Me.cmbGar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbGar.FormattingEnabled = True
-        Me.cmbGar.Location = New System.Drawing.Point(72, 3)
+        Me.cmbGar.Location = New System.Drawing.Point(63, 4)
         Me.cmbGar.Name = "cmbGar"
         Me.cmbGar.Size = New System.Drawing.Size(386, 21)
         Me.cmbGar.TabIndex = 20
@@ -1520,9 +1521,9 @@ Partial Class frmReports
         '
         Me.Label9.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(3, 7)
+        Me.Label9.Location = New System.Drawing.Point(3, 8)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(104, 15)
+        Me.Label9.Size = New System.Drawing.Size(89, 13)
         Me.Label9.TabIndex = 25
         Me.Label9.Text = "Ответственный:"
         '
@@ -1545,7 +1546,7 @@ Partial Class frmReports
         'btnCRZakSendOff
         '
         Me.btnCRZakSendOff.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.btnCRZakSendOff.Location = New System.Drawing.Point(424, 3)
+        Me.btnCRZakSendOff.Location = New System.Drawing.Point(409, 3)
         Me.btnCRZakSendOff.Name = "btnCRZakSendOff"
         Me.btnCRZakSendOff.Size = New System.Drawing.Size(75, 23)
         Me.btnCRZakSendOff.TabIndex = 27
@@ -1558,7 +1559,7 @@ Partial Class frmReports
         Me.cmbOTV.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
         Me.cmbOTV.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbOTV.FormattingEnabled = True
-        Me.cmbOTV.Location = New System.Drawing.Point(113, 3)
+        Me.cmbOTV.Location = New System.Drawing.Point(98, 4)
         Me.cmbOTV.Name = "cmbOTV"
         Me.cmbOTV.Size = New System.Drawing.Size(305, 21)
         Me.cmbOTV.Sorted = True
@@ -1606,7 +1607,7 @@ Partial Class frmReports
         Me.Label12.AutoSize = True
         Me.Label12.Location = New System.Drawing.Point(3, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(28, 15)
+        Me.Label12.Size = New System.Drawing.Size(25, 13)
         Me.Label12.TabIndex = 29
         Me.Label12.Text = "Год"
         '
@@ -1641,7 +1642,7 @@ Partial Class frmReports
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(103, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(53, 15)
+        Me.Label11.Size = New System.Drawing.Size(48, 13)
         Me.Label11.TabIndex = 30
         Me.Label11.Text = "Филиал"
         '
@@ -1672,7 +1673,7 @@ Partial Class frmReports
         Me.Label10.AutoSize = True
         Me.Label10.Location = New System.Drawing.Point(443, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(44, 15)
+        Me.Label10.Size = New System.Drawing.Size(38, 13)
         Me.Label10.TabIndex = 31
         Me.Label10.Text = "Отдел"
         '
@@ -1743,16 +1744,16 @@ Partial Class frmReports
         '
         Me.Label14.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(3, 7)
+        Me.Label14.Location = New System.Drawing.Point(3, 8)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(57, 15)
+        Me.Label14.Size = New System.Drawing.Size(51, 13)
         Me.Label14.TabIndex = 0
         Me.Label14.Text = "Год ППР"
         '
         'cmbPPR_Year
         '
         Me.cmbPPR_Year.FormattingEnabled = True
-        Me.cmbPPR_Year.Location = New System.Drawing.Point(66, 3)
+        Me.cmbPPR_Year.Location = New System.Drawing.Point(60, 3)
         Me.cmbPPR_Year.Name = "cmbPPR_Year"
         Me.cmbPPR_Year.Size = New System.Drawing.Size(121, 21)
         Me.cmbPPR_Year.TabIndex = 1

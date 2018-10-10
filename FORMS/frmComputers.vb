@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports Microsoft.Office.Interop.Word
 Imports System.Drawing
+Imports System.Drawing.Imaging
 
 Public Class frmComputers
     Private m_SortingColumn As ColumnHeader
@@ -27,6 +28,11 @@ Public Class frmComputers
     Public TIP_TO As String
     Public OneStart As Decimal = 0
     Private SoftCOUNT As Integer = 0
+
+    Public Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Int32, ByVal wMsg As Int32, ByVal wParam As Int32, ByVal lParam As Int32) As Int32
+    Public Const GW_CHILD = 5
+    Public Const WM_CREATE = &H1
+    Dim windowHandle As Int32
 
 
     'Public Sub New()
@@ -317,7 +323,6 @@ Public Class frmComputers
         Dim ToolTip1 As New ToolTip
         Dim LNGIniFile As New IniFile(sLANGPATH)
 
-
         ToolTip1.SetToolTip(cmbCPU1, LNGIniFile.GetString("frmComputers", "ToolTips1", "Наименование процессора"))
         ToolTip1.SetToolTip(cmbCPU2, LNGIniFile.GetString("frmComputers", "ToolTips1", "Наименование процессора"))
         ToolTip1.SetToolTip(cmbCPU3, LNGIniFile.GetString("frmComputers", "ToolTips1", "Наименование процессора"))
@@ -480,6 +485,9 @@ Public Class frmComputers
 
     Private Sub frmComputers_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         On Error GoTo err_
+
+        Dim LNGIniFile As New IniFile(sLANGPATH)
+
         Me.Cursor = Cursors.WaitCursor
 
         If DATAB = False Then Exit Sub
@@ -508,6 +516,194 @@ Public Class frmComputers
         Me.Cursor = Cursors.Default
 
         If OneStart = 0 Then OneStart = 1
+
+
+        '###################################################################################################################################
+
+        WaterMark.ComboBox_SetCueBannerText(cmbCPU1, LNGIniFile.GetString("frmComputers", "ToolTips1", "Наименование процессора"))
+        WaterMark.ComboBox_SetCueBannerText(cmbCPU2, LNGIniFile.GetString("frmComputers", "ToolTips1", "Наименование процессора"))
+        WaterMark.ComboBox_SetCueBannerText(cmbCPU3, LNGIniFile.GetString("frmComputers", "ToolTips1", "Наименование процессора"))
+        WaterMark.ComboBox_SetCueBannerText(cmbCPU4, LNGIniFile.GetString("frmComputers", "ToolTips1", "Наименование процессора"))
+
+        ' txtMHZ1
+        WaterMark.Edit_SetCueBannerTextFocused(txtMHZ1, False, LNGIniFile.GetString("frmComputers", "ToolTips2", "Частота  процессора"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtMHZ2, False, LNGIniFile.GetString("frmComputers", "ToolTips2", "Частота  процессора"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtMHZ3, False, LNGIniFile.GetString("frmComputers", "ToolTips2", "Частота  процессора"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtMHZ4, False, LNGIniFile.GetString("frmComputers", "ToolTips2", "Частота  процессора"))
+        'txtSoc1
+        WaterMark.Edit_SetCueBannerTextFocused(txtSoc1, False, LNGIniFile.GetString("frmComputers", "ToolTips3", "Сокет"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSoc2, False, LNGIniFile.GetString("frmComputers", "ToolTips3", "Сокет"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSoc3, False, LNGIniFile.GetString("frmComputers", "ToolTips3", "Сокет"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSoc4, False, LNGIniFile.GetString("frmComputers", "ToolTips3", "Сокет"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbMB, LNGIniFile.GetString("frmComputers", "ToolTips4", "Материнская плата, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtChip, False, LNGIniFile.GetString("frmComputers", "ToolTips5", "Чипсет материнской платы"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSN_MB, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbRAM1, LNGIniFile.GetString("frmComputers", "ToolTips7", "Модуль памяти"))
+        WaterMark.ComboBox_SetCueBannerText(cmbRAM2, LNGIniFile.GetString("frmComputers", "ToolTips7", "Модуль памяти"))
+        WaterMark.ComboBox_SetCueBannerText(cmbRAM3, LNGIniFile.GetString("frmComputers", "ToolTips7", "Модуль памяти"))
+        WaterMark.ComboBox_SetCueBannerText(cmbRAM4, LNGIniFile.GetString("frmComputers", "ToolTips7", "Модуль памяти"))
+
+        WaterMark.Edit_SetCueBannerTextFocused(txtRamS1, False, LNGIniFile.GetString("frmComputers", "ToolTips8", "Тип и Частота"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtRamS2, False, LNGIniFile.GetString("frmComputers", "ToolTips8", "Тип и Частота"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtRamS3, False, LNGIniFile.GetString("frmComputers", "ToolTips8", "Тип и Частота"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtRamS4, False, LNGIniFile.GetString("frmComputers", "ToolTips8", "Тип и Частота"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbHDD1, LNGIniFile.GetString("frmComputers", "ToolTips9", "Жесткий диск"))
+        WaterMark.ComboBox_SetCueBannerText(cmbHDD2, LNGIniFile.GetString("frmComputers", "ToolTips9", "Жесткий диск"))
+        WaterMark.ComboBox_SetCueBannerText(cmbHDD3, LNGIniFile.GetString("frmComputers", "ToolTips9", "Жесткий диск"))
+        WaterMark.ComboBox_SetCueBannerText(cmbHDD4, LNGIniFile.GetString("frmComputers", "ToolTips9", "Жесткий диск"))
+
+        WaterMark.Edit_SetCueBannerTextFocused(txtHDDo1, False, LNGIniFile.GetString("frmComputers", "ToolTips10", "Объем жесткого диска"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtHDDo2, False, LNGIniFile.GetString("frmComputers", "ToolTips10", "Объем жесткого диска"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtHDDo3, False, LNGIniFile.GetString("frmComputers", "ToolTips10", "Объем жесткого диска"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtHDDo4, False, LNGIniFile.GetString("frmComputers", "ToolTips10", "Объем жесткого диска"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbSVGA1, LNGIniFile.GetString("frmComputers", "ToolTips11", "Видеокарта, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSVGAr1, False, LNGIniFile.GetString("frmComputers", "ToolTips12", "объем памяти"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbSVGA2, LNGIniFile.GetString("frmComputers", "ToolTips11", "Видеокарта, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSVGAr2, False, LNGIniFile.GetString("frmComputers", "ToolTips12", "объем памяти"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbSound, LNGIniFile.GetString("frmComputers", "ToolTips13", "Звуковая карта, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSoundB, False, LNGIniFile.GetString("frmComputers", "ToolTips14", "Чип"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbOPTIC1, LNGIniFile.GetString("frmComputers", "ToolTips15", "Оптический привод, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtOPTICs1, False, LNGIniFile.GetString("frmComputers", "ToolTips16", "Скорость чтения-записи"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbOPTIC2, LNGIniFile.GetString("frmComputers", "ToolTips15", "Оптический привод, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtOPTICs2, False, LNGIniFile.GetString("frmComputers", "ToolTips16", "Скорость чтения-записи"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbOPTIC3, LNGIniFile.GetString("frmComputers", "ToolTips15", "Оптический привод, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtOPTICs3, False, LNGIniFile.GetString("frmComputers", "ToolTips16", "Скорость чтения-записи"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbNET1, LNGIniFile.GetString("frmComputers", "ToolTips17", "Сетевой адаптер, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtNETip1, False, LNGIniFile.GetString("frmComputers", "ToolTips18", "IP адрес"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtNETmac1, False, LNGIniFile.GetString("frmComputers", "ToolTips19", "MAC адрес"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbNET2, LNGIniFile.GetString("frmComputers", "ToolTips17", "Сетевой адаптер, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtNETip2, False, LNGIniFile.GetString("frmComputers", "ToolTips18", "IP адрес"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtNETmac2, False, LNGIniFile.GetString("frmComputers", "ToolTips19", "MAC адрес"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbMon1, LNGIniFile.GetString("frmComputers", "ToolTips20", "Монитор, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtMon1Dum, False, LNGIniFile.GetString("frmComputers", "ToolTips21", "Диагональ"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbMon2, LNGIniFile.GetString("frmComputers", "ToolTips20", "Монитор, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtMon2Dum, False, LNGIniFile.GetString("frmComputers", "ToolTips21", "Диагональ"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbPrinters1, LNGIniFile.GetString("frmComputers", "ToolTips22", "Принтер, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtPrint1Port, False, LNGIniFile.GetString("frmComputers", "ToolTips23", "Порт подключения"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbPrinters2, LNGIniFile.GetString("frmComputers", "ToolTips22", "Принтер, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtPrint2Port, False, LNGIniFile.GetString("frmComputers", "ToolTips23", "Порт подключения"))
+
+        WaterMark.ComboBox_SetCueBannerText(cmbPrinters3, LNGIniFile.GetString("frmComputers", "ToolTips22", "Принтер, модель"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtPrint3Port, False, LNGIniFile.GetString("frmComputers", "ToolTips23", "Порт подключения"))
+
+        WaterMark.ComboBox_SetCueBannerText(PROizV1, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV2, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV3, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV4, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV5, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV6, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV7, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV8, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV9, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV10, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV11, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV12, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV13, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV14, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV15, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV16, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV17, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV18, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV19, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV20, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV21, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV22, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV23, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV24, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV25, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV26, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV27, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV28, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV29, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV30, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV31, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV32, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV33, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV34, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV35, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV36, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROiZV38, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROiZV39, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROiZV40, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV41, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV42, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        WaterMark.ComboBox_SetCueBannerText(PROizV43, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+
+        WaterMark.Edit_SetCueBannerTextFocused(txtRamSN1, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtRamSN2, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtRamSN3, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtRamSN4, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtHDDsN1, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtHDDsN2, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtHDDsN3, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtHDDsN4, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSVGAs1, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSVGAs2, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSoundS, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtOPTICsn1, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtOPTICsn2, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtOPTICsn3, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtMon1SN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtMon2SN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtPrint1SN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtPrint2SN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtPrint3SN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtCreader1, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtModemSN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtCase1, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtBP1, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtUSBSN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSNPCI, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSNSB, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtKeybSN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtMouseSN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtAsistSN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtFilterSN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtSNIBP, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtPRNSN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtOTHSN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+
+        WaterMark.ComboBox_SetCueBannerText(txtUserName, lblUsername.Text)
+        WaterMark.Edit_SetCueBannerTextFocused(txtUserPass, False, lbluserPassword.Text)
+        WaterMark.ComboBox_SetCueBannerText(txtUserFIO, lblSurname.Text)
+
+
+        'lblSurname
+        'txtUserFIO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         Exit Sub
 err_:
@@ -685,8 +881,7 @@ Error_:
         End Select
     End Sub
 
-    Private Sub lstGroups_AfterSelect(ByVal sender As Object, ByVal e As TreeViewEventArgs) _
-        Handles lstGroups.AfterSelect
+    Private Sub lstGroups_AfterSelect(ByVal sender As Object, ByVal e As TreeViewEventArgs) Handles lstGroups.AfterSelect
 
         Me.txtSNAME.BackColor = Me.txtSBSN.BackColor
 
@@ -702,8 +897,93 @@ Error_:
 
         System.Windows.Forms.Application.DoEvents()
 
+
+        Dim d() As String
+        Dim d1() As String
+
+        Try
+
+            'e.Node.FullPath
+
+            If e.Node.Nodes.Count > 0 Then
+            Else
+
+                d = Split(e.Node.Tag, "|")
+                d1 = Split(e.Node.FullPath, "\")
+
+                Select Case d(0)
+
+                    Case "C"
+
+                        '###################
+                        'Нужно сохранить последний открытый объект
+                        '###################
+
+                        'Call SAVE_INF_CONF(d(1))
+
+                        Dim objIniFile As New IniFile(PrPath & "base.ini")
+                        objIniFile.WriteString("general", "DK", d(1))
+                        objIniFile.WriteString("general", "Default", 0)
+
+                    Case Else
+
+                        Dim objIniFile As New IniFile(PrPath & "base.ini")
+                        objIniFile.WriteString("general", "DK", 0)
+                        objIniFile.WriteString("general", "Default", lstGroups.SelectedNode.Tag)
+
+                End Select
+
+
+
+                Select Case d(0)
+
+                    Case "C"
+
+                    Case "G"
+
+                        FILIAL1 = d1(1)
+                        OTDEL1 = ""
+                        KABINET1 = ""
+                        BrancheNode1 = e.Node
+                        FILING_FILIAL2(e.Node.Name, e.Node,lstGroups)
+
+                    Case "O"
+
+                        FILIAL1 = d1(1)
+                        OTDEL1 = d1(2)
+                        KABINET1 = ""
+                        ' BrancheNode1 = e.Node
+                        FILING_FILIAL2(e.Node.Name, e.Node, lstGroups)
+                    Case "K"
+
+                        FILIAL1 = d1(1)
+                        OTDEL1 = d1(2)
+                        KABINET1 = d1(3)
+                        '  BrancheNode1 = e.Node
+                        FILING_FILIAL2(e.Node.Name, e.Node, lstGroups)
+
+                End Select
+
+                ' FILING_FILIAL2(e.Node.Name, e.Node)
+                'GetDirectories(d.GetDirectories(), e.Node)
+
+                e.Node.Expand()
+            End If
+
+        Catch ex As Exception
+
+            If TypeOf ex Is System.NullReferenceException OrElse TypeOf ex Is System.UnauthorizedAccessException Then
+            End If
+        End Try
+
+
+
+
+
+
         Me.Cursor = Cursors.Default
     End Sub
+
 
     Public Sub LOAD_LIST()
         Dim langfile As New IniFile(sLANGPATH)
@@ -765,6 +1045,7 @@ Error_:
 
                 ОтделитьПринтерыИМониторыToolStripMenuItem.Visible = False
                 ВернутьПерефериюToolStripMenuItem.Visible = False
+                БиркаИнвентарныйНомерToolStripMenuItem.Visible = False
 
                 Me.EDT = True
 
@@ -792,6 +1073,7 @@ Error_:
 
                     Case "PC"
                         ОтделитьПринтерыИМониторыToolStripMenuItem.Visible = True
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
 
                         sSQL = "SELECT count(*) as t_n FROM kompy WHERE PCL =" & d(1)
                         rs = New Recordset
@@ -828,6 +1110,8 @@ Error_:
                     Case "Printer"
 
                         CartrAddToolStripMenuItem.Visible = True
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         FillComboNET(Me.cmbPRN, "name", "SPR_PRINTER", "", False, True)
 
                         UpdateToolStripMenuItem.Enabled = False
@@ -866,6 +1150,8 @@ Error_:
 
                     Case "MFU"
                         CartrAddToolStripMenuItem.Visible = True
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         FillComboNET(Me.cmbPRN, "name", "SPR_MFU", "", False, True)
 
                         UpdateToolStripMenuItem.Enabled = False
@@ -901,6 +1187,8 @@ Error_:
 
                     Case "KOpir"
                         CartrAddToolStripMenuItem.Visible = True
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         FillComboNET(Me.cmbPRN, "name", "SPR_KOPIR", "", False, True)
 
                         UpdateToolStripMenuItem.Enabled = False
@@ -935,6 +1223,8 @@ Error_:
                     Case "OT"
 
                         CartrAddToolStripMenuItem.Visible = False
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         FillComboNET(Me.cmbOTH, "name", "SPR_OTH_DEV", "", False, True)
                         lblTipOther.Visible = True
                         cmbOTHConnect.Visible = True
@@ -964,6 +1254,8 @@ Error_:
                         Call LOAD_PCL(sBranch, sDepartment, sOffice, Me.cmbOTHPCL, cmbOTHotv.Text, d(1))
 
                     Case "PHOTO"
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         CartrAddToolStripMenuItem.Visible = False
                         FillComboNET(Me.cmbOTH, "name", "spr_photo", "", False, True)
 
@@ -992,6 +1284,8 @@ Error_:
 
                     Case "FAX"
                         CartrAddToolStripMenuItem.Visible = False
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         FillComboNET(Me.cmbOTH, "name", "spr_fax", "", False, True)
 
                         lblTipOther.Visible = False
@@ -1019,6 +1313,8 @@ Error_:
 
                     Case "PHONE"
                         CartrAddToolStripMenuItem.Visible = False
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         FillComboNET(Me.cmbOTH, "name", "spr_phone", "", False, True)
 
                         lblTipOther.Visible = False
@@ -1048,6 +1344,8 @@ Error_:
                         Call LOAD_PCL(sBranch, sDepartment, sOffice, Me.cmbOTHPCL, cmbOTHotv.Text, d(1))
 
                     Case "ZIP"
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         CartrAddToolStripMenuItem.Visible = False
                         FillComboNET(Me.cmbOTH, "name", "spr_zip", "", False, True)
 
@@ -1077,6 +1375,8 @@ Error_:
                         Call LOAD_PCL(sBranch, sDepartment, sOffice, Me.cmbOTHPCL, cmbOTHotv.Text, d(1))
 
                     Case "SCANER"
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         CartrAddToolStripMenuItem.Visible = False
                         FillComboNET(Me.cmbOTH, "name", "SPR_SCANER", "", False, True)
                         lblTipOther.Visible = False
@@ -1105,6 +1405,7 @@ Error_:
                         Call LOAD_PCL(sBranch, sDepartment, sOffice, Me.cmbOTHPCL, cmbOTHotv.Text, d(1))
 
                     Case "MONITOR"
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
 
                         CartrAddToolStripMenuItem.Visible = False
                         FillComboNET(Me.cmbOTH, "Name", "SPR_MONITOR", "", False, True)
@@ -1139,6 +1440,8 @@ Error_:
                         Call LOAD_PCL(sBranch, sDepartment, sOffice, Me.cmbOTHPCL, cmbOTHotv.Text, d(1))
 
                     Case "NET"
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         CartrAddToolStripMenuItem.Visible = False
 
                         UpdateToolStripMenuItem.Enabled = False
@@ -1153,6 +1456,8 @@ Error_:
 
                         '--------------VIP_Graff Добавление новой перефирии Начало-----------------
                     Case "USB"
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         CartrAddToolStripMenuItem.Visible = False
                         FillComboNET(Me.cmbOTH, "name", "SPR_USB", "", False, True)
                         lblTipOther.Visible = False
@@ -1181,6 +1486,8 @@ Error_:
                         Call LOAD_PCL(sBranch, sDepartment, sOffice, Me.cmbOTHPCL, cmbOTHotv.Text, d(1))
 
                     Case "SOUND"
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         CartrAddToolStripMenuItem.Visible = False
                         FillComboNET(Me.cmbOTH, "name", "SPR_ASISTEM", "", False, True)
                         lblTipOther.Visible = False
@@ -1210,6 +1517,8 @@ Error_:
                         Call LOAD_PCL(sBranch, sDepartment, sOffice, Me.cmbOTHPCL, cmbOTHotv.Text, d(1))
 
                     Case "IBP"
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         CartrAddToolStripMenuItem.Visible = False
                         FillComboNET(Me.cmbOTH, "name", "SPR_IBP", "", False, True)
                         lblTipOther.Visible = False
@@ -1250,6 +1559,8 @@ Error_:
                         Call LOAD_PCL(sBranch, sDepartment, sOffice, Me.cmbOTHPCL, cmbOTHotv.Text, d(1))
 
                     Case "FS"
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         CartrAddToolStripMenuItem.Visible = False
                         FillComboNET(Me.cmbOTH, "name", "SPR_FS", "", False, True)
                         lblTipOther.Visible = False
@@ -1278,6 +1589,8 @@ Error_:
                         Call LOAD_PCL(sBranch, sDepartment, sOffice, Me.cmbOTHPCL, cmbOTHotv.Text, d(1))
 
                     Case "KEYB"
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         CartrAddToolStripMenuItem.Visible = False
                         FillComboNET(Me.cmbOTH, "name", "SPR_KEYBOARD", "", False, True)
                         lblTipOther.Visible = False
@@ -1306,6 +1619,8 @@ Error_:
                         Call LOAD_PCL(sBranch, sDepartment, sOffice, Me.cmbOTHPCL, cmbOTHotv.Text, d(1))
 
                     Case "MOUSE"
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         CartrAddToolStripMenuItem.Visible = False
                         FillComboNET(Me.cmbOTH, "name", "SPR_MOUSE", "", False, True)
                         lblTipOther.Visible = False
@@ -1336,6 +1651,8 @@ Error_:
 
                     Case "CNT"
 
+                        БиркаИнвентарныйНомерToolStripMenuItem.Visible = True
+
                         CartrAddToolStripMenuItem.Visible = False
                         FillComboNET(Me.cmbOTH, "name", "SPR_other", "", False, True)
                         lblTipOther.Visible = False
@@ -1364,11 +1681,12 @@ Error_:
 
                 End Select
 
-
+                Call QR_CODE_GENERATE(pb, d(1))
+                Call QR_CODE_GENERATE(pqr, d(1))
 
             Case "G"
                 Me.EDT = False
-
+                БиркаИнвентарныйНомерToolStripMenuItem.Visible = False
                 sSTAB3.Visible = False
                 sSTAB1.Visible = False
                 sSTAB2.Visible = False
@@ -1401,6 +1719,8 @@ Error_:
 
             Case "O"
 
+                БиркаИнвентарныйНомерToolStripMenuItem.Visible = False
+
                 Me.EDT = False
 
                 sPREF = d(0)
@@ -1409,6 +1729,20 @@ Error_:
                 Dim rs As Recordset 'Объявляем рекордсет
                 Dim sSQL As String 'Переменная, где будет размещён SQL запрос
                 Dim sFIL As String
+
+
+                sSQL = "SELECT count(*) as tn FROM SPR_OTD_FILIAL WHERE id =" & d(1)
+                rs = New Recordset
+                rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
+
+                With rs
+                    sFIL = .Fields("tn").Value
+                End With
+                rs.Close()
+                rs = Nothing
+
+                If sFIL = 0 Then Exit Sub
+
 
                 sSQL = "SELECT filial FROM SPR_OTD_FILIAL WHERE id =" & d(1)
                 rs = New Recordset
@@ -1447,6 +1781,7 @@ Error_:
                 Call LOAD_REPAIR(d(1), Me.lvRepairBR)
 
             Case "K"
+                БиркаИнвентарныйНомерToolStripMenuItem.Visible = False
 
                 Me.EDT = False
 
@@ -1625,7 +1960,17 @@ Error_:
 
     Public Sub R_T_LOAD()
 
-        Call RefFilTree(Me.lstGroups)
+        Select Case TREE_REFRESH
+
+            Case 0
+                Call RefFilTree2(Me.lstGroups)
+                treebranche.Visible = False
+            Case 1
+
+                Call RefFilTree(Me.lstGroups)
+                treebranche.Visible = True
+        End Select
+
 
     End Sub
 
@@ -2440,7 +2785,7 @@ err_:
 
                 Call SaveActivityToLogDB(langfile.GetString("frmComputers", "MSG27", "Массовое добавление техники"))
 
-                RefFilTree(Me.lstGroups)
+                RefFilTree2(Me.lstGroups)
 
             End If
 
@@ -3141,6 +3486,8 @@ err_:
         With rs
             .MoveFirst()
             Do While Not .EOF
+
+                QR_CODE_GENERATE(.Fields("id").Value)
 
                 Select Case sOfficePACK
 
@@ -5120,6 +5467,65 @@ Error_:
             Me.lstGroups.SelectedNode = e.Node
         End If
 
+
+        Dim d() As String
+        Dim d1() As String
+
+        Try
+
+            'e.Node.FullPath
+
+            If e.Node.Nodes.Count > 0 Then
+            Else
+
+                d = Split(e.Node.Tag, "|")
+                d1 = Split(e.Node.FullPath, "\")
+
+                Select Case d(0)
+
+                    Case "C"
+
+                    Case "G"
+
+                        FILIAL1 = d1(1)
+                        OTDEL1 = ""
+                        KABINET1 = ""
+                        BrancheNode1 = e.Node
+                        FILING_FILIAL2(e.Node.Name, e.Node, lstGroups)
+
+                    Case "O"
+
+                        FILIAL1 = d1(1)
+                        OTDEL1 = d1(2)
+                        KABINET1 = ""
+                        ' BrancheNode1 = e.Node
+                        FILING_FILIAL2(e.Node.Name, e.Node, lstGroups)
+                    Case "K"
+
+                        FILIAL1 = d1(1)
+                        OTDEL1 = d1(2)
+                        KABINET1 = d1(3)
+                        '  BrancheNode1 = e.Node
+                        FILING_FILIAL2(e.Node.Name, e.Node, lstGroups)
+
+                End Select
+
+                '  FILING_FILIAL2(e.Node.Name, e.Node)
+
+                'GetDirectories(d.GetDirectories(), e.Node)
+                e.Node.Expand()
+            End If
+
+        Catch ex As Exception
+
+            If TypeOf ex Is System.NullReferenceException OrElse TypeOf ex Is System.UnauthorizedAccessException Then
+            End If
+        End Try
+
+
+
+
+
     End Sub
 
     Private Sub MassRazdelPerf_Click(ByVal sender As Object, ByVal e As EventArgs) Handles MassRazdelPerf.Click
@@ -6277,7 +6683,9 @@ err_1:
         If OneStart = 0 Then Exit Sub
 
         lstGroups.Nodes.Clear()
-        Me.BeginInvoke(New MethodInvoker(AddressOf R_T_LOAD))
+
+        Call RefFilTree(lstGroups)
+        '     Me.BeginInvoke(New MethodInvoker(AddressOf R_T_LOAD))
 
         lstGroups.ExpandAll()
     End Sub
@@ -6840,8 +7248,65 @@ err_:
 
     End Sub
 
+    Private Sub БиркаИнвентарныйНомерToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles БиркаИнвентарныйНомерToolStripMenuItem.Click
 
-  
 
+        Dim oWord As Application
+        Dim oDoc As Document
+        Dim oTable As Table
+        Dim LNGIniFile As New IniFile(sLANGPATH)
+
+        oWord = CreateObject("Word.Application")
+        oWord.Visible = True
+        oDoc = oWord.Documents.Add
+
+        Dim rs As Recordset
+        Dim rs1 As Recordset
+
+        Dim sSQL As String
+        sSQL = "SELECT * FROM kompy WHERE id=" & sCOUNT
+
+        rs = New Recordset
+        rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
+
+        With rs
+
+            Dim PIctureLocation As String = PrPath & "\QR_CODE\" & sCOUNT & "_" & .Fields("NET_NAME").Value & ".png"
+
+            oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 2)
+            oTable.Range.ParagraphFormat.SpaceAfter = 6
+            oTable.Borders.Enable = True
+
+            rs1 = New Recordset
+            rs1.Open("SELECT ORG FROM CONFIGURE", DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
+            Dim ORG As String
+
+            With rs1
+                If Not IsDBNull(.Fields("ORG").Value) Then ORG = .Fields("ORG").Value
+            End With
+
+            rs1.Close()
+            rs1 = Nothing
+
+
+
+            oTable.Cell(1, 1).Range.Text = LNGIniFile.GetString("MOD_OPENOFFICE", "MSG8", "Инвентарный номер") & " №:" & vbNewLine & .Fields("INV_NO_SYSTEM").Value & vbNewLine & .Fields("NET_NAME").Value & vbNewLine & ORG
+            oTable.Cell(1, 2).Range.InlineShapes.AddPicture(PIctureLocation, LinkToFile:=False, SaveWithDocument:=True)
+
+
+        End With
+
+        rs.Close()
+        rs = Nothing
+
+    End Sub
+
+    Private Sub lstGroups_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles lstGroups.KeyPress
+
+    End Sub
+
+    Private Sub lstGroups_Layout(sender As Object, e As System.Windows.Forms.LayoutEventArgs) Handles lstGroups.Layout
+
+    End Sub
 End Class
 
