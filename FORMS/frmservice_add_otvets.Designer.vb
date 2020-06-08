@@ -258,6 +258,7 @@ Partial Class frmservice_add_otvets
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.cmbTip)
         Me.Controls.Add(Me.GroupBox1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmservice_add_otvets"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

@@ -22,15 +22,15 @@ Partial Friend Class frmLOG
     'Не изменяйте ее в редакторе исходного кода.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.RBPrLog = New System.Windows.Forms.RadioButton
-        Me.rbMove = New System.Windows.Forms.RadioButton
-        Me.rbUpdate = New System.Windows.Forms.RadioButton
-        Me.lvLOG = New System.Windows.Forms.ListView
-        Me.DTLOG = New System.Windows.Forms.DateTimePicker
-        Me.btnUpdate = New System.Windows.Forms.Button
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.DTLOG1 = New System.Windows.Forms.DateTimePicker
+        Me.RBPrLog = New System.Windows.Forms.RadioButton()
+        Me.rbMove = New System.Windows.Forms.RadioButton()
+        Me.rbUpdate = New System.Windows.Forms.RadioButton()
+        Me.lvLOG = New System.Windows.Forms.ListView()
+        Me.DTLOG = New System.Windows.Forms.DateTimePicker()
+        Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.DTLOG1 = New System.Windows.Forms.DateTimePicker()
         Me.SuspendLayout()
         '
         'RBPrLog
@@ -133,6 +133,7 @@ Partial Friend Class frmLOG
         Me.Controls.Add(Me.rbUpdate)
         Me.Controls.Add(Me.rbMove)
         Me.Controls.Add(Me.RBPrLog)
+        Me.DoubleBuffered = True
         Me.MinimumSize = New System.Drawing.Size(1000, 700)
         Me.Name = "frmLOG"
         Me.Text = "Журналы программы"

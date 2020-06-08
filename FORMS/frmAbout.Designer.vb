@@ -147,7 +147,7 @@ Partial Class frmAbout
         Me.TextBoxDescription.Size = New System.Drawing.Size(437, 234)
         Me.TextBoxDescription.TabIndex = 0
         Me.TextBoxDescription.TabStop = False
-        Me.TextBoxDescription.Text = "Описание:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Во время выполнения текст подписи будет заменен информацией о сборк" & _
+        Me.TextBoxDescription.Text = "Описание:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Во время выполнения текст подписи будет заменен информацией о сборк" &
     "е приложения." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Настроить эту информацию можно в области "
         '
         'OKButton
@@ -212,6 +212,7 @@ Partial Class frmAbout
         Me.CancelButton = Me.OKButton
         Me.ClientSize = New System.Drawing.Size(633, 387)
         Me.Controls.Add(Me.TabControl1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False

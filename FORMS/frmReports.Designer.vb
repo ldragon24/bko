@@ -1780,6 +1780,7 @@ Partial Class frmReports
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(945, 571)
         Me.Controls.Add(Me.sSTAB1)
+        Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimumSize = New System.Drawing.Size(900, 600)
         Me.Name = "frmReports"

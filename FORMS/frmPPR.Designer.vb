@@ -103,6 +103,7 @@ Partial Class frmPPR
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(384, 71)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmPPR"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent

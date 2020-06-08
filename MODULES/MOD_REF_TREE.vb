@@ -2221,19 +2221,12 @@ err_:
 
             End Select
 
-            'If node.Tag.ToString = sTXT Then
-            '    ' Return node
-            '       frmComputers.lstGroups.SelectedNode = node
-            'Else
-            '    FIND_TREE_TAG(node.Nodes, sTXT)
-
-            'End If
-
         Next
 
         Return FIND_TREE_TAG
 
     End Function
+
 
     'Процедура перестроения дерева
     'Определяем необходимость перестроения

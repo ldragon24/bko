@@ -132,10 +132,14 @@ Partial Class frmSetup
         Me.chkRemVisible = New System.Windows.Forms.CheckBox()
         Me.chkNB = New System.Windows.Forms.CheckBox()
         Me.chkSP = New System.Windows.Forms.CheckBox()
-        Me.RadioButton10 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton11 = New System.Windows.Forms.RadioButton()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
+        Me.RadioButton11 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton10 = New System.Windows.Forms.RadioButton()
+        Me.TableLayoutPanel11 = New System.Windows.Forms.TableLayoutPanel()
+        Me.RadioButton12 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton13 = New System.Windows.Forms.RadioButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -143,13 +147,10 @@ Partial Class frmSetup
         Me.Label9 = New System.Windows.Forms.Label()
         Me.chkFonts = New System.Windows.Forms.CheckBox()
         Me.SStab1 = New System.Windows.Forms.TabControl()
-        Me.TableLayoutPanel6 = New System.Windows.Forms.TableLayoutPanel()
-        Me.TableLayoutPanel11 = New System.Windows.Forms.TableLayoutPanel()
-        Me.RadioButton12 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton13 = New System.Windows.Forms.RadioButton()
         Me.TabPage5.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.gbUsers.SuspendLayout()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
@@ -169,11 +170,11 @@ Partial Class frmSetup
         Me.TableLayoutPanel10.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.TableLayoutPanel9.SuspendLayout()
+        Me.TableLayoutPanel6.SuspendLayout()
+        Me.TableLayoutPanel11.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.TableLayoutPanel4.SuspendLayout()
         Me.SStab1.SuspendLayout()
-        Me.TableLayoutPanel6.SuspendLayout()
-        Me.TableLayoutPanel11.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabPage5
@@ -181,7 +182,7 @@ Partial Class frmSetup
         Me.TabPage5.Controls.Add(Me.TableLayoutPanel3)
         Me.TabPage5.Location = New System.Drawing.Point(4, 22)
         Me.TabPage5.Name = "TabPage5"
-        Me.TabPage5.Size = New System.Drawing.Size(967, 545)
+        Me.TabPage5.Size = New System.Drawing.Size(967, 620)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Пользователи"
         Me.TabPage5.UseVisualStyleBackColor = True
@@ -220,7 +221,7 @@ Partial Class frmSetup
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(967, 545)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(967, 620)
         Me.TableLayoutPanel3.TabIndex = 15
         '
         'Label1
@@ -240,7 +241,7 @@ Partial Class frmSetup
         Me.gbUsers.Dock = System.Windows.Forms.DockStyle.Fill
         Me.gbUsers.Location = New System.Drawing.Point(3, 166)
         Me.gbUsers.Name = "gbUsers"
-        Me.gbUsers.Size = New System.Drawing.Size(1077, 376)
+        Me.gbUsers.Size = New System.Drawing.Size(1077, 451)
         Me.gbUsers.TabIndex = 11
         Me.gbUsers.TabStop = False
         Me.gbUsers.Text = "Пользователи"
@@ -258,7 +259,7 @@ Partial Class frmSetup
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.gbUserLevel)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1071, 357)
+        Me.SplitContainer1.Size = New System.Drawing.Size(1071, 432)
         Me.SplitContainer1.SplitterDistance = 773
         Me.SplitContainer1.TabIndex = 0
         '
@@ -271,7 +272,7 @@ Partial Class frmSetup
         Me.lvPrUsers.MultiSelect = False
         Me.lvPrUsers.Name = "lvPrUsers"
         Me.lvPrUsers.ShowItemToolTips = True
-        Me.lvPrUsers.Size = New System.Drawing.Size(773, 357)
+        Me.lvPrUsers.Size = New System.Drawing.Size(773, 432)
         Me.lvPrUsers.TabIndex = 18
         Me.lvPrUsers.UseCompatibleStateImageBehavior = False
         Me.lvPrUsers.View = System.Windows.Forms.View.Details
@@ -294,7 +295,7 @@ Partial Class frmSetup
         Me.gbUserLevel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.gbUserLevel.Location = New System.Drawing.Point(0, 0)
         Me.gbUserLevel.Name = "gbUserLevel"
-        Me.gbUserLevel.Size = New System.Drawing.Size(294, 357)
+        Me.gbUserLevel.Size = New System.Drawing.Size(294, 432)
         Me.gbUserLevel.TabIndex = 0
         Me.gbUserLevel.TabStop = False
         Me.gbUserLevel.Text = "Разрешения"
@@ -557,7 +558,7 @@ Partial Class frmSetup
         Me.TabPage3.Controls.Add(Me.TableLayoutPanel2)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(967, 545)
+        Me.TabPage3.Size = New System.Drawing.Size(967, 620)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Организация и сисадмин"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -591,7 +592,7 @@ Partial Class frmSetup
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(967, 545)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(967, 620)
         Me.TableLayoutPanel2.TabIndex = 8
         '
         'Label6
@@ -1355,7 +1356,7 @@ Partial Class frmSetup
         Me.TableLayoutPanel10.ColumnCount = 3
         Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.0!))
         Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.0!))
-        Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69.0!))
+        Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
         Me.TableLayoutPanel10.Controls.Add(Me.btnServiceColor, 2, 1)
         Me.TableLayoutPanel10.Controls.Add(Me.btnNbColor, 2, 2)
         Me.TableLayoutPanel10.Controls.Add(Me.btnSpisanColor, 2, 3)
@@ -1516,28 +1517,6 @@ Partial Class frmSetup
         Me.chkSP.Text = "Отмечать списанную технику"
         Me.chkSP.UseVisualStyleBackColor = True
         '
-        'RadioButton10
-        '
-        Me.RadioButton10.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RadioButton10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.RadioButton10.Location = New System.Drawing.Point(3, 3)
-        Me.RadioButton10.Name = "RadioButton10"
-        Me.RadioButton10.Size = New System.Drawing.Size(176, 32)
-        Me.RadioButton10.TabIndex = 0
-        Me.RadioButton10.Text = "Обновление после каждого сохранения"
-        Me.RadioButton10.UseVisualStyleBackColor = True
-        '
-        'RadioButton11
-        '
-        Me.RadioButton11.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RadioButton11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.RadioButton11.Location = New System.Drawing.Point(185, 3)
-        Me.RadioButton11.Name = "RadioButton11"
-        Me.RadioButton11.Size = New System.Drawing.Size(176, 32)
-        Me.RadioButton11.TabIndex = 1
-        Me.RadioButton11.Text = "Обновление по запросу"
-        Me.RadioButton11.UseVisualStyleBackColor = True
-        '
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
@@ -1557,6 +1536,85 @@ Partial Class frmSetup
         Me.Label13.TabIndex = 29
         Me.Label13.Text = "Размер иконок"
         Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'TableLayoutPanel6
+        '
+        Me.TableLayoutPanel6.AutoSize = True
+        Me.TableLayoutPanel6.ColumnCount = 2
+        Me.TableLayoutPanel10.SetColumnSpan(Me.TableLayoutPanel6, 3)
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel6.Controls.Add(Me.RadioButton11, 1, 0)
+        Me.TableLayoutPanel6.Controls.Add(Me.RadioButton10, 0, 0)
+        Me.TableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel6.Location = New System.Drawing.Point(3, 225)
+        Me.TableLayoutPanel6.Name = "TableLayoutPanel6"
+        Me.TableLayoutPanel6.RowCount = 1
+        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel6.Size = New System.Drawing.Size(364, 38)
+        Me.TableLayoutPanel6.TabIndex = 30
+        '
+        'RadioButton11
+        '
+        Me.RadioButton11.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RadioButton11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.RadioButton11.Location = New System.Drawing.Point(185, 3)
+        Me.RadioButton11.Name = "RadioButton11"
+        Me.RadioButton11.Size = New System.Drawing.Size(176, 32)
+        Me.RadioButton11.TabIndex = 1
+        Me.RadioButton11.Text = "Обновление по запросу"
+        Me.RadioButton11.UseVisualStyleBackColor = True
+        '
+        'RadioButton10
+        '
+        Me.RadioButton10.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RadioButton10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.RadioButton10.Location = New System.Drawing.Point(3, 3)
+        Me.RadioButton10.Name = "RadioButton10"
+        Me.RadioButton10.Size = New System.Drawing.Size(176, 32)
+        Me.RadioButton10.TabIndex = 0
+        Me.RadioButton10.Text = "Обновление после каждого сохранения"
+        Me.RadioButton10.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel11
+        '
+        Me.TableLayoutPanel11.AutoSize = True
+        Me.TableLayoutPanel11.ColumnCount = 2
+        Me.TableLayoutPanel10.SetColumnSpan(Me.TableLayoutPanel11, 3)
+        Me.TableLayoutPanel11.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel11.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel11.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel11.Controls.Add(Me.RadioButton12, 0, 0)
+        Me.TableLayoutPanel11.Controls.Add(Me.RadioButton13, 1, 0)
+        Me.TableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel11.Location = New System.Drawing.Point(3, 269)
+        Me.TableLayoutPanel11.Name = "TableLayoutPanel11"
+        Me.TableLayoutPanel11.RowCount = 1
+        Me.TableLayoutPanel11.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel11.Size = New System.Drawing.Size(364, 108)
+        Me.TableLayoutPanel11.TabIndex = 31
+        '
+        'RadioButton12
+        '
+        Me.RadioButton12.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RadioButton12.Location = New System.Drawing.Point(3, 3)
+        Me.RadioButton12.Name = "RadioButton12"
+        Me.RadioButton12.Size = New System.Drawing.Size(176, 102)
+        Me.RadioButton12.TabIndex = 0
+        Me.RadioButton12.TabStop = True
+        Me.RadioButton12.Text = "Динамически обновляемое дерево"
+        Me.RadioButton12.UseVisualStyleBackColor = True
+        '
+        'RadioButton13
+        '
+        Me.RadioButton13.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RadioButton13.Location = New System.Drawing.Point(185, 3)
+        Me.RadioButton13.Name = "RadioButton13"
+        Me.RadioButton13.Size = New System.Drawing.Size(176, 102)
+        Me.RadioButton13.TabIndex = 1
+        Me.RadioButton13.TabStop = True
+        Me.RadioButton13.Text = "Статически обновляемое дерево"
+        Me.RadioButton13.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -1647,69 +1705,13 @@ Partial Class frmSetup
         Me.SStab1.Size = New System.Drawing.Size(975, 646)
         Me.SStab1.TabIndex = 0
         '
-        'TableLayoutPanel6
-        '
-        Me.TableLayoutPanel6.AutoSize = True
-        Me.TableLayoutPanel6.ColumnCount = 2
-        Me.TableLayoutPanel10.SetColumnSpan(Me.TableLayoutPanel6, 3)
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel6.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel6.Controls.Add(Me.RadioButton11, 1, 0)
-        Me.TableLayoutPanel6.Controls.Add(Me.RadioButton10, 0, 0)
-        Me.TableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel6.Location = New System.Drawing.Point(3, 225)
-        Me.TableLayoutPanel6.Name = "TableLayoutPanel6"
-        Me.TableLayoutPanel6.RowCount = 1
-        Me.TableLayoutPanel6.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel6.Size = New System.Drawing.Size(364, 38)
-        Me.TableLayoutPanel6.TabIndex = 30
-        '
-        'TableLayoutPanel11
-        '
-        Me.TableLayoutPanel11.AutoSize = True
-        Me.TableLayoutPanel11.ColumnCount = 2
-        Me.TableLayoutPanel10.SetColumnSpan(Me.TableLayoutPanel11, 3)
-        Me.TableLayoutPanel11.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel11.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel11.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel11.Controls.Add(Me.RadioButton12, 0, 0)
-        Me.TableLayoutPanel11.Controls.Add(Me.RadioButton13, 1, 0)
-        Me.TableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel11.Location = New System.Drawing.Point(3, 269)
-        Me.TableLayoutPanel11.Name = "TableLayoutPanel11"
-        Me.TableLayoutPanel11.RowCount = 1
-        Me.TableLayoutPanel11.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel11.Size = New System.Drawing.Size(364, 108)
-        Me.TableLayoutPanel11.TabIndex = 31
-        '
-        'RadioButton12
-        '
-        Me.RadioButton12.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RadioButton12.Location = New System.Drawing.Point(3, 3)
-        Me.RadioButton12.Name = "RadioButton12"
-        Me.RadioButton12.Size = New System.Drawing.Size(176, 102)
-        Me.RadioButton12.TabIndex = 0
-        Me.RadioButton12.TabStop = True
-        Me.RadioButton12.Text = "Динамически обновляемое дерево"
-        Me.RadioButton12.UseVisualStyleBackColor = True
-        '
-        'RadioButton13
-        '
-        Me.RadioButton13.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RadioButton13.Location = New System.Drawing.Point(185, 3)
-        Me.RadioButton13.Name = "RadioButton13"
-        Me.RadioButton13.Size = New System.Drawing.Size(176, 102)
-        Me.RadioButton13.TabIndex = 1
-        Me.RadioButton13.TabStop = True
-        Me.RadioButton13.Text = "Статически обновляемое дерево"
-        Me.RadioButton13.UseVisualStyleBackColor = True
-        '
         'frmSetup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(975, 646)
         Me.Controls.Add(Me.SStab1)
+        Me.DoubleBuffered = True
         Me.Name = "frmSetup"
         Me.Text = "Настройки"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -1719,6 +1721,7 @@ Partial Class frmSetup
         Me.gbUsers.ResumeLayout(False)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         Me.gbUserLevel.ResumeLayout(False)
         Me.gbUserLevel.PerformLayout()
@@ -1748,13 +1751,13 @@ Partial Class frmSetup
         Me.GroupBox5.PerformLayout()
         Me.TableLayoutPanel9.ResumeLayout(False)
         Me.TableLayoutPanel9.PerformLayout()
+        Me.TableLayoutPanel6.ResumeLayout(False)
+        Me.TableLayoutPanel11.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.TableLayoutPanel4.ResumeLayout(False)
         Me.TableLayoutPanel4.PerformLayout()
         Me.SStab1.ResumeLayout(False)
-        Me.TableLayoutPanel6.ResumeLayout(False)
-        Me.TableLayoutPanel11.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

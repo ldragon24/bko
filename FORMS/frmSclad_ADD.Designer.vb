@@ -384,6 +384,7 @@ Partial Class frmSclad_ADD
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(475, 407)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmSclad_ADD"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

@@ -38,6 +38,30 @@
         End If
 
 
+        If Len(cmbModCPL.Text) = 0 Then
+
+            cmbModCPL.Focus()
+            Beep()
+            Exit Sub
+
+        End If
+
+        If Len(txtKolRem.Text) = 0 Then
+
+            txtKolRem.Focus()
+            Beep()
+            Exit Sub
+
+        End If
+
+        If Len(txtDef.Text) = 0 Then
+
+            txtDef.Focus()
+            Beep()
+            Exit Sub
+
+        End If
+
         AKT_SP_OS3 = New Recordset
         AKT_SP_OS3.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 

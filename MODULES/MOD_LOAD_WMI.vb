@@ -1,10 +1,13 @@
 ﻿Imports System.Management
+Imports System.Net
+
 
 Module MOD_LOAD_WMI
     Private strComputer As String
     Private Username As String
     Private Password As String
     Private Authority As String
+    Private sHost As String
 
     Dim connection As New ConnectionOptions
 
@@ -16,7 +19,7 @@ Module MOD_LOAD_WMI
 
     Public Sub LOAD_WMI2()
         Dim intj As Integer
-
+        Dim net As New Net.NetworkInformation.Ping
         Dim sTmp() As String
         Dim sTmp2() As String
 
@@ -49,15 +52,27 @@ Module MOD_LOAD_WMI
                 frmComputers.cmbDepartment.Text = sDepartment
                 frmComputers.cmbOffice.Text = sOffice
 
-                If My.Computer.Network.Ping(strComputer) Then
 
-                    Call LOAD_WMI_3()
 
-                    Call frmMain.SaveInfTeh()
 
-                Else
 
-                End If
+                Select Case net.Send(strComputer, 20).Status
+
+                    Case System.Net.NetworkInformation.IPStatus.Success
+
+                        Call wHost()
+
+                        Select Case Len(sHost)
+
+                            Case 0
+
+                            Case Else
+
+                                Call LOAD_WMI_3()
+                                Call frmMain.SaveInfTeh()
+                        End Select
+
+                End Select
 
             Next
 
@@ -70,13 +85,22 @@ Module MOD_LOAD_WMI
             Authority = frm_wmi.wmiDomen
             connection.Authority = "ntlmdomain:" & Authority
 
-            If My.Computer.Network.Ping(strComputer) Then
+            Select Case net.Send(strComputer, 20).Status
 
-                Call LOAD_WMI_3()
+                Case System.Net.NetworkInformation.IPStatus.Success
 
-            Else
+                    Call wHost()
 
-            End If
+                    Select Case Len(sHost)
+
+                        Case 0
+
+                        Case Else
+
+                            Call LOAD_WMI_3()
+                    End Select
+
+            End Select
 
             frmComputers.cmbBranch.Text = sBranch
             frmComputers.cmbDepartment.Text = sDepartment
@@ -102,6 +126,10 @@ Module MOD_LOAD_WMI
 
         frmMain.Cursor = Cursors.WaitCursor
 
+        frmComputers.BeginInvoke(New MethodInvoker(AddressOf wMouse))
+
+        frmComputers.BeginInvoke(New MethodInvoker(AddressOf wSYS))
+
         frmComputers.BeginInvoke(New MethodInvoker(AddressOf wSOFT))
 
         frmComputers.BeginInvoke(New MethodInvoker(AddressOf wCPU))
@@ -126,13 +154,11 @@ Module MOD_LOAD_WMI
 
         frmComputers.BeginInvoke(New MethodInvoker(AddressOf wModem))
 
-        frmComputers.BeginInvoke(New MethodInvoker(AddressOf wMouse))
-
         frmComputers.BeginInvoke(New MethodInvoker(AddressOf wPRN))
 
         frmComputers.BeginInvoke(New MethodInvoker(AddressOf wMONITOR))
 
-        frmComputers.BeginInvoke(New MethodInvoker(AddressOf wSYS))
+
 
         'If frmComputers.InvokeRequired Then
         '    frmComputers.Invoke(New MethodInvoker(AddressOf wSOFT))
@@ -429,7 +455,7 @@ Module MOD_LOAD_WMI
         Dim scope As New ManagementScope("\\" & strComputer & "\root\CIMV2", connection)
         scope.Connect()
 
-        Dim query As New ObjectQuery("SELECT * FROM Win32_NetworkAdapterConfiguration")
+        Dim query As New ObjectQuery("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled = True")
 
         Dim searcher As New ManagementObjectSearcher(scope, query)
 
@@ -676,8 +702,9 @@ Module MOD_LOAD_WMI
         For Each queryObj As ManagementObject In searcher.[Get]()
 
             Dim li As ListViewItem = frmComputers.lstSoftware.Items.Add(frmComputers.lstSoftware.Items.Count + 1)
+            'Dim sTMP As String = frmComputers.lstSoftware.Items.Count
 
-            frmComputers.lstSoftware.Items(intj).SubItems.Add(frmComputers.lstSoftware.Items.Count + 1)
+            'frmComputers.lstSoftware.Items(intj).SubItems.Add(frmComputers.lstSoftware.Items.Count + 1)
             frmComputers.lstSoftware.Items(intj).SubItems.Add(queryObj.Item("Name").ToString)
             frmComputers.lstSoftware.Items(intj).SubItems.Add("")
             frmComputers.lstSoftware.Items(intj).SubItems.Add("")
@@ -717,7 +744,7 @@ Module MOD_LOAD_WMI
 
             Dim li As ListViewItem = frmComputers.lstSoftware.Items.Add(frmComputers.lstSoftware.Items.Count + 1)
 
-            li.SubItems.Add(frmComputers.lstSoftware.Items.Count + 1)
+            'li.SubItems.Add(frmComputers.lstSoftware.Items.Count + 1)
             li.SubItems.Add(queryObj("Caption") & " " & queryObj("CSDVersion"))
             li.SubItems.Add(queryObj("SerialNumber"))
             li.SubItems.Add("")
@@ -728,7 +755,32 @@ Module MOD_LOAD_WMI
         Next
 
         Exit Sub
-        err_:
+err_:
         'MsgBox(Err.Description)
     End Sub
+
+
+    Private Sub wHost()
+        On Error GoTo err_
+        sHost = ""
+
+
+        Dim scope As New ManagementScope("\\" & strComputer & "\root\CIMV2", connection)
+        scope.Connect()
+
+        Dim query As New ObjectQuery("SELECT Description, SystemName FROM Win32_PointingDevice")
+
+        Dim searcher As New ManagementObjectSearcher(scope, query)
+
+
+        For Each queryObj As ManagementObject In searcher.Get()
+            sHost = queryObj("SystemName")
+        Next
+
+        Exit Sub
+err_:
+        sHost = ""
+    End Sub
+
+
 End Module

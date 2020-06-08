@@ -316,6 +316,7 @@ Partial Class frmSclad_treb
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(373, 296)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmSclad_treb"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

@@ -200,6 +200,7 @@ Partial Class frmSearch
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(992, 562)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.MinimumSize = New System.Drawing.Size(900, 600)
         Me.Name = "frmSearch"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent

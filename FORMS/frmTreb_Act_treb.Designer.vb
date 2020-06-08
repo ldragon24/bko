@@ -251,6 +251,7 @@ Partial Class frmTreb_Act_treb
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(575, 246)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmTreb_Act_treb"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent

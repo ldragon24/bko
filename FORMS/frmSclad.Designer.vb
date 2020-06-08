@@ -109,6 +109,7 @@ Partial Class frmSclad
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(992, 646)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.MinimumSize = New System.Drawing.Size(900, 600)
         Me.Name = "frmSclad"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

@@ -69,6 +69,7 @@ Partial Class frm_mesta
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.lvReport2Cl)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False

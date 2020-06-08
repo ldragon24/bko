@@ -384,10 +384,10 @@ Module MOD_SYS_PRELOAD
         FontI = objIniFile.GetString("General", "chkFonts", "0")
 
         'Как работаем с деревом
-        TREE_UPDATE = objIniFile.GetString("General", "TREE_UPDATE", "0")
+        TREE_UPDATE = objIniFile.GetString("General", "TREE_UPDATE", "1")
 
         'Как работаем с деревом
-        TREE_REFRESH = objIniFile.GetString("General", "TREE_REFRESH", "0")
+        TREE_REFRESH = objIniFile.GetString("General", "TREE_REFRESH", "1")
 
 
         'Выделение в дереве
@@ -499,6 +499,25 @@ Module MOD_SYS_PRELOAD
             End Try
         Next
     End Sub
+
+    Public Sub combo_Computer(ByVal ControlContainer As Object)
+
+        For Each Ctl As Object In ControlContainer.Controls
+            Try
+                If Not Ctl.Controls Is Nothing Then
+                    combo_Computer(Ctl)
+
+                    If TypeOf Ctl Is ComboBox Then Ctl.FlatStyle = FlatStyle.Flat
+                    ' frmComputers.cmbCPU1.FlatStyle = FlatStyle.Flat
+                End If
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        Next
+    End Sub
+
+
 
     Public Sub SendFonts(ByVal ControlContainer As Object)
 
@@ -778,10 +797,28 @@ Module MOD_SYS_PRELOAD
 
                     stPic.Image = bmg
 
-                    If stPic.Image IsNot Nothing Then
-                        Dim pth As String = Path.Combine(PrPath & "QR_CODE\", .Fields("id").Value & "_" & .Fields("net_name").Value & ".png") '& "_" & .Fields("net_name").Value
-                        bmg.Save(pth, ImageFormat.Png)
-                    End If
+                    'stlbl.Text = stmpTEXT
+
+                    Try
+
+                        If stPic.Image IsNot Nothing Then
+                            Dim pth As String = Path.Combine(PrPath & "QR_CODE\", .Fields("id").Value & "_" & .Fields("net_name").Value & ".png") '& "_" & .Fields("net_name").Value
+                            bmg.Save(pth, ImageFormat.Png)
+                        End If
+
+                    Catch ex As Exception
+
+                        If stPic.Image IsNot Nothing Then
+                            Dim pth As String = Path.Combine(PrPath & "QR_CODE\", .Fields("id").Value & "_" & "error_name" & ".png") '& "_" & .Fields("net_name").Value
+                            bmg.Save(pth, ImageFormat.Png)
+                        End If
+
+                    End Try
+
+
+
+
+
 
                     .MoveNext()
                 Loop

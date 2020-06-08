@@ -27,13 +27,13 @@ Partial Class frm_wmi
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.txtUserName = New System.Windows.Forms.TextBox()
-        Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.txtDomen = New System.Windows.Forms.TextBox()
+        Me.txtIP = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.txtIP = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtDomen = New System.Windows.Forms.TextBox()
+        Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.txtUserName = New System.Windows.Forms.TextBox()
         Me.txtIP2 = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
@@ -108,28 +108,13 @@ Partial Class frm_wmi
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(413, 161)
         Me.TableLayoutPanel1.TabIndex = 4
         '
-        'txtUserName
+        'txtIP
         '
-        Me.txtUserName.Location = New System.Drawing.Point(119, 55)
-        Me.txtUserName.Name = "txtUserName"
-        Me.txtUserName.Size = New System.Drawing.Size(291, 20)
-        Me.txtUserName.TabIndex = 5
-        Me.txtUserName.Text = "Administrator"
-        '
-        'txtPassword
-        '
-        Me.txtPassword.Location = New System.Drawing.Point(119, 81)
-        Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPassword.Size = New System.Drawing.Size(291, 20)
-        Me.txtPassword.TabIndex = 6
-        '
-        'txtDomen
-        '
-        Me.txtDomen.Location = New System.Drawing.Point(119, 107)
-        Me.txtDomen.Name = "txtDomen"
-        Me.txtDomen.Size = New System.Drawing.Size(291, 20)
-        Me.txtDomen.TabIndex = 7
+        Me.txtIP.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtIP.Location = New System.Drawing.Point(119, 3)
+        Me.txtIP.Name = "txtIP"
+        Me.txtIP.Size = New System.Drawing.Size(291, 20)
+        Me.txtIP.TabIndex = 10
         '
         'Button1
         '
@@ -149,14 +134,6 @@ Partial Class frm_wmi
         Me.Button2.Text = "Отмена"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'txtIP
-        '
-        Me.txtIP.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtIP.Location = New System.Drawing.Point(119, 3)
-        Me.txtIP.Name = "txtIP"
-        Me.txtIP.Size = New System.Drawing.Size(291, 20)
-        Me.txtIP.TabIndex = 10
-        '
         'Label5
         '
         Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -166,6 +143,29 @@ Partial Class frm_wmi
         Me.Label5.Size = New System.Drawing.Size(110, 13)
         Me.Label5.TabIndex = 11
         Me.Label5.Text = "Ip адрес 2"
+        '
+        'txtDomen
+        '
+        Me.txtDomen.Location = New System.Drawing.Point(119, 107)
+        Me.txtDomen.Name = "txtDomen"
+        Me.txtDomen.Size = New System.Drawing.Size(291, 20)
+        Me.txtDomen.TabIndex = 7
+        '
+        'txtPassword
+        '
+        Me.txtPassword.Location = New System.Drawing.Point(119, 81)
+        Me.txtPassword.Name = "txtPassword"
+        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtPassword.Size = New System.Drawing.Size(291, 20)
+        Me.txtPassword.TabIndex = 6
+        '
+        'txtUserName
+        '
+        Me.txtUserName.Location = New System.Drawing.Point(119, 55)
+        Me.txtUserName.Name = "txtUserName"
+        Me.txtUserName.Size = New System.Drawing.Size(291, 20)
+        Me.txtUserName.TabIndex = 5
+        Me.txtUserName.Text = "Administrator"
         '
         'txtIP2
         '
@@ -181,6 +181,7 @@ Partial Class frm_wmi
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(413, 161)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frm_wmi"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent

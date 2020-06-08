@@ -22,7 +22,7 @@ Partial Class frmSplash
     'Не изменяйте ее в редакторе исходного кода.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Version = New System.Windows.Forms.Label
+        Me.Version = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Version
@@ -43,6 +43,7 @@ Partial Class frmSplash
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(390, 285)
         Me.Controls.Add(Me.Version)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmSplash"
         Me.ShowInTaskbar = False

@@ -1,5 +1,5 @@
 ﻿Module MOD_REMOVE
-    Public Sub REMOVE_TEHN(ByVal sSID As String)
+    Public Sub REMOVE_TEHN(ByVal sSID As String, Optional tMDelete As Boolean = False)
         On Error GoTo Error_
         On Error Resume Next
 
@@ -17,7 +17,7 @@
                 DB7.Execute("DELETE FROM net_port WHERE Id_Comp=" & sSID)
 
         End Select
-      
+
         DB7.Execute("DELETE FROM AKT_SP_OS3 WHERE Id_Comp=" & sSID)
         DB7.Execute("DELETE FROM ActOS WHERE computer=" & sSID)
         DB7.Execute("DELETE FROM TrebOvanie WHERE computer='" & sSID & "'")
@@ -67,12 +67,51 @@
         DB7.Execute("DELETE FROM Zametki WHERE Id_Comp=" & sSID)
         DB7.Execute("DELETE FROM kompy WHERE id=" & sSID)
 
-        DB7.Execute("UPDATE CARTRIDG SET USTR = 0 WHERE USTR=" & sSID)
 
-        DB7.Execute("UPDATE kompy SET PCL='0' where PCL = " & sSID)
+        rs = New Recordset
+        rs.Open("Select count(*) as t_n FROM CARTRIDG where USTR = " & sSID, DB7, CursorTypeEnum.adOpenDynamic,
+                LockTypeEnum.adLockOptimistic)
+        With rs
+            sCOUNT = .Fields("t_n").Value
+        End With
+        rs.Close()
+        rs = Nothing
 
-        Call FIND_TREE_TAG(frmComputers.lstGroups.Nodes, "C|" & sSID)
-        frmComputers.lstGroups.SelectedNode.Remove()
+        Select Case sCOUNT
+
+            Case 0
+
+
+            Case Else
+                DB7.Execute("UPDATE CARTRIDG SET USTR = 0 WHERE USTR=" & sSID)
+        End Select
+
+
+        rs = New Recordset
+        rs.Open("Select count(*) as t_n FROM kompy where PCL = " & sSID, DB7, CursorTypeEnum.adOpenDynamic,
+                LockTypeEnum.adLockOptimistic)
+        With rs
+            sCOUNT = .Fields("t_n").Value
+        End With
+        rs.Close()
+        rs = Nothing
+
+        Select Case sCOUNT
+
+            Case 0
+
+            Case Else
+                DB7.Execute("UPDATE kompy SET PCL='0' where PCL = " & sSID)
+        End Select
+
+        Select Case tMDelete
+            Case True
+
+            Case False
+                Call FIND_TREE_TAG(frmComputers.lstGroups.Nodes, "C|" & sSID)
+                frmComputers.lstGroups.SelectedNode.Remove()
+        End Select
+
 
         Exit Sub
 Error_:

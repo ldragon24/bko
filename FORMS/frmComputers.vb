@@ -511,12 +511,11 @@ Public Class frmComputers
 
         Me.BeginInvoke(New MethodInvoker(AddressOf R_T_LOAD))
 
-        'System.Windows.Forms.Application.DoEvents()
+        System.Windows.Forms.Application.DoEvents()
 
         Me.Cursor = Cursors.Default
 
         If OneStart = 0 Then OneStart = 1
-
 
         '###################################################################################################################################
 
@@ -686,24 +685,6 @@ Public Class frmComputers
 
         'lblSurname
         'txtUserFIO
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         Exit Sub
 err_:
@@ -1106,6 +1087,8 @@ Error_:
 
                         My.Application.DoEvents()
                         Call LOAD_PCL(sBranch, sDepartment, sOffice, Me.cmbPCLK, cmbResponsible.Text, d(1))
+
+                        'Call QR_CODE_GENERATE(pqr, d(1))
 
                     Case "Printer"
 
@@ -1682,7 +1665,7 @@ Error_:
                 End Select
 
                 Call QR_CODE_GENERATE(pb, d(1))
-                Call QR_CODE_GENERATE(pqr, d(1))
+
 
             Case "G"
                 Me.EDT = False
@@ -2651,6 +2634,7 @@ A:
 
             End Select
 
+
             Dim rs As Recordset
             rs = New Recordset
 
@@ -2660,7 +2644,7 @@ A:
                 .MoveFirst()
                 Do While Not .EOF
 
-                    REMOVE_TEHN(.Fields("id").Value)
+                    REMOVE_TEHN(.Fields("id").Value, True)
 
                     .MoveNext()
                 Loop
@@ -2668,13 +2652,15 @@ A:
             rs.Close()
             rs = Nothing
 
-            Select Case TREE_UPDATE
+            Me.BeginInvoke(New MethodInvoker(AddressOf R_T_LOAD))
 
-                Case 0
-                    Me.BeginInvoke(New MethodInvoker(AddressOf R_T_LOAD))
-                Case 1
+            'Select Case TREE_UPDATE
 
-            End Select
+            '    Case 0
+            '        Me.BeginInvoke(New MethodInvoker(AddressOf R_T_LOAD))
+            '    Case 1
+
+            'End Select
 
             Me.BeginInvoke(New MethodInvoker(AddressOf STAT_INF))
 
@@ -3478,34 +3464,39 @@ err_:
                        sOffice & "' And TipTehn='PC'"
         End Select
 
+        Try
 
-        rs = New Recordset
-        rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
+            rs = New Recordset
+            rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
+            With rs
+                .MoveFirst()
+                Do While Not .EOF
+
+                    QR_CODE_GENERATE(pb, .Fields("id").Value)
+
+                    Select Case sOfficePACK
+
+                        Case "OpenOffice.org"
+
+                            OOO_SEND_PK(.Fields("id").Value)
+
+                        Case Else
+
+                            WRD_SEND_PK(.Fields("id").Value)
+
+                    End Select
+
+                    .MoveNext()
+                Loop
+            End With
+            rs.Close()
+            rs = Nothing
+
+        Catch ex As Exception
+
+        End Try
 
 
-        With rs
-            .MoveFirst()
-            Do While Not .EOF
-
-                QR_CODE_GENERATE(.Fields("id").Value)
-
-                Select Case sOfficePACK
-
-                    Case "OpenOffice.org"
-
-                        OOO_SEND_PK(.Fields("id").Value)
-
-                    Case Else
-
-                        WRD_SEND_PK(.Fields("id").Value)
-
-                End Select
-
-                .MoveNext()
-            Loop
-        End With
-        rs.Close()
-        rs = Nothing
     End Sub
 
     Private Sub gbcpu_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles gbcpu.DoubleClick

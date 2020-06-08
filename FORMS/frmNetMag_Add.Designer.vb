@@ -500,6 +500,7 @@ Partial Class frmNetMag_Add
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(781, 497)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmNetMag_Add"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

@@ -311,6 +311,7 @@ Partial Class frmGarCPL
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.gbPost)
         Me.Controls.Add(Me.gbcpu)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmGarCPL"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

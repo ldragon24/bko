@@ -420,6 +420,7 @@ Partial Class frmCartr_ADD
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(403, 455)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmCartr_ADD"
         Me.ShowInTaskbar = False

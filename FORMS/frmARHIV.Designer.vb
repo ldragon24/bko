@@ -61,7 +61,7 @@ Partial Class frmARHIV
         'ProgressBar2
         '
         Me.ProgressBar2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ProgressBar2.Location = New System.Drawing.Point(2, 399)
         Me.ProgressBar2.Name = "ProgressBar2"
         Me.ProgressBar2.Size = New System.Drawing.Size(325, 13)
@@ -70,7 +70,7 @@ Partial Class frmARHIV
         'ProgressBar1
         '
         Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ProgressBar1.Location = New System.Drawing.Point(1, 375)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(326, 13)
@@ -111,6 +111,7 @@ Partial Class frmARHIV
         Me.Controls.Add(Me.lblStatus)
         Me.Controls.Add(Me.btnUnZip)
         Me.Controls.Add(Me.btnZipUp)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmARHIV"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

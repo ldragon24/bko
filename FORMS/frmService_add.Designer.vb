@@ -480,6 +480,7 @@ Partial Class frmService_add
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(480, 670)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmService_add"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

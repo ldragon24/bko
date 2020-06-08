@@ -43,6 +43,7 @@ Partial Class frmNetMagazin
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
@@ -304,10 +305,12 @@ Partial Class frmNetMagazin
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(749, 549)
         Me.Controls.Add(Me.SplitContainer1)
+        Me.DoubleBuffered = True
         Me.Name = "frmNetMagazin"
         Me.Text = "Кабельные журналы"
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         Me.gbTree.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)

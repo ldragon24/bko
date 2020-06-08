@@ -434,6 +434,7 @@ Partial Class frmDirectory
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1009, 602)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.MinimumSize = New System.Drawing.Size(860, 640)
         Me.Name = "frmDirectory"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

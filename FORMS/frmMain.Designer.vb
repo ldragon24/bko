@@ -680,9 +680,10 @@ Partial Class frmMain
         Me.ToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1, Me.NewToolStripButton, Me.ToolStripSeparator1, Me.SaveInfTehButton, Me.ToolStripSeparator2, Me.ArhToolZipbutton, Me.ToolStripButton1})
+        Me.ToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow
         Me.ToolStrip.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip.Name = "ToolStrip"
-        Me.ToolStrip.Size = New System.Drawing.Size(1016, 25)
+        Me.ToolStrip.Size = New System.Drawing.Size(1016, 23)
         Me.ToolStrip.TabIndex = 13
         Me.ToolStrip.Text = "ToolStrip"
         '
@@ -691,7 +692,7 @@ Partial Class frmMain
         Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ЗагрузитьИзEverestiniToolStripMenuItem, Me.ЗагрузитьИзASTRA32ToolStripMenuItem, Me.ЗагрузитьЧерезWMIToolStripMenuItem, Me.ЗагрузитьИзCSVEverestToolStripMenuItem, Me.HANDINSERTToolStripMenuItem, Me.ToolStripMenuItem1, Me.CNTToolStripMenuItem, Me.ToolStripSeparator7, Me.СетевоеОборудованиеToolStripMenuItem, Me.ToolStripSeparator9, Me.ПерефирийныеУстройстваToolStripMenuItem, Me.КомплектующиеToolStripMenuItem, Me.ToolStripSeparator10, Me.ДругоеОборудованиеToolStripMenuItem})
         Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
-        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(67, 22)
+        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(67, 19)
         Me.ToolStripDropDownButton1.Text = "Новый..."
         '
         'ЗагрузитьИзEverestiniToolStripMenuItem
@@ -949,39 +950,39 @@ Partial Class frmMain
         '
         Me.NewToolStripButton.ImageTransparentColor = System.Drawing.Color.Black
         Me.NewToolStripButton.Name = "NewToolStripButton"
-        Me.NewToolStripButton.Size = New System.Drawing.Size(46, 22)
+        Me.NewToolStripButton.Size = New System.Drawing.Size(46, 19)
         Me.NewToolStripButton.Text = "Поиск"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 23)
         '
         'SaveInfTehButton
         '
         Me.SaveInfTehButton.ImageTransparentColor = System.Drawing.Color.Black
         Me.SaveInfTehButton.Name = "SaveInfTehButton"
-        Me.SaveInfTehButton.Size = New System.Drawing.Size(69, 22)
+        Me.SaveInfTehButton.Size = New System.Drawing.Size(69, 19)
         Me.SaveInfTehButton.Text = "Сохранить"
         Me.SaveInfTehButton.ToolTipText = "Сохранить"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 23)
         '
         'ArhToolZipbutton
         '
         Me.ArhToolZipbutton.ImageTransparentColor = System.Drawing.Color.Black
         Me.ArhToolZipbutton.Name = "ArhToolZipbutton"
-        Me.ArhToolZipbutton.Size = New System.Drawing.Size(70, 22)
+        Me.ArhToolZipbutton.Size = New System.Drawing.Size(70, 19)
         Me.ArhToolZipbutton.Text = "Архивация"
         '
         'ToolStripButton1
         '
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(52, 22)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(52, 19)
         Me.ToolStripButton1.Text = "Отчеты"
         '
         'frmMain
@@ -993,6 +994,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.ToolStrip)
         Me.Controls.Add(Me.MenuStrip)
         Me.Controls.Add(Me.StatusStrip)
+        Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip

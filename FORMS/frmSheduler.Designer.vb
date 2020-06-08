@@ -175,6 +175,7 @@ Partial Class frmSheduler
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(992, 666)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.MinimumSize = New System.Drawing.Size(1000, 700)
         Me.Name = "frmSheduler"
         Me.Text = "Напоминания"

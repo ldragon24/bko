@@ -280,6 +280,7 @@ Partial Class frmACT_OS_Act_treb
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(503, 287)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmACT_OS_Act_treb"
         Me.Text = "Данные для Акта ввода ОС"

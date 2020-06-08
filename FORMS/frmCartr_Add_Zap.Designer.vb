@@ -250,6 +250,7 @@ Partial Class frmCartr_Add_Zap
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(500, 188)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmCartr_Add_Zap"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

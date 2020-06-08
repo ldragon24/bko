@@ -178,6 +178,7 @@ Partial Class frmSQL
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(992, 621)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.DoubleBuffered = True
         Me.MinimumSize = New System.Drawing.Size(1000, 650)
         Me.Name = "frmSQL"
         Me.Text = "Запросы SQL"

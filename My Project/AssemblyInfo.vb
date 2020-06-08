@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Программа учёта оргтехники")>
 <Assembly: AssemblyCompany("Squee&Dragon")>
 <Assembly: AssemblyProduct("База Компьютеров Организации")>
-<Assembly: AssemblyCopyright("Copyright © Alex Plotnikov 2018")> 
+<Assembly: AssemblyCopyright("Copyright © Alex Plotnikov 2020")>
 <Assembly: AssemblyTrademark("Squee&Dragon")>
 
 <Assembly: ComVisible(True)>
@@ -30,6 +30,6 @@ Imports System.Runtime.InteropServices
 ' используя "*", как показано ниже:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.7.6.1")> 
+<Assembly: AssemblyVersion("1.7.6.2")>
 
-<Assembly: AssemblyFileVersionAttribute("1.7.6.1")> 
+<Assembly: AssemblyFileVersion("1.7.6.2")>
