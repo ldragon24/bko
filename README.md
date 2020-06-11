@@ -1,4 +1,5 @@
-# bko
+# База Компьютеров Организации
+
 Automatically exported from code.google.com/p/bko
 
 Программа учета оргтехники на предприятиях
