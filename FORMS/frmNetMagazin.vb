@@ -66,9 +66,7 @@ Public Class frmNetMagazin
 
         Else
 
-
         End If
-
 
         lstgroups.Nodes.Clear()
 
@@ -95,12 +93,8 @@ Public Class frmNetMagazin
         ' Dim rs5 As ADODB.Recordset
         'Dim rs6 As ADODB.Recordset
         Dim rs7 As Recordset
-
-
         Dim strItemText As String
         Dim unamS2, unamS As Integer
-
-
         Dim unameS As String
         Dim unameS2 As String
         Dim unameS3 As String
@@ -124,7 +118,6 @@ Public Class frmNetMagazin
         nodeRoot.Tag = "ROOT"
         lstgroups.Nodes.Add(nodeRoot)
 
-
         rs7 = New Recordset
         rs7.Open("SELECT count(*) as t_nim FROM SPR_KAB", DB7, CursorTypeEnum.adOpenDynamic,
                  LockTypeEnum.adLockOptimistic)
@@ -146,19 +139,15 @@ Public Class frmNetMagazin
 
         If zBranche = "0" Then
 
-            If sVISIBLE = 1 Then
-                sSQL1 = "SELECT id, Filial FROM SPR_FILIAL ORDER BY Filial"
-            Else
-                sSQL1 = "SELECT id, Filial FROM SPR_FILIAL where Arhiv=0 ORDER BY Filial"
-            End If
+
+            sSQL1 = "SELECT id, Filial FROM SPR_FILIAL ORDER BY Filial"
+        
 
         Else
 
-            If sVISIBLE = 1 Then
-                sSQL1 = "SELECT id, Filial FROM SPR_FILIAL where filial ='" & zBranche & "' ORDER BY Filial"
-            Else
-                sSQL1 = "SELECT id, Filial FROM SPR_FILIAL where Arhiv=0 and filial ='" & zBranche & "' ORDER BY Filial"
-            End If
+
+            sSQL1 = "SELECT id, Filial FROM SPR_FILIAL where filial ='" & zBranche & "' ORDER BY Filial"
+       
 
         End If
 
@@ -181,8 +170,8 @@ Public Class frmNetMagazin
                 If KCKey = 0 And Len(DCKey) <> 0 Then
 
                     If DCKey = sTEN Then
-                        lstgroups.SelectedNode = BrancheNode
-                        lstgroups.SelectedNode.Expand()
+                        lstGroups.SelectedNode = BrancheNode
+                        lstGroups.SelectedNode.Expand()
                     End If
                 End If
 
@@ -193,13 +182,10 @@ Public Class frmNetMagazin
 
                 'Отделы в филиалах Второй уровень дерева
 
-                If sVISIBLE = 1 Then
-                    sSQL2 = "SELECT id, Filial, N_Otd FROM SPR_OTD_FILIAL WHERE filial='" & unameS &
-                            "' ORDER BY Filial, N_Otd"
-                Else
-                    sSQL2 = "SELECT id, Filial, N_Otd FROM SPR_OTD_FILIAL where filial='" & unameS &
-                            "' AND Arhiv=0 ORDER BY Filial, N_Otd"
-                End If
+
+                sSQL2 = "SELECT id, Filial, N_Otd FROM SPR_OTD_FILIAL WHERE filial='" & unameS &
+                        "' ORDER BY Filial, N_Otd"
+
                 rs2 = New Recordset
                 rs2.Open(sSQL2, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
@@ -218,8 +204,8 @@ Public Class frmNetMagazin
                             If KCKey = 0 And Len(DCKey) <> 0 Then
 
                                 If DCKey = sTEN Then
-                                    lstgroups.SelectedNode = DepatrmentNode
-                                    lstgroups.SelectedNode.Expand()
+                                    lstGroups.SelectedNode = DepatrmentNode
+                                    lstGroups.SelectedNode.Expand()
                                 End If
                             End If
 
@@ -231,13 +217,9 @@ Public Class frmNetMagazin
 
                             If unamS2 > 0 Then
 
-                                If sVISIBLE = 1 Then
-                                    sSQL5 = "SELECT id, Name, N_F, N_M FROM SPR_KAB WHERE N_F='" & unameS &
-                                            "' AND N_M ='" & unameS2 & "' ORDER BY N_F, N_M, Name"
-                                Else
-                                    sSQL5 = "SELECT id, Name, N_F, N_M FROM SPR_KAB where N_F='" & unameS &
-                                            "' AND N_M ='" & unameS2 & "' AND Arhiv=0 ORDER BY N_F, N_M, Name"
-                                End If
+
+                                sSQL5 = "SELECT id, Name, N_F, N_M FROM SPR_KAB WHERE N_F='" & unameS &
+                                        "' AND N_M ='" & unameS2 & "' ORDER BY N_F, N_M, Name"
 
                                 rs7 = New Recordset
                                 rs7.Open(sSQL5, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
@@ -256,8 +238,8 @@ Public Class frmNetMagazin
                                         If KCKey = 0 And Len(DCKey) <> 0 Then
 
                                             If DCKey = sTEN Then
-                                                lstgroups.SelectedNode = OfficeNode
-                                                lstgroups.SelectedNode.Expand()
+                                                lstGroups.SelectedNode = OfficeNode
+                                                lstGroups.SelectedNode.Expand()
                                             End If
                                         End If
 
@@ -273,9 +255,7 @@ Public Class frmNetMagazin
                             End If
                             'Конец кабинетов
 
-
                         End If
-
 
                         .MoveNext()
                     Loop
@@ -289,22 +269,19 @@ Public Class frmNetMagazin
         rs.Close()
         rs = Nothing
 
-
         If KCKey = 0 And Len(DCKey) = 0 Then
 
-            lstgroups.SelectedNode = nodeRoot
+            lstGroups.SelectedNode = nodeRoot
             Dim tNode As New TreeNode
-            tNode = lstgroups.Nodes(0)
+            tNode = lstGroups.Nodes(0)
             tNode.Expand()
 
         End If
 
-
-        exitsub:
-
+exitsub:
 
         Exit Sub
-        ERR1:
+ERR1:
         'MsgBox Err.Description
         Select Case Err.Number
             Case 3021 'ignore, no entries in list

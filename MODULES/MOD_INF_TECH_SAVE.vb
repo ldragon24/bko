@@ -190,11 +190,11 @@ err_:
 
     End Sub
 
-    Private Sub UPDATE_INFORMARION(ByVal FILIAL As String, ByVal MESTO As String, ByVal kabn As String, ByVal TELEPHONE As String, ByVal NET_NAME As String, ByVal PSEVDONIM As String, ByVal OTvetstvennyj As String, ByVal MOL As String, ByVal sSID As Integer)
+    Private Sub UPDATE_INFORMARION(ByVal FILIAL As String, ByVal MESTO As String, ByVal kabn As String, ByVal TELEPHONE As String, ByVal NET_NAME As String, ByVal PSEVDONIM As String, ByVal OTvetstvennyj As String, ByVal MOL As String, ByVal NomNom As String, ByVal sSID As Integer)
 
         Dim sSQL As String
 
-        sSQL = "UPDATE kompy SET FILIAL='" & FILIAL & "', MESTO='" & MESTO & "', kabn='" & kabn & "', TELEPHONE='" & TELEPHONE & "', NET_NAME='" & NET_NAME & "', PSEVDONIM='" & PSEVDONIM & "', OTvetstvennyj='" & OTvetstvennyj & "', MOL='" & MOL & "' WHERE id =" & sSID
+        sSQL = "UPDATE kompy SET FILIAL='" & FILIAL & "', MESTO='" & MESTO & "', kabn='" & kabn & "', TELEPHONE='" & TELEPHONE & "', NET_NAME='" & NET_NAME & "', PSEVDONIM='" & PSEVDONIM & "', OTvetstvennyj='" & OTvetstvennyj & "', MOL='" & MOL & "', NomNom='" & NomNom & "' WHERE id =" & sSID
 
         DB7.Execute(sSQL)
 
@@ -356,7 +356,11 @@ sAR:
         End If
 
 
-        Call UPDATE_INFORMARION(frmComputers.cmbOTHFil.Text, frmComputers.cmbOTHDepart.Text, frmComputers.cmbOTHOffice.Text, frmComputers.txtOTHphone.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTHotv.Text, frmComputers.cmbOTHMOL.Text, sSID)
+        sSQL = "UPDATE kompy SET notwork=" & frmComputers.chkNotWorkOTH.Checked & " WHERE id =" & sSID
+        DB7.Execute(sSQL)
+
+
+        Call UPDATE_INFORMARION(frmComputers.cmbOTHFil.Text, frmComputers.cmbOTHDepart.Text, frmComputers.cmbOTHOffice.Text, frmComputers.txtOTHphone.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTHotv.Text, frmComputers.cmbOTHMOL.Text, frmComputers.txtNomNomOTH.Text, sSID)
 
         Call UPDATE_OPLATA(frmComputers.txtOTHSfN.Text, frmComputers.txtOTHcash.Text, frmComputers.txtOTHSumm.Text, frmComputers.txtOTHZay.Text, frmComputers.dtOTHdataVvoda.Value, frmComputers.dtOTHSFdate.Value, _chkOTHspis, _chkOTHNNb, frmComputers.dtOTHSpisanie.Value, sSID)
 
@@ -573,14 +577,14 @@ sAR:
 
         'frmComputers.txtOTHIP.Text
 
-
+        'cmbOTHConnect
         Dim sSQL As String
 
         Select Case frmComputers.EDT
 
             Case False
 
-                sSQL = "INSERT INTO kompy (PRINTER_NAME_1,PRINTER_SN_1,Ser_N_SIS,PRINTER_PROIZV_1,port_1,INV_NO_PRINTER,TIPtehn,PCL,tip_compa,NET_IP_1) VALUES ('" & frmComputers.cmbOTH.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.PROiZV39.Text & "','" & frmComputers.txtOTHMeMo.Text & "','" & frmComputers.txtOTHinnumber.Text & "','" & TipTehn & "'," & unaPCL & ",'" & sTIP_COMPA & "','" & frmComputers.txtOTHIP.Text & "')"
+                sSQL = "INSERT INTO kompy (PRINTER_NAME_1,PRINTER_SN_1,Ser_N_SIS,PRINTER_PROIZV_1,port_1,INV_NO_PRINTER,TIPtehn,PCL,tip_compa,NET_IP_1) VALUES ('" & frmComputers.cmbOTH.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.PROiZV39.Text & "','" & frmComputers.txtOTHmemo.Text & "','" & frmComputers.txtOTHinnumber.Text & "','" & TipTehn & "'," & unaPCL & ",'" & frmComputers.cmbOTHConnect.Text & "','" & frmComputers.txtOTHIP.Text & "')"
 
             Case True
 
@@ -629,7 +633,10 @@ sAR:
             sSID = frmComputers.sCOUNT
         End If
 
-        Call UPDATE_INFORMARION(frmComputers.cmbOTHFil.Text, frmComputers.cmbOTHDepart.Text, frmComputers.cmbOTHOffice.Text, frmComputers.txtOTHphone.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTHotv.Text, frmComputers.cmbOTHMOL.Text, sSID)
+        sSQL = "UPDATE kompy SET notwork=" & frmComputers.chkNotWorkOTH.Checked & " WHERE id =" & sSID
+        DB7.Execute(sSQL)
+
+        Call UPDATE_INFORMARION(frmComputers.cmbOTHFil.Text, frmComputers.cmbOTHDepart.Text, frmComputers.cmbOTHOffice.Text, frmComputers.txtOTHphone.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTH.Text, frmComputers.cmbOTHotv.Text, frmComputers.cmbOTHMOL.Text, frmComputers.txtNomNomOTH.Text, sSID)
 
         Call UPDATE_OPLATA(frmComputers.txtOTHSfN.Text, frmComputers.txtOTHcash.Text, frmComputers.txtOTHSUMM.Text, frmComputers.txtOTHZay.Text, frmComputers.dtOTHdataVvoda.Value, frmComputers.dtOTHSFdate.Value, _chkOTHspis, _chkOTHNNb, frmComputers.dtOTHSpisanie.Value, sSID)
 
@@ -884,7 +891,7 @@ sAR:
 
         On Error Resume Next
 
-        Call UPDATE_INFORMARION(frmComputers.cmbBranch.Text, frmComputers.cmbDepartment.Text, frmComputers.cmbOffice.Text, frmComputers.txtPHONE.Text, frmComputers.txtSNAME.Text, frmComputers.txtPSEUDONIM.Text, frmComputers.cmbResponsible.Text, frmComputers.cmbMOL.Text, sSID)
+        Call UPDATE_INFORMARION(frmComputers.cmbBranch.Text, frmComputers.cmbDepartment.Text, frmComputers.cmbOffice.Text, frmComputers.txtPHONE.Text, frmComputers.txtSNAME.Text, frmComputers.txtPSEUDONIM.Text, frmComputers.cmbResponsible.Text, frmComputers.cmbMOL.Text, frmComputers.txtNomNom.Text, sSID)
 
         sSQL = "UPDATE kompy SET " &
                        "CPU1='" & frmComputers.cmbCPU1.Text & "'," &
@@ -1176,6 +1183,11 @@ sAR:
 
         DB7.Execute(sSQL)
 
+
+        sSQL = "UPDATE kompy SET notwork=" & frmComputers.chkNotWorkPC.Checked & " WHERE id =" & sSID
+        DB7.Execute(sSQL)
+
+
         Call UPDATE_OPLATA(frmComputers.txtPCSfN.Text, frmComputers.txtPCcash.Text, frmComputers.txtPCSumm.Text, frmComputers.txtPCZay.Text, frmComputers.dtPCdataVvoda.Value, frmComputers.dtPCSFdate.Value, _chkPRNspis, _chkPRNNNb, frmComputers.dtSpisanie.Value, sSID)
 
         Select Case frmComputers.EDT
@@ -1208,7 +1220,8 @@ sAR:
 
                         DB7.Execute("update kompy set OTvetstvennyj='" & frmComputers.cmbResponsible.Text & "', FILIAL='" &
                             frmComputers.cmbBranch.Text & "', mesto='" & frmComputers.cmbDepartment.Text & "', kabn='" &
-                            frmComputers.cmbOffice.Text & "' WHERE PCL=" & frmComputers.sCOUNT)
+                            frmComputers.cmbOffice.Text & "', NomNom='" &
+                            frmComputers.txtNomNom.Text & "' WHERE PCL=" & frmComputers.sCOUNT)
 
                 End Select
 
@@ -1741,28 +1754,28 @@ err_:
 
         End Select
 
-        ' esq 151026 картриждж и формат: обновление
-        Dim sSPRAV As String
-        Dim pSQL As String
-        'Dim rs1 As Recordset
-        If RSExists("MFU", "name", Trim(frmComputers.cmbPRN.Text)) Then
-            sSPRAV = "SPR_MFU"
-        End If
-        If RSExists("PRINTERY", "name", Trim(frmComputers.cmbPRN.Text)) Then
-            sSPRAV = "SPR_PRINTER"
-        End If
-        If RSExists("KOPIRY", "name", Trim(frmComputers.cmbPRN.Text)) Then
-            sSPRAV = "SPR_KOPIR"
-        End If
-        pSQL = "UPDATE " & sSPRAV & " SET A='" & frmComputers.cmbFormat.Text & "', B='" & frmComputers.cmbModCartr.Text &
-                "' WHERE Name ='" & Trim(frmComputers.cmbPRN.Text) & "'"
-        DB7.Execute(pSQL)
+        '' esq 151026 картриждж и формат: обновление
+        'Dim sSPRAV As String
+        'Dim pSQL As String
+        ''Dim rs1 As Recordset
+        'If RSExists("MFU", "name", Trim(frmComputers.cmbPRN.Text)) Then
+        '    sSPRAV = "SPR_MFU"
+        'End If
+        'If RSExists("PRINTERY", "name", Trim(frmComputers.cmbPRN.Text)) Then
+        '    sSPRAV = "SPR_PRINTER"
+        'End If
+        'If RSExists("KOPIRY", "name", Trim(frmComputers.cmbPRN.Text)) Then
+        '    sSPRAV = "SPR_KOPIR"
+        'End If
+        'pSQL = "UPDATE " & sSPRAV & " SET A='" & frmComputers.cmbFormat.Text & "', B='" & frmComputers.cmbModCartr.Text &
+        '        "' WHERE Name ='" & Trim(frmComputers.cmbPRN.Text) & "'"
+        'DB7.Execute(pSQL)
 
-        If (RSExists("CARTR", "name", frmComputers.cmbModCartr.Text)) Then
-            pSQL = "UPDATE spr_cart SET A='" & frmComputers.cmbTIPCartridg.Text & "' WHERE Name ='" & Trim(frmComputers.cmbModCartr.Text) & "'"
-            DB7.Execute(pSQL)
-        End If
-        ' esq 151026
+        'If (RSExists("CARTR", "name", frmComputers.cmbModCartr.Text)) Then
+        '    pSQL = "UPDATE spr_cart SET A='" & frmComputers.cmbTIPCartridg.Text & "' WHERE Name ='" & Trim(frmComputers.cmbModCartr.Text) & "'"
+        '    DB7.Execute(pSQL)
+        'End If
+        '' esq 151026
 
         If Not (RSExists("CARTR", "name", frmComputers.cmbModCartr.Text)) Then
             AddTreePar(frmComputers.cmbModCartr.Text, frmComputers.cmbTIPCartridg.Text, frmComputers.PROiZV38.Text, "spr_cart", frmComputers.cmbModCartr) ' esq 151026
@@ -1906,8 +1919,12 @@ sAR:
             sSID = frmComputers.sCOUNT
         End If
 
-        Call UPDATE_INFORMARION(frmComputers.cmbPRNFil.Text, frmComputers.cmbPRNDepart.Text, frmComputers.cmbPRNOffice.Text, frmComputers.txtPRNphone.Text, frmComputers.cmbPRN.Text, frmComputers.cmbPRN.Text, frmComputers.cmbPRNotv.Text, frmComputers.cmbPRMOL.Text, sSID)
 
+        sSQL = "UPDATE kompy SET notwork=" & frmComputers.chkNotWorkPRN.Checked & " WHERE id =" & sSID
+        DB7.Execute(sSQL)
+
+
+        Call UPDATE_INFORMARION(frmComputers.cmbPRNFil.Text, frmComputers.cmbPRNDepart.Text, frmComputers.cmbPRNOffice.Text, frmComputers.txtPRNphone.Text, frmComputers.cmbPRN.Text, frmComputers.cmbPRN.Text, frmComputers.cmbPRNotv.Text, frmComputers.cmbPrMol.Text, frmComputers.txtNomNomPrn.Text, sSID)
 
         Call UPDATE_OPLATA(frmComputers.txtPRNSfN.Text, frmComputers.txtPRNcash.Text, frmComputers.txtPRNSumm.Text, frmComputers.txtPRNZay.Text, frmComputers.dtPRNdataVvoda.Value, frmComputers.dtPRNSFdate.Value, _chkPRNspis, _chkPRNNNb, frmComputers.dtPRNSpisanie.Value, sSID)
         Call SAVE_GARANT(sSID, frmComputers.cmbPRNPostav, frmComputers.dtGPRNPr, frmComputers.dtGPRNok)
@@ -2122,7 +2139,10 @@ sAR:
             sSID = frmComputers.sCOUNT
         End If
 
-        Call UPDATE_INFORMARION(frmComputers.cmbNETBranch.Text, frmComputers.cmbNetDepart.Text, frmComputers.cmbNETOffice.Text, frmComputers.txtNETphone.Text, frmComputers.cmbDevNet.Text, frmComputers.cmbNetDev.Text, frmComputers.cmbNETotv.Text, frmComputers.cmbNETMOL.Text, sSID)
+        sSQL = "UPDATE kompy SET notwork=" & frmComputers.chkNotWorkNET.Checked & " WHERE id =" & sSID
+        DB7.Execute(sSQL)
+
+        Call UPDATE_INFORMARION(frmComputers.cmbNETBranch.Text, frmComputers.cmbNetDepart.Text, frmComputers.cmbNETOffice.Text, frmComputers.txtNETphone.Text, frmComputers.cmbDevNet.Text, frmComputers.cmbNetDev.Text, frmComputers.cmbNETotv.Text, frmComputers.cmbNETMOL.Text, frmComputers.txtNomNomNET.Text, sSID)
         Call UPDATE_OPLATA(frmComputers.txtNETSfN.Text, frmComputers.txtNETcash.Text, frmComputers.txtNETSUMM.Text, frmComputers.txtNETZay.Text, frmComputers.dtNETdataVvoda.Value, frmComputers.dtNETSFdate.Value, _chkPRNspis, _chkPRNNNb, frmComputers.dtNETSpisanie.Value, sSID)
         Call SAVE_GARANT(sSID, frmComputers.cmbNETPostav, frmComputers.dtGNETPr, frmComputers.dtGNETok)
 
@@ -3821,7 +3841,7 @@ Error_:
 
                         Call FIND_TREE_TAG(frmComputers.lstGroups.Nodes, "C|" & sSID)
 
-                        Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 7)
+                        Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 7, .Fields("NotWork").Value)
 
                     End If
 
@@ -3885,15 +3905,17 @@ Error_:
                         Dim rsBK As Recordset
                         rsBK = New Recordset
                         rsBK.Open(
-                            "SELECT id FROM kompy WHERE NET_NAME='" & sTEMP0 & "' and MESTO='" & sDepartment &
+                            "SELECT id,NotWork FROM kompy WHERE NET_NAME='" & sTEMP0 & "' and MESTO='" & sDepartment &
                             "' and FILIAL='" & sBranch & "'  and kabn='" & sOffice & "' and PCL=" & sSID, DB7,
                             CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
                         Dim sPRN As String
+                        Dim NotWork As Integer
+
                         With rsBK
 
                             sPRN = .Fields("ID").Value
-
+                            NotWork = .Fields("NotWork").Value
                         End With
                         rsBK.Close()
                         rsBK = Nothing
@@ -3909,7 +3931,7 @@ Error_:
                             Case 1
 
                                 Call FIND_TREE_TAG(frmComputers.lstGroups.Nodes, "C|" & sSID)
-                                Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 7)
+                                Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 7, NotWork)
 
                         End Select
 
@@ -3975,14 +3997,16 @@ Error_:
                         Dim rsBK As Recordset
                         rsBK = New Recordset
                         rsBK.Open(
-                            "SELECT id FROM kompy WHERE NET_NAME='" & sTEMP0 & "' and MESTO='" & sDepartment &
+                            "SELECT id,NotWork FROM kompy WHERE NET_NAME='" & sTEMP0 & "' and MESTO='" & sDepartment &
                             "' and FILIAL='" & sBranch & "'  and kabn='" & sOffice & "' and PCL=" & sSID, DB7,
                             CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
                         Dim sPRN As String
+                        Dim NotWork As Integer
                         With rsBK
 
                             sPRN = .Fields("ID").Value
+                            NotWork = .Fields("NotWork").Value
 
                         End With
                         rsBK.Close()
@@ -3998,7 +4022,7 @@ Error_:
                             Case 1
 
                                 Call FIND_TREE_TAG(frmComputers.lstGroups.Nodes, "C|" & sSID)
-                                Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 7)
+                                Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 7, NotWork)
 
                         End Select
 
@@ -4046,15 +4070,16 @@ Error_:
                         Dim rsBK As Recordset
                         rsBK = New Recordset
                         rsBK.Open(
-                            "SELECT id FROM kompy WHERE MONITOR_NAME='" & sTEMP0 & "' and MESTO='" & sDepartment &
+                            "SELECT id,NotWork FROM kompy WHERE MONITOR_NAME='" & sTEMP0 & "' and MESTO='" & sDepartment &
                             "' and FILIAL='" & sBranch & "' and kabn='" & sOffice & "' and PCL=" & sSID, DB7,
                             CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
                         Dim sPRN As String
+                        Dim NotWork As Integer
                         With rsBK
 
                             sPRN = .Fields("ID").Value
-
+                            NotWork = .Fields("NotWork").Value
                         End With
                         rsBK.Close()
                         rsBK = Nothing
@@ -4069,7 +4094,7 @@ Error_:
                             Case 1
 
                                 Call FIND_TREE_TAG(frmComputers.lstGroups.Nodes, "C|" & sSID)
-                                Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 17)
+                                Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 17, NotWork)
 
                         End Select
 
@@ -4119,15 +4144,16 @@ Error_:
                         Dim rsBK As Recordset
                         rsBK = New Recordset
                         rsBK.Open(
-                            "SELECT id FROM kompy WHERE PRINTER_NAME_1='" & sTEMP0 & "' and MESTO='" & sDepartment &
+                            "SELECT id,NotWork FROM kompy WHERE PRINTER_NAME_1='" & sTEMP0 & "' and MESTO='" & sDepartment &
                             "' and FILIAL='" & sBranch & "'  and kabn='" & sOffice & "' and PCL=" & sSID, DB7,
                             CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
                         Dim sPRN As String
+                        Dim NotWork As Integer
                         With rsBK
 
                             sPRN = .Fields("ID").Value
-
+                            NotWork = .Fields("NotWork").Value
                         End With
                         rsBK.Close()
                         rsBK = Nothing
@@ -4142,7 +4168,7 @@ Error_:
                             Case 1
 
                                 Call FIND_TREE_TAG(frmComputers.lstGroups.Nodes, "C|" & sSID)
-                                Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 41)
+                                Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 41, NotWork)
 
                         End Select
 
@@ -4198,15 +4224,16 @@ Error_:
                         Dim rsBK As Recordset
                         rsBK = New Recordset
                         rsBK.Open(
-                            "SELECT id FROM kompy WHERE PRINTER_NAME_1='" & sTEMP0 & "' and MESTO='" & sDepartment &
+                            "SELECT id,NotWork FROM kompy WHERE PRINTER_NAME_1='" & sTEMP0 & "' and MESTO='" & sDepartment &
                             "' and FILIAL='" & sBranch & "'  and kabn='" & sOffice & "' and PCL=" & sSID, DB7,
                             CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
                         Dim sPRN As String
+                        Dim NotWork As Integer
                         With rsBK
 
                             sPRN = .Fields("ID").Value
-
+                            NotWork = .Fields("NotWork").Value
                         End With
                         rsBK.Close()
                         rsBK = Nothing
@@ -4221,7 +4248,7 @@ Error_:
                             Case 1
 
                                 Call FIND_TREE_TAG(frmComputers.lstGroups.Nodes, "C|" & sSID)
-                                Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 46)
+                                Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 46, NotWork)
 
                         End Select
 
@@ -4269,15 +4296,16 @@ Error_:
                         Dim rsBK As Recordset
                         rsBK = New Recordset
                         rsBK.Open(
-                            "SELECT id FROM kompy WHERE PRINTER_NAME_1='" & sTEMP0 & "' and MESTO='" & sDepartment &
+                            "SELECT id,NotWork FROM kompy WHERE PRINTER_NAME_1='" & sTEMP0 & "' and MESTO='" & sDepartment &
                             "' and FILIAL='" & sBranch & "'  and kabn='" & sOffice & "' and PCL=" & sSID, DB7,
                             CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
                         Dim sPRN As String
+                        Dim NotWork As Integer
                         With rsBK
 
                             sPRN = .Fields("ID").Value
-
+                            NotWork = .Fields("NotWork").Value
                         End With
                         rsBK.Close()
                         rsBK = Nothing
@@ -4292,7 +4320,7 @@ Error_:
                             Case 1
 
                                 Call FIND_TREE_TAG(frmComputers.lstGroups.Nodes, "C|" & sSID)
-                                Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 47)
+                                Filling_TREE_DATA(frmComputers.lstGroups, sPRN, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 47, NotWork)
 
                         End Select
 
@@ -4356,14 +4384,17 @@ Error_:
                         Dim rsBK As Recordset
                         rsBK = New Recordset
                         rsBK.Open(
-                            "SELECT id FROM kompy WHERE PRINTER_NAME_1='" & sTEMP0 & "' and MESTO='" & sDepartment &
+                            "SELECT id,NotWork FROM kompy WHERE PRINTER_NAME_1='" & sTEMP0 & "' and MESTO='" & sDepartment &
                             "' and FILIAL='" & sBranch & "'  and kabn='" & sOffice & "' and PCL=" & sSID, DB7,
                             CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
                         Dim sPRN As String
+                        Dim NotWork As Integer
+
                         With rsBK
 
                             sPRN = .Fields("ID").Value
+                            NotWork = .Fields("NotWork").Value
 
                             Select Case TREE_UPDATE
 
@@ -4372,7 +4403,7 @@ Error_:
                                 Case 1
 
                                     Call FIND_TREE_TAG(frmComputers.lstGroups.Nodes, "C|" & sSID)
-                                    Filling_TREE_DATA(frmComputers.lstGroups, sSID, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 61)
+                                    Filling_TREE_DATA(frmComputers.lstGroups, sSID, frmComputers.lstGroups.SelectedNode, 0, 0, sTEMP0, 61, NotWork)
 
                             End Select
 

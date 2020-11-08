@@ -231,7 +231,7 @@ START:
 
         Select Case sVERSIA
 
-            Case "1.7.6.0"
+            Case "1.7.6.3"
 
 
             Case Else

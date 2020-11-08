@@ -723,8 +723,7 @@ Partial Class frmMain
         '
         Me.ЗагрузитьИзCSVEverestToolStripMenuItem.Name = "ЗагрузитьИзCSVEverestToolStripMenuItem"
         Me.ЗагрузитьИзCSVEverestToolStripMenuItem.Size = New System.Drawing.Size(270, 22)
-        Me.ЗагрузитьИзCSVEverestToolStripMenuItem.Text = "Загрузить из CSV Everest"
-        Me.ЗагрузитьИзCSVEverestToolStripMenuItem.Visible = False
+        Me.ЗагрузитьИзCSVEverestToolStripMenuItem.Text = "Загрузить из CHECKCFG"
         '
         'HANDINSERTToolStripMenuItem
         '

@@ -37,6 +37,7 @@ Partial Class frmDirectory
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.Button3 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BTNLoadFromAD = New System.Windows.Forms.ToolStripButton()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.chkCont = New System.Windows.Forms.CheckBox()
         Me.chkVisibleSTR = New System.Windows.Forms.CheckBox()
@@ -110,10 +111,10 @@ Partial Class frmDirectory
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnDirAdd, Me.ToolStripSeparator1, Me.Button2, Me.ToolStripSeparator2, Me.btnCancell, Me.ToolStripSeparator4, Me.ToolStripButton1, Me.ToolStripSeparator5, Me.Button3, Me.ToolStripSeparator3})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnDirAdd, Me.ToolStripSeparator1, Me.Button2, Me.ToolStripSeparator2, Me.btnCancell, Me.ToolStripSeparator4, Me.Button3, Me.ToolStripButton1, Me.ToolStripSeparator5, Me.ToolStripSeparator3, Me.BTNLoadFromAD})
         Me.ToolStrip1.Location = New System.Drawing.Point(10, 265)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(243, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(434, 25)
         Me.ToolStrip1.TabIndex = 21
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -188,6 +189,16 @@ Partial Class frmDirectory
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        '
+        'BTNLoadFromAD
+        '
+        Me.BTNLoadFromAD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.BTNLoadFromAD.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BTNLoadFromAD.Name = "BTNLoadFromAD"
+        Me.BTNLoadFromAD.Size = New System.Drawing.Size(87, 22)
+        Me.BTNLoadFromAD.Text = "Load From AD"
+        Me.BTNLoadFromAD.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.BTNLoadFromAD.Visible = False
         '
         'CheckBox2
         '
@@ -492,4 +503,5 @@ Partial Class frmDirectory
     Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents BTNLoadFromAD As System.Windows.Forms.ToolStripButton
 End Class

@@ -1020,7 +1020,7 @@ Foundit:
                             'End If
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, iA)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, iA, .Fields("NotWork").Value)
 
 
                         Case "Printer"
@@ -1029,7 +1029,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 7)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 7, .Fields("NotWork").Value)
 
                         Case "MFU"
 
@@ -1038,7 +1038,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 8)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 8, .Fields("NotWork").Value)
 
                         Case "KOpir"
                             'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 9, 9)
@@ -1046,7 +1046,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 9)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 9, .Fields("NotWork").Value)
 
                         Case "NET"
                             Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 10, 10)
@@ -1090,7 +1090,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 11)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 11, .Fields("NotWork").Value)
 
                         Case "PHONE"
                             'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 12, 12)
@@ -1098,7 +1098,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 12)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 12, .Fields("NotWork").Value)
 
                         Case "FAX"
                             'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 13, 13)
@@ -1106,7 +1106,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 13)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 13, .Fields("NotWork").Value)
 
                         Case "SCANER"
 
@@ -1115,7 +1115,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 14)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 14, .Fields("NotWork").Value)
 
 
                         Case "ZIP"
@@ -1124,7 +1124,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 15)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 15, .Fields("NotWork").Value)
 
                         Case "OT"
 
@@ -1151,7 +1151,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 17)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 17, .Fields("NotWork").Value)
 
                             '--------------VIP_Graff Добавление новой перефирии Начало-----------------
                         Case "USB"
@@ -1160,7 +1160,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 18)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 18, .Fields("NotWork").Value)
 
                         Case "SOUND"
                             'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 44, 44)
@@ -1168,7 +1168,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 44)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 44, .Fields("NotWork").Value)
 
                         Case "IBP"
                             'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 41, 41)
@@ -1176,7 +1176,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 41)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 41, .Fields("NotWork").Value)
 
                         Case "FS"
                             'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 61, 61)
@@ -1184,7 +1184,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 61)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 61, .Fields("NotWork").Value)
 
                         Case "KEYB"
                             'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 46, 46)
@@ -1192,7 +1192,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 46)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 46, .Fields("NotWork").Value)
 
                         Case "MOUSE"
                             'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 47, 47)
@@ -1200,7 +1200,7 @@ Foundit:
                             'TempNode.Nodes.Add(TEHNode)
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 47)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, 47, .Fields("NotWork").Value)
 
                             '--------------VIP_Graff Добавление новой перефирии Конец------------------
 
@@ -1220,7 +1220,7 @@ Foundit:
                             rsOT = Nothing
 
                             Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode, .Fields("Spisan").Value,
-                                              .Fields("balans").Value, .Fields("NET_NAME").Value, uname)
+                                              .Fields("balans").Value, .Fields("NET_NAME").Value, uname, .Fields("NotWork").Value)
 
 
                             'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, uname, uname)
@@ -1343,7 +1343,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, iA)
+                                                          .Fields("NET_NAME").Value, iA, .Fields("NotWork").Value)
 
 
                                     Case "Printer"
@@ -1353,7 +1353,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 7)
+                                                          .Fields("NET_NAME").Value, 7, .Fields("NotWork").Value)
 
                                     Case "MFU"
 
@@ -1363,7 +1363,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 8)
+                                                          .Fields("NET_NAME").Value, 8, .Fields("NotWork").Value)
 
                                     Case "KOpir"
                                         'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 9, 9)
@@ -1372,7 +1372,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 9)
+                                                          .Fields("NET_NAME").Value, 9, .Fields("NotWork").Value)
 
                                     Case "NET"
                                         Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 10, 10)
@@ -1417,7 +1417,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 11)
+                                                          .Fields("NET_NAME").Value, 11, .Fields("NotWork").Value)
 
                                     Case "PHONE"
                                         'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 12, 12)
@@ -1426,7 +1426,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 12)
+                                                          .Fields("NET_NAME").Value, 12, .Fields("NotWork").Value)
 
                                     Case "FAX"
                                         'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 13, 13)
@@ -1435,7 +1435,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 13)
+                                                          .Fields("NET_NAME").Value, 13, .Fields("NotWork").Value)
 
                                     Case "SCANER"
 
@@ -1445,7 +1445,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 14)
+                                                          .Fields("NET_NAME").Value, 14, .Fields("NotWork").Value)
 
 
                                     Case "ZIP"
@@ -1455,7 +1455,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 15)
+                                                          .Fields("NET_NAME").Value, 15, .Fields("NotWork").Value)
 
                                     Case "OT"
 
@@ -1484,7 +1484,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 17)
+                                                          .Fields("NET_NAME").Value, 17, .Fields("NotWork").Value)
 
                                         '--------------VIP_Graff Добавление новой перефирии Начало-----------------
                                     Case "USB"
@@ -1494,7 +1494,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 18)
+                                                          .Fields("NET_NAME").Value, 18, .Fields("NotWork").Value)
 
                                     Case "SOUND"
                                         'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 44, 44)
@@ -1503,7 +1503,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 44)
+                                                          .Fields("NET_NAME").Value, 44, .Fields("NotWork").Value)
 
                                     Case "IBP"
                                         'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 41, 41)
@@ -1512,7 +1512,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 41)
+                                                          .Fields("NET_NAME").Value, 41, .Fields("NotWork").Value)
 
                                     Case "FS"
                                         'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 61, 61)
@@ -1521,7 +1521,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 61)
+                                                          .Fields("NET_NAME").Value, 61, .Fields("NotWork").Value)
 
                                     Case "KEYB"
                                         'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 46, 46)
@@ -1530,7 +1530,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 46)
+                                                          .Fields("NET_NAME").Value, 46, .Fields("NotWork").Value)
 
                                     Case "MOUSE"
                                         'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, 47, 47)
@@ -1539,7 +1539,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, 47)
+                                                          .Fields("NET_NAME").Value, 47, .Fields("NotWork").Value)
 
                                         '--------------VIP_Graff Добавление новой перефирии Конец------------------
 
@@ -1561,7 +1561,7 @@ FoundiR:
 
                                         Filling_TREE_DATA(lstGroups, .Fields("id").Value, TempNode2,
                                                           .Fields("Spisan").Value, .Fields("balans").Value,
-                                                          .Fields("NET_NAME").Value, uname)
+                                                          .Fields("NET_NAME").Value, uname, .Fields("NotWork").Value)
 
 
                                         'Dim TEHNode As New TreeNode(.Fields("NET_NAME").Value, uname, uname)

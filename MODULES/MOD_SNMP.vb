@@ -253,7 +253,6 @@ Module MOD_SNMP
         Err_:
     End Function
 
-
     Public Sub REQUEST_OID_IBP_DB(ByVal IPDEV As String, ByVal COMMDEV As String, ByVal MODEL As String,
                                   ByVal Develop As String)
 
@@ -331,4 +330,38 @@ Module MOD_SNMP
         rs1.Close()
         rs1 = Nothing
     End Sub
+
+
+    Public Sub REQUEST_OID_PRN_DB(ByVal IPDEV As String, ByVal COMMDEV As String)
+
+        frmComputers.lblPRNPage.Text = ""
+
+        If My.Computer.Network.Ping(IPDEV) Then
+
+            frmComputers.lblPRNPage.ForeColor = frmComputers.lblPRNprintPage.ForeColor
+
+        Else
+
+            frmComputers.lblPRNPage.ForeColor = Color.Red
+            frmComputers.lblPRNPage.Text = "Devices no reply"
+
+            Exit Sub
+        End If
+
+
+        Dim uname As String
+
+        uname = (REQUEST2(IPDEV, COMMDEV, "1.3.6.1.2.1.1.6.0", ""))
+
+        If result_ = False Then
+
+            Exit Sub
+
+        End If
+
+            frmComputers.lblPRNPage.Text = REQUEST2(IPDEV, COMMDEV, "1.3.6.1.2.1.43.10.2.1.4.1.1", "")
+
+    End Sub
+
+
 End Module

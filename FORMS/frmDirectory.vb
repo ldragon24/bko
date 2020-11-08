@@ -1,4 +1,4 @@
-﻿
+﻿Imports System.DirectoryServices
 
 Public Class frmDirectory
     Private curr As Integer 'esq
@@ -304,6 +304,7 @@ Public Class frmDirectory
     Public Sub LOAD_LIST_SPR()
         ToolStripButton1.Visible = False
         ToolStripSeparator5.Visible = False
+        BTNLoadFromAD.Visible = False
 
         On Error GoTo err_
         chkCont.Visible = False
@@ -334,20 +335,16 @@ Public Class frmDirectory
         Label1.Text = objIniFile.GetString("frmDirectory", "Label2", "Наименование")
 
         Me.lvDirectory.Columns.Clear()
-        Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "lvDirectory1", "id"), 20,
-                                   HorizontalAlignment.Left)
-        Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "lvDirectory2", "Наименование"), 300,
-                                   HorizontalAlignment.Left)
-        Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "lvDirectory3", "Производитель"), 300,
-                                   HorizontalAlignment.Left)
-'esq  добавил Тип ПО
+        Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "lvDirectory1", "id"), 20, HorizontalAlignment.Left)
+        Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "lvDirectory2", "Наименование"), 300, HorizontalAlignment.Left)
+        Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "lvDirectory3", "Производитель"), 300, HorizontalAlignment.Left)
+
+        'esq  добавил Тип ПО
         If tvDirectory.SelectedNode.Text = objIniFile.GetString("frmDirectory", "MSG56", "Программное обеспечение") Then
-            Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "gb1", "Тип"), 100,
-                                       HorizontalAlignment.Left)
+            Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "gb1", "Тип"), 100, HorizontalAlignment.Left)
         End If
 
-        Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "MSG99", "Используется"), 70,
-                                   HorizontalAlignment.Left)
+        Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "MSG99", "Используется"), 70, HorizontalAlignment.Left)
 
         FillComboNET(Me.cmbName3, "PROIZV", "SPR_PROIZV", "", False, True)
 
@@ -385,37 +382,47 @@ Public Class frmDirectory
                 'Пользователь экспериментально
                 '#######################################
 
-                Label3.Visible = False
-                txtName.Visible = False
+
+                cmbName2.Visible = True
                 cmbName3.Visible = False
                 gb1.Visible = False
                 gb2.Visible = False
 
+                Label2.Visible = True
+                txtName.Text = ""
+                Label3.Visible = True
+                txtName.Visible = True
+
+                Label1.Text = "Имя пользователя"
+                Label2.Text = "ФИО"
+                Label3.Text = "Email"
+
+                'Телефон
+                '################################
+                gb1.Text = objIniFile.GetString("frmMain", "32", "Телефон")
+                gb1.Visible = True
+                cmb1.Visible = True
+                '################################
+
+               
+
                 Me.lvDirectory.Columns.Clear()
-                Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "lvDirectory1", "id"), 20,
-                                           HorizontalAlignment.Left)
-                Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "lvDirectory2", "Наименование"), 300,
-                                           HorizontalAlignment.Left)
-                Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "lvDirectory4", "ФИО"), 300,
-                                           HorizontalAlignment.Left)
-                Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "MSG99", "Используется"), 70,
-                                           HorizontalAlignment.Left)
+                Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "lvDirectory1", "id"), 20, HorizontalAlignment.Left)
+                Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "lvDirectory2", "Наименование"), 300, HorizontalAlignment.Left)
+                Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "lvDirectory4", "ФИО"), 300, HorizontalAlignment.Left)
+                Me.lvDirectory.Columns.Add(objIniFile.GetString("frmDirectory", "MSG99", "Используется"), 70, HorizontalAlignment.Left)
+
 
 
                 If unamDB <> "MS Access" Or unamDB <> "MS Access 2007" Then
                     sSQL = "SELECT id, name, A from SPR_USER ORDER BY NAME"
                 Else
-                    sSQL =
-                        "SELECT SPR_USER.id, SPR_USER.name, SPR_USER.A, (Select count(*) FROM USER_COMP where USER_COMP.USERNAME=SPR_USER.Name) as temp from SPR_USER ORDER BY NAME"
+                    sSQL = "SELECT SPR_USER.id, SPR_USER.name, SPR_USER.A, (Select count(*) FROM USER_COMP where USER_COMP.USERNAME=SPR_USER.Name) as temp from SPR_USER ORDER BY NAME"
                 End If
 
-                cmbName2.Visible = True
-                Label2.Visible = True
-                cmbName3.Visible = False
-                Label3.Visible = False
 
-                Label1.Text = "Имя пользователя"
-                Label2.Text = "ФИО"
+                BTNLoadFromAD.Visible = True
+
 
             Case objIniFile.GetString("frmDirectory", "MSG27", "Оптические накопители")
 
@@ -993,12 +1000,22 @@ Public Class frmDirectory
                 sSQL = "SELECT id, Name,A FROM SPR_Master ORDER BY NAME"
 
             Case objIniFile.GetString("frmDirectory", "MSG37", "Ответственный")
+
+                BTNLoadFromAD.Visible = True
+
+                'Телефон
+                '################################
+                gb1.Text = objIniFile.GetString("frmMain", "32", "Телефон")
+                gb1.Visible = True
+                cmb1.Visible = True
+                '################################
+
                 Label2.Visible = False
                 cmbName2.Visible = False
                 Label3.Visible = False
                 txtName.Visible = False
                 cmbName3.Visible = False
-                gb1.Visible = False
+                'gb1.Visible = False
                 gb2.Visible = False
 
                 Me.lvDirectory.Columns.Clear()
@@ -1387,7 +1404,7 @@ Public Class frmDirectory
         rs.Close()
         rs = Nothing
 
-'esq ******** отредактированый элемент -> в поле зрения
+        'esq ******** отредактированый элемент -> в поле зрения
         If (Not IsNothing(curr) = True) And (lvDirectory.Items.Count > 0) Then
             lvDirectory.EnsureVisible(curr)
             lvDirectory.Items(curr).Selected = True
@@ -1398,7 +1415,7 @@ Public Class frmDirectory
 
 
         Exit Sub
-        err_:
+err_:
         MsgBox(Err.Description)
     End Sub
 
@@ -1767,6 +1784,12 @@ Public Class frmDirectory
             Else
                 cmbName.Text = .Fields("Name").Value
 
+                If tvDirectory.SelectedNode.Text = objIniFile.GetString("frmDirectory", "MSG57", "Пользователь") Then
+
+                    txtName.Text = .Fields("B").Value
+                End If
+
+
                 If Not IsDBNull(.Fields("Proizv").Value) Then uname = .Fields("Proizv").Value
                 PROYZV.Open("Select * from SPR_PROIZV WHERE id =" & uname, DB7, CursorTypeEnum.adOpenDynamic,
                             LockTypeEnum.adLockOptimistic)
@@ -1822,6 +1845,11 @@ Public Class frmDirectory
                         cmbName2.Text = .Fields("A").Value
                     End If
 
+                    If Not IsDBNull(.Fields("C")) Then
+                        cmb1.Text = .Fields("C").Value
+                    End If
+
+
 
                 Case Else
 
@@ -1872,6 +1900,13 @@ Public Class frmDirectory
                 txtMemo.Text = .Fields("prim").Value
             End If
 
+            If tvDirectory.SelectedNode.Text = objIniFile.GetString("frmDirectory", "MSG37", "Ответственный") Then
+
+                If Not IsDBNull(.Fields("C")) Then
+                    cmb1.Text = .Fields("C").Value
+                End If
+
+            End If
 
         End With
 
@@ -1922,7 +1957,7 @@ Public Class frmDirectory
         End If
 
         Exit Sub
-        err_:
+err_:
     End Sub
 
     Private Sub DELETE_SPR(Optional ByVal ssid As Integer = 0)
@@ -1963,7 +1998,7 @@ Public Class frmDirectory
                 sTABLE = "SPR_USB"
 
             Case objIniFile.GetString("frmDirectory", "MSG4", "ZIP")
-                
+
                 sTABLE = "spr_zip"
 
             Case objIniFile.GetString("frmDirectory", "MSG5", "Акустические системы")
@@ -1979,18 +2014,18 @@ Public Class frmDirectory
 
                 sTABLE = "SPR_KOPIR"
             Case objIniFile.GetString("frmDirectory", "MSG34", "Модемы")
-                
+
                 sTABLE = "SPR_MODEM"
 
             Case objIniFile.GetString("frmDirectory", "MSG9", "Мониторы")
-                
+
                 sTABLE = "SPR_MONITOR"
 
             Case objIniFile.GetString("frmDirectory", "MSG10", "МФУ")
                 sTABLE = "SPR_MFU"
 
             Case objIniFile.GetString("frmDirectory", "MSG11", "Мыши")
-                
+
                 sTABLE = "SPR_MOUSE"
 
             Case objIniFile.GetString("frmDirectory", "MSG12", "Принтеры")
@@ -2001,7 +2036,7 @@ Public Class frmDirectory
                 sTABLE = "SPR_FS"
 
             Case objIniFile.GetString("frmDirectory", "MSG14", "Сетевые устройства")
-                
+
                 sTABLE = "SPR_DEV_NET"
 
             Case objIniFile.GetString("frmDirectory", "MSG15", "Сканер")
@@ -2013,11 +2048,11 @@ Public Class frmDirectory
                 sTABLE = "spr_phone"
 
             Case objIniFile.GetString("frmDirectory", "MSG17", "Факс")
-                
+
                 sTABLE = "spr_fax"
 
             Case objIniFile.GetString("frmDirectory", "MSG18", "Фотоаппарат")
-                
+
                 sTABLE = "spr_photo"
             Case objIniFile.GetString("frmDirectory", "MSG20", "Видео карты")
 
@@ -2028,7 +2063,7 @@ Public Class frmDirectory
                 sTABLE = "SPR_FDD"
 
             Case objIniFile.GetString("frmDirectory", "MSG22", "Жесткие диски")
-               
+
                 sTABLE = "SPR_HDD"
 
             Case objIniFile.GetString("frmDirectory", "MSG23", "Звуковые карты")
@@ -2072,56 +2107,56 @@ Public Class frmDirectory
                 RemoveOffice(dSID)
 
             Case objIniFile.GetString("frmDirectory", "MSG43", "Уровень заявки")
-                
+
                 sTABLE = "SPR_Uroven"
             Case objIniFile.GetString("frmDirectory", "MSG44", "Уровень выполнения")
-                
+
                 sTABLE = "spr_vip"
             Case objIniFile.GetString("frmDirectory", "MSG45", "Тип заявки")
-                
+
                 sTABLE = "spr_tip_z"
             Case objIniFile.GetString("frmDirectory", "MSG47", "Поставщики")
-               
+
                 sTABLE = "SPR_Postav"
             Case objIniFile.GetString("frmDirectory", "MSG48", "Производители")
                 sTABLE = "0"
                 Call RemoveProyzv(dSID)
 
             Case objIniFile.GetString("frmDirectory", "MSG49", "Тип компьютера")
-               
+
                 sTABLE = "SPR_TIP"
             Case objIniFile.GetString("frmDirectory", "MSG50", "Модель картриджа")
-               
+
                 sTABLE = "spr_cart"
             Case objIniFile.GetString("frmDirectory", "MSG51", "Оборудование (Другое-тип)")
-               
+
                 sTABLE = "spr_other"
             Case objIniFile.GetString("frmDirectory", "MSG52", "Оборудование (Другое-устройства)")
-               
+
                 sTABLE = "SPR_OTH_DEV"
             Case objIniFile.GetString("frmDirectory", "MSG53", "Тип лицензии")
-                
+
                 sTABLE = "SPR_LIC"
             Case objIniFile.GetString("frmDirectory", "MSG54", "Тип программного обеспечения")
-                
+
                 sTABLE = "SPR_TIP_PO"
             Case objIniFile.GetString("frmDirectory", "MSG55", "Комплектующие")
-                
+
                 sTABLE = "SPR_Complect"
             Case objIniFile.GetString("frmDirectory", "MSG56", "Программное обеспечение")
-               
+
                 sTABLE = "SPR_PO"
             Case objIniFile.GetString("frmDirectory", "MSG33", "Корпус")
-                
+
                 sTABLE = "SPR_CASE"
             Case objIniFile.GetString("frmDirectory", "MSG24", "Кардридер")
-                
+
                 sTABLE = "SPR_CREADER"
             Case objIniFile.GetString("frmDirectory", "MSG31", "Блок питания")
-                
+
                 sTABLE = "SPR_BP"
             Case objIniFile.GetString("frmDirectory", "MSG36", "Мастер")
-              
+
                 sTABLE = "SPR_Master"
         End Select
 
@@ -2142,8 +2177,7 @@ Public Class frmDirectory
     Private Sub lvDirectory_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs) Handles lvDirectory.MouseUp
     End Sub
 
-    Private Sub lvDirectory_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles lvDirectory.SelectedIndexChanged
+    Private Sub lvDirectory_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles lvDirectory.SelectedIndexChanged
         'Call Load_SPR_TO_EDIT()
     End Sub
 
@@ -2270,8 +2304,9 @@ Public Class frmDirectory
                 '#######################################
 
                 sTABLE = "SPR_USER"
-
+                sPRID = 0
                 sPAR1 = cmbName2.Text
+                sPAR3 = cmb1.Text
 
             Case objIniFile.GetString("frmDirectory", "MSG27", "Оптические накопители")
 
@@ -2459,6 +2494,11 @@ Public Class frmDirectory
 
                 sTABLE = "SPR_OTV"
 
+                sPAR1 = ""
+                If Len(sPAR2) = 0 Then sPAR2 = ""
+                sPAR3 = cmb1.Text
+
+
                 If eDTI = False Then
 
                 Else
@@ -2476,6 +2516,8 @@ Public Class frmDirectory
                     rscount = Nothing
 
                     If sNUM > 0 Then
+
+                        'Prim,C
 
                         DB7.Execute("UPDATE kompy SET OTvetstvennyj='" & sNAME & "' WHERE OTvetstvennyj='" & sREALNAME & "'")
 
@@ -2551,7 +2593,7 @@ Public Class frmDirectory
 
                 Call LOAD_LIST_SPR()
 
-            btnDirAdd.Text = objIniFile.GetString("frmDirectory", "btnDirAdd", "Добавить")
+                btnDirAdd.Text = objIniFile.GetString("frmDirectory", "btnDirAdd", "Добавить")
                 eDTI = False
                 Exit Sub
 
@@ -2621,7 +2663,7 @@ Public Class frmDirectory
                 End If
 
                 Call LOAD_LIST_SPR()
-              
+
                 btnDirAdd.Text = objIniFile.GetString("frmDirectory", "btnDirAdd", "Добавить")
                 eDTI = False
                 Exit Sub
@@ -2688,7 +2730,7 @@ Public Class frmDirectory
 
 
                 Call LOAD_LIST_SPR()
-                
+
                 btnDirAdd.Text = objIniFile.GetString("frmDirectory", "btnDirAdd", "Добавить")
                 eDTI = False
 
@@ -2734,7 +2776,7 @@ Public Class frmDirectory
             Case objIniFile.GetString("frmDirectory", "MSG48", "Производители")
 
                 sTABLE = "0"
-cmbName.Text = Replace(cmbName.Text, "'", "") 'esq
+                cmbName.Text = Replace(cmbName.Text, "'", "") 'esq
                 If eDTI = False Then
 
                     If Not (RSExists("PROYZV", "PROiZV", cmbName.Text)) Then
@@ -2901,7 +2943,7 @@ cmbName.Text = Replace(cmbName.Text, "'", "") 'esq
                 tvDirectory.SelectedNode.Text =
                 objIniFile.GetString("frmDirectory", "MSG54", "Тип программного обеспечения") Then
 
-            Select eDTI
+            Select Case eDTI
 
                 Case False
                     sSQL = "INSERT INTO " & sTABLE & " (" & sFields & ",Prim) VALUES ('" & LTrim(sNAME) & "','" & sPRIM & "')"
@@ -2967,7 +3009,7 @@ cmbName.Text = Replace(cmbName.Text, "'", "") 'esq
 
         DB7.Execute(sSQL)
 
- curr = lvDirectory.FocusedItem.Index 'esq
+        ' curr = lvDirectory.FocusedItem.Index 'esq
 Ar:
         Me.BeginInvoke(New MethodInvoker(AddressOf LOAD_LIST_SPR))
         ' Call LOAD_LIST_SPR()
@@ -3076,4 +3118,204 @@ Err_:
         frmDev.ShowDialog(Me)
     End Sub
 
+    Private Sub BTNLoadFromAD_Click(sender As Object, e As EventArgs) Handles BTNLoadFromAD.Click
+
+        Dim objIniFile As New IniFile(sLANGPATH)
+
+        Select Case tvDirectory.SelectedNode.Text
+
+
+            Case objIniFile.GetString("frmDirectory", "MSG57", "Пользователь")
+
+                'searcher.SearchBase = "LDAP://dc=lpu,dc=ds,dc=vtg,dc=gazprom,dc=ru"
+                If MsgBox("Данное действие полностью очистит существующий справочник пользователей", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+
+                    DB7.Execute("DELETE FROM SPR_USER")
+
+                Else
+
+                    Exit Sub
+
+                End If
+
+
+                If Len(srhLDAP) = 0 Then srhLDAP = Environment.UserDomainName
+
+                Dim results As SearchResultCollection
+                Dim ds As DirectorySearcher = Nothing
+                Dim de As DirectoryEntry = New DirectoryEntry("LDAP://" & srhLDAP) ' & Environment.UserDomainName)
+                ds = New DirectorySearcher(de)
+                ds.PropertiesToLoad.Add("name")
+                ds.PropertiesToLoad.Add("mail")
+                ds.PropertiesToLoad.Add("description")
+                ds.PropertiesToLoad.Add("sAMAccountName")
+                'ds.PropertiesToLoad.Add("userPrincipalName")
+                'ds.PropertiesToLoad.Add("Office")
+                ds.PropertiesToLoad.Add("telephoneNumber")
+
+                ds.Filter = "(&(objectCategory=User)(objectClass=person))"
+                ' ds.Filter = "(&(objectCategory=group((cn=Арзамасское ЛПУМГ*)))"
+
+                results = ds.FindAll()
+
+                Dim sSQL As String
+                Dim sName, sMail, sDescription, sAccaunt, sphone As String
+
+                For Each sr As SearchResult In results
+                    If sr.Properties("name").Count > 0 Then sName = (sr.Properties("name")(0).ToString())
+                    If sr.Properties("mail").Count > 0 Then sMail = (sr.Properties("mail")(0).ToString())
+                    If sr.Properties("description").Count > 0 Then sDescription = (sr.Properties("description")(0).ToString())
+                    If sr.Properties("sAMAccountName").Count > 0 Then sAccaunt = (sr.Properties("sAMAccountName")(0).ToString())
+                    'If sr.Properties("userPrincipalName").Count > 0 Then Debug.WriteLine(sr.Properties("userPrincipalName")(0).ToString())
+                    ' If sr.Properties("Office").Count > 0 Then Debug.WriteLine(sr.Properties("Office")(0).ToString())
+                    If sr.Properties("telephoneNumber").Count > 0 Then sphone = (sr.Properties("telephoneNumber")(0).ToString())
+
+                    sSQL = "INSERT INTO SPR_USER (Name,Prim,A,B,C) VALUES ('" & sAccaunt & "','" & sDescription & "','" & sName & "','" & sMail & "','" & sphone & "')"
+                    DB7.Execute(sSQL)
+
+                Next
+
+
+                'CN=Плотников Алексей Сергеевич,OU=LukUsers,OU=Пользователи и группы,OU=Арзамасское ЛПУМГ,DC=lpu,DC=ds,DC=vtg,DC=gazprom,DC=ru
+
+                'Пользователь экспериментально
+                '#######################################
+
+                If unamDB <> "MS Access" Or unamDB <> "MS Access 2007" Then
+                    sSQL = "SELECT id, name, A from SPR_USER ORDER BY NAME"
+                Else
+                    sSQL =
+                        "SELECT SPR_USER.id, SPR_USER.name, SPR_USER.A, (Select count(*) FROM USER_COMP where USER_COMP.USERNAME=SPR_USER.Name) as temp from SPR_USER ORDER BY NAME"
+                End If
+
+
+                Dim FirstColumn As Boolean
+
+                Dim rs As Recordset
+                rs = New Recordset
+                rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
+
+                Do Until rs.EOF
+
+                    FirstColumn = True
+                    For lngCounter = 0 To rs.Fields.Count - 1
+
+                        If FirstColumn Then
+                            If Not IsDBNull(rs.Fields(lngCounter).Value) Then
+                                lvDirectory.Items.Add(rs.Fields(lngCounter).Value)
+                            Else
+                                lvDirectory.Items.Add("")
+                            End If
+                            FirstColumn = False
+                        Else
+                            If Not IsDBNull(rs.Fields(lngCounter).Value) Then
+                                lvDirectory.Items(lvDirectory.Items.Count - 1).SubItems.Add(rs.Fields(lngCounter).Value)
+                            Else
+                                lvDirectory.Items(lvDirectory.Items.Count - 1).SubItems.Add("")
+                            End If
+                        End If
+                    Next
+
+                    rs.MoveNext()
+                Loop
+
+                FirstColumn = False
+                rs.Close()
+                rs = Nothing
+
+
+            Case objIniFile.GetString("frmDirectory", "MSG37", "Ответственный")
+
+
+                'searcher.SearchBase = "LDAP://dc=lpu,dc=ds,dc=vtg,dc=gazprom,dc=ru"
+                If MsgBox("Данное действие полностью очистит существующий справочник пользователей", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+
+                    DB7.Execute("DELETE FROM SPR_OTV")
+
+                Else
+
+                    Exit Sub
+
+                End If
+
+
+                If Len(srhLDAP) = 0 Then srhLDAP = Environment.UserDomainName
+
+                Dim results As SearchResultCollection
+                Dim ds As DirectorySearcher = Nothing
+                Dim de As DirectoryEntry = New DirectoryEntry("LDAP://" & srhLDAP) ' & Environment.UserDomainName)
+                ds = New DirectorySearcher(de)
+                ds.PropertiesToLoad.Add("name")
+                ds.PropertiesToLoad.Add("mail")
+                ds.PropertiesToLoad.Add("description")
+                ds.PropertiesToLoad.Add("sAMAccountName")
+                'ds.PropertiesToLoad.Add("userPrincipalName")
+                'ds.PropertiesToLoad.Add("Office")
+                ds.PropertiesToLoad.Add("telephoneNumber")
+
+                ds.Filter = "(&(objectCategory=User)(objectClass=person))"
+                ' ds.Filter = "(&(objectCategory=group((cn=Арзамасское ЛПУМГ*)))"
+
+                results = ds.FindAll()
+
+                Dim sSQL As String
+                Dim sName, sMail, sDescription, sAccaunt, sphone As String
+
+                For Each sr As SearchResult In results
+                    If sr.Properties("name").Count > 0 Then sName = (sr.Properties("name")(0).ToString())
+                    If sr.Properties("mail").Count > 0 Then sMail = (sr.Properties("mail")(0).ToString())
+                    If sr.Properties("description").Count > 0 Then sDescription = (sr.Properties("description")(0).ToString())
+                    If sr.Properties("sAMAccountName").Count > 0 Then sAccaunt = (sr.Properties("sAMAccountName")(0).ToString())
+                    'If sr.Properties("userPrincipalName").Count > 0 Then Debug.WriteLine(sr.Properties("userPrincipalName")(0).ToString())
+                    ' If sr.Properties("Office").Count > 0 Then Debug.WriteLine(sr.Properties("Office")(0).ToString())
+                    If sr.Properties("telephoneNumber").Count > 0 Then sphone = (sr.Properties("telephoneNumber")(0).ToString())
+
+                    sSQL = "INSERT INTO SPR_OTV (Name,Prim,A,B,C) VALUES ('" & sName & "','" & sDescription & "','','',' " & sphone & "')"
+                    DB7.Execute(sSQL)
+
+                Next
+
+                sSQL = "SELECT id, name, A from SPR_OTV ORDER BY NAME"
+                
+
+                Dim FirstColumn As Boolean
+
+                Dim rs As Recordset
+                rs = New Recordset
+                rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
+
+                Do Until rs.EOF
+
+                    FirstColumn = True
+                    For lngCounter = 0 To rs.Fields.Count - 1
+
+                        If FirstColumn Then
+                            If Not IsDBNull(rs.Fields(lngCounter).Value) Then
+                                lvDirectory.Items.Add(rs.Fields(lngCounter).Value)
+                            Else
+                                lvDirectory.Items.Add("")
+                            End If
+                            FirstColumn = False
+                        Else
+                            If Not IsDBNull(rs.Fields(lngCounter).Value) Then
+                                lvDirectory.Items(lvDirectory.Items.Count - 1).SubItems.Add(rs.Fields(lngCounter).Value)
+                            Else
+                                lvDirectory.Items(lvDirectory.Items.Count - 1).SubItems.Add("")
+                            End If
+                        End If
+                    Next
+
+                    rs.MoveNext()
+                Loop
+
+                FirstColumn = False
+                rs.Close()
+                rs = Nothing
+
+        End Select
+
+
+    End Sub
 End Class

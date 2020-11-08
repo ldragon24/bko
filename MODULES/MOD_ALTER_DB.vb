@@ -65,11 +65,117 @@ Module MOD_ALTER_DB
 
                 frmLogin.Invoke(New MethodInvoker(AddressOf ALTER_DB_1760))
 
+            Case "1.7.6.0"
+
+                frmLogin.Invoke(New MethodInvoker(AddressOf ALTER_DB_1763))
+
             Case Else
 
                 _DBALTER = True
 
         End Select
+
+    End Sub
+
+    Public Sub ALTER_DB_1763()
+        On Error GoTo err_
+
+        If _DBALTER = False Then Exit Sub
+
+        Dim sSQL As String
+
+        sSQL = "ALTER TABLE kompy ADD notwork logical, NomNom TEXT(50)"
+
+        Select Case DB_N
+
+            Case "MS SQL 2008"
+
+                sSQL = "ALTER TABLE " & DBtabl & ".dbo.kompy ADD notwork bit, NomNom nvarchar(50)"
+                DB7.Execute(sSQL)
+
+            Case "MS SQL"
+
+                sSQL = "ALTER TABLE " & DBtabl & ".dbo.kompy ADD notwork bit, NomNom nvarchar(50)"
+                DB7.Execute(sSQL)
+
+            Case "MS Access"
+
+                Call frmMain.COMPARE_DB()
+
+                DB7.Execute(sSQL)
+
+            Case "MS Access 2007"
+
+                Call frmMain.COMPARE_DB()
+
+                DB7.Execute(sSQL)
+
+            Case "MySQL"
+
+                sSQL = "ALTER TABLE kompy ADD COLUMN notwork TINYINT, NomNom varchar(50)"
+
+                DB7.Execute(sSQL)
+
+            Case "MySQL (MyODBC 5.1)"
+
+                sSQL = "ALTER TABLE kompy ADD COLUMN notwork TINYINT, NomNom varchar(50)"
+
+                DB7.Execute(sSQL)
+
+            Case "PostgreSQL"
+
+                sSQL = "ALTER TABLE kompy ADD COLUMN notwork boolean NOT NULL DEFAULT false, NomNom varchar(50)"
+
+                DB7.Execute(sSQL)
+
+            Case "SQLLite"
+
+
+            Case "DSN"
+
+                sSQL = "ALTER TABLE kompy ADD COLUMN notwork boolean NOT NULL DEFAULT false"
+
+                DB7.Execute(sSQL)
+
+        End Select
+
+
+        DB7.Execute("Update CONFIGURE SET access='1.7.6.3' WHERE access<>'1.7.6.3'")
+        _DBALTER = False
+
+        '####################################################################
+        '####################################################################
+        '####################################################################
+        ' Убираем поля с NULL
+
+        On Error Resume Next
+
+        Dim rs As Recordset
+        rs = New Recordset
+        rs.Open("select * from kompy", DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
+
+        Dim uname As Integer
+
+        If DB_N <> "MS Access" Or DB_N <> "MS Access 2007" Then uname = 2 Else uname = 1
+
+        For lngCounter = 0 To rs.Fields.Count - uname
+
+            If rs.Fields(lngCounter).Name = "id" Or rs.Fields(lngCounter).Name = "ID" Then
+
+            Else
+
+                DB7.Execute("UPDATE kompy SET " & rs.Fields(lngCounter).Name & "= WHERE " & rs.Fields(lngCounter).Name & " IS NULL")
+
+            End If
+        Next
+
+        rs.Close()
+
+        Exit Sub
+err_:
+        MsgBox(Err.Description)
+
+        _DBALTER = True
 
     End Sub
 
@@ -332,7 +438,7 @@ err_:
 
             Case "PostgreSQL"
 
-                sSQL = "alter table kompy ADD COLUMN SNMP_COMMUNITY5 TEXT , ADD COLUMN SNMP5 boolean NOT NULL DEFAULT false"
+                sSQL = "alter table kompy ADD COLUMN SNMP_COMMUNITY5 TEXT , ADD COLUMN SNMP boolean NOT NULL DEFAULT false"
 
                 DB7.Execute(sSQL)
 
@@ -341,7 +447,7 @@ err_:
 
             Case "DSN"
 
-                sSQL = "alter table kompy ADD COLUMN SNMP_COMMUNITY5 TEXT , ADD COLUMN SNMP5 boolean NOT NULL DEFAULT false"
+                sSQL = "alter table kompy ADD COLUMN SNMP_COMMUNITY5 TEXT , ADD COLUMN SNMP boolean NOT NULL DEFAULT false"
 
                 DB7.Execute(sSQL)
 

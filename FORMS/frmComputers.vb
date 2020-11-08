@@ -957,14 +957,8 @@ Error_:
             End If
         End Try
 
-
-
-
-
-
         Me.Cursor = Cursors.Default
     End Sub
-
 
     Public Sub LOAD_LIST()
         Dim langfile As New IniFile(sLANGPATH)
@@ -989,7 +983,6 @@ Error_:
 
         Call ClearForm(Me)
         ' Call SaveActivityToLogDB(langfile.GetString("frmComputers", "MSG14", "") & " " & Me.lstGroups.SelectedNode.Text)
-
 
         Select Case d(0)
 
@@ -1982,7 +1975,7 @@ Error_:
 
             Case "MS Access"
 
-                sSQL = "SELECT count(*) as t_n FROM kompy where Balans=1"
+                sSQL = "SELECT count(*) as t_n FROM kompy where Balans=-1"
                 rs = New Recordset
                 rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
@@ -1996,7 +1989,7 @@ Error_:
 
                 sALL = sALL & "/ Не на балансе: " & sBal
 
-                sSQL = "SELECT count(*) as t_n FROM kompy where Spisan=true"
+                sSQL = "SELECT count(*) as t_n FROM kompy where Spisan=-1"
                 rs = New Recordset
                 rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
@@ -2013,7 +2006,7 @@ Error_:
 
             Case "MS Access 2007"
 
-                sSQL = "SELECT count(*) as t_n FROM kompy where Balans=true"
+                sSQL = "SELECT count(*) as t_n FROM kompy where Balans=-1"
                 rs = New Recordset
                 rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
@@ -2027,7 +2020,7 @@ Error_:
 
                 sALL = sALL & "/ Не на балансе: " & sBal
 
-                sSQL = "SELECT count(*) as t_n FROM kompy where Spisan=true"
+                sSQL = "SELECT count(*) as t_n FROM kompy where Spisan=-1"
                 rs = New Recordset
                 rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
@@ -2288,8 +2281,8 @@ A:
 
     End Sub
 
-    Private Sub addRemToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles addRemToolStripMenuItem.Click
+    Private Sub addRemToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles addRemToolStripMenuItem.Click
+
         Dim langfile As New IniFile(sLANGPATH)
 
         frmService_add.Text = langfile.GetString("frmComputers", "MSG21", "Добавление (редактирование) заявки для ") &
@@ -2322,8 +2315,8 @@ A:
                 lstGroups.SelectedNode.Text)
     End Sub
 
-    Private Sub DeleteToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles DeleteToolStripMenuItem.Click
+    Private Sub DeleteToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles DeleteToolStripMenuItem.Click
+
         Dim langfile As New IniFile(sLANGPATH)
 
 
@@ -2486,8 +2479,7 @@ A:
 
     End Sub
 
-    Private Sub CopyToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles CopyToolStripMenuItem.Click
+    Private Sub CopyToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles CopyToolStripMenuItem.Click
 
         EDT = False
         sCOUNT = 0
@@ -2585,6 +2577,7 @@ A:
     End Sub
 
     Private Sub mnuDeltoBranch_Click(ByVal sender As Object, ByVal e As EventArgs) Handles mnuDeltoBranch.Click
+
         Dim langfile As New IniFile(sLANGPATH)
 
         Me.Cursor = Cursors.WaitCursor
@@ -2783,8 +2776,8 @@ err_:
         MsgBox(Err.Description)
     End Sub
 
-    Private Sub UpdateToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles UpdateToolStripMenuItem.Click
+    Private Sub UpdateToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles UpdateToolStripMenuItem.Click
+
         If TipTehn <> "PC" Then Exit Sub
 
         ' Upd_flag = 1 'esq 130728
@@ -2820,8 +2813,7 @@ err_:
         Me.Cursor = Cursors.Default
     End Sub
 
-    Private Sub ДобавитьЗаявкуToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles RepAddBrToolStripMenuItem.Click
+    Private Sub ДобавитьЗаявкуToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles RepAddBrToolStripMenuItem.Click
 
         Dim langfile As New IniFile(sLANGPATH)
 
@@ -3103,12 +3095,11 @@ err_:
         Debug.Print(oDoc.replaceAll(oSrch))
     End Sub
 
-    Private Sub lvRepairBR_DoubleClick(ByVal sender As Object, ByVal e As EventArgs)
+    Private Sub lvRepairBR_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles lvRepairBR.DoubleClick
         LoadRepairEdit(lvRepairBR)
     End Sub
 
-    Private Sub SoftInstallToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles SoftInstallToolStripMenuItem.Click
+    Private Sub SoftInstallToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles SoftInstallToolStripMenuItem.Click
 
         Dim sSQL, sSQL1, A, scN As String
         Dim langfile As New IniFile(sLANGPATH)
@@ -3409,8 +3400,8 @@ err_:
         End Select
     End Sub
 
-    Private Sub ПаспортКомпьютераToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles ПаспортКомпьютераToolStripMenuItem.Click
+    Private Sub ПаспортКомпьютераToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ПаспортКомпьютераToolStripMenuItem.Click
+
         Dim sSQL, scN As String
 
         Me.selectTECMesto()
@@ -4171,8 +4162,7 @@ err_:
         frmGarCPL.ShowDialog(Me)
     End Sub
 
-    Private Sub ОтделитьПринтерыИМониторыToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles ОтделитьПринтерыИМониторыToolStripMenuItem.Click
+    Private Sub ОтделитьПринтерыИМониторыToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ОтделитьПринтерыИМониторыToolStripMenuItem.Click
         Dim langfile As New IniFile(sLANGPATH)
 
 
@@ -4194,6 +4184,7 @@ err_:
     Private Sub cmdUserAdd_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdUserAdd.Click
 
         Call User_Comp_ADD()
+
     End Sub
 
     Private Sub cmdUserDel_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cmdUserDel.Click
@@ -4243,8 +4234,7 @@ err_:
         txtUserEmailPwd.Text = Temp$
     End Sub
 
-    Private Sub lstUsers_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) _
-        Handles lstUsers.ColumnClick
+    Private Sub lstUsers_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) Handles lstUsers.ColumnClick
 
         SORTING_LV(lstUsers, e)
 
@@ -4307,8 +4297,7 @@ err_:
 
     End Sub
 
-    Private Sub lvRepair_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) _
-        Handles lvRepair.ColumnClick
+    Private Sub lvRepair_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) Handles lvRepair.ColumnClick
 
         SORTING_LV(lvRepair, e)
 
@@ -4379,8 +4368,7 @@ err_:
         NotesLoaded(lvNotesPRN, NotesPRNdate, cmbNotesPRNMaster, NotesPRNtxt, btnPRNNotesAdd)
     End Sub
 
-    Private Sub lvRepairPRN_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) _
-        Handles lvRepairPRN.ColumnClick
+    Private Sub lvRepairPRN_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) Handles lvRepairPRN.ColumnClick
 
         SORTING_LV(lvRepairPRN, e)
 
@@ -4398,8 +4386,7 @@ err_:
         zCOUNT_LOAD(lvNotesNET)
     End Sub
 
-    Private Sub lvNotesNET_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) _
-        Handles lvNotesNET.ColumnClick
+    Private Sub lvNotesNET_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) Handles lvNotesNET.ColumnClick
 
         SORTING_LV(lvNotesNET, e)
 
@@ -4409,8 +4396,7 @@ err_:
         NotesLoaded(lvNotesNET, NotesNETdate, cmbNotesNETMaster, NotesNETtxt, btnNETAdd)
     End Sub
 
-    Private Sub lvRepairNET_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) _
-        Handles lvRepairNET.ColumnClick
+    Private Sub lvRepairNET_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) Handles lvRepairNET.ColumnClick
 
         SORTING_LV(lvRepairNET, e)
 
@@ -4420,8 +4406,7 @@ err_:
         LoadRepairEdit(lvRepairNET)
     End Sub
 
-    Private Sub lvRepairOTH_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) _
-        Handles lvRepairOTH.ColumnClick
+    Private Sub lvRepairOTH_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) Handles lvRepairOTH.ColumnClick
 
         SORTING_LV(lvRepairOTH, e)
 
@@ -4435,8 +4420,7 @@ err_:
         zCOUNT_LOAD(lvNotesOTH)
     End Sub
 
-    Private Sub lvNotesOTH_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) _
-        Handles lvNotesOTH.ColumnClick
+    Private Sub lvNotesOTH_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) Handles lvNotesOTH.ColumnClick
 
         SORTING_LV(lvNotesOTH, e)
 
@@ -4446,8 +4430,7 @@ err_:
         NotesLoaded(lvNotesOTH, NotesOTHdate, cmbNotesOTHMaster, txtNotesOTH, btnOTHAdd)
     End Sub
 
-    Private Sub CartrAddToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles CartrAddToolStripMenuItem.Click
+    Private Sub CartrAddToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles CartrAddToolStripMenuItem.Click
 
         'frmCartr_ADD()
 
@@ -4509,33 +4492,13 @@ err_:
 err_:
     End Sub
 
-    Private Sub cmbPRNFil_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
-        On Error GoTo err_
-
-        BrainchLoad(cmbPRNFil, cmbPRNDepart)
-
-        Exit Sub
-err_:
-        MsgBox(Err.Description, MsgBoxStyle.Information, ProGramName)
-    End Sub
-
-    Private Sub cmbPRNDepart_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
-        On Error GoTo err_
-
-        DepartmentLoad(cmbPRNFil, cmbPRNDepart, cmbPRNOffice)
-
-        Exit Sub
-err_:
-    End Sub
-
-    Private Sub lvPRNCartr_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs)
-
+    Private Sub lvPRNCartr_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) Handles lvPRNCartr.ColumnClick
 
         SORTING_LV(lvPRNCartr, e)
 
     End Sub
 
-    Private Sub lvPRNCartr_DoubleClick(ByVal sender As Object, ByVal e As EventArgs)
+    Private Sub lvPRNCartr_DoubleClick(ByVal sender As Object, ByVal e As EventArgs) Handles lvPRNCartr.DoubleClick
         Dim z As Integer
         'Dim rCOUNT As Integer
 
@@ -4554,7 +4517,7 @@ err_:
         'frmCRT3.LOAD_CRR(frmCRT3.rCOUNT)
     End Sub
 
-    Private Sub cmbOTH_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+    Private Sub cmbOTH_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbOTH.SelectedIndexChanged
 
         Select Case TipTehn
 
@@ -4643,178 +4606,129 @@ err_:
         End Select
     End Sub
 
-    Private Sub cmbOTHFil_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
-
-        BrainchLoad(cmbOTHFil, cmbOTHDepart)
-
-        Exit Sub
-err_:
-        MsgBox(Err.Description, MsgBoxStyle.Information, ProGramName)
-    End Sub
-
-    Private Sub cmbOTHDepart_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
-
-
-        DepartmentLoad(cmbOTHFil, cmbOTHDepart, cmbOTHOffice)
-
-        Exit Sub
-err_:
-    End Sub
-
-    Private Sub cmbCPU1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbCPU1.SelectedIndexChanged
+    Private Sub cmbCPU1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbCPU1.SelectedIndexChanged
         ExLoadParFow(cmbCPU1.Text, txtMHZ1, txtSoc1, PROizV1, "SPR_CPU")
     End Sub
 
-    Private Sub cmbCPU2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbCPU2.SelectedIndexChanged
+    Private Sub cmbCPU2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbCPU2.SelectedIndexChanged
         ExLoadParFow(cmbCPU2.Text, txtMHZ2, txtSoc2, PROizV2, "SPR_CPU")
     End Sub
 
-    Private Sub cmbCPU3_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbCPU3.SelectedIndexChanged
+    Private Sub cmbCPU3_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbCPU3.SelectedIndexChanged
         ExLoadParFow(cmbCPU3.Text, txtMHZ3, txtSoc3, PROizV3, "SPR_CPU")
     End Sub
 
-    Private Sub cmbCPU4_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbCPU4.SelectedIndexChanged
+    Private Sub cmbCPU4_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbCPU4.SelectedIndexChanged
         ExLoadParFow(cmbCPU4.Text, txtMHZ4, txtSoc4, PROizV4, "SPR_CPU")
     End Sub
 
-    Private Sub cmbRAM1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbRAM1.SelectedIndexChanged
+    Private Sub cmbRAM1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbRAM1.SelectedIndexChanged
         ExLoadParTree(cmbRAM1.Text, txtRamS1, PROizV6, "SPR_RAM")
     End Sub
 
-    Private Sub cmbRAM2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbRAM2.SelectedIndexChanged
+    Private Sub cmbRAM2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbRAM2.SelectedIndexChanged
         ExLoadParTree(cmbRAM2.Text, txtRamS2, PROizV7, "SPR_RAM")
     End Sub
 
-    Private Sub cmbRAM3_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbRAM3.SelectedIndexChanged
+    Private Sub cmbRAM3_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbRAM3.SelectedIndexChanged
         ExLoadParTree(cmbRAM3.Text, txtRamS3, PROizV8, "SPR_RAM")
     End Sub
 
-    Private Sub cmbRAM4_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbRAM4.SelectedIndexChanged
+    Private Sub cmbRAM4_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbRAM4.SelectedIndexChanged
         ExLoadParTree(cmbRAM4.Text, txtRamS4, PROizV9, "SPR_RAM")
     End Sub
 
-    Private Sub cmbRAM5_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbRAM5.SelectedIndexChanged
+    Private Sub cmbRAM5_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbRAM5.SelectedIndexChanged
         ExLoadParTree(cmbRAM5.Text, txtRamS5, PROizV44, "SPR_RAM")
     End Sub
 
-    Private Sub cmbRAM6_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbRAM6.SelectedIndexChanged
+    Private Sub cmbRAM6_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbRAM6.SelectedIndexChanged
         ExLoadParTree(cmbRAM6.Text, txtRamS6, PROizV45, "SPR_RAM")
     End Sub
 
-    Private Sub cmbRAM7_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbRAM7.SelectedIndexChanged
+    Private Sub cmbRAM7_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbRAM7.SelectedIndexChanged
         ExLoadParTree(cmbRAM7.Text, txtRamS7, PROizV46, "SPR_RAM")
     End Sub
 
-    Private Sub cmbRAM8_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbRAM8.SelectedIndexChanged
+    Private Sub cmbRAM8_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbRAM8.SelectedIndexChanged
         ExLoadParTree(cmbRAM8.Text, txtRamS8, PROizV47, "SPR_RAM")
     End Sub
 
 
-    Private Sub cmbHDD1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbHDD1.SelectedIndexChanged
+    Private Sub cmbHDD1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbHDD1.SelectedIndexChanged
         ExLoadParTree(cmbHDD1.Text, txtHDDo1, PROizV10, "SPR_HDD")
     End Sub
 
-    Private Sub cmbHDD2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbHDD2.SelectedIndexChanged
+    Private Sub cmbHDD2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbHDD2.SelectedIndexChanged
         ExLoadParTree(cmbHDD2.Text, txtHDDo2, PROizV11, "SPR_HDD")
     End Sub
 
-    Private Sub cmbHDD3_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbHDD3.SelectedIndexChanged
+    Private Sub cmbHDD3_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbHDD3.SelectedIndexChanged
         ExLoadParTree(cmbHDD3.Text, txtHDDo3, PROizV12, "SPR_HDD")
     End Sub
 
-    Private Sub cmbHDD4_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbHDD4.SelectedIndexChanged
+    Private Sub cmbHDD4_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbHDD4.SelectedIndexChanged
         ExLoadParTree(cmbHDD4.Text, txtHDDo4, PROizV13, "SPR_HDD")
     End Sub
 
-    Private Sub cmbHDD5_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbHDD5.SelectedIndexChanged
+    Private Sub cmbHDD5_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbHDD5.SelectedIndexChanged
         ExLoadParTree(cmbHDD5.Text, txtHDDo5, PROizV48, "SPR_HDD")
     End Sub
 
-    Private Sub cmbHDD6_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbHDD6.SelectedIndexChanged
+    Private Sub cmbHDD6_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbHDD6.SelectedIndexChanged
         ExLoadParTree(cmbHDD6.Text, txtHDDo6, PROizV49, "SPR_HDD")
     End Sub
 
-    Private Sub cmbHDD7_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbHDD7.SelectedIndexChanged
+    Private Sub cmbHDD7_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbHDD7.SelectedIndexChanged
         ExLoadParTree(cmbHDD7.Text, txtHDDo7, PROizV50, "SPR_HDD")
     End Sub
 
-    Private Sub cmbHDD8_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbHDD8.SelectedIndexChanged
+    Private Sub cmbHDD8_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbHDD8.SelectedIndexChanged
         ExLoadParTree(cmbHDD8.Text, txtHDDo8, PROizV51, "SPR_HDD")
     End Sub
 
 
-    Private Sub cmbSVGA1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbSVGA1.SelectedIndexChanged
+    Private Sub cmbSVGA1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbSVGA1.SelectedIndexChanged
         ExLoadParTree(cmbSVGA1.Text, txtSVGAr1, PROizV14, "SPR_SVGA")
     End Sub
 
-    Private Sub cmbSVGA2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbSVGA2.SelectedIndexChanged
+    Private Sub cmbSVGA2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbSVGA2.SelectedIndexChanged
         ExLoadParTree(cmbSVGA2.Text, txtSVGAr2, PROizV15, "SPR_SVGA")
     End Sub
 
-    Private Sub cmbSound_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbSound.SelectedIndexChanged
+    Private Sub cmbSound_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbSound.SelectedIndexChanged
         ExLoadParTree(cmbSound.Text, txtSoundB, PROizV16, "SPR_SOUND")
     End Sub
 
-    Private Sub cmbMB_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbMB.SelectedIndexChanged
+    Private Sub cmbMB_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbMB.SelectedIndexChanged
         ExLoadParTree(cmbMB.Text, txtChip, PROizV5, "SPR_MB")
     End Sub
 
-    Private Sub cmbOPTIC1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbOPTIC1.SelectedIndexChanged
+    Private Sub cmbOPTIC1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbOPTIC1.SelectedIndexChanged
         ExLoadParTree(cmbOPTIC1.Text, txtOPTICs1, PROizV17, "SPR_OPTICAL")
     End Sub
 
-    Private Sub cmbOPTIC2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbOPTIC2.SelectedIndexChanged
+    Private Sub cmbOPTIC2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbOPTIC2.SelectedIndexChanged
         ExLoadParTree(cmbOPTIC2.Text, txtOPTICs2, PROizV18, "SPR_OPTICAL")
     End Sub
 
-    Private Sub cmbOPTIC3_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbOPTIC3.SelectedIndexChanged
+    Private Sub cmbOPTIC3_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbOPTIC3.SelectedIndexChanged
         ExLoadParTree(cmbOPTIC3.Text, txtOPTICs3, PROizV19, "SPR_OPTICAL")
     End Sub
 
-    Private Sub cmbNET1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbNET1.SelectedIndexChanged
+    Private Sub cmbNET1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbNET1.SelectedIndexChanged
         ExLoadParTwo(cmbNET1.Text, PROizV20, "SPR_NET")
     End Sub
 
-    Private Sub cmbNET2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbNET2.SelectedIndexChanged
+    Private Sub cmbNET2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbNET2.SelectedIndexChanged
         ExLoadParTwo(cmbNET2.Text, PROizV21, "SPR_NET")
     End Sub
 
-    Private Sub cmbFDD_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbFDD.SelectedIndexChanged
+    Private Sub cmbFDD_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbFDD.SelectedIndexChanged
         ExLoadParTwo(cmbFDD.Text, PROizV22, "SPR_FDD")
     End Sub
 
-    Private Sub cmbCreader_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles cmbCreader.SelectedIndexChanged
+    Private Sub cmbCreader_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbCreader.SelectedIndexChanged
         ExLoadParTwo(cmbCreader.Text, PROizV23, "SPR_CREADER")
     End Sub
 
@@ -4893,28 +4807,7 @@ err_:
         ExLoadParTwo(cmbIBP.Text, PROizV43, "SPR_IBP")
     End Sub
 
-    Private Sub cmbNETBranch_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
-
-        On Error GoTo err_
-
-        BrainchLoad(cmbNETBranch, cmbNetDepart)
-
-        Exit Sub
-err_:
-        MsgBox(Err.Description, MsgBoxStyle.Information, ProGramName)
-    End Sub
-
-    Private Sub cmbNetDepart_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
-
-        On Error GoTo err_
-
-        DepartmentLoad(cmbNETBranch, cmbNetDepart, cmbNETOffice)
-
-        Exit Sub
-err_:
-    End Sub
-
-    Private Sub cmbDevNet_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+    Private Sub cmbDevNet_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbDevNet.SelectedIndexChanged
 
         Dim unI As Long
         Dim uname As String
@@ -4961,7 +4854,7 @@ err_:
 Error_:
     End Sub
 
-    Private Sub cmbPRN_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+    Private Sub cmbPRN_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbPRN.SelectedIndexChanged
 
         Dim sSQL As String
         cmbTIPCartridg.Text = ""
@@ -5028,8 +4921,7 @@ Error_:
         End If
     End Sub
 
-    Private Sub lvNetPort_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) _
-        Handles lvNetPort.ColumnClick
+    Private Sub lvNetPort_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) Handles lvNetPort.ColumnClick
 
         SORTING_LV(lvNetPort, e)
 
@@ -5261,7 +5153,7 @@ Error_:
 
     End Sub
 
-    Private Sub cmbModCartr_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+    Private Sub cmbModCartr_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbModCartr.SelectedIndexChanged
 
         Call Tip_Model_CARTR()
     End Sub
@@ -5288,26 +5180,7 @@ Error_:
         rs = Nothing
     End Sub
 
-    Private Sub lvMovement_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs)
-
-
-        SORTING_LV(lvMovement, e)
-
-    End Sub
-
-    Private Sub lvMovement_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs)
-
-        If lvMovement.Items.Count = 0 Then Exit Sub
-
-        If e.Button = MouseButtons.Right Then
-            cmDvig.Show(CType(sender, Control), e.Location)
-
-        Else
-
-        End If
-    End Sub
-
-    Private Sub lvMovement_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+    Private Sub lvMovement_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles lvMovement.SelectedIndexChanged
 
 
         If lvMovement.Items.Count = 0 Then Exit Sub
@@ -5318,8 +5191,7 @@ Error_:
         Next
     End Sub
 
-    Private Sub lvMovementPRN_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) _
-        Handles lvMovementPRN.ColumnClick
+    Private Sub lvMovementPRN_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) Handles lvMovementPRN.ColumnClick
 
         SORTING_LV(lvMovementPRN, e)
 
@@ -5337,8 +5209,7 @@ Error_:
         End If
     End Sub
 
-    Private Sub lvMovementPRN_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles lvMovementPRN.SelectedIndexChanged
+    Private Sub lvMovementPRN_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles lvMovementPRN.SelectedIndexChanged
 
         If lvMovementPRN.Items.Count = 0 Then Exit Sub
 
@@ -5349,8 +5220,7 @@ Error_:
         Next
     End Sub
 
-    Private Sub DELTEdVIGToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles DELTEdVIGToolStripMenuItem.Click
+    Private Sub DELTEdVIGToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles DELTEdVIGToolStripMenuItem.Click
 
         Dim dvig As Recordset
         dvig = New Recordset
@@ -5386,8 +5256,7 @@ Error_:
         End Select
     End Sub
 
-    Private Sub lvMovementNET_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) _
-        Handles lvMovementNET.ColumnClick
+    Private Sub lvMovementNET_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) Handles lvMovementNET.ColumnClick
 
         SORTING_LV(lvMovementNET, e)
 
@@ -5405,8 +5274,7 @@ Error_:
         End If
     End Sub
 
-    Private Sub lvMovementNET_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles lvMovementNET.SelectedIndexChanged
+    Private Sub lvMovementNET_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles lvMovementNET.SelectedIndexChanged
 
         If lvMovementNET.Items.Count = 0 Then Exit Sub
         Dim z As Integer
@@ -5416,8 +5284,7 @@ Error_:
         Next
     End Sub
 
-    Private Sub lvMovementOTH_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) _
-        Handles lvMovementOTH.ColumnClick
+    Private Sub lvMovementOTH_ColumnClick(ByVal sender As Object, ByVal e As ColumnClickEventArgs) Handles lvMovementOTH.ColumnClick
 
         SORTING_LV(lvMovementOTH, e)
 
@@ -5435,8 +5302,7 @@ Error_:
         End If
     End Sub
 
-    Private Sub lvMovementOTH_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles lvMovementOTH.SelectedIndexChanged
+    Private Sub lvMovementOTH_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles lvMovementOTH.SelectedIndexChanged
 
         If lvMovementOTH.Items.Count = 0 Then Exit Sub
 
@@ -5447,8 +5313,7 @@ Error_:
         Next
     End Sub
 
-    Private Sub lstGroups_NodeMouseClick(ByVal sender As Object, ByVal e As TreeNodeMouseClickEventArgs) _
-        Handles lstGroups.NodeMouseClick
+    Private Sub lstGroups_NodeMouseClick(ByVal sender As Object, ByVal e As TreeNodeMouseClickEventArgs) Handles lstGroups.NodeMouseClick
 
         '#############################################
         'Выделение по правому клику мышкой
@@ -5619,13 +5484,17 @@ Error_:
 
     End Sub
 
-    Private Sub txtUserName_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles txtUserName.SelectedIndexChanged
+    Private Sub txtUserName_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtUserName.SelectedIndexChanged
+
+
+        txtUserFIO.Text = ""
+        txtUserEmail.Text = ""
+        txtUMEMO.Text = ""
 
         Dim rs As Recordset
         rs = New Recordset
 
-        rs.Open("Select A from SPR_USER where name='" & txtUserName.Text & "'", DB7, CursorTypeEnum.adOpenDynamic,
+        rs.Open("Select * from SPR_USER where name='" & txtUserName.Text & "'", DB7, CursorTypeEnum.adOpenDynamic,
                 LockTypeEnum.adLockOptimistic)
 
         With rs
@@ -5634,7 +5503,11 @@ Error_:
                 txtUserFIO.Items.Clear()
                 .MoveFirst()
                 Do Until .EOF
-                    txtUserFIO.Items.Add(.Fields("A").Value)
+                    txtUserFIO.Text = (.Fields("A").Value)
+                    txtUserEmail.Text = (.Fields("B").Value)
+                    txtUMEMO.Text = (.Fields("Prim").Value)
+
+                    'ExLoadParFow(cmbCPU1.Text, txtMHZ1, txtSoc1, PROizV1, "SPR_CPU")
                     .MoveNext()
                 Loop
             End If
@@ -5647,10 +5520,13 @@ Error_:
         rs = Nothing
     End Sub
 
-    Private Sub txtUserFIO_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles txtUserFIO.SelectedIndexChanged
+    Private Sub txtUserFIO_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtUserFIO.SelectedIndexChanged
         Dim rs As Recordset
         rs = New Recordset
+
+        txtUserName.Text = ""
+        txtUserEmail.Text = ""
+        txtUMEMO.Text = ""
 
         'esq 130713 импорт юзеров
         Dim langfile As New IniFile(sLANGPATH)
@@ -5658,7 +5534,7 @@ Error_:
             Exit Sub
         End If 'esq 130713 импорт юзеров
 
-        rs.Open("Select Name from SPR_USER where A='" & txtUserFIO.Text & "'", DB7, CursorTypeEnum.adOpenDynamic,
+        rs.Open("Select * from SPR_USER where A='" & txtUserFIO.Text & "'", DB7, CursorTypeEnum.adOpenDynamic,
                 LockTypeEnum.adLockOptimistic)
 
         With rs
@@ -5667,7 +5543,9 @@ Error_:
                 txtUserName.Items.Clear()
                 .MoveFirst()
                 Do Until .EOF
-                    txtUserName.Items.Add(.Fields("Name").Value)
+                    txtUserName.Text = (.Fields("Name").Value)
+                    txtUserEmail.Text = (.Fields("B").Value)
+                    txtUMEMO.Text = (.Fields("Prim").Value)
                     .MoveNext()
                 Loop
             End If
@@ -6328,16 +6206,14 @@ err_:
         End Select
     End Sub
 
-    Private Sub ВернутьПерефериюToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles ВернутьПерефериюToolStripMenuItem.Click
+    Private Sub ВернутьПерефериюToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ВернутьПерефериюToolStripMenuItem.Click
 
         Call under_prn()
         lstGroups.Nodes.Clear() 'esq 151026
         Me.BeginInvoke(New MethodInvoker(AddressOf R_T_LOAD)) 'esq 151026
     End Sub
 
-    Private Sub ПрисоеденитьПерефериюToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles MassObedPerf.Click
+    Private Sub ПрисоеденитьПерефериюToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles MassObedPerf.Click
         Dim sSQL As String
         Dim zCtn As String
 
@@ -6635,7 +6511,7 @@ err_1:
         Me.Cursor = Cursors.Default
     End Sub
 
-    Private Sub chkSNMP_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
+    Private Sub chkSNMP_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles chkSNMP.CheckedChanged
 
         If chkSNMP.Checked = True And TipTehn = "IBP" Then
 
@@ -6665,7 +6541,6 @@ err_1:
 
     End Sub
 
-
     Private Sub TreeBrancheDU()
 
         Dim objIniFile As New IniFile(PrPath & "base.ini")
@@ -6681,7 +6556,7 @@ err_1:
         lstGroups.ExpandAll()
     End Sub
 
-    Private Sub cmbOTHConnect_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+    Private Sub cmbOTHConnect_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbOTHConnect.SelectedIndexChanged
 
         On Error GoTo err_
 
@@ -6754,14 +6629,6 @@ err_:
         Exit Sub
 Err_:
         MsgBox("no reply", MsgBoxStyle.Exclamation, ProGramName)
-    End Sub
-
-    Private Sub ToolStrip10_ItemClicked(ByVal sender As Object, ByVal e As ToolStripItemClickedEventArgs) _
-        Handles ToolStrip10.ItemClicked
-    End Sub
-
-    Private Sub lstUsers_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
-        Handles lstUsers.SelectedIndexChanged
     End Sub
 
     Private Sub mnu_Z_to_Office_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnu_Z_to_Office.Click
@@ -6916,10 +6783,6 @@ Err_:
 
     Private Sub chkNETspis_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkNETspis.CheckedChanged
         If chkNETspis.Checked = True Then dtNETSpisanie.Visible = True Else dtNETSpisanie.Visible = False
-    End Sub
-
-    Private Sub lstSoftware_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstSoftware.SelectedIndexChanged
-
     End Sub
 
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
@@ -7209,7 +7072,7 @@ err_:
         DV2 = True 'esq 130706 для обновления дерева при сохранении
     End Sub
 
-    Private Sub lvUSTR_PRINT_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub lvUSTR_PRINT_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles lvUSTR_PRINT.DoubleClick
 
         If lvUSTR_PRINT.Items.Count = 0 Then Exit Sub
 
@@ -7292,12 +7155,200 @@ err_:
 
     End Sub
 
-    Private Sub lstGroups_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles lstGroups.KeyPress
+    Private Sub cmbOTHFil_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbOTHFil.SelectedIndexChanged
+        On Error GoTo err_
+
+        BrainchLoad(cmbOTHFil, cmbOTHDepart)
+
+        Exit Sub
+err_:
+        MsgBox(Err.Description, MsgBoxStyle.Information, ProGramName)
 
     End Sub
 
-    Private Sub lstGroups_Layout(sender As Object, e As System.Windows.Forms.LayoutEventArgs) Handles lstGroups.Layout
+    Private Sub cmbOTHDepart_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbOTHDepart.SelectedIndexChanged
+        On Error GoTo err_
+
+        DepartmentLoad(cmbOTHFil, cmbOTHDepart, cmbOTHOffice)
+
+        Exit Sub
+err_:
+    End Sub
+
+    Private Sub cmbPRNFil_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPRNFil.SelectedIndexChanged
+        On Error GoTo err_
+
+        BrainchLoad(cmbPRNFil, cmbPRNDepart)
+
+        Exit Sub
+err_:
+        MsgBox(Err.Description, MsgBoxStyle.Information, ProGramName)
 
     End Sub
+
+    Private Sub cmbPRNDepart_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPRNDepart.SelectedIndexChanged
+        On Error GoTo err_
+
+        DepartmentLoad(cmbPRNFil, cmbPRNDepart, cmbPRNOffice)
+
+        Exit Sub
+err_:
+    End Sub
+
+    Private Sub cmbNETBranch_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbNETBranch.SelectedIndexChanged
+        On Error GoTo err_
+
+        BrainchLoad(cmbNETBranch, cmbNetDepart)
+
+        Exit Sub
+err_:
+        MsgBox(Err.Description, MsgBoxStyle.Information, ProGramName)
+    End Sub
+
+    Private Sub cmbNetDepart_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbNetDepart.SelectedIndexChanged
+        On Error GoTo err_
+
+        DepartmentLoad(cmbNETBranch, cmbNetDepart, cmbNETOffice)
+
+        Exit Sub
+err_:
+    End Sub
+
+    Private Sub ОбновитьИзCHECKCFGToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ОбновитьИзCHECKCFGToolStripMenuItem.Click
+        Upd_flag = True
+
+        ' Call VisibleForm(frmComputers)
+        Dim ePatch As String
+        Dim objIniFile As New IniFile(PrPath & "base.ini")
+        ePatch = objIniFile.GetString("General", "aida", PrPath)
+
+        Dim fdlg As OpenFileDialog = New OpenFileDialog()
+        Dim LNGIniFile As New IniFile(sLANGPATH)
+
+        fdlg.Title = LNGIniFile.GetString("frmMain", "MSG12", "Загрузка из CHECKCFG")
+
+        fdlg.InitialDirectory = ePatch
+        fdlg.Filter = "CHECKCFG files (*.*)|*.*"
+        fdlg.FilterIndex = 2
+
+        fdlg.RestoreDirectory = True
+
+        If fdlg.ShowDialog() = DialogResult.OK Then
+            Me.Cursor = Cursors.WaitCursor
+
+            CHECKCFGFilePatch = fdlg.FileName
+
+        End If
+        '   frmComputers.selectTECMesto()
+        '   Call ClearForm(frmComputers)
+        EDT = True
+        '  TipTehn = "PC"
+
+        '  frmComputers.sSTAB2.Visible = False
+        '  frmComputers.sSTAB1.Visible = True
+        '  frmComputers.sSTAB3.Visible = False
+        ' frmComputers.sSTAB4.Visible = False
+        ' frmComputers.sSTAB5.Visible = False
+
+        If Len(CHECKCFGFilePatch) > 3 Then Call CHECKCFG_Load()
+
+        'frmComputers.cmbBranch.Text = sBranch
+        ' frmComputers.cmbDepartment.Text = sDepartment
+        ' frmComputers.cmbOffice.Text = sOffice
+
+        Me.Cursor = Cursors.Default
+
+        Upd_flag = False
+
+    End Sub
+
+    Private Sub lvMovement_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles lvMovement.ColumnClick
+        SORTING_LV(lvMovement, e)
+    End Sub
+
+    Private Sub lvMovement_MouseUp(sender As Object, e As MouseEventArgs) Handles lvMovement.MouseUp
+        If lvMovement.Items.Count = 0 Then Exit Sub
+
+        If e.Button = MouseButtons.Right Then
+            cmDvig.Show(CType(sender, Control), e.Location)
+
+        Else
+
+        End If
+    End Sub
+
+    Private Sub cmbResponsible_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbResponsible.SelectedIndexChanged
+
+        LOAD_PHONE(cmbResponsible, txtPHONE)
+
+    End Sub
+
+    Private Sub cmbNETotv_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbNETotv.SelectedIndexChanged
+
+        LOAD_PHONE(cmbNETotv, txtNETphone)
+
+    End Sub
+
+    Private Sub cmbOTHotv_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbOTHotv.SelectedIndexChanged
+
+        LOAD_PHONE(cmbOTHotv, txtOTHphone)
+
+    End Sub
+
+    Private Sub cmbPRNotv_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPRNotv.SelectedIndexChanged
+
+        LOAD_PHONE(cmbPRNotv, txtPRNphone)
+
+    End Sub
+
+    Private Sub LOAD_PHONE(ByVal cmb As ComboBox, txt As TextBox)
+        On Error GoTo er1
+        txt.Text = ""
+
+        Dim rs As Recordset
+        rs = New Recordset
+        Dim sCount As String
+
+        rs.Open("Select count(*) as tn from SPR_OTV where name='" & cmb.Text & "' AND C <>''", DB7, CursorTypeEnum.adOpenDynamic,
+                LockTypeEnum.adLockOptimistic)
+
+        With rs
+            sCount = .Fields("tn").Value
+
+        End With
+
+        rs.Close()
+        rs = Nothing
+
+        If sCount = 0 Then Exit Sub
+
+        rs = New Recordset
+        rs.Open("Select * from SPR_OTV where name='" & cmb.Text & "'", DB7, CursorTypeEnum.adOpenDynamic,
+                LockTypeEnum.adLockOptimistic)
+
+        With rs
+
+            .MoveFirst()
+            Do Until .EOF
+                If Not IsDBNull(.Fields("C").Value) Then
+                    txt.Text = (.Fields("C").Value)
+                Else
+                    txt.Text = ""
+
+                End If
+
+
+                .MoveNext()
+            Loop
+        End With
+
+        rs.Close()
+        rs = Nothing
+
+        Exit Sub
+er1:
+        MsgBox(Err.Description)
+    End Sub
+
 End Class
 

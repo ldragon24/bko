@@ -1,11 +1,16 @@
 D:\PRJ\BASE_CODE_FOR_\bin\Release\basekomp.exe.config
 D:\PRJ\BASE_CODE_FOR_\bin\Release\basekomp.exe
 D:\PRJ\BASE_CODE_FOR_\bin\Release\basekomp.pdb
+D:\PRJ\BASE_CODE_FOR_\bin\Release\adodb.dll
+D:\PRJ\BASE_CODE_FOR_\bin\Release\Ionic.Zip.dll
+D:\PRJ\BASE_CODE_FOR_\bin\Release\Microsoft.Office.Interop.Excel.dll
+D:\PRJ\BASE_CODE_FOR_\bin\Release\Microsoft.Office.Interop.Word.dll
 D:\PRJ\BASE_CODE_FOR_\bin\Release\SnmpSharpNet.dll
 D:\PRJ\BASE_CODE_FOR_\bin\Release\zxing.dll
 D:\PRJ\BASE_CODE_FOR_\bin\Release\Interop.JRO.dll
 D:\PRJ\BASE_CODE_FOR_\obj\Release\Interop.JRO.dll
 D:\PRJ\BASE_CODE_FOR_\obj\Release\basekomp_net.vbproj.ResolveComReference.cache
+D:\PRJ\BASE_CODE_FOR_\obj\Release\basekomp.Form1.resources
 D:\PRJ\BASE_CODE_FOR_\obj\Release\basekomp.frmAbout.resources
 D:\PRJ\BASE_CODE_FOR_\obj\Release\basekomp.frmACT_OS_Act_treb.resources
 D:\PRJ\BASE_CODE_FOR_\obj\Release\basekomp.frmAct_Treb.resources
@@ -45,4 +50,3 @@ D:\PRJ\BASE_CODE_FOR_\obj\Release\basekomp.Resources.resources
 D:\PRJ\BASE_CODE_FOR_\obj\Release\basekomp_net.vbproj.GenerateResource.Cache
 D:\PRJ\BASE_CODE_FOR_\obj\Release\basekomp.exe
 D:\PRJ\BASE_CODE_FOR_\obj\Release\basekomp.pdb
-D:\PRJ\BASE_CODE_FOR_\obj\Release\basekomp.Form1.resources

@@ -15,6 +15,7 @@ Module MOD_SYS_PRELOAD
     Public FontSt As FontStyle
     Public FontD As GraphicsUnit
     Public FontI As Integer
+    Public srhLDAP As String
 
     Public RAZDEL As Integer
     Public TREE_UPDATE As Integer = 0
@@ -25,6 +26,7 @@ Module MOD_SYS_PRELOAD
     Public TipTehn As String
     Public PrPath As String
     Public EverestFilePatch As String
+    Public CHECKCFGFilePatch As String
     Public IdentifierMAC As String
     Public CS As String
     Public SUBD As String
@@ -64,6 +66,7 @@ Module MOD_SYS_PRELOAD
     Public _DBALTER As Boolean = False
     Public sVERSIA As String
     Public remVisible As Boolean
+    Public NotWorkvisible As Boolean
     Public SPVisible As Boolean
     Public NBVisible As Boolean
     Public TreeORGANIZACIA As TreeView
@@ -75,6 +78,9 @@ Module MOD_SYS_PRELOAD
     Private Property Renderer As Type
     Private bmg As Bitmap
     Public pb As PictureBox = New PictureBox
+    Public Upd_flag As Boolean = False
+
+
 
     Public Sub Tree_Icons_Feel(ByVal ills As ImageList, ByVal sFRM As String, ByVal sPATH As String)
 
@@ -389,6 +395,9 @@ Module MOD_SYS_PRELOAD
         'Как работаем с деревом
         TREE_REFRESH = objIniFile.GetString("General", "TREE_REFRESH", "1")
 
+        'LDAP для загрузки данных о пользователях
+        srhLDAP = objIniFile.GetString("General", "LDAP", "")
+
 
         'Выделение в дереве
         remVisible = objIniFile.GetString("TREE", "REM", "0")
@@ -689,7 +698,6 @@ Module MOD_SYS_PRELOAD
         Renderer = GetType(Rendering.BitmapRenderer)
         '############################################################################
 
-
         Dim objIniFile As New IniFile(sLANGPATH)
         Try
 
@@ -710,7 +718,6 @@ Module MOD_SYS_PRELOAD
 
             Dim stmpTEXT As String
 
-
             Dim sSQL As String
 
             If sID = "" Then
@@ -718,7 +725,6 @@ Module MOD_SYS_PRELOAD
             Else
                 sSQL = "Select * FROM kompy WHERE id=" & sID
             End If
-
 
             Dim rs As Recordset
             rs = New Recordset
@@ -814,11 +820,6 @@ Module MOD_SYS_PRELOAD
                         End If
 
                     End Try
-
-
-
-
-
 
                     .MoveNext()
                 Loop

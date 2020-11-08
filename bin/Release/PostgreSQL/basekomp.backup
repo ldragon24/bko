@@ -1,0 +1,7513 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.2.2
+-- Dumped by pg_dump version 9.2.2
+-- Started on 2013-02-16 15:13:53
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 336 (class 3079 OID 11727)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 3013 (class 0 OID 0)
+-- Dependencies: 336
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 168 (class 1259 OID 16571)
+-- Name: actos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE actos (
+    id integer NOT NULL,
+    nomer character varying(50),
+    tiporgtex character varying(50),
+    otdel character varying(50),
+    computer character varying(50),
+    cena character varying(50),
+    invent character varying(50),
+    dataprikaza date,
+    nomerprikaza character varying(50),
+    modtexn character varying(255),
+    postavshik character varying(100),
+    godvipuska character varying(50),
+    datasost date,
+    filial character varying(255)
+);
+
+
+ALTER TABLE public.actos OWNER TO postgres;
+
+--
+-- TOC entry 169 (class 1259 OID 16577)
+-- Name: actos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE actos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.actos_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3014 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: actos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE actos_id_seq OWNED BY actos.id;
+
+
+--
+-- TOC entry 170 (class 1259 OID 16579)
+-- Name: akt_sp_os3; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE akt_sp_os3 (
+    id integer NOT NULL,
+    id_comp integer DEFAULT 0,
+    datav date,
+    kompl character varying(255),
+    model character varying(255),
+    godpr integer DEFAULT 0,
+    datapost date,
+    stoim numeric DEFAULT 0,
+    nomer integer DEFAULT 0,
+    kolvorem integer DEFAULT 0,
+    datapk date,
+    opis text
+);
+
+
+ALTER TABLE public.akt_sp_os3 OWNER TO postgres;
+
+--
+-- TOC entry 171 (class 1259 OID 16590)
+-- Name: akt_sp_os3_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE akt_sp_os3_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.akt_sp_os3_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3015 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: akt_sp_os3_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE akt_sp_os3_id_seq OWNED BY akt_sp_os3.id;
+
+
+--
+-- TOC entry 172 (class 1259 OID 16592)
+-- Name: cartridg; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE cartridg (
+    id integer NOT NULL,
+    sn character varying(255),
+    proizv integer,
+    tip character varying(255),
+    model integer,
+    ustr integer DEFAULT 0,
+    prod integer,
+    schet character varying(255),
+    cena integer,
+    data date,
+    prim text,
+    nzap boolean DEFAULT false NOT NULL,
+    nezap boolean DEFAULT false NOT NULL,
+    iznos boolean DEFAULT false NOT NULL,
+    spisan boolean DEFAULT false NOT NULL,
+    naspisanie boolean DEFAULT false NOT NULL,
+    pref integer DEFAULT 0
+);
+
+
+ALTER TABLE public.cartridg OWNER TO postgres;
+
+--
+-- TOC entry 173 (class 1259 OID 16605)
+-- Name: cartridg_d; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE cartridg_d (
+    id integer NOT NULL,
+    id_comp integer DEFAULT 0,
+    oldmesto character varying(255),
+    newmesto character varying(255),
+    prich text,
+    data date,
+    "time" character varying(50)
+);
+
+
+ALTER TABLE public.cartridg_d OWNER TO postgres;
+
+--
+-- TOC entry 174 (class 1259 OID 16612)
+-- Name: cartridg_d_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE cartridg_d_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cartridg_d_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3016 (class 0 OID 0)
+-- Dependencies: 174
+-- Name: cartridg_d_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE cartridg_d_id_seq OWNED BY cartridg_d.id;
+
+
+--
+-- TOC entry 175 (class 1259 OID 16614)
+-- Name: cartridg_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE cartridg_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cartridg_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3017 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: cartridg_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE cartridg_id_seq OWNED BY cartridg.id;
+
+
+--
+-- TOC entry 176 (class 1259 OID 16616)
+-- Name: cartridg_z; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE cartridg_z (
+    id integer NOT NULL,
+    id_c integer,
+    z_n integer,
+    sc integer,
+    aktvr character varying(255),
+    dataakt date,
+    stoim character varying(255),
+    datazap date,
+    vost boolean DEFAULT false NOT NULL,
+    paper character varying(255)
+);
+
+
+ALTER TABLE public.cartridg_z OWNER TO postgres;
+
+--
+-- TOC entry 177 (class 1259 OID 16623)
+-- Name: cartridg_z_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE cartridg_z_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cartridg_z_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3018 (class 0 OID 0)
+-- Dependencies: 177
+-- Name: cartridg_z_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE cartridg_z_id_seq OWNED BY cartridg_z.id;
+
+
+--
+-- TOC entry 333 (class 1259 OID 17632)
+-- Name: configure_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE configure_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.configure_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 332 (class 1259 OID 17626)
+-- Name: configure; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE configure (
+    "Name_Prog" character varying(255),
+    "SISADM" character varying(255),
+    org character varying(255),
+    "NR" character varying(255) NOT NULL,
+    "Nomer_Compa" character varying(255),
+    "asc" boolean,
+    access character varying(255) NOT NULL,
+    id integer DEFAULT nextval('configure_id_seq'::regclass)
+);
+
+
+ALTER TABLE public.configure OWNER TO postgres;
+
+--
+-- TOC entry 178 (class 1259 OID 16631)
+-- Name: dvig; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE dvig (
+    id integer NOT NULL,
+    id_comp integer DEFAULT 0,
+    oldmesto character varying(255),
+    newmesto character varying(255),
+    prich text,
+    data date,
+    "time" character varying(50)
+);
+
+
+ALTER TABLE public.dvig OWNER TO postgres;
+
+--
+-- TOC entry 179 (class 1259 OID 16638)
+-- Name: dvig_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE dvig_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dvig_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3019 (class 0 OID 0)
+-- Dependencies: 179
+-- Name: dvig_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE dvig_id_seq OWNED BY dvig.id;
+
+
+--
+-- TOC entry 180 (class 1259 OID 16640)
+-- Name: garant_comp; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE garant_comp (
+    id integer NOT NULL,
+    id_comp integer DEFAULT 0,
+    cpu_dp character varying(50),
+    cpu_mp character varying(50),
+    cpu_gp character varying(50),
+    cpu_dpo character varying(50),
+    cpu_mpo character varying(50),
+    cpu_gpo character varying(50),
+    cpu_post character varying(50),
+    mb_dp character varying(50),
+    mb_mp character varying(50),
+    mb_gp character varying(50),
+    mb_dpo character varying(50),
+    mb_mpo character varying(50),
+    mb_gpo character varying(50),
+    mb_post character varying(50),
+    ram_dp character varying(50),
+    ram_mp character varying(50),
+    ram_gp character varying(50),
+    ram_dpo character varying(50),
+    ram_mpo character varying(50),
+    ram_gpo character varying(50),
+    ram_post character varying(50),
+    hdd_dp character varying(50),
+    hdd_mp character varying(50),
+    hdd_gp character varying(50),
+    hdd_dpo character varying(50),
+    hdd_mpo character varying(50),
+    hdd_gpo character varying(50),
+    hdd_post character varying(50),
+    svga_dp character varying(50),
+    svga_mp character varying(50),
+    svga_gp character varying(50),
+    svga_dpo character varying(50),
+    svga_mpo character varying(50),
+    svga_gpo character varying(50),
+    svga_post character varying(50),
+    sound_dp character varying(50),
+    sound_mp character varying(50),
+    sound_gp character varying(50),
+    sound_dpo character varying(50),
+    sound_mpo character varying(50),
+    sound_gpo character varying(50),
+    sound_post character varying(50),
+    cdrom_dp character varying(50),
+    cdrom_mp character varying(50),
+    cdrom_gp character varying(50),
+    cdrom_dpo character varying(50),
+    cdrom_mpo character varying(50),
+    cdrom_gpo character varying(50),
+    cdrom_post character varying(50),
+    net_dp character varying(50),
+    net_mp character varying(50),
+    net_gp character varying(50),
+    net_dpo character varying(50),
+    net_mpo character varying(50),
+    net_gpo character varying(50),
+    net_post character varying(50),
+    modem_dp character varying(50),
+    modem_mp character varying(50),
+    modem_gp character varying(50),
+    modem_dpo character varying(50),
+    modem_mpo character varying(50),
+    modem_gpo character varying(50),
+    modem_post character varying(50),
+    monitor_dp character varying(50),
+    monitor_mp character varying(50),
+    monitor_gp character varying(50),
+    monitor_dpo character varying(50),
+    monitor_mpo character varying(50),
+    monitor_gpo character varying(50),
+    monitor_post character varying(50),
+    scaner_dp character varying(50),
+    scaner_mp character varying(50),
+    scaner_gp character varying(50),
+    scaner_dpo character varying(50),
+    scaner_mpo character varying(50),
+    scaner_gpo character varying(50),
+    scaner_post character varying(50),
+    as_dp character varying(50),
+    as_mp character varying(50),
+    as_gp character varying(50),
+    as_dpo character varying(50),
+    as_mpo character varying(50),
+    as_gpo character varying(50),
+    as_post character varying(50),
+    keyboard_dp character varying(50),
+    keyboard_mp character varying(50),
+    keyboard_gp character varying(50),
+    keyboard_dpo character varying(50),
+    keyboard_mpo character varying(50),
+    keyboard_gpo character varying(50),
+    keyboard_post character varying(50),
+    mouse_dp character varying(50),
+    mouse_mp character varying(50),
+    mouse_gp character varying(50),
+    mouse_dpo character varying(50),
+    mouse_mpo character varying(50),
+    mouse_gpo character varying(50),
+    mouse_post character varying(50),
+    ibp_dp character varying(50),
+    ibp_mp character varying(50),
+    ibp_gp character varying(50),
+    ibp_dpo character varying(50),
+    ibp_mpo character varying(50),
+    ibp_gpo character varying(50),
+    ibp_post character varying(50),
+    fs_dp character varying(50),
+    fs_mp character varying(50),
+    fs_gp character varying(50),
+    fs_dpo character varying(50),
+    fs_mpo character varying(50),
+    fs_gpo character varying(50),
+    fs_post character varying(50),
+    usb_dp character varying(50),
+    usb_mp character varying(50),
+    usb_gp character varying(50),
+    usb_dpo character varying(50),
+    usb_mpo character varying(50),
+    usb_gpo character varying(50),
+    usb_post character varying(50),
+    pci_dp character varying(50),
+    pci_mp character varying(50),
+    pci_gp character varying(50),
+    pci_dpo character varying(50),
+    pci_mpo character varying(50),
+    pci_gpo character varying(50),
+    pci_post character varying(50),
+    fdd_dp character varying(50),
+    fdd_mp character varying(50),
+    fdd_gp character varying(50),
+    fdd_dpo character varying(50),
+    fdd_mpo character varying(50),
+    fdd_gpo character varying(50),
+    fdd_post character varying(50)
+);
+
+
+ALTER TABLE public.garant_comp OWNER TO postgres;
+
+--
+-- TOC entry 181 (class 1259 OID 16647)
+-- Name: garant_comp_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE garant_comp_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.garant_comp_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3020 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: garant_comp_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE garant_comp_id_seq OWNED BY garant_comp.id;
+
+
+--
+-- TOC entry 182 (class 1259 OID 16649)
+-- Name: garantia_sis; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE garantia_sis (
+    id integer NOT NULL,
+    id_comp integer DEFAULT 0,
+    postav character varying(50),
+    day character varying(50),
+    month character varying(50),
+    year character varying(50),
+    day_o character varying(50),
+    month_o character varying(50),
+    year_o character varying(50)
+);
+
+
+ALTER TABLE public.garantia_sis OWNER TO postgres;
+
+--
+-- TOC entry 183 (class 1259 OID 16653)
+-- Name: garantia_sis_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE garantia_sis_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.garantia_sis_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3021 (class 0 OID 0)
+-- Dependencies: 183
+-- Name: garantia_sis_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE garantia_sis_id_seq OWNED BY garantia_sis.id;
+
+
+--
+-- TOC entry 335 (class 1259 OID 17637)
+-- Name: kompy; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE kompy (
+    id integer NOT NULL,
+    nomerpc text,
+    cpu1 text,
+    cpumhz1 character varying(255),
+    cpusocket1 character varying(255),
+    cpuproizv1 character varying(255),
+    cpu2 text,
+    cpumhz2 character varying(255),
+    cpusocket2 character varying(255),
+    cpuproizv2 character varying(255),
+    cpu3 text,
+    cpumhz3 character varying(255),
+    cpusocket3 character varying(255),
+    cpuproizv3 character varying(255),
+    cpu4 text,
+    cpumhz4 character varying(255),
+    cpusocket4 character varying(255),
+    cpuproizv4 character varying(255),
+    mb text,
+    mb_chip character varying(255),
+    mb_id character varying(255),
+    mb_proizvod character varying(255),
+    ram_1 text,
+    ram_sn_1 character varying(255),
+    ram_speed_1 character varying(255),
+    ram_proizv_1 character varying(255),
+    ram_2 text,
+    ram_speed_2 character varying(255),
+    ram_sn_2 character varying(255),
+    ram_proizv_2 character varying(255),
+    ram_3 text,
+    ram_speed_3 character varying(255),
+    ram_sn_3 character varying(255),
+    ram_proizv_3 character varying(255),
+    ram_4 text,
+    ram_sn_4 character varying(255),
+    ram_speed_4 character varying(255),
+    ram_proizv_4 character varying(255),
+    ram_5 text,
+    ram_sn_5 character varying(255),
+    ram_speed_5 character varying(255),
+    ram_proizv_5 character varying(255),
+    ram_6 text,
+    ram_speed_6 character varying(255),
+    ram_sn_6 character varying(255),
+    ram_proizv_6 character varying(255),
+    ram_7 text,
+    ram_speed_7 character varying(255),
+    ram_sn_7 character varying(255),
+    ram_proizv_7 character varying(255),
+    ram_8 text,
+    ram_sn_8 character varying(255),
+    ram_speed_8 character varying(255),
+    ram_proizv_8 character varying(255),
+    hdd_name_1 text,
+    hdd_ob_1 character varying(255),
+    hdd_sn_1 character varying(255),
+    hdd_proizv_1 character varying(255),
+    hdd_name_2 text,
+    hdd_ob_2 character varying(255),
+    hdd_sn_2 character varying(255),
+    hdd_proizv_2 character varying(255),
+    hdd_name_3 text,
+    hdd_ob_3 character varying(255),
+    hdd_sn_3 character varying(255),
+    hdd_proizv_3 character varying(255),
+    hdd_name_4 text,
+    hdd_ob_4 character varying(255),
+    hdd_sn_4 character varying(255),
+    hdd_proizv_4 character varying(255),
+    hdd_name_5 text,
+    hdd_ob_5 character varying(255),
+    hdd_sn_5 character varying(255),
+    hdd_proizv_5 character varying(255),
+    hdd_name_6 text,
+    hdd_ob_6 character varying(255),
+    hdd_sn_6 character varying(255),
+    hdd_proizv_6 character varying(255),
+    hdd_name_7 text,
+    hdd_ob_7 character varying(255),
+    hdd_sn_7 character varying(255),
+    hdd_proizv_7 character varying(255),
+    hdd_name_8 text,
+    hdd_ob_8 character varying(255),
+    hdd_sn_8 character varying(255),
+    hdd_proizv_8 character varying(255),
+    svga_name text,
+    svga_ob_ram character varying(255),
+    svga_sn character varying(255),
+    svga_proizv character varying(255),
+    svga2_name text,
+    svga2_ob_ram character varying(255),
+    svga2_sn character varying(255),
+    svga2_proizv character varying(255),
+    sound_name text,
+    sound_sn character varying(255),
+    sound_proizv character varying(255),
+    cd_name text,
+    cd_speed character varying(255),
+    cd_sn character varying(255),
+    cd_proizv character varying(255),
+    cdrw_name text,
+    cdrw_speed character varying(255),
+    cdrw_sn character varying(255),
+    cdrw_proizv character varying(255),
+    dvd_name text,
+    dvd_speed character varying(255),
+    dvd_sn character varying(255),
+    dvd_proizv character varying(255),
+    net_name_1 text,
+    net_ip_1 character varying(255),
+    net_mac_1 character varying(50),
+    net_proizv_1 character varying(255),
+    net_name_2 text,
+    net_ip_2 character varying(255),
+    net_mac_2 character varying(50),
+    net_proizv_2 character varying(255),
+    fdd_name text,
+    fdd_sn character varying(255),
+    fdd_proizv character varying(255),
+    modem_name text,
+    modem_sn character varying(255),
+    modem_proizv character varying(255),
+    keyboard_name text,
+    keyboard_sn character varying(255),
+    keyboard_proizv character varying(255),
+    mouse_name text,
+    mouse_sn character varying(255),
+    mouse_proizv character varying(255),
+    usb_name text,
+    usb_sn character varying(255),
+    usb_proizv character varying(255),
+    pci_name text,
+    pci_sn character varying(255),
+    pci_proizv character varying(255),
+    monitor_name text,
+    monitor_dum character varying(255),
+    monitor_sn character varying(255),
+    monitor_proizv character varying(255),
+    monitor_name2 text,
+    monitor_dum2 character varying(255),
+    monitor_sn2 character varying(255),
+    monitor_proizv2 character varying(255),
+    as_name text,
+    as_sn character varying(255),
+    as_proizv character varying(255),
+    ibp_name text,
+    ibp_sn character varying(255),
+    ibp_proizv character varying(255),
+    filtr_name text,
+    filtr_sn character varying(255),
+    filtr_proizv character varying(255),
+    printer_name_1 text,
+    printer_sn_1 character varying(255),
+    port_1 character varying(255),
+    printer_proizv_1 character varying(255),
+    printer_name_2 text,
+    port_2 character varying(255),
+    printer_sn_2 character varying(255),
+    printer_proizv_2 character varying(255),
+    printer_name_3 text,
+    port_3 character varying(255),
+    printer_sn_3 character varying(255),
+    printer_proizv_3 character varying(255),
+    port_4 character varying(255),
+    printer_name_4 text,
+    printer_sn_4 character varying(255),
+    printer_proizv_4 character varying(255),
+    scaner_name text,
+    scaner_sn character varying(255),
+    scaner_proizv character varying(255),
+    net_name character varying(255),
+    psevdonim character varying(255),
+    mesto character varying(255),
+    kabn character varying(255),
+    tip_compa character varying(255),
+    filial character varying(255),
+    telephone character varying(255),
+    inv_no_system text,
+    inv_no_printer text,
+    inv_no_modem text,
+    inv_no_scaner text,
+    inv_no_monitor text,
+    inv_no_ibp text,
+    os text,
+    antivirus character varying(255),
+    text_red character varying(255),
+    excell_red character varying(255),
+    access_red character varying(255),
+    vg character varying(255),
+    ig character varying(255),
+    otvetstvennyj text,
+    garantia_sist boolean DEFAULT false NOT NULL,
+    ser_n_sis text,
+    tiptehn character varying(50),
+    sfaktno character varying(10),
+    cenarub numeric DEFAULT 0,
+    stoimrub numeric DEFAULT 0,
+    bnds boolean DEFAULT false NOT NULL,
+    desiat boolean DEFAULT false NOT NULL,
+    vosemn boolean DEFAULT false NOT NULL,
+    dvadcat boolean DEFAULT false NOT NULL,
+    datasf date,
+    zaiavk character varying(50),
+    datavvoda date,
+    spisan boolean DEFAULT false NOT NULL,
+    balans boolean DEFAULT false NOT NULL,
+    block character varying(50),
+    sn_block character varying(50),
+    proizv_block character varying(255),
+    creader_name character varying(255),
+    creader_sn character varying(50),
+    creader_proizv character varying(255),
+    case_name character varying(255),
+    case_sn character varying(50),
+    case_proizv character varying(255),
+    barkode text,
+    pcl integer DEFAULT 0,
+    date date,
+    sys_pr character varying(255),
+    path text,
+    snmp_community text,
+    snmp boolean DEFAULT false NOT NULL
+);
+
+
+ALTER TABLE public.kompy OWNER TO postgres;
+
+--
+-- TOC entry 334 (class 1259 OID 17635)
+-- Name: kompy_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE kompy_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.kompy_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3022 (class 0 OID 0)
+-- Dependencies: 334
+-- Name: kompy_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE kompy_id_seq OWNED BY kompy.id;
+
+
+--
+-- TOC entry 184 (class 1259 OID 16673)
+-- Name: net_port; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE net_port (
+    id integer NOT NULL,
+    id_net integer,
+    port character varying(255),
+    net_n character varying(255),
+    mac character varying(255)
+);
+
+
+ALTER TABLE public.net_port OWNER TO postgres;
+
+--
+-- TOC entry 185 (class 1259 OID 16679)
+-- Name: net_port_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE net_port_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.net_port_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3023 (class 0 OID 0)
+-- Dependencies: 185
+-- Name: net_port_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE net_port_id_seq OWNED BY net_port.id;
+
+
+--
+-- TOC entry 186 (class 1259 OID 16681)
+-- Name: otd_o; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE otd_o (
+    id integer NOT NULL,
+    id_otd character varying(50),
+    phone character varying(50),
+    otv character varying(50),
+    adress character varying(50),
+    prim text
+);
+
+
+ALTER TABLE public.otd_o OWNER TO postgres;
+
+--
+-- TOC entry 187 (class 1259 OID 16687)
+-- Name: otd_o_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE otd_o_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.otd_o_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3024 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: otd_o_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE otd_o_id_seq OWNED BY otd_o.id;
+
+
+--
+-- TOC entry 188 (class 1259 OID 16689)
+-- Name: pci; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE pci (
+    id integer NOT NULL,
+    id_comp integer DEFAULT 0,
+    pci character varying(255),
+    pci_sn character varying(255),
+    pci_proizv character varying(255),
+    pci_nomer integer DEFAULT 0
+);
+
+
+ALTER TABLE public.pci OWNER TO postgres;
+
+--
+-- TOC entry 189 (class 1259 OID 16697)
+-- Name: pci_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE pci_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.pci_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3025 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: pci_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE pci_id_seq OWNED BY pci.id;
+
+
+--
+-- TOC entry 190 (class 1259 OID 16699)
+-- Name: remont; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE remont (
+    id integer NOT NULL,
+    date date,
+    id_comp integer DEFAULT 0,
+    remont text,
+    uroven character varying(50),
+    master character varying(50),
+    nomerremkomp character varying(50),
+    comp_name character varying(50),
+    mesto_compa character varying(255),
+    vip character varying(50),
+    username character varying(255),
+    istochnik character varying(50),
+    phone character varying(50),
+    srok date,
+    name_of_remont character varying(50),
+    otvetstv character varying(50),
+    krit_rem character varying(50),
+    memo text,
+    zakryt boolean DEFAULT false NOT NULL,
+    pref character varying(5),
+    summ numeric DEFAULT 0,
+    starttime date,
+    stoptime date,
+    startdate date,
+    stopdate date
+);
+
+
+ALTER TABLE public.remont OWNER TO postgres;
+
+--
+-- TOC entry 191 (class 1259 OID 16708)
+-- Name: remont_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE remont_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.remont_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3026 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: remont_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE remont_id_seq OWNED BY remont.id;
+
+
+--
+-- TOC entry 192 (class 1259 OID 16710)
+-- Name: remonty_plus; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE remonty_plus (
+    id integer NOT NULL,
+    id_rem integer DEFAULT 0,
+    data date,
+    master character varying(50),
+    otzyv text
+);
+
+
+ALTER TABLE public.remonty_plus OWNER TO postgres;
+
+--
+-- TOC entry 193 (class 1259 OID 16717)
+-- Name: remonty_plus_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE remonty_plus_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.remonty_plus_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3027 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: remonty_plus_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE remonty_plus_id_seq OWNED BY remonty_plus.id;
+
+
+--
+-- TOC entry 194 (class 1259 OID 16719)
+-- Name: sclad; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE sclad (
+    number integer NOT NULL,
+    firma character varying(255),
+    complectname character varying(200),
+    numbertreb character varying(50),
+    kolvo integer DEFAULT 0,
+    serial character varying(50),
+    prim character varying(255),
+    chet character varying(30),
+    garant character varying(50),
+    nds numeric DEFAULT 0,
+    daysandtimes character varying(20),
+    platejka character varying(50),
+    cena numeric DEFAULT 0,
+    otdel character varying(50),
+    ostalos integer DEFAULT 0,
+    zatreboval character varying(50),
+    cherezkogo character varying(50),
+    poluchil character varying(50),
+    filial character varying(255),
+    oldnumber integer DEFAULT 0
+);
+
+
+ALTER TABLE public.sclad OWNER TO postgres;
+
+--
+-- TOC entry 195 (class 1259 OID 16730)
+-- Name: sclad_number_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE sclad_number_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.sclad_number_seq OWNER TO postgres;
+
+--
+-- TOC entry 3028 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: sclad_number_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE sclad_number_seq OWNED BY sclad.number;
+
+
+--
+-- TOC entry 196 (class 1259 OID 16732)
+-- Name: ses_pass; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE ses_pass (
+    id integer NOT NULL,
+    ploshad character varying(50),
+    visota character varying(50),
+    pl1pk character varying(50),
+    ob1pk character varying(50),
+    nalpom character varying(50),
+    vent character varying(50),
+    teplo character varying(50),
+    voda character varying(50),
+    kanal character varying(50),
+    otdelka text,
+    mebel text,
+    id_of character varying(50)
+);
+
+
+ALTER TABLE public.ses_pass OWNER TO postgres;
+
+--
+-- TOC entry 197 (class 1259 OID 16738)
+-- Name: ses_pass_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE ses_pass_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.ses_pass_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3029 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: ses_pass_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE ses_pass_id_seq OWNED BY ses_pass.id;
+
+
+--
+-- TOC entry 198 (class 1259 OID 16740)
+-- Name: sheduler; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE sheduler (
+    id integer NOT NULL,
+    data date,
+    opis character varying(255),
+    foruser character varying(255),
+    fromuser character varying(255)
+);
+
+
+ALTER TABLE public.sheduler OWNER TO postgres;
+
+--
+-- TOC entry 199 (class 1259 OID 16746)
+-- Name: sheduler_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE sheduler_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.sheduler_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3030 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: sheduler_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE sheduler_id_seq OWNED BY sheduler.id;
+
+
+--
+-- TOC entry 200 (class 1259 OID 16748)
+-- Name: soft_install; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE soft_install (
+    id integer NOT NULL,
+    id_comp integer DEFAULT 0,
+    soft character varying(255),
+    nomersoftkomp integer DEFAULT 0,
+    t_lic character varying(255),
+    l_key character varying(255),
+    d_p date,
+    d_o date,
+    publisher text,
+    tip text
+);
+
+
+ALTER TABLE public.soft_install OWNER TO postgres;
+
+--
+-- TOC entry 201 (class 1259 OID 16756)
+-- Name: soft_install_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE soft_install_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.soft_install_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3031 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: soft_install_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE soft_install_id_seq OWNED BY soft_install.id;
+
+
+--
+-- TOC entry 202 (class 1259 OID 16758)
+-- Name: spr_asistem; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_asistem (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_asistem OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 16765)
+-- Name: spr_asistem_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_asistem_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_asistem_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3032 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: spr_asistem_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_asistem_id_seq OWNED BY spr_asistem.id;
+
+
+--
+-- TOC entry 204 (class 1259 OID 16767)
+-- Name: spr_bp; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_bp (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_bp OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 16774)
+-- Name: spr_bp_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_bp_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_bp_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3033 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: spr_bp_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_bp_id_seq OWNED BY spr_bp.id;
+
+
+--
+-- TOC entry 206 (class 1259 OID 16776)
+-- Name: spr_cart; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_cart (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_cart OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 16783)
+-- Name: spr_cart_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_cart_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_cart_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3034 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: spr_cart_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_cart_id_seq OWNED BY spr_cart.id;
+
+
+--
+-- TOC entry 208 (class 1259 OID 16785)
+-- Name: spr_case; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_case (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_case OWNER TO postgres;
+
+--
+-- TOC entry 209 (class 1259 OID 16792)
+-- Name: spr_case_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_case_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_case_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3035 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: spr_case_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_case_id_seq OWNED BY spr_case.id;
+
+
+--
+-- TOC entry 210 (class 1259 OID 16794)
+-- Name: spr_complect; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_complect (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_complect OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 16801)
+-- Name: spr_complect_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_complect_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_complect_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3036 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: spr_complect_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_complect_id_seq OWNED BY spr_complect.id;
+
+
+--
+-- TOC entry 212 (class 1259 OID 16803)
+-- Name: spr_cpu; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_cpu (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_cpu OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 16810)
+-- Name: spr_cpu_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_cpu_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_cpu_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3037 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: spr_cpu_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_cpu_id_seq OWNED BY spr_cpu.id;
+
+
+--
+-- TOC entry 214 (class 1259 OID 16812)
+-- Name: spr_creader; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_creader (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_creader OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 16819)
+-- Name: spr_creader_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_creader_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_creader_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3038 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: spr_creader_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_creader_id_seq OWNED BY spr_creader.id;
+
+
+--
+-- TOC entry 216 (class 1259 OID 16821)
+-- Name: spr_dev_net; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_dev_net (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_dev_net OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1259 OID 16828)
+-- Name: spr_dev_net_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_dev_net_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_dev_net_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3039 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: spr_dev_net_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_dev_net_id_seq OWNED BY spr_dev_net.id;
+
+
+--
+-- TOC entry 218 (class 1259 OID 16830)
+-- Name: spr_fax; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_fax (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_fax OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 16837)
+-- Name: spr_fax_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_fax_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_fax_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3040 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: spr_fax_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_fax_id_seq OWNED BY spr_fax.id;
+
+
+--
+-- TOC entry 220 (class 1259 OID 16839)
+-- Name: spr_fdd; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_fdd (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_fdd OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1259 OID 16846)
+-- Name: spr_fdd_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_fdd_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_fdd_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3041 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: spr_fdd_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_fdd_id_seq OWNED BY spr_fdd.id;
+
+
+--
+-- TOC entry 222 (class 1259 OID 16848)
+-- Name: spr_filial; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_filial (
+    id integer NOT NULL,
+    filial character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50),
+    arhiv integer DEFAULT 0
+);
+
+
+ALTER TABLE public.spr_filial OWNER TO postgres;
+
+--
+-- TOC entry 223 (class 1259 OID 16856)
+-- Name: spr_filial_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_filial_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_filial_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3042 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: spr_filial_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_filial_id_seq OWNED BY spr_filial.id;
+
+
+--
+-- TOC entry 224 (class 1259 OID 16858)
+-- Name: spr_fs; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_fs (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_fs OWNER TO postgres;
+
+--
+-- TOC entry 225 (class 1259 OID 16865)
+-- Name: spr_fs_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_fs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_fs_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3043 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: spr_fs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_fs_id_seq OWNED BY spr_fs.id;
+
+
+--
+-- TOC entry 226 (class 1259 OID 16867)
+-- Name: spr_hdd; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_hdd (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_hdd OWNER TO postgres;
+
+--
+-- TOC entry 227 (class 1259 OID 16874)
+-- Name: spr_hdd_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_hdd_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_hdd_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3044 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: spr_hdd_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_hdd_id_seq OWNED BY spr_hdd.id;
+
+
+--
+-- TOC entry 228 (class 1259 OID 16876)
+-- Name: spr_ibp; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_ibp (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_ibp OWNER TO postgres;
+
+--
+-- TOC entry 229 (class 1259 OID 16883)
+-- Name: spr_ibp_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_ibp_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_ibp_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3045 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: spr_ibp_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_ibp_id_seq OWNED BY spr_ibp.id;
+
+
+--
+-- TOC entry 230 (class 1259 OID 16885)
+-- Name: spr_kab; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_kab (
+    id integer NOT NULL,
+    name character varying(255),
+    n_f character varying(255),
+    n_m character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50),
+    arhiv integer DEFAULT 0
+);
+
+
+ALTER TABLE public.spr_kab OWNER TO postgres;
+
+--
+-- TOC entry 231 (class 1259 OID 16893)
+-- Name: spr_kab_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_kab_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_kab_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3046 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: spr_kab_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_kab_id_seq OWNED BY spr_kab.id;
+
+
+--
+-- TOC entry 232 (class 1259 OID 16895)
+-- Name: spr_keyboard; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_keyboard (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_keyboard OWNER TO postgres;
+
+--
+-- TOC entry 233 (class 1259 OID 16902)
+-- Name: spr_keyboard_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_keyboard_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_keyboard_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3047 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: spr_keyboard_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_keyboard_id_seq OWNED BY spr_keyboard.id;
+
+
+--
+-- TOC entry 234 (class 1259 OID 16904)
+-- Name: spr_kopir; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_kopir (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_kopir OWNER TO postgres;
+
+--
+-- TOC entry 235 (class 1259 OID 16911)
+-- Name: spr_kopir_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_kopir_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_kopir_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3048 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: spr_kopir_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_kopir_id_seq OWNED BY spr_kopir.id;
+
+
+--
+-- TOC entry 236 (class 1259 OID 16913)
+-- Name: spr_lic; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_lic (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_lic OWNER TO postgres;
+
+--
+-- TOC entry 237 (class 1259 OID 16920)
+-- Name: spr_lic_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_lic_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_lic_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3049 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: spr_lic_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_lic_id_seq OWNED BY spr_lic.id;
+
+
+--
+-- TOC entry 238 (class 1259 OID 16922)
+-- Name: spr_master; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_master (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_master OWNER TO postgres;
+
+--
+-- TOC entry 239 (class 1259 OID 16929)
+-- Name: spr_master_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_master_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_master_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3050 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: spr_master_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_master_id_seq OWNED BY spr_master.id;
+
+
+--
+-- TOC entry 240 (class 1259 OID 16931)
+-- Name: spr_mb; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_mb (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_mb OWNER TO postgres;
+
+--
+-- TOC entry 241 (class 1259 OID 16938)
+-- Name: spr_mb_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_mb_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_mb_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3051 (class 0 OID 0)
+-- Dependencies: 241
+-- Name: spr_mb_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_mb_id_seq OWNED BY spr_mb.id;
+
+
+--
+-- TOC entry 242 (class 1259 OID 16940)
+-- Name: spr_mesto; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_mesto (
+    mestoid integer NOT NULL,
+    mesto character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50),
+    arhiv integer DEFAULT 0
+);
+
+
+ALTER TABLE public.spr_mesto OWNER TO postgres;
+
+--
+-- TOC entry 243 (class 1259 OID 16948)
+-- Name: spr_mesto_mestoid_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_mesto_mestoid_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_mesto_mestoid_seq OWNER TO postgres;
+
+--
+-- TOC entry 3052 (class 0 OID 0)
+-- Dependencies: 243
+-- Name: spr_mesto_mestoid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_mesto_mestoid_seq OWNED BY spr_mesto.mestoid;
+
+
+--
+-- TOC entry 244 (class 1259 OID 16950)
+-- Name: spr_mfu; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_mfu (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_mfu OWNER TO postgres;
+
+--
+-- TOC entry 245 (class 1259 OID 16957)
+-- Name: spr_mfu_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_mfu_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_mfu_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3053 (class 0 OID 0)
+-- Dependencies: 245
+-- Name: spr_mfu_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_mfu_id_seq OWNED BY spr_mfu.id;
+
+
+--
+-- TOC entry 246 (class 1259 OID 16959)
+-- Name: spr_modem; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_modem (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_modem OWNER TO postgres;
+
+--
+-- TOC entry 247 (class 1259 OID 16966)
+-- Name: spr_modem_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_modem_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_modem_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3054 (class 0 OID 0)
+-- Dependencies: 247
+-- Name: spr_modem_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_modem_id_seq OWNED BY spr_modem.id;
+
+
+--
+-- TOC entry 248 (class 1259 OID 16968)
+-- Name: spr_monitor; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_monitor (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_monitor OWNER TO postgres;
+
+--
+-- TOC entry 249 (class 1259 OID 16975)
+-- Name: spr_monitor_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_monitor_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_monitor_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3055 (class 0 OID 0)
+-- Dependencies: 249
+-- Name: spr_monitor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_monitor_id_seq OWNED BY spr_monitor.id;
+
+
+--
+-- TOC entry 250 (class 1259 OID 16977)
+-- Name: spr_mouse; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_mouse (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_mouse OWNER TO postgres;
+
+--
+-- TOC entry 251 (class 1259 OID 16984)
+-- Name: spr_mouse_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_mouse_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_mouse_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3056 (class 0 OID 0)
+-- Dependencies: 251
+-- Name: spr_mouse_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_mouse_id_seq OWNED BY spr_mouse.id;
+
+
+--
+-- TOC entry 252 (class 1259 OID 16986)
+-- Name: spr_net; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_net (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_net OWNER TO postgres;
+
+--
+-- TOC entry 253 (class 1259 OID 16993)
+-- Name: spr_net_dev; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_net_dev (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_net_dev OWNER TO postgres;
+
+--
+-- TOC entry 254 (class 1259 OID 17000)
+-- Name: spr_net_dev_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_net_dev_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_net_dev_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3057 (class 0 OID 0)
+-- Dependencies: 254
+-- Name: spr_net_dev_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_net_dev_id_seq OWNED BY spr_net_dev.id;
+
+
+--
+-- TOC entry 255 (class 1259 OID 17002)
+-- Name: spr_net_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_net_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_net_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3058 (class 0 OID 0)
+-- Dependencies: 255
+-- Name: spr_net_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_net_id_seq OWNED BY spr_net.id;
+
+
+--
+-- TOC entry 256 (class 1259 OID 17004)
+-- Name: spr_optical; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_optical (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_optical OWNER TO postgres;
+
+--
+-- TOC entry 257 (class 1259 OID 17011)
+-- Name: spr_optical_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_optical_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_optical_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3059 (class 0 OID 0)
+-- Dependencies: 257
+-- Name: spr_optical_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_optical_id_seq OWNED BY spr_optical.id;
+
+
+--
+-- TOC entry 258 (class 1259 OID 17013)
+-- Name: spr_os; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_os (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_os OWNER TO postgres;
+
+--
+-- TOC entry 259 (class 1259 OID 17020)
+-- Name: spr_os_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_os_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_os_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3060 (class 0 OID 0)
+-- Dependencies: 259
+-- Name: spr_os_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_os_id_seq OWNED BY spr_os.id;
+
+
+--
+-- TOC entry 260 (class 1259 OID 17022)
+-- Name: spr_otd_filial; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_otd_filial (
+    id integer NOT NULL,
+    n_otd character varying(255),
+    filial character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50),
+    arhiv integer DEFAULT 0
+);
+
+
+ALTER TABLE public.spr_otd_filial OWNER TO postgres;
+
+--
+-- TOC entry 261 (class 1259 OID 17030)
+-- Name: spr_otd_filial_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_otd_filial_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_otd_filial_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3061 (class 0 OID 0)
+-- Dependencies: 261
+-- Name: spr_otd_filial_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_otd_filial_id_seq OWNED BY spr_otd_filial.id;
+
+
+--
+-- TOC entry 262 (class 1259 OID 17032)
+-- Name: spr_oth_dev; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_oth_dev (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_oth_dev OWNER TO postgres;
+
+--
+-- TOC entry 263 (class 1259 OID 17039)
+-- Name: spr_oth_dev_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_oth_dev_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_oth_dev_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3062 (class 0 OID 0)
+-- Dependencies: 263
+-- Name: spr_oth_dev_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_oth_dev_id_seq OWNED BY spr_oth_dev.id;
+
+
+--
+-- TOC entry 264 (class 1259 OID 17041)
+-- Name: spr_other; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_other (
+    id integer NOT NULL,
+    name character varying(255),
+    a character varying(255),
+    b character varying(255),
+    c character varying(255),
+    proizv character varying(255),
+    prim text
+);
+
+
+ALTER TABLE public.spr_other OWNER TO postgres;
+
+--
+-- TOC entry 265 (class 1259 OID 17047)
+-- Name: spr_other_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_other_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_other_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3063 (class 0 OID 0)
+-- Dependencies: 265
+-- Name: spr_other_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_other_id_seq OWNED BY spr_other.id;
+
+
+--
+-- TOC entry 266 (class 1259 OID 17049)
+-- Name: spr_otv; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_otv (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_otv OWNER TO postgres;
+
+--
+-- TOC entry 267 (class 1259 OID 17056)
+-- Name: spr_otv_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_otv_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_otv_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3064 (class 0 OID 0)
+-- Dependencies: 267
+-- Name: spr_otv_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_otv_id_seq OWNED BY spr_otv.id;
+
+
+--
+-- TOC entry 268 (class 1259 OID 17058)
+-- Name: spr_pci; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_pci (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_pci OWNER TO postgres;
+
+--
+-- TOC entry 269 (class 1259 OID 17065)
+-- Name: spr_pci_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_pci_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_pci_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3065 (class 0 OID 0)
+-- Dependencies: 269
+-- Name: spr_pci_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_pci_id_seq OWNED BY spr_pci.id;
+
+
+--
+-- TOC entry 270 (class 1259 OID 17067)
+-- Name: spr_pdc; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_pdc (
+    id integer NOT NULL,
+    name text
+);
+
+
+ALTER TABLE public.spr_pdc OWNER TO postgres;
+
+--
+-- TOC entry 271 (class 1259 OID 17073)
+-- Name: spr_pdc_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_pdc_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_pdc_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3066 (class 0 OID 0)
+-- Dependencies: 271
+-- Name: spr_pdc_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_pdc_id_seq OWNED BY spr_pdc.id;
+
+
+--
+-- TOC entry 272 (class 1259 OID 17075)
+-- Name: spr_phone; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_phone (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_phone OWNER TO postgres;
+
+--
+-- TOC entry 273 (class 1259 OID 17082)
+-- Name: spr_phone_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_phone_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_phone_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3067 (class 0 OID 0)
+-- Dependencies: 273
+-- Name: spr_phone_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_phone_id_seq OWNED BY spr_phone.id;
+
+
+--
+-- TOC entry 274 (class 1259 OID 17084)
+-- Name: spr_photo; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_photo (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_photo OWNER TO postgres;
+
+--
+-- TOC entry 275 (class 1259 OID 17091)
+-- Name: spr_photo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_photo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_photo_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3068 (class 0 OID 0)
+-- Dependencies: 275
+-- Name: spr_photo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_photo_id_seq OWNED BY spr_photo.id;
+
+
+--
+-- TOC entry 276 (class 1259 OID 17093)
+-- Name: spr_po; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_po (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_po OWNER TO postgres;
+
+--
+-- TOC entry 277 (class 1259 OID 17100)
+-- Name: spr_po_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_po_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_po_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3069 (class 0 OID 0)
+-- Dependencies: 277
+-- Name: spr_po_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_po_id_seq OWNED BY spr_po.id;
+
+
+--
+-- TOC entry 278 (class 1259 OID 17102)
+-- Name: spr_postav; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_postav (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_postav OWNER TO postgres;
+
+--
+-- TOC entry 279 (class 1259 OID 17109)
+-- Name: spr_postav_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_postav_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_postav_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3070 (class 0 OID 0)
+-- Dependencies: 279
+-- Name: spr_postav_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_postav_id_seq OWNED BY spr_postav.id;
+
+
+--
+-- TOC entry 280 (class 1259 OID 17111)
+-- Name: spr_printer; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_printer (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_printer OWNER TO postgres;
+
+--
+-- TOC entry 281 (class 1259 OID 17118)
+-- Name: spr_printer_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_printer_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_printer_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3071 (class 0 OID 0)
+-- Dependencies: 281
+-- Name: spr_printer_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_printer_id_seq OWNED BY spr_printer.id;
+
+
+--
+-- TOC entry 282 (class 1259 OID 17120)
+-- Name: spr_proizv; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_proizv (
+    id integer NOT NULL,
+    proizv character varying(255),
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_proizv OWNER TO postgres;
+
+--
+-- TOC entry 283 (class 1259 OID 17126)
+-- Name: spr_proizv_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_proizv_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_proizv_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3072 (class 0 OID 0)
+-- Dependencies: 283
+-- Name: spr_proizv_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_proizv_id_seq OWNED BY spr_proizv.id;
+
+
+--
+-- TOC entry 284 (class 1259 OID 17128)
+-- Name: spr_ram; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_ram (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_ram OWNER TO postgres;
+
+--
+-- TOC entry 285 (class 1259 OID 17135)
+-- Name: spr_ram_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_ram_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_ram_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3073 (class 0 OID 0)
+-- Dependencies: 285
+-- Name: spr_ram_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_ram_id_seq OWNED BY spr_ram.id;
+
+
+--
+-- TOC entry 286 (class 1259 OID 17137)
+-- Name: spr_scaner; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_scaner (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_scaner OWNER TO postgres;
+
+--
+-- TOC entry 287 (class 1259 OID 17144)
+-- Name: spr_scaner_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_scaner_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_scaner_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3074 (class 0 OID 0)
+-- Dependencies: 287
+-- Name: spr_scaner_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_scaner_id_seq OWNED BY spr_scaner.id;
+
+
+--
+-- TOC entry 288 (class 1259 OID 17146)
+-- Name: spr_sound; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_sound (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_sound OWNER TO postgres;
+
+--
+-- TOC entry 289 (class 1259 OID 17153)
+-- Name: spr_sound_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_sound_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_sound_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3075 (class 0 OID 0)
+-- Dependencies: 289
+-- Name: spr_sound_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_sound_id_seq OWNED BY spr_sound.id;
+
+
+--
+-- TOC entry 290 (class 1259 OID 17155)
+-- Name: spr_svga; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_svga (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_svga OWNER TO postgres;
+
+--
+-- TOC entry 291 (class 1259 OID 17162)
+-- Name: spr_svga_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_svga_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_svga_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3076 (class 0 OID 0)
+-- Dependencies: 291
+-- Name: spr_svga_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_svga_id_seq OWNED BY spr_svga.id;
+
+
+--
+-- TOC entry 292 (class 1259 OID 17164)
+-- Name: spr_tip; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_tip (
+    id integer NOT NULL,
+    tip character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_tip OWNER TO postgres;
+
+--
+-- TOC entry 293 (class 1259 OID 17171)
+-- Name: spr_tip_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_tip_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_tip_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3077 (class 0 OID 0)
+-- Dependencies: 293
+-- Name: spr_tip_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_tip_id_seq OWNED BY spr_tip.id;
+
+
+--
+-- TOC entry 294 (class 1259 OID 17173)
+-- Name: spr_tip_po; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_tip_po (
+    id integer NOT NULL,
+    name character varying(255),
+    prim text
+);
+
+
+ALTER TABLE public.spr_tip_po OWNER TO postgres;
+
+--
+-- TOC entry 295 (class 1259 OID 17179)
+-- Name: spr_tip_po_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_tip_po_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_tip_po_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3078 (class 0 OID 0)
+-- Dependencies: 295
+-- Name: spr_tip_po_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_tip_po_id_seq OWNED BY spr_tip_po.id;
+
+
+--
+-- TOC entry 296 (class 1259 OID 17181)
+-- Name: spr_tip_z; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_tip_z (
+    id integer NOT NULL,
+    name character varying(255),
+    prim text
+);
+
+
+ALTER TABLE public.spr_tip_z OWNER TO postgres;
+
+--
+-- TOC entry 297 (class 1259 OID 17187)
+-- Name: spr_tip_z_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_tip_z_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_tip_z_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3079 (class 0 OID 0)
+-- Dependencies: 297
+-- Name: spr_tip_z_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_tip_z_id_seq OWNED BY spr_tip_z.id;
+
+
+--
+-- TOC entry 298 (class 1259 OID 17189)
+-- Name: spr_uroven; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_uroven (
+    id integer NOT NULL,
+    uroven character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_uroven OWNER TO postgres;
+
+--
+-- TOC entry 299 (class 1259 OID 17196)
+-- Name: spr_uroven_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_uroven_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_uroven_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3080 (class 0 OID 0)
+-- Dependencies: 299
+-- Name: spr_uroven_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_uroven_id_seq OWNED BY spr_uroven.id;
+
+
+--
+-- TOC entry 300 (class 1259 OID 17198)
+-- Name: spr_usb; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_usb (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_usb OWNER TO postgres;
+
+--
+-- TOC entry 301 (class 1259 OID 17205)
+-- Name: spr_usb_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_usb_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_usb_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3081 (class 0 OID 0)
+-- Dependencies: 301
+-- Name: spr_usb_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_usb_id_seq OWNED BY spr_usb.id;
+
+
+--
+-- TOC entry 302 (class 1259 OID 17207)
+-- Name: spr_user; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_user (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_user OWNER TO postgres;
+
+--
+-- TOC entry 303 (class 1259 OID 17214)
+-- Name: spr_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_user_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3082 (class 0 OID 0)
+-- Dependencies: 303
+-- Name: spr_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_user_id_seq OWNED BY spr_user.id;
+
+
+--
+-- TOC entry 304 (class 1259 OID 17216)
+-- Name: spr_vip; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_vip (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_vip OWNER TO postgres;
+
+--
+-- TOC entry 305 (class 1259 OID 17223)
+-- Name: spr_vip_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_vip_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_vip_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3083 (class 0 OID 0)
+-- Dependencies: 305
+-- Name: spr_vip_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_vip_id_seq OWNED BY spr_vip.id;
+
+
+--
+-- TOC entry 306 (class 1259 OID 17225)
+-- Name: spr_zip; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE spr_zip (
+    id integer NOT NULL,
+    name character varying(255),
+    proizv integer DEFAULT 0,
+    prim text,
+    a character varying(50),
+    b character varying(50),
+    c character varying(50)
+);
+
+
+ALTER TABLE public.spr_zip OWNER TO postgres;
+
+--
+-- TOC entry 307 (class 1259 OID 17232)
+-- Name: spr_zip_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE spr_zip_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.spr_zip_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3084 (class 0 OID 0)
+-- Dependencies: 307
+-- Name: spr_zip_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE spr_zip_id_seq OWNED BY spr_zip.id;
+
+
+--
+-- TOC entry 308 (class 1259 OID 17234)
+-- Name: t_log; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE t_log (
+    id integer NOT NULL,
+    user_id character varying(255),
+    activity text,
+    date date,
+    "time" date
+);
+
+
+ALTER TABLE public.t_log OWNER TO postgres;
+
+--
+-- TOC entry 309 (class 1259 OID 17240)
+-- Name: t_log_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE t_log_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.t_log_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3085 (class 0 OID 0)
+-- Dependencies: 309
+-- Name: t_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE t_log_id_seq OWNED BY t_log.id;
+
+
+--
+-- TOC entry 310 (class 1259 OID 17242)
+-- Name: t_que; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE t_que (
+    id integer NOT NULL,
+    sqlsq text,
+    name character varying(255)
+);
+
+
+ALTER TABLE public.t_que OWNER TO postgres;
+
+--
+-- TOC entry 311 (class 1259 OID 17248)
+-- Name: t_que_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE t_que_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.t_que_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3086 (class 0 OID 0)
+-- Dependencies: 311
+-- Name: t_que_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE t_que_id_seq OWNED BY t_que.id;
+
+
+--
+-- TOC entry 312 (class 1259 OID 17250)
+-- Name: t_user; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE t_user (
+    id integer,
+    user_id character varying(20) NOT NULL,
+    password character varying(20),
+    name character varying(30),
+    level character varying(20),
+    setup boolean DEFAULT false NOT NULL,
+    pcadd boolean DEFAULT false NOT NULL,
+    pcdel boolean DEFAULT false NOT NULL,
+    capadd boolean DEFAULT false NOT NULL,
+    capdel boolean DEFAULT false NOT NULL,
+    repadd boolean DEFAULT false NOT NULL,
+    reped boolean DEFAULT false NOT NULL,
+    repdel boolean DEFAULT false NOT NULL,
+    poadd boolean DEFAULT false NOT NULL,
+    podel boolean DEFAULT false NOT NULL,
+    cartr boolean DEFAULT false NOT NULL,
+    po boolean DEFAULT false NOT NULL,
+    sclad boolean DEFAULT false NOT NULL
+);
+
+
+ALTER TABLE public.t_user OWNER TO postgres;
+
+--
+-- TOC entry 313 (class 1259 OID 17266)
+-- Name: t_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE t_user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.t_user_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3087 (class 0 OID 0)
+-- Dependencies: 313
+-- Name: t_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE t_user_id_seq OWNED BY t_user.id;
+
+
+--
+-- TOC entry 314 (class 1259 OID 17268)
+-- Name: tbl_bios; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_bios (
+    id integer NOT NULL,
+    id_comp integer DEFAULT 0,
+    bu character varying(50),
+    ba character varying(50)
+);
+
+
+ALTER TABLE public.tbl_bios OWNER TO postgres;
+
+--
+-- TOC entry 315 (class 1259 OID 17272)
+-- Name: tbl_bios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tbl_bios_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tbl_bios_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3088 (class 0 OID 0)
+-- Dependencies: 315
+-- Name: tbl_bios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE tbl_bios_id_seq OWNED BY tbl_bios.id;
+
+
+--
+-- TOC entry 316 (class 1259 OID 17274)
+-- Name: tbl_dev_oid; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_dev_oid (
+    id integer NOT NULL,
+    device character varying(255),
+    developer character varying(255),
+    model character varying(255),
+    location_oid character varying(255),
+    netname_oid character varying(255),
+    contact_oid character varying(255),
+    model_oid character varying(255),
+    ser_num_oid character varying(255),
+    time_battery_oid character varying(255),
+    zariad_battary_oid character varying(255),
+    sost_battary_oid character varying(255),
+    zamena_battary_oid character varying(255),
+    uptime_oid character varying(255),
+    mac_oid character varying(255),
+    in_tok_oid character varying(255),
+    out_tok_oid character varying(255),
+    output_freq_oid character varying(255),
+    output_load_oid character varying(255),
+    output_status_oid character varying(255),
+    selftest_oid character varying(255),
+    selftest_day_oid character varying(255),
+    temperature_oid character varying(255),
+    temperature2_oid character varying(255)
+);
+
+
+ALTER TABLE public.tbl_dev_oid OWNER TO postgres;
+
+--
+-- TOC entry 317 (class 1259 OID 17280)
+-- Name: tbl_dev_oid_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tbl_dev_oid_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tbl_dev_oid_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3089 (class 0 OID 0)
+-- Dependencies: 317
+-- Name: tbl_dev_oid_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE tbl_dev_oid_id_seq OWNED BY tbl_dev_oid.id;
+
+
+--
+-- TOC entry 318 (class 1259 OID 17282)
+-- Name: tbl_net_mag; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_net_mag (
+    id integer NOT NULL,
+    id_line character varying(255),
+    tip_cab character varying(255),
+    dlin_cab integer DEFAULT 0,
+    tip_cab_line character varying(255),
+    svt integer DEFAULT 0,
+    net_port_svt character varying(255),
+    phone character varying(255),
+    svt_memo text,
+    commutator integer DEFAULT 0,
+    net_port_commutator character varying(255),
+    commutator_memo text,
+    pref character varying(255),
+    sid integer DEFAULT 0
+);
+
+
+ALTER TABLE public.tbl_net_mag OWNER TO postgres;
+
+--
+-- TOC entry 319 (class 1259 OID 17292)
+-- Name: tbl_net_mag_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tbl_net_mag_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tbl_net_mag_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3090 (class 0 OID 0)
+-- Dependencies: 319
+-- Name: tbl_net_mag_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE tbl_net_mag_id_seq OWNED BY tbl_net_mag.id;
+
+
+--
+-- TOC entry 320 (class 1259 OID 17294)
+-- Name: tbl_ppr; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tbl_ppr (
+    id integer NOT NULL,
+    id_comp integer,
+    tip_to character varying(255),
+    kvartal_to character varying(255),
+    year_to character varying(255)
+);
+
+
+ALTER TABLE public.tbl_ppr OWNER TO postgres;
+
+--
+-- TOC entry 321 (class 1259 OID 17300)
+-- Name: tbl_ppr_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tbl_ppr_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tbl_ppr_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3091 (class 0 OID 0)
+-- Dependencies: 321
+-- Name: tbl_ppr_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE tbl_ppr_id_seq OWNED BY tbl_ppr.id;
+
+
+--
+-- TOC entry 322 (class 1259 OID 17302)
+-- Name: trebovanie; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE trebovanie (
+    id integer NOT NULL,
+    nomer character varying(50),
+    datasost date,
+    otdel character varying(255),
+    computer character varying(255),
+    cherezkogo character varying(255),
+    zatreboval character varying(255),
+    model character varying(255),
+    tiporgtex character varying(255),
+    cena numeric DEFAULT 0,
+    kolich integer DEFAULT 0,
+    filial character varying(255)
+);
+
+
+ALTER TABLE public.trebovanie OWNER TO postgres;
+
+--
+-- TOC entry 323 (class 1259 OID 17310)
+-- Name: trebovanie_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE trebovanie_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.trebovanie_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3092 (class 0 OID 0)
+-- Dependencies: 323
+-- Name: trebovanie_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE trebovanie_id_seq OWNED BY trebovanie.id;
+
+
+--
+-- TOC entry 324 (class 1259 OID 17312)
+-- Name: update_log; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE update_log (
+    id integer NOT NULL,
+    id_comp integer DEFAULT 0,
+    komcl_old text,
+    kompl_new text,
+    date date,
+    "time" date
+);
+
+
+ALTER TABLE public.update_log OWNER TO postgres;
+
+--
+-- TOC entry 325 (class 1259 OID 17319)
+-- Name: update_log_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE update_log_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.update_log_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3093 (class 0 OID 0)
+-- Dependencies: 325
+-- Name: update_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE update_log_id_seq OWNED BY update_log.id;
+
+
+--
+-- TOC entry 326 (class 1259 OID 17321)
+-- Name: user_comp; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE user_comp (
+    id integer NOT NULL,
+    id_comp integer DEFAULT 0,
+    username character varying(50),
+    password character varying(50),
+    email character varying(50),
+    epass character varying(50),
+    fio character varying(255),
+    icq character varying(50),
+    pdc boolean DEFAULT false NOT NULL,
+    memo text,
+    jabber character varying(50)
+);
+
+
+ALTER TABLE public.user_comp OWNER TO postgres;
+
+--
+-- TOC entry 327 (class 1259 OID 17329)
+-- Name: user_comp_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE user_comp_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_comp_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3094 (class 0 OID 0)
+-- Dependencies: 327
+-- Name: user_comp_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE user_comp_id_seq OWNED BY user_comp.id;
+
+
+--
+-- TOC entry 328 (class 1259 OID 17331)
+-- Name: zam_otd; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE zam_otd (
+    id integer NOT NULL,
+    id_zam character varying(50),
+    date character varying(50),
+    zametka text,
+    id_otd character varying(255),
+    master character varying(255),
+    uroven character varying(50),
+    vip character varying(50)
+);
+
+
+ALTER TABLE public.zam_otd OWNER TO postgres;
+
+--
+-- TOC entry 329 (class 1259 OID 17337)
+-- Name: zam_otd_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE zam_otd_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.zam_otd_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3095 (class 0 OID 0)
+-- Dependencies: 329
+-- Name: zam_otd_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE zam_otd_id_seq OWNED BY zam_otd.id;
+
+
+--
+-- TOC entry 330 (class 1259 OID 17339)
+-- Name: zametki; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE zametki (
+    id integer NOT NULL,
+    date date,
+    id_comp integer DEFAULT 0,
+    zametki text,
+    master character varying(255),
+    nomerzamkomp character varying(255),
+    comp_name character varying(255),
+    mesto_compa character varying(255)
+);
+
+
+ALTER TABLE public.zametki OWNER TO postgres;
+
+--
+-- TOC entry 331 (class 1259 OID 17346)
+-- Name: zametki_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE zametki_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.zametki_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3096 (class 0 OID 0)
+-- Dependencies: 331
+-- Name: zametki_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE zametki_id_seq OWNED BY zametki.id;
+
+
+--
+-- TOC entry 2495 (class 2604 OID 17348)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY actos ALTER COLUMN id SET DEFAULT nextval('actos_id_seq'::regclass);
+
+
+--
+-- TOC entry 2501 (class 2604 OID 17349)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY akt_sp_os3 ALTER COLUMN id SET DEFAULT nextval('akt_sp_os3_id_seq'::regclass);
+
+
+--
+-- TOC entry 2509 (class 2604 OID 17350)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cartridg ALTER COLUMN id SET DEFAULT nextval('cartridg_id_seq'::regclass);
+
+
+--
+-- TOC entry 2511 (class 2604 OID 17351)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cartridg_d ALTER COLUMN id SET DEFAULT nextval('cartridg_d_id_seq'::regclass);
+
+
+--
+-- TOC entry 2513 (class 2604 OID 17352)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cartridg_z ALTER COLUMN id SET DEFAULT nextval('cartridg_z_id_seq'::regclass);
+
+
+--
+-- TOC entry 2515 (class 2604 OID 17353)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY dvig ALTER COLUMN id SET DEFAULT nextval('dvig_id_seq'::regclass);
+
+
+--
+-- TOC entry 2517 (class 2604 OID 17354)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY garant_comp ALTER COLUMN id SET DEFAULT nextval('garant_comp_id_seq'::regclass);
+
+
+--
+-- TOC entry 2519 (class 2604 OID 17355)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY garantia_sis ALTER COLUMN id SET DEFAULT nextval('garantia_sis_id_seq'::regclass);
+
+
+--
+-- TOC entry 2684 (class 2604 OID 17640)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY kompy ALTER COLUMN id SET DEFAULT nextval('kompy_id_seq'::regclass);
+
+
+--
+-- TOC entry 2520 (class 2604 OID 17357)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY net_port ALTER COLUMN id SET DEFAULT nextval('net_port_id_seq'::regclass);
+
+
+--
+-- TOC entry 2521 (class 2604 OID 17358)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY otd_o ALTER COLUMN id SET DEFAULT nextval('otd_o_id_seq'::regclass);
+
+
+--
+-- TOC entry 2524 (class 2604 OID 17359)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pci ALTER COLUMN id SET DEFAULT nextval('pci_id_seq'::regclass);
+
+
+--
+-- TOC entry 2528 (class 2604 OID 17360)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY remont ALTER COLUMN id SET DEFAULT nextval('remont_id_seq'::regclass);
+
+
+--
+-- TOC entry 2530 (class 2604 OID 17361)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY remonty_plus ALTER COLUMN id SET DEFAULT nextval('remonty_plus_id_seq'::regclass);
+
+
+--
+-- TOC entry 2536 (class 2604 OID 17362)
+-- Name: number; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY sclad ALTER COLUMN number SET DEFAULT nextval('sclad_number_seq'::regclass);
+
+
+--
+-- TOC entry 2537 (class 2604 OID 17363)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY ses_pass ALTER COLUMN id SET DEFAULT nextval('ses_pass_id_seq'::regclass);
+
+
+--
+-- TOC entry 2538 (class 2604 OID 17364)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY sheduler ALTER COLUMN id SET DEFAULT nextval('sheduler_id_seq'::regclass);
+
+
+--
+-- TOC entry 2541 (class 2604 OID 17365)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY soft_install ALTER COLUMN id SET DEFAULT nextval('soft_install_id_seq'::regclass);
+
+
+--
+-- TOC entry 2543 (class 2604 OID 17366)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_asistem ALTER COLUMN id SET DEFAULT nextval('spr_asistem_id_seq'::regclass);
+
+
+--
+-- TOC entry 2545 (class 2604 OID 17367)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_bp ALTER COLUMN id SET DEFAULT nextval('spr_bp_id_seq'::regclass);
+
+
+--
+-- TOC entry 2547 (class 2604 OID 17368)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_cart ALTER COLUMN id SET DEFAULT nextval('spr_cart_id_seq'::regclass);
+
+
+--
+-- TOC entry 2549 (class 2604 OID 17369)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_case ALTER COLUMN id SET DEFAULT nextval('spr_case_id_seq'::regclass);
+
+
+--
+-- TOC entry 2551 (class 2604 OID 17370)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_complect ALTER COLUMN id SET DEFAULT nextval('spr_complect_id_seq'::regclass);
+
+
+--
+-- TOC entry 2553 (class 2604 OID 17371)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_cpu ALTER COLUMN id SET DEFAULT nextval('spr_cpu_id_seq'::regclass);
+
+
+--
+-- TOC entry 2555 (class 2604 OID 17372)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_creader ALTER COLUMN id SET DEFAULT nextval('spr_creader_id_seq'::regclass);
+
+
+--
+-- TOC entry 2557 (class 2604 OID 17373)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_dev_net ALTER COLUMN id SET DEFAULT nextval('spr_dev_net_id_seq'::regclass);
+
+
+--
+-- TOC entry 2559 (class 2604 OID 17374)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_fax ALTER COLUMN id SET DEFAULT nextval('spr_fax_id_seq'::regclass);
+
+
+--
+-- TOC entry 2561 (class 2604 OID 17375)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_fdd ALTER COLUMN id SET DEFAULT nextval('spr_fdd_id_seq'::regclass);
+
+
+--
+-- TOC entry 2564 (class 2604 OID 17376)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_filial ALTER COLUMN id SET DEFAULT nextval('spr_filial_id_seq'::regclass);
+
+
+--
+-- TOC entry 2566 (class 2604 OID 17377)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_fs ALTER COLUMN id SET DEFAULT nextval('spr_fs_id_seq'::regclass);
+
+
+--
+-- TOC entry 2568 (class 2604 OID 17378)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_hdd ALTER COLUMN id SET DEFAULT nextval('spr_hdd_id_seq'::regclass);
+
+
+--
+-- TOC entry 2570 (class 2604 OID 17379)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_ibp ALTER COLUMN id SET DEFAULT nextval('spr_ibp_id_seq'::regclass);
+
+
+--
+-- TOC entry 2573 (class 2604 OID 17380)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_kab ALTER COLUMN id SET DEFAULT nextval('spr_kab_id_seq'::regclass);
+
+
+--
+-- TOC entry 2575 (class 2604 OID 17381)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_keyboard ALTER COLUMN id SET DEFAULT nextval('spr_keyboard_id_seq'::regclass);
+
+
+--
+-- TOC entry 2577 (class 2604 OID 17382)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_kopir ALTER COLUMN id SET DEFAULT nextval('spr_kopir_id_seq'::regclass);
+
+
+--
+-- TOC entry 2579 (class 2604 OID 17383)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_lic ALTER COLUMN id SET DEFAULT nextval('spr_lic_id_seq'::regclass);
+
+
+--
+-- TOC entry 2581 (class 2604 OID 17384)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_master ALTER COLUMN id SET DEFAULT nextval('spr_master_id_seq'::regclass);
+
+
+--
+-- TOC entry 2583 (class 2604 OID 17385)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_mb ALTER COLUMN id SET DEFAULT nextval('spr_mb_id_seq'::regclass);
+
+
+--
+-- TOC entry 2586 (class 2604 OID 17386)
+-- Name: mestoid; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_mesto ALTER COLUMN mestoid SET DEFAULT nextval('spr_mesto_mestoid_seq'::regclass);
+
+
+--
+-- TOC entry 2588 (class 2604 OID 17387)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_mfu ALTER COLUMN id SET DEFAULT nextval('spr_mfu_id_seq'::regclass);
+
+
+--
+-- TOC entry 2590 (class 2604 OID 17388)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_modem ALTER COLUMN id SET DEFAULT nextval('spr_modem_id_seq'::regclass);
+
+
+--
+-- TOC entry 2592 (class 2604 OID 17389)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_monitor ALTER COLUMN id SET DEFAULT nextval('spr_monitor_id_seq'::regclass);
+
+
+--
+-- TOC entry 2594 (class 2604 OID 17390)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_mouse ALTER COLUMN id SET DEFAULT nextval('spr_mouse_id_seq'::regclass);
+
+
+--
+-- TOC entry 2596 (class 2604 OID 17391)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_net ALTER COLUMN id SET DEFAULT nextval('spr_net_id_seq'::regclass);
+
+
+--
+-- TOC entry 2598 (class 2604 OID 17392)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_net_dev ALTER COLUMN id SET DEFAULT nextval('spr_net_dev_id_seq'::regclass);
+
+
+--
+-- TOC entry 2600 (class 2604 OID 17393)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_optical ALTER COLUMN id SET DEFAULT nextval('spr_optical_id_seq'::regclass);
+
+
+--
+-- TOC entry 2602 (class 2604 OID 17394)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_os ALTER COLUMN id SET DEFAULT nextval('spr_os_id_seq'::regclass);
+
+
+--
+-- TOC entry 2605 (class 2604 OID 17395)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_otd_filial ALTER COLUMN id SET DEFAULT nextval('spr_otd_filial_id_seq'::regclass);
+
+
+--
+-- TOC entry 2607 (class 2604 OID 17396)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_oth_dev ALTER COLUMN id SET DEFAULT nextval('spr_oth_dev_id_seq'::regclass);
+
+
+--
+-- TOC entry 2608 (class 2604 OID 17397)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_other ALTER COLUMN id SET DEFAULT nextval('spr_other_id_seq'::regclass);
+
+
+--
+-- TOC entry 2610 (class 2604 OID 17398)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_otv ALTER COLUMN id SET DEFAULT nextval('spr_otv_id_seq'::regclass);
+
+
+--
+-- TOC entry 2612 (class 2604 OID 17399)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_pci ALTER COLUMN id SET DEFAULT nextval('spr_pci_id_seq'::regclass);
+
+
+--
+-- TOC entry 2613 (class 2604 OID 17400)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_pdc ALTER COLUMN id SET DEFAULT nextval('spr_pdc_id_seq'::regclass);
+
+
+--
+-- TOC entry 2615 (class 2604 OID 17401)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_phone ALTER COLUMN id SET DEFAULT nextval('spr_phone_id_seq'::regclass);
+
+
+--
+-- TOC entry 2617 (class 2604 OID 17402)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_photo ALTER COLUMN id SET DEFAULT nextval('spr_photo_id_seq'::regclass);
+
+
+--
+-- TOC entry 2619 (class 2604 OID 17403)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_po ALTER COLUMN id SET DEFAULT nextval('spr_po_id_seq'::regclass);
+
+
+--
+-- TOC entry 2621 (class 2604 OID 17404)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_postav ALTER COLUMN id SET DEFAULT nextval('spr_postav_id_seq'::regclass);
+
+
+--
+-- TOC entry 2623 (class 2604 OID 17405)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_printer ALTER COLUMN id SET DEFAULT nextval('spr_printer_id_seq'::regclass);
+
+
+--
+-- TOC entry 2624 (class 2604 OID 17406)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_proizv ALTER COLUMN id SET DEFAULT nextval('spr_proizv_id_seq'::regclass);
+
+
+--
+-- TOC entry 2626 (class 2604 OID 17407)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_ram ALTER COLUMN id SET DEFAULT nextval('spr_ram_id_seq'::regclass);
+
+
+--
+-- TOC entry 2628 (class 2604 OID 17408)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_scaner ALTER COLUMN id SET DEFAULT nextval('spr_scaner_id_seq'::regclass);
+
+
+--
+-- TOC entry 2630 (class 2604 OID 17409)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_sound ALTER COLUMN id SET DEFAULT nextval('spr_sound_id_seq'::regclass);
+
+
+--
+-- TOC entry 2632 (class 2604 OID 17410)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_svga ALTER COLUMN id SET DEFAULT nextval('spr_svga_id_seq'::regclass);
+
+
+--
+-- TOC entry 2634 (class 2604 OID 17411)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_tip ALTER COLUMN id SET DEFAULT nextval('spr_tip_id_seq'::regclass);
+
+
+--
+-- TOC entry 2635 (class 2604 OID 17412)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_tip_po ALTER COLUMN id SET DEFAULT nextval('spr_tip_po_id_seq'::regclass);
+
+
+--
+-- TOC entry 2636 (class 2604 OID 17413)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_tip_z ALTER COLUMN id SET DEFAULT nextval('spr_tip_z_id_seq'::regclass);
+
+
+--
+-- TOC entry 2638 (class 2604 OID 17414)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_uroven ALTER COLUMN id SET DEFAULT nextval('spr_uroven_id_seq'::regclass);
+
+
+--
+-- TOC entry 2640 (class 2604 OID 17415)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_usb ALTER COLUMN id SET DEFAULT nextval('spr_usb_id_seq'::regclass);
+
+
+--
+-- TOC entry 2642 (class 2604 OID 17416)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_user ALTER COLUMN id SET DEFAULT nextval('spr_user_id_seq'::regclass);
+
+
+--
+-- TOC entry 2644 (class 2604 OID 17417)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_vip ALTER COLUMN id SET DEFAULT nextval('spr_vip_id_seq'::regclass);
+
+
+--
+-- TOC entry 2646 (class 2604 OID 17418)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY spr_zip ALTER COLUMN id SET DEFAULT nextval('spr_zip_id_seq'::regclass);
+
+
+--
+-- TOC entry 2647 (class 2604 OID 17419)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY t_log ALTER COLUMN id SET DEFAULT nextval('t_log_id_seq'::regclass);
+
+
+--
+-- TOC entry 2648 (class 2604 OID 17420)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY t_que ALTER COLUMN id SET DEFAULT nextval('t_que_id_seq'::regclass);
+
+
+--
+-- TOC entry 2662 (class 2604 OID 17421)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY t_user ALTER COLUMN id SET DEFAULT nextval('t_user_id_seq'::regclass);
+
+
+--
+-- TOC entry 2664 (class 2604 OID 17422)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tbl_bios ALTER COLUMN id SET DEFAULT nextval('tbl_bios_id_seq'::regclass);
+
+
+--
+-- TOC entry 2665 (class 2604 OID 17423)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tbl_dev_oid ALTER COLUMN id SET DEFAULT nextval('tbl_dev_oid_id_seq'::regclass);
+
+
+--
+-- TOC entry 2670 (class 2604 OID 17424)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tbl_net_mag ALTER COLUMN id SET DEFAULT nextval('tbl_net_mag_id_seq'::regclass);
+
+
+--
+-- TOC entry 2671 (class 2604 OID 17425)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tbl_ppr ALTER COLUMN id SET DEFAULT nextval('tbl_ppr_id_seq'::regclass);
+
+
+--
+-- TOC entry 2674 (class 2604 OID 17426)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY trebovanie ALTER COLUMN id SET DEFAULT nextval('trebovanie_id_seq'::regclass);
+
+
+--
+-- TOC entry 2676 (class 2604 OID 17427)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY update_log ALTER COLUMN id SET DEFAULT nextval('update_log_id_seq'::regclass);
+
+
+--
+-- TOC entry 2679 (class 2604 OID 17428)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY user_comp ALTER COLUMN id SET DEFAULT nextval('user_comp_id_seq'::regclass);
+
+
+--
+-- TOC entry 2680 (class 2604 OID 17429)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY zam_otd ALTER COLUMN id SET DEFAULT nextval('zam_otd_id_seq'::regclass);
+
+
+--
+-- TOC entry 2682 (class 2604 OID 17430)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY zametki ALTER COLUMN id SET DEFAULT nextval('zametki_id_seq'::regclass);
+
+
+--
+-- TOC entry 2838 (class 0 OID 16571)
+-- Dependencies: 168
+-- Data for Name: actos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY actos (id, nomer, tiporgtex, otdel, computer, cena, invent, dataprikaza, nomerprikaza, modtexn, postavshik, godvipuska, datasost, filial) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3097 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: actos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('actos_id_seq', 1, false);
+
+
+--
+-- TOC entry 2840 (class 0 OID 16579)
+-- Dependencies: 170
+-- Data for Name: akt_sp_os3; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY akt_sp_os3 (id, id_comp, datav, kompl, model, godpr, datapost, stoim, nomer, kolvorem, datapk, opis) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3098 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: akt_sp_os3_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('akt_sp_os3_id_seq', 1, false);
+
+
+--
+-- TOC entry 2842 (class 0 OID 16592)
+-- Dependencies: 172
+-- Data for Name: cartridg; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY cartridg (id, sn, proizv, tip, model, ustr, prod, schet, cena, data, prim, nzap, nezap, iznos, spisan, naspisanie, pref) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2843 (class 0 OID 16605)
+-- Dependencies: 173
+-- Data for Name: cartridg_d; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY cartridg_d (id, id_comp, oldmesto, newmesto, prich, data, "time") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3099 (class 0 OID 0)
+-- Dependencies: 174
+-- Name: cartridg_d_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('cartridg_d_id_seq', 3, true);
+
+
+--
+-- TOC entry 3100 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: cartridg_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('cartridg_id_seq', 1, true);
+
+
+--
+-- TOC entry 2846 (class 0 OID 16616)
+-- Dependencies: 176
+-- Data for Name: cartridg_z; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY cartridg_z (id, id_c, z_n, sc, aktvr, dataakt, stoim, datazap, vost, paper) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3101 (class 0 OID 0)
+-- Dependencies: 177
+-- Name: cartridg_z_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('cartridg_z_id_seq', 1, true);
+
+
+--
+-- TOC entry 3002 (class 0 OID 17626)
+-- Dependencies: 332
+-- Data for Name: configure; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY configure ("Name_Prog", "SISADM", org, "NR", "Nomer_Compa", "asc", access, id) FROM stdin;
+BKO.NET	SISADM	BKO.SHATKI.INFO	a@a.ru	Иванов И.И.	\N	1.7.3.5	1
+\.
+
+
+--
+-- TOC entry 3102 (class 0 OID 0)
+-- Dependencies: 333
+-- Name: configure_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('configure_id_seq', 1, true);
+
+
+--
+-- TOC entry 2848 (class 0 OID 16631)
+-- Dependencies: 178
+-- Data for Name: dvig; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY dvig (id, id_comp, oldmesto, newmesto, prich, data, "time") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3103 (class 0 OID 0)
+-- Dependencies: 179
+-- Name: dvig_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('dvig_id_seq', 1, true);
+
+
+--
+-- TOC entry 2850 (class 0 OID 16640)
+-- Dependencies: 180
+-- Data for Name: garant_comp; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY garant_comp (id, id_comp, cpu_dp, cpu_mp, cpu_gp, cpu_dpo, cpu_mpo, cpu_gpo, cpu_post, mb_dp, mb_mp, mb_gp, mb_dpo, mb_mpo, mb_gpo, mb_post, ram_dp, ram_mp, ram_gp, ram_dpo, ram_mpo, ram_gpo, ram_post, hdd_dp, hdd_mp, hdd_gp, hdd_dpo, hdd_mpo, hdd_gpo, hdd_post, svga_dp, svga_mp, svga_gp, svga_dpo, svga_mpo, svga_gpo, svga_post, sound_dp, sound_mp, sound_gp, sound_dpo, sound_mpo, sound_gpo, sound_post, cdrom_dp, cdrom_mp, cdrom_gp, cdrom_dpo, cdrom_mpo, cdrom_gpo, cdrom_post, net_dp, net_mp, net_gp, net_dpo, net_mpo, net_gpo, net_post, modem_dp, modem_mp, modem_gp, modem_dpo, modem_mpo, modem_gpo, modem_post, monitor_dp, monitor_mp, monitor_gp, monitor_dpo, monitor_mpo, monitor_gpo, monitor_post, scaner_dp, scaner_mp, scaner_gp, scaner_dpo, scaner_mpo, scaner_gpo, scaner_post, as_dp, as_mp, as_gp, as_dpo, as_mpo, as_gpo, as_post, keyboard_dp, keyboard_mp, keyboard_gp, keyboard_dpo, keyboard_mpo, keyboard_gpo, keyboard_post, mouse_dp, mouse_mp, mouse_gp, mouse_dpo, mouse_mpo, mouse_gpo, mouse_post, ibp_dp, ibp_mp, ibp_gp, ibp_dpo, ibp_mpo, ibp_gpo, ibp_post, fs_dp, fs_mp, fs_gp, fs_dpo, fs_mpo, fs_gpo, fs_post, usb_dp, usb_mp, usb_gp, usb_dpo, usb_mpo, usb_gpo, usb_post, pci_dp, pci_mp, pci_gp, pci_dpo, pci_mpo, pci_gpo, pci_post, fdd_dp, fdd_mp, fdd_gp, fdd_dpo, fdd_mpo, fdd_gpo, fdd_post) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3104 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: garant_comp_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('garant_comp_id_seq', 1, false);
+
+
+--
+-- TOC entry 2852 (class 0 OID 16649)
+-- Dependencies: 182
+-- Data for Name: garantia_sis; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY garantia_sis (id, id_comp, postav, day, month, year, day_o, month_o, year_o) FROM stdin;
+5	82	ООО Рога и Копыта	16	2	2013	16	2	2013
+7	83		16	2	2013	16	2	2013
+\.
+
+
+--
+-- TOC entry 3105 (class 0 OID 0)
+-- Dependencies: 183
+-- Name: garantia_sis_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('garantia_sis_id_seq', 7, true);
+
+
+--
+-- TOC entry 3005 (class 0 OID 17637)
+-- Dependencies: 335
+-- Data for Name: kompy; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY kompy (id, nomerpc, cpu1, cpumhz1, cpusocket1, cpuproizv1, cpu2, cpumhz2, cpusocket2, cpuproizv2, cpu3, cpumhz3, cpusocket3, cpuproizv3, cpu4, cpumhz4, cpusocket4, cpuproizv4, mb, mb_chip, mb_id, mb_proizvod, ram_1, ram_sn_1, ram_speed_1, ram_proizv_1, ram_2, ram_speed_2, ram_sn_2, ram_proizv_2, ram_3, ram_speed_3, ram_sn_3, ram_proizv_3, ram_4, ram_sn_4, ram_speed_4, ram_proizv_4, ram_5, ram_sn_5, ram_speed_5, ram_proizv_5, ram_6, ram_speed_6, ram_sn_6, ram_proizv_6, ram_7, ram_speed_7, ram_sn_7, ram_proizv_7, ram_8, ram_sn_8, ram_speed_8, ram_proizv_8, hdd_name_1, hdd_ob_1, hdd_sn_1, hdd_proizv_1, hdd_name_2, hdd_ob_2, hdd_sn_2, hdd_proizv_2, hdd_name_3, hdd_ob_3, hdd_sn_3, hdd_proizv_3, hdd_name_4, hdd_ob_4, hdd_sn_4, hdd_proizv_4, hdd_name_5, hdd_ob_5, hdd_sn_5, hdd_proizv_5, hdd_name_6, hdd_ob_6, hdd_sn_6, hdd_proizv_6, hdd_name_7, hdd_ob_7, hdd_sn_7, hdd_proizv_7, hdd_name_8, hdd_ob_8, hdd_sn_8, hdd_proizv_8, svga_name, svga_ob_ram, svga_sn, svga_proizv, svga2_name, svga2_ob_ram, svga2_sn, svga2_proizv, sound_name, sound_sn, sound_proizv, cd_name, cd_speed, cd_sn, cd_proizv, cdrw_name, cdrw_speed, cdrw_sn, cdrw_proizv, dvd_name, dvd_speed, dvd_sn, dvd_proizv, net_name_1, net_ip_1, net_mac_1, net_proizv_1, net_name_2, net_ip_2, net_mac_2, net_proizv_2, fdd_name, fdd_sn, fdd_proizv, modem_name, modem_sn, modem_proizv, keyboard_name, keyboard_sn, keyboard_proizv, mouse_name, mouse_sn, mouse_proizv, usb_name, usb_sn, usb_proizv, pci_name, pci_sn, pci_proizv, monitor_name, monitor_dum, monitor_sn, monitor_proizv, monitor_name2, monitor_dum2, monitor_sn2, monitor_proizv2, as_name, as_sn, as_proizv, ibp_name, ibp_sn, ibp_proizv, filtr_name, filtr_sn, filtr_proizv, printer_name_1, printer_sn_1, port_1, printer_proizv_1, printer_name_2, port_2, printer_sn_2, printer_proizv_2, printer_name_3, port_3, printer_sn_3, printer_proizv_3, port_4, printer_name_4, printer_sn_4, printer_proizv_4, scaner_name, scaner_sn, scaner_proizv, net_name, psevdonim, mesto, kabn, tip_compa, filial, telephone, inv_no_system, inv_no_printer, inv_no_modem, inv_no_scaner, inv_no_monitor, inv_no_ibp, os, antivirus, text_red, excell_red, access_red, vg, ig, otvetstvennyj, garantia_sist, ser_n_sis, tiptehn, sfaktno, cenarub, stoimrub, bnds, desiat, vosemn, dvadcat, datasf, zaiavk, datavvoda, spisan, balans, block, sn_block, proizv_block, creader_name, creader_sn, creader_proizv, case_name, case_sn, case_proizv, barkode, pcl, date, sys_pr, path, snmp_community, snmp) FROM stdin;
+82	\N	Intel(R) Pentium(R) 4 CPU 2.80GHz	2800 МГц	CPU 1	Intel													Intel Torrey Pines SE7210TP1	Intel Canterwood-ES E7210	BZTP44301939	Intel Corporation	512 Мб (2 ranks, 4 banks)	F10825D5h (3575974129)	PC3200 (200 МГц)	Samsung	512 Мб (2 ranks, 4 banks)	PC3200 (200 МГц)	F10325D0h (3492086769)	Samsung	512 Мб (2 ranks, 4 banks)	PC3200 (200 МГц)	Нет																						ST3120026AS	120 Гб	3LJ2CZC9	Seagate Technology LLC																													ATI Technologies, Inc. RAGE XL PCI	8 Мб		Advanced Micro Devices, Inc.								_NEC CD-ROM CD-3002A			Sony NEC Optiarc Inc.									Intel(R) PRO/100 M Network Connection	10.10.1.5 / 255.0.0.0	00-0E-0C-4E-CD-73	Intel Corporation					Дисковод гибких дисков		NoName	Courier V.Everything EXT PnP (V90-x2)		NoName	Стандартная (101/102 клавиши) или клавиатура PS/2 Microsoft Natural		NoName	Microsoft PS/2 мышь		NoName							Монитор по умолчанию			NoName														HP LaserJet 2420 PCL 6		IP_10.10.1.15	Hewlett-Packard Company					HP LaserJet 2420 PCL 6				\N	\N	\N	\N	\N	\N	\N	TRANS_SRV	TRANS_SRV	Отдел	Кабинет	Сервер	Филиал	2128506	1234567890		\N	\N			\N	\N	\N	\N	\N	\N	\N	Иванов И.И.	t	q9761671	PC	123	25000.000000	25000.000000	f	f	f	f	2013-01-31	125	2013-01-31	f	f										\N	0	\N	GEG Express	KRAFTWAY	\N	f
+83	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	10.10.1.6		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	Smart-UPS RT 2000			APC	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	Smart-UPS RT 2000	Smart-UPS RT 2000	Отдел	Кабинет		Филиал		\N		\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N		f		IBP	0	0.0000000	0.0000000	f	f	f	f	2013-02-16		2013-02-16	f	f	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	82	\N	\N	\N		f
+\.
+
+
+--
+-- TOC entry 3106 (class 0 OID 0)
+-- Dependencies: 334
+-- Name: kompy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('kompy_id_seq', 83, true);
+
+
+--
+-- TOC entry 2854 (class 0 OID 16673)
+-- Dependencies: 184
+-- Data for Name: net_port; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY net_port (id, id_net, port, net_n, mac) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3107 (class 0 OID 0)
+-- Dependencies: 185
+-- Name: net_port_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('net_port_id_seq', 1, false);
+
+
+--
+-- TOC entry 2856 (class 0 OID 16681)
+-- Dependencies: 186
+-- Data for Name: otd_o; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY otd_o (id, id_otd, phone, otv, adress, prim) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3108 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: otd_o_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('otd_o_id_seq', 1, false);
+
+
+--
+-- TOC entry 2858 (class 0 OID 16689)
+-- Dependencies: 188
+-- Data for Name: pci; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pci (id, id_comp, pci, pci_sn, pci_proizv, pci_nomer) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3109 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: pci_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('pci_id_seq', 1, false);
+
+
+--
+-- TOC entry 2860 (class 0 OID 16699)
+-- Dependencies: 190
+-- Data for Name: remont; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY remont (id, date, id_comp, remont, uroven, master, nomerremkomp, comp_name, mesto_compa, vip, username, istochnik, phone, srok, name_of_remont, otvetstv, krit_rem, memo, zakryt, pref, summ, starttime, stoptime, startdate, stopdate) FROM stdin;
+3	2013-02-16	82	Тест	Низкая	Иванов И.И.	1	TRANS_SRV	Филиал/Отдел/Кабинет	Ожидание	Zorg\\Alex	Иванов И.И.	2128506	2013-02-16	Заявка	Иванов И.И.	Электронный	Просто тест	f	C	0.0000000	1899-12-30	\N	2013-02-16	\N
+\.
+
+
+--
+-- TOC entry 3110 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: remont_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('remont_id_seq', 3, true);
+
+
+--
+-- TOC entry 2862 (class 0 OID 16710)
+-- Dependencies: 192
+-- Data for Name: remonty_plus; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY remonty_plus (id, id_rem, data, master, otzyv) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3111 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: remonty_plus_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('remonty_plus_id_seq', 1, false);
+
+
+--
+-- TOC entry 2864 (class 0 OID 16719)
+-- Dependencies: 194
+-- Data for Name: sclad; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY sclad (number, firma, complectname, numbertreb, kolvo, serial, prim, chet, garant, nds, daysandtimes, platejka, cena, otdel, ostalos, zatreboval, cherezkogo, poluchil, filial, oldnumber) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3112 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: sclad_number_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('sclad_number_seq', 1, false);
+
+
+--
+-- TOC entry 2866 (class 0 OID 16732)
+-- Dependencies: 196
+-- Data for Name: ses_pass; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY ses_pass (id, ploshad, visota, pl1pk, ob1pk, nalpom, vent, teplo, voda, kanal, otdelka, mebel, id_of) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3113 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: ses_pass_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('ses_pass_id_seq', 1, false);
+
+
+--
+-- TOC entry 2868 (class 0 OID 16740)
+-- Dependencies: 198
+-- Data for Name: sheduler; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY sheduler (id, data, opis, foruser, fromuser) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3114 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: sheduler_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('sheduler_id_seq', 1, false);
+
+
+--
+-- TOC entry 2870 (class 0 OID 16748)
+-- Dependencies: 200
+-- Data for Name: soft_install; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY soft_install (id, id_comp, soft, nomersoftkomp, t_lic, l_key, d_p, d_o, publisher, tip) FROM stdin;
+2934	82	Aditor Pro version 3.10	18			2013-02-16	2013-02-16		
+2935	82	Dr.Web Security Space 5.0	17			2009-01-22	2013-02-16	Dr.Web, Ltd.	
+2936	82	Guardant driver	16			2013-02-16	2013-02-16		
+2937	82	Intel(R) PRO Network Adapters and Drivers	15			2013-02-16	2013-02-16		
+2938	82	Microsoft Office XP (профессиональный выпуск) [Русский]	14			2007-09-18	2013-02-16	Microsoft Corporation	
+2939	82	Mozilla Firefox (2.0)	13			2013-02-16	2013-02-16	Mozilla	
+2940	82	Sybase SQL Anywhere 7	12			2013-02-16	2013-02-16		
+2941	82	VNC Free Edition 4.1.2	11			2013-02-16	2013-02-16	RealVNC Ltd.	
+2942	82	WebFldrs XP [Русский]	10			2007-09-06	2013-02-16	Microsoft Corporation	
+2943	82	Windows Installer 3.1 (KB893803)	9			2013-02-16	2013-02-16	Microsoft Corporation	
+2944	82	КриптоПро CSP	8			2007-09-06	2013-02-16	Крипто-Про	
+2945	82	Обновление безопасности для Windows XP (KB957097)	7			2009-01-21	2013-02-16	Microsoft Corporation	
+2946	82	Обновление безопасности для Windows XP (KB958644)	6			2009-01-21	2013-02-16	Microsoft Corporation	
+2947	82	Обновление безопасности для Windows XP (KB958687)	5			2009-01-21	2013-02-16	Microsoft Corporation	
+2948	82	Сервер ДБО WinTransport BS-Client v.2	4			2013-02-16	2013-02-16		
+2949	82	Microsoft Windows XP Professional Service Pack 2	3		1234567890	2013-02-16	2013-02-16	Microsoft Corporation	
+\.
+
+
+--
+-- TOC entry 3115 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: soft_install_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('soft_install_id_seq', 2949, true);
+
+
+--
+-- TOC entry 2872 (class 0 OID 16758)
+-- Dependencies: 202
+-- Data for Name: spr_asistem; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_asistem (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3116 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: spr_asistem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_asistem_id_seq', 1, false);
+
+
+--
+-- TOC entry 2874 (class 0 OID 16767)
+-- Dependencies: 204
+-- Data for Name: spr_bp; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_bp (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3117 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: spr_bp_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_bp_id_seq', 1, false);
+
+
+--
+-- TOC entry 2876 (class 0 OID 16776)
+-- Dependencies: 206
+-- Data for Name: spr_cart; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_cart (id, name, proizv, prim, a, b, c) FROM stdin;
+1	99999999999	27	\N	Лазерный	\N	\N
+\.
+
+
+--
+-- TOC entry 3118 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: spr_cart_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_cart_id_seq', 1, true);
+
+
+--
+-- TOC entry 2878 (class 0 OID 16785)
+-- Dependencies: 208
+-- Data for Name: spr_case; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_case (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3119 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: spr_case_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_case_id_seq', 1, false);
+
+
+--
+-- TOC entry 2880 (class 0 OID 16794)
+-- Dependencies: 210
+-- Data for Name: spr_complect; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_complect (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3120 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: spr_complect_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_complect_id_seq', 1, false);
+
+
+--
+-- TOC entry 2882 (class 0 OID 16803)
+-- Dependencies: 212
+-- Data for Name: spr_cpu; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_cpu (id, name, proizv, prim, a, b, c) FROM stdin;
+2	AMD Phenom(tm) 8650 Triple-Core Processor	34	\N	2300	AM2	\N
+3	Intel(R) Celeron(R) CPU processor	44	\N	2666 МГц	J2E1	\N
+4	AMD Athlon(tm) 64 Processor 3200+	55	\N	2010 МГц	Socket M2	\N
+5	Intel Celeron(R)	44	\N	1700 МГц	Socket 478	\N
+6	AMD Athlon(tm) 64 Processor 3800+	55	\N	2400 МГц	Socket 939	\N
+7	Null	73	\N		Socket 939	\N
+8	Intel(R) Pentium(R) Dual CPU T2390 @ 1.86GHz	44	\N	1862 МГц	Socket 478	\N
+9	AMD Athlon(tm) 64 X2 Dual Core Processor 4400+	55	\N	2306 МГц	Socket AM2	\N
+10	AMD Athlon(tm) 64 X2 Dual Core Processor 4200+	55	\N	2200 МГц	Socket AM2	\N
+11	Intel(R) Celeron(R) CPU 2.66GHz	44	\N	2666 МГц	Socket 775	\N
+12	Pentium(R) Dual-Core CPU E6300 @ 2.80GHz	44	\N	2800 МГц	LGA775	\N
+13	AMD Sempron(tm) Processor 3000+	55	\N	1800 МГц	CPU 1	\N
+14	Intel(R) Celeron(R) CPU E3200 @ 2.40GHz	44	\N	2400 МГц	LGA775	\N
+15	AMD Sempron(tm)	55	\N	1750 МГц	Socket A	\N
+16	AMD Sempron(tm) Processor 2600+	55	\N	1600 МГц	Socket 940	\N
+17	Intel Celeron(TM)	44	\N	1400 МГц	Socket 370	\N
+18	AMD Sempron(tm) Processor 2800+	55	\N	1600 МГц	Socket 754	\N
+19	AMD Athlon(tm) 64 X2 Dual Core Processor 3800+	55	\N	2010 МГц	Socket M2	\N
+20	AMD Athlon(tm) 64 X2 Dual Core Processor 4000+	55	\N	2100 МГц	CPU 1	\N
+21	AMD Athlon(tm) 64 X2 Dual Core Processor 6000+	55	\N	3000 МГц	AM2	\N
+22	CELERON(TM)	44	\N	633 МГц	Socket 370	\N
+23	Intel(R) Celeron(R) CPU	44	\N	2800 МГц	Socket 478	\N
+24	AMD Athlon(tm) 64 Processor 3000+	55	\N	1800 МГц	CPU 1	\N
+25	Intel(R) Celeron(R)	173	\N	2000 МГц	PGA 478	\N
+26	Intel(R) Celeron(R) D CPU 3.33GHz	44	\N	3333 МГц	Socket 775	\N
+27	PENTIUM III	44	\N	733 МГц	Socket 370	\N
+28	AMD Athlon(tm) 64 X2 Dual Core Processor 3600+	55	\N	2000 МГц	CPU 1	\N
+29	Intel(R) Pentium(R) 4 processor	44	\N	1800 МГц	J2E1	\N
+30	Intel(R) Xeon(TM) Processor 2.80GHz	173	\N	2800 МГц	BSP	\N
+31	Intel(R) Pentium(R) 4 CPU 2.80GHz	44	\N	2800 МГц	CPU 1	\N
+32	AMD Athlon(tm) XP	55	\N	1833 МГц	Socket A	\N
+33	AMD Athlon(tm) 64 X2 Dual Core Processor 5200+	55	\N	2700 МГц	AM2	\N
+34	Pentium(R) Dual-Core CPU E6500 @ 2.93GHz	44	\N	2933 МГц	CPUSocket	\N
+\.
+
+
+--
+-- TOC entry 3121 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: spr_cpu_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_cpu_id_seq', 34, true);
+
+
+--
+-- TOC entry 2884 (class 0 OID 16812)
+-- Dependencies: 214
+-- Data for Name: spr_creader; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_creader (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3122 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: spr_creader_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_creader_id_seq', 1, false);
+
+
+--
+-- TOC entry 2886 (class 0 OID 16821)
+-- Dependencies: 216
+-- Data for Name: spr_dev_net; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_dev_net (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3123 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: spr_dev_net_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_dev_net_id_seq', 1, false);
+
+
+--
+-- TOC entry 2888 (class 0 OID 16830)
+-- Dependencies: 218
+-- Data for Name: spr_fax; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_fax (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3124 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: spr_fax_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_fax_id_seq', 1, false);
+
+
+--
+-- TOC entry 2890 (class 0 OID 16839)
+-- Dependencies: 220
+-- Data for Name: spr_fdd; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_fdd (id, name, proizv, prim, a, b, c) FROM stdin;
+1	Дисковод гибких дисков	36	\N	\N	\N	\N
+2	Floppy disk drive	36	\N	\N	\N	\N
+\.
+
+
+--
+-- TOC entry 3125 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: spr_fdd_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_fdd_id_seq', 2, true);
+
+
+--
+-- TOC entry 2892 (class 0 OID 16848)
+-- Dependencies: 222
+-- Data for Name: spr_filial; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_filial (id, filial, proizv, prim, a, b, c, arhiv) FROM stdin;
+3	Филиал	0	\N	\N	\N	\N	0
+\.
+
+
+--
+-- TOC entry 3126 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: spr_filial_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_filial_id_seq', 3, true);
+
+
+--
+-- TOC entry 2894 (class 0 OID 16858)
+-- Dependencies: 224
+-- Data for Name: spr_fs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_fs (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3127 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: spr_fs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_fs_id_seq', 1, false);
+
+
+--
+-- TOC entry 2896 (class 0 OID 16867)
+-- Dependencies: 226
+-- Data for Name: spr_hdd; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_hdd (id, name, proizv, prim, a, b, c) FROM stdin;
+2	ST3500410AS ATA Device	37	\N	465,759308338165	\N	\N
+3	ST3750528AS ATA Device	37	\N	698,637385368347	\N	\N
+4	MAXTOR 6L020J1	58	\N	20 Гб	\N	\N
+5	Maxtor 6E020L0	58	\N	20 Гб	\N	\N
+6	ST3802110A	74	\N	80 Гб	\N	\N
+7	WDC WD1600BEVT-22ZCT0	88	\N	149 Gb	\N	\N
+8	ST380815AS	74	\N	80 Гб	\N	\N
+9	SAMSUNG HD080HJ	27	\N	80 Гб	\N	\N
+10	ST3320418AS	74	\N	320 Гб	\N	\N
+11	SAMSUNG HD321HJ	27	\N	320 Гб	\N	\N
+12	WDC WD400BB-00JHA0	88	\N	37 Gb	\N	\N
+13	ST380011A	74	\N	80 Гб	\N	\N
+14	SAMSUNG HD160HJ	27	\N	160 Гб	\N	\N
+15	ST340016A	74	\N	40 Гб	\N	\N
+16	SAMSUNG SP0822N	27	\N	80 Гб	\N	\N
+17	SAMSUNG SP0842N	27	\N	80 Гб	\N	\N
+18	SAMSUNG SP0802N	27	\N	80 Гб	\N	\N
+19	HDS728080PLA380	143	\N	80 Гб	\N	\N
+20	ST3160815AS	74	\N	160 Гб	\N	\N
+21	ST3160815SV	74	\N	160 Гб	\N	\N
+22	Maxtor 6E030L0	58	\N	30 Гб	\N	\N
+23	ST3120827AS	74	\N	120 Гб	\N	\N
+24	ST3160811AS	74	\N	160 Гб	\N	\N
+25	ST3120813AS	74	\N	120 Гб	\N	\N
+26	Maxtor 2B020H1	58	\N	20 Гб	\N	\N
+27	Maxtor 6E040L0	58	\N	40 Гб	\N	\N
+28	ST340014A	74	\N	40 Гб	\N	\N
+29	WDC WD400BB-00GFA0	88	\N	44 Gb	\N	\N
+30	MAXTOR STM3500320AS	58	\N	500 Гб	\N	\N
+31	ST380811AS	74	\N	80 Гб	\N	\N
+32	MAXTOR STM380815AS	58	\N	80 Гб	\N	\N
+33	ST3160813AS	74	\N	160 Гб	\N	\N
+34	SAMSUNG SP0401N	27	\N	40 Гб	\N	\N
+35	SAMSUNG SP0411N	27	\N	40 Гб	\N	\N
+36	Maxtor 2R010H1	58	\N	10.2 Гб	\N	\N
+37	FUJITSU MPE3064AT	208	\N	6480 млн. байт	\N	\N
+38	SAMSUNG SV1021H	27	\N	9727 млн. байт	\N	\N
+39	WDC WD2500JS-22NCB1	88	\N	233 Gb	\N	\N
+40	ST3120026A	74	\N	120 Гб	\N	\N
+41	SEAGATE ST336607LW	74	\N	36.7 Гб	\N	\N
+42	ST3120026AS	74	\N	120 Гб	\N	\N
+43	WDC WD800BB-08JHC0	88	\N	75 Gb	\N	\N
+44	ST3200827AS	74	\N	200 Гб	\N	\N
+45	SAMSUNG HD322HJ	27	\N	320 Гб	\N	\N
+\.
+
+
+--
+-- TOC entry 3128 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: spr_hdd_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_hdd_id_seq', 45, true);
+
+
+--
+-- TOC entry 2898 (class 0 OID 16876)
+-- Dependencies: 228
+-- Data for Name: spr_ibp; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_ibp (id, name, proizv, prim, a, b, c) FROM stdin;
+2	Smart-UPS RT 2000	238		2000	surt2000	
+\.
+
+
+--
+-- TOC entry 3129 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: spr_ibp_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_ibp_id_seq', 2, true);
+
+
+--
+-- TOC entry 2900 (class 0 OID 16885)
+-- Dependencies: 230
+-- Data for Name: spr_kab; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_kab (id, name, n_f, n_m, proizv, prim, a, b, c, arhiv) FROM stdin;
+3	Кабинет	Филиал	Отдел	0	\N	\N	\N	\N	0
+\.
+
+
+--
+-- TOC entry 3130 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: spr_kab_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_kab_id_seq', 3, true);
+
+
+--
+-- TOC entry 2902 (class 0 OID 16895)
+-- Dependencies: 232
+-- Data for Name: spr_keyboard; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_keyboard (id, name, proizv, prim, a, b, c) FROM stdin;
+1	Enhanced (101- or 102-key)	36	\N	\N	\N	\N
+2	Стандартная (101/102 клавиши) или клавиатура PS/2 Microsoft Natural	36	\N	\N	\N	\N
+3	Keyboard Device Filter	36	\N	\N	\N	\N
+4	Standard 101/102-Key or Microsoft Natural PS/2 Keyboard	36	\N	\N	\N	\N
+5	Расширенная клавиатура PS/2 PC/AT (101/102 клавиши)	36	\N	\N	\N	\N
+6	Клавиатура HID	36	\N	\N	\N	\N
+\.
+
+
+--
+-- TOC entry 3131 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: spr_keyboard_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_keyboard_id_seq', 6, true);
+
+
+--
+-- TOC entry 2904 (class 0 OID 16904)
+-- Dependencies: 234
+-- Data for Name: spr_kopir; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_kopir (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3132 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: spr_kopir_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_kopir_id_seq', 1, false);
+
+
+--
+-- TOC entry 2906 (class 0 OID 16913)
+-- Dependencies: 236
+-- Data for Name: spr_lic; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_lic (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3133 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: spr_lic_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_lic_id_seq', 1, false);
+
+
+--
+-- TOC entry 2908 (class 0 OID 16922)
+-- Dependencies: 238
+-- Data for Name: spr_master; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_master (id, name, proizv, prim, a, b, c) FROM stdin;
+2	Иванов И.И.	\N		ADMINISTRATOR		
+\.
+
+
+--
+-- TOC entry 3134 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: spr_master_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_master_id_seq', 2, true);
+
+
+--
+-- TOC entry 2910 (class 0 OID 16931)
+-- Dependencies: 240
+-- Data for Name: spr_mb; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_mb (id, name, proizv, prim, a, b, c) FROM stdin;
+2	M3A78	35	\N		\N	\N
+3	Intel Rock Lake D865PERL	45	\N	Intel Springdale i865PE	\N	\N
+4	Foxconn 6100M2MA Series	56	\N	nVIDIA GeForce 6100, AMD Hammer	\N	\N
+5	ECS L4S5MG3/GX+	65	\N	SiS 650GX	\N	\N
+6	Asus A8N-SLI SE	35	\N	nVIDIA nForce4 SLI, AMD Hammer	\N	\N
+7	Asus F3000L Series Notebook	66	\N	Intel Crestline-GML GL960	\N	\N
+8	Asus M2A-MX	66	\N	AMD 690V, AMD Hammer	\N	\N
+9	Asus M2A-VM	66	\N	AMD 690G, AMD Hammer	\N	\N
+10	Asus P5VD2-MX	66	\N	VIA P4M890	\N	\N
+11	Asus P5QL-CM	66	\N	Intel Eaglelake G43	\N	\N
+12	Epox EP-8RDA3+ Pro / 8RDA6+ Pro	125	\N	nVIDIA nForce2 Ultra 400Gb	\N	\N
+13	Epox EP-8HMMI-A	125	\N	VIA VT8380 K8M800, AMD Hammer	\N	\N
+14	Acorp 6A815E1	36	\N	Intel Solano i815E	\N	\N
+15	Asus K8V-MX	35	\N	VIA VT8380 K8M800, AMD Hammer	\N	\N
+16	Gigabyte GA-K8VT800 v2 / K8VT800-RH	135	\N	VIA K8T800Pro, AMD Hammer	\N	\N
+17	Asus A8N-VM	66	\N	nVIDIA GeForce 6100, AMD Hammer	\N	\N
+18	Asus M2N-MX SE	66	\N	nVIDIA nForce 6100-430, AMD Hammer	\N	\N
+19	Asus M2N68-AM	66	\N	nVIDIA nForce 7050 PV-630a, AMD Hammer	\N	\N
+20	Abit VL6	150	\N	VIA VT82C693A Apollo Pro133	\N	\N
+21	Epox EP-9NPAJ / 9NPA+ / 9NPA+ Ultra	125	\N	nVIDIA nForce4, AMD Hammer	\N	\N
+22	Foxconn 945G7AD/945G7MC/945GC7MC/945GZ7MC/945P7AD/945P7MC/945PL7MC Series	56	\N	Intel Lakeport-G i945GZ	\N	\N
+23	PCPartner 815AS3/815MS3/815PAS3/815PMS3	166	\N	Intel Solano i815	\N	\N
+24	Asus M2N8-VMX	66	\N	nVIDIA nForce 6100-405, AMD Hammer	\N	\N
+25	Epox EP-4GEM800(I)	125	\N	Intel Brookdale-G i845GE	\N	\N
+26	Gigabyte GA-8S648FX(-L)	135	\N	SiS 648FX	\N	\N
+27	Asus P4PE-X/SE	66	\N	Intel Brookdale i845PE	\N	\N
+28	Asus M3N78-EM	66	\N	nVIDIA GeForce 8300, AMD Hammer	\N	\N
+29	Asus M2N-MX	66	\N	nVIDIA nForce 6100-430, AMD Hammer	\N	\N
+30	Asus M2N-MX SE Plus	66	\N	nVIDIA nForce 6100-430, AMD Hammer	\N	\N
+31	Asus P5VD2-VM	66	\N	VIA P4M900	\N	\N
+32	Asus P4S800-MX	66	\N	SiS 661FX	\N	\N
+33	ECS K8M800-M2	65	\N	VIA VT8380 K8M800, AMD Hammer	\N	\N
+34	Epox EP-8KDA7I	125	\N	nVIDIA nForce3 250, AMD Hammer	\N	\N
+35	Gigabyte GA-8PE800	135	\N	Intel Springdale i865P	\N	\N
+36	Chaintech 6OIA3T	36	\N	Intel Solano i815EP	\N	\N
+37	Asus P4SP-MX	35	\N	SiS 651	\N	\N
+38	ECS C51G-M754	65	\N	nVIDIA GeForce 6100, AMD Hammer	\N	\N
+39	Intel Clearwater 2 SE7501CW2	45	\N	Intel Plumas-533 E7501	\N	\N
+40	Intel Torrey Pines SE7210TP1	45	\N	Intel Canterwood-ES E7210	\N	\N
+41	ECS N2U400-A	65	\N	nVIDIA nForce2 Ultra 400	\N	\N
+42	Asus M3N78-VM	66	\N	nVIDIA GeForce 8200, AMD Hammer	\N	\N
+43	Gigabyte GA-K8N51GMF-9(-RH)	135	\N	nVIDIA GeForce 6100, AMD Hammer	\N	\N
+44	G41M-GS	236	\N	Intel Eaglelake G41	\N	\N
+\.
+
+
+--
+-- TOC entry 3135 (class 0 OID 0)
+-- Dependencies: 241
+-- Name: spr_mb_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_mb_id_seq', 44, true);
+
+
+--
+-- TOC entry 2912 (class 0 OID 16940)
+-- Dependencies: 242
+-- Data for Name: spr_mesto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_mesto (mestoid, mesto, proizv, prim, a, b, c, arhiv) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3136 (class 0 OID 0)
+-- Dependencies: 243
+-- Name: spr_mesto_mestoid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_mesto_mestoid_seq', 1, false);
+
+
+--
+-- TOC entry 2914 (class 0 OID 16950)
+-- Dependencies: 244
+-- Data for Name: spr_mfu; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_mfu (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3137 (class 0 OID 0)
+-- Dependencies: 245
+-- Name: spr_mfu_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_mfu_id_seq', 1, false);
+
+
+--
+-- TOC entry 2916 (class 0 OID 16959)
+-- Dependencies: 246
+-- Data for Name: spr_modem; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_modem (id, name, proizv, prim, a, b, c) FROM stdin;
+1	Rockwell 56000 External Modem PnP	36	\N	\N	\N	\N
+2	Courier V.Everything EXT PnP (V90-x2)	36	\N	\N	\N	\N
+\.
+
+
+--
+-- TOC entry 3138 (class 0 OID 0)
+-- Dependencies: 247
+-- Name: spr_modem_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_modem_id_seq', 2, true);
+
+
+--
+-- TOC entry 2918 (class 0 OID 16968)
+-- Dependencies: 248
+-- Data for Name: spr_monitor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_monitor (id, name, proizv, prim, a, b, c) FROM stdin;
+1	Универсальный монитор PnP	38	\N		\N	\N
+2	SAM01E2	36	\N		\N	\N
+3	Samsung SyncMaster 550b	36	\N	15" CRT	\N	\N
+4	Samsung SyncMaster 788DF/793DF(X)/793MB	27	\N	17" CRT	\N	\N
+5	SAM0560	36	\N		\N	\N
+6	Samsung LTN154XA-L01	27	\N	15.4" LCD (WXGA)	\N	\N
+7	Asus VB171	35	\N	17" LCD (SXGA)	\N	\N
+8	Монитор по умолчанию	36	\N		\N	\N
+9	LG Flatron ez T710BH	75	\N	17" CRT	\N	\N
+10	SAM0580	36	\N		\N	\N
+11	AOC 919	122	\N	19" LCD (SXGA)	\N	\N
+12	LG Flatron ez T710MH	75	\N	17" CRT	\N	\N
+13	LG Flatron ez T710PH	75	\N	17" CRT	\N	\N
+14	Samsung SyncMaster 740N	27	\N	17" LCD (SXGA)	\N	\N
+15	Lite-On/Litronic C1570MNSL/T	131	\N	15" CRT	\N	\N
+16	Samsung SyncMaster 795DF/795MB/MagicSyncMaster CD175GP	27	\N	17" CRT	\N	\N
+17	ViewSonic VA702b	142	\N	17" LCD (SXGA)	\N	\N
+18	Hannstar HQ171	36	\N	17" LCD (SXGA)	\N	\N
+19	SAM03D0	36	\N		\N	\N
+20	Samsung SAMTRON 55(M)E (Plus)	27	\N	15" CRT	\N	\N
+21	Plug and Play Monitor [NoDB]	36	\N		\N	\N
+22	LG L1952S	75	\N	19" LCD (SXGA)	\N	\N
+23	Compaq 7500	130	\N	17" CRT	\N	\N
+24	Acer V173	171	\N	17" LCD (SXGA)	\N	\N
+25	Hannstar JC199D	36	\N	19" LCD (SXGA)	\N	\N
+26	CTX PR705F Series	36	\N	17" CRT	\N	\N
+27	BenQ FP72E (Analog)	132	\N	19" LCD (SXGA)	\N	\N
+28	ViewSonic VA703-3 Series	142	\N	17" LCD (SXGA)	\N	\N
+29	BenQ G700 (Analog)	132	\N	17" LCD (SXGA)	\N	\N
+30	LG Flatron L1730SF	75	\N	17" LCD (SXGA)	\N	\N
+31	ViewSonic VE510s-4	142	\N	15" LCD (XGA)	\N	\N
+32	Acer AL1716	171	\N	17" LCD (SXGA)	\N	\N
+33	Power Cyber Prestigio P151	214	\N	15" LCD (XGA)	\N	\N
+34	Samsung SyncMaster 713MB/763MB/MagicSyncMaster CD173D(P)	27	\N	17" CRT	\N	\N
+35	ViewSonic VE510	142	\N	15" LCD (XGA)	\N	\N
+36	SAM036E	36	\N		\N	\N
+\.
+
+
+--
+-- TOC entry 3139 (class 0 OID 0)
+-- Dependencies: 249
+-- Name: spr_monitor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_monitor_id_seq', 36, true);
+
+
+--
+-- TOC entry 2920 (class 0 OID 16977)
+-- Dependencies: 250
+-- Data for Name: spr_mouse; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_mouse (id, name, proizv, prim, a, b, c) FROM stdin;
+1	USB-устройство ввода	36	\N	\N	\N	\N
+2	Microsoft PS/2 мышь	36	\N	\N	\N	\N
+3	PS/2-совместимая мышь	36	\N	\N	\N	\N
+4	HID-совместимая мышь	36	\N	\N	\N	\N
+5	PS/2 Compatible Mouse	36	\N	\N	\N	\N
+6	Стандартная мышь для порта PS/2	36	\N	\N	\N	\N
+7	HID-compliant mouse	36	\N	\N	\N	\N
+8	Мышь PS/2-совместимая	36	\N	\N	\N	\N
+\.
+
+
+--
+-- TOC entry 3140 (class 0 OID 0)
+-- Dependencies: 251
+-- Name: spr_mouse_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_mouse_id_seq', 8, true);
+
+
+--
+-- TOC entry 2922 (class 0 OID 16986)
+-- Dependencies: 252
+-- Data for Name: spr_net; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_net (id, name, proizv, prim, a, b, c) FROM stdin;
+1	Сетевая карта Realtek RTL8168C(P)/8111C(P) Family PCI-E Gigabit Ethernet NIC (NDIS 6.20)	36	\N	\N	\N	\N
+2	Realtek RTL8139 Family PCI Fast Ethernet NIC	46	\N	\N	\N	\N
+3	NVIDIA nForce Networking Controller	24	\N	\N	\N	\N
+4	3Com EtherLink XL 10/100 PCI For Complete PC Management NIC (3C905C-TX)	67	\N	\N	\N	\N
+5	3Com EtherLink XL 10/100 PCI TX адаптер (3C905B-TX)	67	\N	\N	\N	\N
+6	VirtualBox Host-Only Ethernet Adapter	36	\N	\N	\N	\N
+7	Atheros L1 Gigabit Ethernet 10/100/1000Base-T Controller	90	\N	\N	\N	\N
+8	Realtek RTL8168/8111 PCI-E Gigabit Ethernet NIC	46	\N	\N	\N	\N
+9	VIA Rhine II Fast Ethernet Adapter	23	\N	\N	\N	\N
+10	Realtek PCIe GBE Family Controller	46	\N	\N	\N	\N
+11	NVIDIA nForce Networking Controller - Packet Scheduler Miniport	24	\N	\N	\N	\N
+12	VIA Compatable Fast Ethernet адаптер	23	\N	\N	\N	\N
+13	NVIDIA nForce 10/100 Mbps Ethernet	24	\N	\N	\N	\N
+14	NVIDIA nForce 10/100/1000 Mbps Ethernet	24	\N	\N	\N	\N
+15	Realtek RTL8139/810x Family Fast Ethernet NIC	46	\N	\N	\N	\N
+16	3Com 3C905TX-based Ethernet адаптер (универсальный)	67	\N	\N	\N	\N
+17	VIA VT6105 Rhine III Fast Ethernet Adapter	23	\N	\N	\N	\N
+18	VIA Compatable Fast Ethernet Adapter	23	\N	\N	\N	\N
+19	Realtek RTL8169/8110 Family Gigabit Ethernet NIC	46	\N	\N	\N	\N
+20	ASUS NX1101 Gigabit Ethernet Adapter	36	\N	\N	\N	\N
+21	3Com EtherLink XL 10/100 PCI TX NIC (3C905B-TX)	67	\N	\N	\N	\N
+22	SiS 900-Based PCI Fast Ethernet адаптер	200	\N	\N	\N	\N
+23	VIA PCI 10/100Mb Fast Ethernet адаптер	23	\N	\N	\N	\N
+24	Intel 8255x-based PCI Ethernet Adapter (10/100)	45	\N	\N	\N	\N
+25	Intel(R) PRO/100 M Network Connection	45	\N	\N	\N	\N
+26	Realtek RTL8168D/8111D Family PCI-E GBE NIC	46	\N	\N	\N	\N
+\.
+
+
+--
+-- TOC entry 2923 (class 0 OID 16993)
+-- Dependencies: 253
+-- Data for Name: spr_net_dev; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_net_dev (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3141 (class 0 OID 0)
+-- Dependencies: 254
+-- Name: spr_net_dev_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_net_dev_id_seq', 1, false);
+
+
+--
+-- TOC entry 3142 (class 0 OID 0)
+-- Dependencies: 255
+-- Name: spr_net_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_net_id_seq', 26, true);
+
+
+--
+-- TOC entry 2926 (class 0 OID 17004)
+-- Dependencies: 256
+-- Data for Name: spr_optical; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_optical (id, name, proizv, prim, a, b, c) FROM stdin;
+1	DTSoftBusCd00	36	\N		\N	\N
+2	PIONEER DVD-RW  DVR-111D ATA Device	36	\N		\N	\N
+3	ASUS CRW-5232AS	66	\N		\N	\N
+4	HL-DT-ST DVD-RAM GSA-H20L	75	\N		\N	\N
+5	TSSTcorp CDDVDW TS-L632H	89	\N		\N	\N
+6	SONY DVD-ROM DDU1615S	95	\N		\N	\N
+7	SONY DVD-ROM DDU1615	95	\N		\N	\N
+8	Optiarc DVD RW AD-7243S	36	\N		\N	\N
+9	Optiarc DVD RW AD-5200A	115	\N		\N	\N
+10	COMBO IDE5232CO	121	\N		\N	\N
+11	TSSTcorp DVD-ROM SH-D162C	89	\N		\N	\N
+12	Optiarc DVD RW AD-7191A	115	\N		\N	\N
+13	COMPAQ CRD-8402B	130	\N		\N	\N
+14	BENQ COMBO CB523C	132	\N		\N	\N
+15	TSSTcorp CD/DVDW SH-S162A	89	\N		\N	\N
+16	TSSTcorp CD/DVDW SH-S182M	89	\N		\N	\N
+17	PIONEER DVD-RW DVR-212D SCSI CdRom Device	144	\N		\N	\N
+18	PIONEER DVD-RW DVR-212D	144	\N		\N	\N
+19	Optiarc DVD-ROM DDU1675S	36	\N		\N	\N
+20	_NEC DVD_RW ND-3550A	164	\N		\N	\N
+21	TSSTcorp CDW/DVD SH-M522C	89	\N		\N	\N
+22	SONY CD-ROM CDU5221	95	\N		\N	\N
+23	SAMSUNG CD-ROM SC-152L	27	\N		\N	\N
+24	_NEC DV-5800E	115	\N		\N	\N
+25	HL-DT-ST CD-ROM GCR-8520B	75	\N		\N	\N
+26	ATAPI-CD ROM-DRIVE-52MAX	132	\N		\N	\N
+27	HL-DT-ST CD-ROM GCR-8523B	75	\N		\N	\N
+28	Optiarc DVD RW AD-7201S	115	\N		\N	\N
+29	ASUS DVD-E616A3	66	\N		\N	\N
+30	Optiarc DVD-ROM DDU1671S	115	\N		\N	\N
+31	Optiarc DVD RW AD-5170A	115	\N		\N	\N
+32	TEAC DV-516GA	198	\N		\N	\N
+33	HL-DT-ST DVDRAM GSA-H42L	75	\N		\N	\N
+34	AOPEN COM5232/AAH PRO	201	\N		\N	\N
+35	LITE-ON CD-RW SOHR-5238S	202	\N		\N	\N
+36	SAMSUNG CD-ROM SC-148S	27	\N		\N	\N
+37	SONY CD-ROM CDU5261	95	\N		\N	\N
+38	SAMSUNG CD-ROM SC-152G	27	\N		\N	\N
+39	Optiarc DVD RW AD-7170A	115	\N		\N	\N
+40	LG CD-ROM CRD-8522B	75	\N		\N	\N
+41	_NEC CD-ROM CD-3002A	115	\N		\N	\N
+42	TEAC CD-W552G	198	\N		\N	\N
+43	HL-DT-ST DVDRAM GH22NS50	36	\N		\N	\N
+44	Optiarc DVD RW AD-5240S	36	\N		\N	\N
+\.
+
+
+--
+-- TOC entry 3143 (class 0 OID 0)
+-- Dependencies: 257
+-- Name: spr_optical_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_optical_id_seq', 44, true);
+
+
+--
+-- TOC entry 2928 (class 0 OID 17013)
+-- Dependencies: 258
+-- Data for Name: spr_os; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_os (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3144 (class 0 OID 0)
+-- Dependencies: 259
+-- Name: spr_os_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_os_id_seq', 1, false);
+
+
+--
+-- TOC entry 2930 (class 0 OID 17022)
+-- Dependencies: 260
+-- Data for Name: spr_otd_filial; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_otd_filial (id, n_otd, filial, proizv, prim, a, b, c, arhiv) FROM stdin;
+3	Отдел	Филиал	0	\N	\N	\N	\N	0
+\.
+
+
+--
+-- TOC entry 3145 (class 0 OID 0)
+-- Dependencies: 261
+-- Name: spr_otd_filial_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_otd_filial_id_seq', 3, true);
+
+
+--
+-- TOC entry 2932 (class 0 OID 17032)
+-- Dependencies: 262
+-- Data for Name: spr_oth_dev; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_oth_dev (id, name, proizv, prim, a, b, c) FROM stdin;
+1	Smart-UPS RT 2000	238	\N		\N	\N
+\.
+
+
+--
+-- TOC entry 3146 (class 0 OID 0)
+-- Dependencies: 263
+-- Name: spr_oth_dev_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_oth_dev_id_seq', 1, true);
+
+
+--
+-- TOC entry 2934 (class 0 OID 17041)
+-- Dependencies: 264
+-- Data for Name: spr_other; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_other (id, name, a, b, c, proizv, prim) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3147 (class 0 OID 0)
+-- Dependencies: 265
+-- Name: spr_other_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_other_id_seq', 1, false);
+
+
+--
+-- TOC entry 2936 (class 0 OID 17049)
+-- Dependencies: 266
+-- Data for Name: spr_otv; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_otv (id, name, proizv, prim, a, b, c) FROM stdin;
+4	Иванов И.И.	0	\N	\N	\N	\N
+\.
+
+
+--
+-- TOC entry 3148 (class 0 OID 0)
+-- Dependencies: 267
+-- Name: spr_otv_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_otv_id_seq', 4, true);
+
+
+--
+-- TOC entry 2938 (class 0 OID 17058)
+-- Dependencies: 268
+-- Data for Name: spr_pci; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_pci (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3149 (class 0 OID 0)
+-- Dependencies: 269
+-- Name: spr_pci_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_pci_id_seq', 1, false);
+
+
+--
+-- TOC entry 2940 (class 0 OID 17067)
+-- Dependencies: 270
+-- Data for Name: spr_pdc; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_pdc (id, name) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3150 (class 0 OID 0)
+-- Dependencies: 271
+-- Name: spr_pdc_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_pdc_id_seq', 1, false);
+
+
+--
+-- TOC entry 2942 (class 0 OID 17075)
+-- Dependencies: 272
+-- Data for Name: spr_phone; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_phone (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3151 (class 0 OID 0)
+-- Dependencies: 273
+-- Name: spr_phone_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_phone_id_seq', 1, false);
+
+
+--
+-- TOC entry 2944 (class 0 OID 17084)
+-- Dependencies: 274
+-- Data for Name: spr_photo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_photo (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3152 (class 0 OID 0)
+-- Dependencies: 275
+-- Name: spr_photo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_photo_id_seq', 1, false);
+
+
+--
+-- TOC entry 2946 (class 0 OID 17093)
+-- Dependencies: 276
+-- Data for Name: spr_po; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_po (id, name, proizv, prim, a, b, c) FROM stdin;
+1	Microsoft Windows XP Professional Service Pack 2	11	\N	\N	\N	\N
+\.
+
+
+--
+-- TOC entry 3153 (class 0 OID 0)
+-- Dependencies: 277
+-- Name: spr_po_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_po_id_seq', 1, true);
+
+
+--
+-- TOC entry 2948 (class 0 OID 17102)
+-- Dependencies: 278
+-- Data for Name: spr_postav; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_postav (id, name, proizv, prim, a, b, c) FROM stdin;
+2	ООО Рога и Копыта	0	\N	\N	\N	\N
+\.
+
+
+--
+-- TOC entry 3154 (class 0 OID 0)
+-- Dependencies: 279
+-- Name: spr_postav_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_postav_id_seq', 2, true);
+
+
+--
+-- TOC entry 2950 (class 0 OID 17111)
+-- Dependencies: 280
+-- Data for Name: spr_printer; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_printer (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3155 (class 0 OID 0)
+-- Dependencies: 281
+-- Name: spr_printer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_printer_id_seq', 1, false);
+
+
+--
+-- TOC entry 2952 (class 0 OID 17120)
+-- Dependencies: 282
+-- Data for Name: spr_proizv; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_proizv (id, proizv, prim, a, b, c) FROM stdin;
+8	Novell, Inc.	\N	\N	\N	\N
+9	WIBU-SYSTEMS AG	\N	\N	\N	\N
+10	Novell	\N	\N	\N	\N
+11	Microsoft Corporation	\N	\N	\N	\N
+12	Microsoft Corp	\N	\N	\N	\N
+13	VLC	\N	\N	\N	\N
+14	Nokia	\N	\N	\N	\N
+15	Adobe Systems Incorporated	\N	\N	\N	\N
+16	OpenOffice.org	\N	\N	\N	\N
+17	PreEmptive Solutions	\N	\N	\N	\N
+18	Adobe Systems Inc.	\N	\N	\N	\N
+19	Корпорация Майкрософт	\N	\N	\N	\N
+20	SAP	\N	\N	\N	\N
+21	Sun Microsystems, Inc.	\N	\N	\N	\N
+22	Skype Technologies S.A.	\N	\N	\N	\N
+23	VIA Technologies, Inc.	\N	\N	\N	\N
+24	NVIDIA Corporation	\N	\N	\N	\N
+25	EPSON	\N	\N	\N	\N
+26	Palm, Inc.	\N	\N	\N	\N
+27	Samsung	\N	\N	\N	\N
+28	Apple Inc.	\N	\N	\N	\N
+29	Ask.com	\N	\N	\N	\N
+30	astrojargon.net	\N	\N	\N	\N
+31	ООО "Доктор Веб"	\N	\N	\N	\N
+32	Adobe	\N	\N	\N	\N
+33	Samsung Electronics Co., Ltd.	\N	\N	\N	\N
+34	AuthenticAMD	\N	\N	\N	\N
+35	ASUSTeK Computer INC.	\N	\N	\N	\N
+36	NoName	\N	\N	\N	\N
+37	(Стандартные дисковые накопители)	\N	\N	\N	\N
+38	(Стандартные мониторы)	\N	\N	\N	\N
+40	Hewlett-Packard	\N	\N	\N	\N
+41	Entensys	\N	\N	\N	\N
+42	Gougelet Pierre-e	\N	\N	\N	\N
+43	Лаборатория Касперского	\N	\N	\N	\N
+44	Intel	\N	\N	\N	\N
+45	Intel Corporation	\N	\N	\N	\N
+46	Realtek Semiconductor Corp.	\N	\N	\N	\N
+48	УКЦ МААШ	\N	\N	\N	\N
+49	FlashPlayerPro.com	\N	\N	\N	\N
+50	www.softella.com	\N	\N	\N	\N
+51	Opera Software ASA	\N	\N	\N	\N
+52	PowerUp Software	\N	\N	\N	\N
+53	Dr.Web, Ltd.	\N	\N	\N	\N
+54	Mozilla	\N	\N	\N	\N
+55	AMD	\N	\N	\N	\N
+56	Hon Hai Precision Industry Co., Ltd.	\N	\N	\N	\N
+57	Hynix Semiconductor Inc.	\N	\N	\N	\N
+58	Maxtor Corporation	\N	\N	\N	\N
+60	Default Company Name	\N	\N	\N	\N
+61	Benq Scan	\N	\N	\N	\N
+62	Центр ГРАНД	\N	\N	\N	\N
+63	Guardant	\N	\N	\N	\N
+64	Центр СБК	\N	\N	\N	\N
+65	Elitegroup Computer Systems	\N	\N	\N	\N
+66	ASUSTeK Computer Inc.	\N	\N	\N	\N
+67	3Com Corporation	\N	\N	\N	\N
+68	AIMP DevTeam	\N	\N	\N	\N
+69	Webteh, d.o.o.	\N	\N	\N	\N
+70	Microsoft	\N	\N	\N	\N
+71	STDUtility	\N	\N	\N	\N
+72	Advanced Micro Devices	\N	\N	\N	\N
+73	Null	\N	\N	\N	\N
+74	Seagate Technology LLC	\N	\N	\N	\N
+75	LG Electronics	\N	\N	\N	\N
+76	Heikki Ylinen	\N	\N	\N	\N
+77	Atheros	\N	\N	\N	\N
+78	Atheros Communications Inc.	\N	\N	\N	\N
+79	SEIKO EPSON Corporation	\N	\N	\N	\N
+80	ESB Consultancy	\N	\N	\N	\N
+81	FastStone Software	\N	\N	\N	\N
+82	DMoNsoft	\N	\N	\N	\N
+83	ReGet Software	\N	\N	\N	\N
+84	Synaptics	\N	\N	\N	\N
+85	C. Ghisler & Co.	\N	\N	\N	\N
+86	InterVideo Digital Technology Corporation	\N	\N	\N	\N
+87	Ulead System	\N	\N	\N	\N
+88	Western Digital Corporation	\N	\N	\N	\N
+89	Toshiba Samsung Storage Technology	\N	\N	\N	\N
+90	Atheros Communications, Inc.	\N	\N	\N	\N
+91	ATI	\N	\N	\N	\N
+92	Apple Computer, Inc.	\N	\N	\N	\N
+93	ОАО "Etersoft"	\N	\N	\N	\N
+94	Advanced Micro Devices, Inc.	\N	\N	\N	\N
+95	Sony Electronics Inc.	\N	\N	\N	\N
+96	Название организации	\N	\N	\N	\N
+97	Avira GmbH	\N	\N	\N	\N
+98	Realtek	\N	\N	\N	\N
+99	RealVNC Ltd.	\N	\N	\N	\N
+100	Филиал ФГУП ГНИВЦ ФНС России в ЧР	\N	\N	\N	\N
+101	ФГУП ГНИВЦ ФНС РФ в ПФО	\N	\N	\N	\N
+102	S3 Graphics Co., Ltd.	\N	\N	\N	\N
+103	skbkontur	\N	\N	\N	\N
+104	СКБ Контур	\N	\N	\N	\N
+105	Psi+ Dev Team	\N	\N	\N	\N
+106	Aktiv Co.	\N	\N	\N	\N
+107	ЗАО «ПФ «СКБ Контур»	\N	\N	\N	\N
+108	СКБ Контур (ЛИТ)	\N	\N	\N	\N
+109	Крипто-Про	\N	\N	\N	\N
+110	Shark007	\N	\N	\N	\N
+111	Marvell	\N	\N	\N	\N
+112	Sandlot Games	\N	\N	\N	\N
+114	Компания Тензор	\N	\N	\N	\N
+115	Sony NEC Optiarc Inc.	\N	\N	\N	\N
+116	ЗАО Юнисофт	\N	\N	\N	\N
+117	DivX, Inc.	\N	\N	\N	\N
+118	DivX,Inc.	\N	\N	\N	\N
+119	Компания Крипто-Про	\N	\N	\N	\N
+120	Micro-Star Int'l Co.,Ltd.	\N	\N	\N	\N
+121	Behavior Tech Computer Corp.	\N	\N	\N	\N
+122	AOC, Inc.	\N	\N	\N	\N
+123	ФФГУП ГНИВЦ ФНС России в ЧР	\N	\N	\N	\N
+124	Корпорация ПАРУС	\N	\N	\N	\N
+125	EPoX Europe B.V.	\N	\N	\N	\N
+126	Max Diesel	\N	\N	\N	\N
+127	ЗАО ПФ СКБ Контур	\N	\N	\N	\N
+128	Google Inc.	\N	\N	\N	\N
+129	Ritlabs	\N	\N	\N	\N
+130	Hewlett-Packard Company	\N	\N	\N	\N
+131	Lite-On Technology Corp	\N	\N	\N	\N
+132	BenQ Inc.	\N	\N	\N	\N
+133	ashampoo GmbH & Co. KG	\N	\N	\N	\N
+134	Symantec и Adept	\N	\N	\N	\N
+135	Gigabyte Technology Co., Ltd.	\N	\N	\N	\N
+136	ACE DESIGN Software	\N	\N	\N	\N
+137	Adobe Systems	\N	\N	\N	\N
+138	Корпорация Adobe Systems	\N	\N	\N	\N
+139	Sony Corporation	\N	\N	\N	\N
+140	Firebird Project	\N	\N	\N	\N
+141	Analog Devices	\N	\N	\N	\N
+142	ViewSonic Corporation	\N	\N	\N	\N
+143	Hitachi Global Storage Technologies	\N	\N	\N	\N
+144	Pioneer Corporation	\N	\N	\N	\N
+145	Бюджетные Финансовые Технологии	\N	\N	\N	\N
+146	Bank's Soft Systems	\N	\N	\N	\N
+147	Bank's Soft Systems	\N	\N	\N	\N
+148	Nitro PDF Software	\N	\N	\N	\N
+149	Adobe Systems, Inc.	\N	\N	\N	\N
+150	ABIT Computer Corporation	\N	\N	\N	\N
+151	ИВЦ "Инсофт"	\N	\N	\N	\N
+152	Acronis	\N	\N	\N	\N
+153	American Power Conversion Corporation	\N	\N	\N	\N
+154	Likasoft	\N	\N	\N	\N
+155	Doctor Web, Ltd.	\N	\N	\N	\N
+156	EMS-HiTech	\N	\N	\N	\N
+157	innotek GmbH	\N	\N	\N	\N
+158	Bullzip	\N	\N	\N	\N
+159	MySQL AB	\N	\N	\N	\N
+160	GnuWin32	\N	\N	\N	\N
+161	TrueCrypt Foundation	\N	\N	\N	\N
+162	CACE Technologies	\N	\N	\N	\N
+163	The Wireshark developer community, http://www.wireshark.org	\N	\N	\N	\N
+164	NEC Corporation	\N	\N	\N	\N
+165	Christian Taubenheim	\N	\N	\N	\N
+166	PC Partner Limited	\N	\N	\N	\N
+167	Miranda IM Development Team	\N	\N	\N	\N
+168	DominSoft	\N	\N	\N	\N
+169	Kodeks	\N	\N	\N	\N
+170	3Planesoft	\N	\N	\N	\N
+171	Acer Inc.	\N	\N	\N	\N
+172	Bank's Soft Systems	\N	\N	\N	\N
+173	GenuineIntel	\N	\N	\N	\N
+174	AIMP2	\N	\N	\N	\N
+175	AnvSoft, Inc.	\N	\N	\N	\N
+176	Компания RIT	\N	\N	\N	\N
+177	Elaborate Bytes	\N	\N	\N	\N
+178	ESET, spol s r. o.	\N	\N	\N	\N
+179	Laconic Software	\N	\N	\N	\N
+180	Корпорация NVIDIA	\N	\N	\N	\N
+182	SexyDoll.ru	\N	\N	\N	\N
+183	SmartSound Software Inc	\N	\N	\N	\N
+184	Kanz Software	\N	\N	\N	\N
+185	Ulead Systems	\N	\N	\N	\N
+186	Xvid team (Koepi)	\N	\N	\N	\N
+187	ProVision	\N	\N	\N	\N
+188	HiBase Group	\N	\N	\N	\N
+189	Bank's Soft Systems	\N	\N	\N	\N
+190	Bank's Soft Systems	\N	\N	\N	\N
+191	Oracle Corporation	\N	\N	\N	\N
+192	VS Revo Group	\N	\N	\N	\N
+193	Сбербанк России ОАО	\N	\N	\N	\N
+194	Компания Digt	\N	\N	\N	\N
+195	Корпорация Парус	\N	\N	\N	\N
+196	ЦИТ БАРС	\N	\N	\N	\N
+197	JMICRON Technology Corp.	\N	\N	\N	\N
+198	TEAC Europe GmbH	\N	\N	\N	\N
+199	SMA	\N	\N	\N	\N
+200	Silicon Integrated Systems Corporation	\N	\N	\N	\N
+201	AOpen Inc.	\N	\N	\N	\N
+202	Lite-On IT Corporation	\N	\N	\N	\N
+203	Credo-Dialogue	\N	\N	\N	\N
+204	Brain Stodio	\N	\N	\N	\N
+205	ГНИВЦ МНС России	\N	\N	\N	\N
+206	Филиал ФГУП ГНИВЦ МНС России в Чувашской Республике	\N	\N	\N	\N
+207	Финтех	\N	\N	\N	\N
+208	Fujitsu Computer Products of America, Inc.	\N	\N	\N	\N
+209	URSoft, Inc.	\N	\N	\N	\N
+210	Филиал ФГУП ГНИВЦ ФНС России в ПФО	\N	\N	\N	\N
+211	ОПФР по Красноярскому краю	\N	\N	\N	\N
+212	ABBYY Software House	\N	\N	\N	\N
+213	AVerMedia TECHNOLOGIES, Inc.	\N	\N	\N	\N
+214	Prestigio	\N	\N	\N	\N
+215	PostgreSQL Global Development Group	\N	\N	\N	\N
+216	Lexmark International, Inc.	\N	\N	\N	\N
+217	Micro-Star Int'l Co.,Ltd.	\N	\N	\N	\N
+218	Sysinfo Lab	\N	\N	\N	\N
+219	ADM	\N	\N	\N	\N
+220	GribUser	\N	\N	\N	\N
+221	Yaroslav Kirillov	\N	\N	\N	\N
+222	Jordan Russell	\N	\N	\N	\N
+223	nvu	\N	\N	\N	\N
+224	The pgAdmin Development Team	\N	\N	\N	\N
+225	Corel	\N	\N	\N	\N
+226	Nokia Corporation and/or its subsidiary(-ies)	\N	\N	\N	\N
+227	R-Tools Technology Inc.	\N	\N	\N	\N
+228	Piriform	\N	\N	\N	\N
+229	Syntext (c)	\N	\N	\N	\N
+230	Martin Prikryl	\N	\N	\N	\N
+231	Squee&Dragon	\N	\N	\N	\N
+232	Алексей Плотников	\N	\N	\N	\N
+233	ABBYY	\N	\N	\N	\N
+234	Auslogics Software Pty Ltd	\N	\N	\N	\N
+235	DivXNetworks, Inc.	\N	\N	\N	\N
+236	ASRock	\N	\N	\N	\N
+238	APC	\N	\N	\N	\N
+\.
+
+
+--
+-- TOC entry 3156 (class 0 OID 0)
+-- Dependencies: 283
+-- Name: spr_proizv_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_proizv_id_seq', 238, true);
+
+
+--
+-- TOC entry 2954 (class 0 OID 17128)
+-- Dependencies: 284
+-- Data for Name: spr_ram; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_ram (id, name, proizv, prim, a, b, c) FROM stdin;
+2	3,25010967254639 ГБ	36	\N		\N	\N
+3	253 Мб	36	\N		\N	\N
+4	512 Мб (1 rank, 4 banks)	57	\N	DDR2-533 (266 МГц)	\N	\N
+5	128 Мб (1 rank, 4 banks)	36	\N	PC2100 (133 МГц)	\N	\N
+6	256 Мб (1 rank, 4 banks)	27	\N	PC3200 (200 МГц)	\N	\N
+7	1 Гб (2 ranks, 4 banks)	57	\N	PC3200 (200 МГц)	\N	\N
+8	2 Гб (2 ranks, 8 banks)	36	\N	DDR2-667 (333 МГц)	\N	\N
+9	1 Гб (1 rank, 8 banks)	27	\N	DDR2-800 (400 МГц)	\N	\N
+10	1024 Мб (1 rank, 8 banks)	27	\N	DDR2-800 (400 МГц)	\N	\N
+11	64 Мб (1 rank, 4 banks)	36	\N	PC133 (133 МГц)	\N	\N
+12	256 Мб (2 ranks, 4 banks)	36	\N	PC133 (133 МГц)	\N	\N
+13	1024 Мб (2 ranks, 4 banks)	57	\N	PC3200 (200 МГц)	\N	\N
+14	512 Мб (2 ranks, 4 banks)	36	\N	PC3200 (200 МГц)	\N	\N
+15	32 Мб (1 rank, 4 banks)	36	\N	PC100 (100 МГц)	\N	\N
+16	1 Гб (1 rank, 4 banks)	27	\N	PC2700 (166 МГц)	\N	\N
+\.
+
+
+--
+-- TOC entry 3157 (class 0 OID 0)
+-- Dependencies: 285
+-- Name: spr_ram_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_ram_id_seq', 16, true);
+
+
+--
+-- TOC entry 2956 (class 0 OID 17137)
+-- Dependencies: 286
+-- Data for Name: spr_scaner; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_scaner (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3158 (class 0 OID 0)
+-- Dependencies: 287
+-- Name: spr_scaner_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_scaner_id_seq', 1, false);
+
+
+--
+-- TOC entry 2958 (class 0 OID 17146)
+-- Dependencies: 288
+-- Data for Name: spr_sound; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_sound (id, name, proizv, prim, a, b, c) FROM stdin;
+2	VIA High Definition Audio	36	\N	\N	\N	\N
+3	Realtek ALC655 @ nVIDIA nForce 410 (MCP51) - Audio Codec Interface	36	\N	\N	\N	\N
+4	C-Media CMI9739(A) @ SiS 7012 Audio Device	36	\N	\N	\N	\N
+5	Realtek ALC850 @ nVIDIA nForce4 SLI (CK8-04) - Audio Codec Interface	36	\N	\N	\N	\N
+6	Realtek ALC660 @ Intel 82801HBM ICH8M - High Definition Audio Controller	36	\N	\N	\N	\N
+7	Realtek ALC662 @ ATI SB600 - High Definition Audio Controller	36	\N	\N	\N	\N
+8	Analog Devices AD1986A @ VIA VT8237A High Definition Audio Controller	36	\N	\N	\N	\N
+9	VIA VT1708B @ Intel 82801JB ICH10 - High Definition Audio Controller	36	\N	\N	\N	\N
+10	Realtek ALC883 @ ATI SB600 - High Definition Audio Controller	36	\N	\N	\N	\N
+11	nVIDIA MCP2-S - Audio Processing Unit (Dolby Digital)	36	\N	\N	\N	\N
+12	Realtek ALC655 @ VIA AC'97 Enhanced Audio Controller	36	\N	\N	\N	\N
+13	Realtek RL5383/ALC100(P) @ Intel 82801BA ICH2 - AC'97 Audio Controller [B-5]	36	\N	\N	\N	\N
+14	Analog Devices AD1888 @ VIA AC'97 Enhanced Audio Controller	36	\N	\N	\N	\N
+15	Analog Devices AD1986A @ nVIDIA nForce 410 (MCP51) - High Definition Audio Controller	36	\N	\N	\N	\N
+16	Realtek ALC662 @ nVIDIA nForce 6100-430 (MCP61P) - High Definition Audio Controller	36	\N	\N	\N	\N
+17	Realtek ALC662 @ nVIDIA MCP68 - High Definition Audio Controller	36	\N	\N	\N	\N
+18	Realtek RL5383/ALC100(P) @ VIA AC'97 Audio Controller [H]	36	\N	\N	\N	\N
+19	Realtek ALC861 @ Intel 82801GB ICH7 - High Definition Audio Controller [A-1]	36	\N	\N	\N	\N
+20	Realtek RL5383/ALC100(P) @ Intel 82801AA I/O Controller Hub - AC'97 Audio Controller [B-1]	36	\N	\N	\N	\N
+21	Realtek RL5383/ALC100(P) @ VIA AC'97 Audio Controller [H]	36	\N	\N	\N	\N
+22	Unknown	36	\N	\N	\N	\N
+23	Realtek ALC650 @ Intel 82801DB ICH4 - AC'97 Audio Controller [B-0]	36	\N	\N	\N	\N
+24	Realtek ALC655 @ SiS 7012 Audio Device	36	\N	\N	\N	\N
+25	nVIDIA HDMI @ nVIDIA MCP78 - High Definition Audio Controller	36	\N	\N	\N	\N
+26	Analog Devices AD1986A @ nVIDIA MCP61 - High Definition Audio Controller	36	\N	\N	\N	\N
+27	Analog Devices AD1986A @ nVIDIA nForce 6100-430 (MCP61P) - High Definition Audio Controller	36	\N	\N	\N	\N
+28	SiS 7012 Audio Device	36	\N	\N	\N	\N
+29	Модем №0, линейный выход	36	\N	\N	\N	\N
+30	Realtek ALC655 @ nVIDIA nForce3 250 (CK8S) - Audio Codec Interface	36	\N	\N	\N	\N
+31	Realtek ALC655 @ Intel 82801DB ICH4 - AC'97 Audio Controller [B-0]	36	\N	\N	\N	\N
+32	C-Media CMI8738/C3DX Audio Device	36	\N	\N	\N	\N
+33	Analog Devices AD1888 @ SiS 7012 Audio Device	36	\N	\N	\N	\N
+34	Intel 82801EB ICH5 - AC'97 Audio Controller [A-2/A-3]	36	\N	\N	\N	\N
+35	C-Media CMI9739A/9761 @ nVIDIA MCP2 - Audio Codec Interface	36	\N	\N	\N	\N
+36	VIA VT1617(A) @ VIA AC'97 Enhanced Audio Controller	36	\N	\N	\N	\N
+37	Realtek ALC880(D) @ nVIDIA nForce 430 (MCP51) - High Definition Audio Controller	36	\N	\N	\N	\N
+38	Realtek ALC662 @ Intel 82801GB ICH7 - High Definition Audio Controller [A-1]	36	\N	\N	\N	\N
+39	nVIDIA MCP2 - Audio Codec Interface	36	\N	\N	\N	\N
+\.
+
+
+--
+-- TOC entry 3159 (class 0 OID 0)
+-- Dependencies: 289
+-- Name: spr_sound_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_sound_id_seq', 39, true);
+
+
+--
+-- TOC entry 2960 (class 0 OID 17155)
+-- Dependencies: 290
+-- Data for Name: spr_svga; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_svga (id, name, proizv, prim, a, b, c) FROM stdin;
+2	NVIDIA GeForce 9600 GT	36	\N	1024 Мб.	\N	\N
+3	NVIDIA GeForce4 MX 440 (Microsoft Corporation)	24	\N	64 Мб	\N	\N
+4	NVIDIA GeForce 6100	24	\N	256 Мб	\N	\N
+5	NVIDIA GeForce2 MX/MX 400	24	\N	32 Мб	\N	\N
+6	NVIDIA GeForce 6600 GT	24	\N	256 Мб	\N	\N
+7	Mobile Intel(R) 965 Express Chipset Family	45	\N	256 Мб	\N	\N
+8	ATI Radeon X1200 Series	94	\N	288 Мб	\N	\N
+9	ATI Radeon Xpress 1250	94	\N	320 Мб	\N	\N
+10	VIA/S3G UniChrome Pro IGP	102	\N	64 Мб	\N	\N
+11	Intel(R) G45/G43 Express Chipset	45	\N	256 Мб	\N	\N
+12	NVIDIA GeForce2 MX/MX 400 (Microsoft Corporation)	24	\N	64 Мб	\N	\N
+13	Intel(R) 82815 Graphics Controller (Microsoft Corporation)	45	\N	32 Мб	\N	\N
+14	RADEON 9550 Secondary	94	\N	128 Мб	\N	\N
+15	NVIDIA GeForce 6150SE nForce 430	24	\N	512 Мб	\N	\N
+16	NVIDIA GeForce 6150SE	24	\N	512 Мб	\N	\N
+17	NVIDIA GeForce 7050 PV / NVIDIA nForce 630a	24	\N	512 Мб	\N	\N
+18	ATI RAGE Mobility	94	\N	8 Мб	\N	\N
+19	Standard VGA Graphics Adapter	36	\N	128 Мб	\N	\N
+20	Intel(R) 82945G Express Chipset Family	45	\N	128 Мб	\N	\N
+21	NVIDIA GeForce 6100 nForce 405	24	\N	256 Мб	\N	\N
+22	NVIDIA GeForce4 MX 440 with AGP8X	24	\N	64 Мб	\N	\N
+23	Intel(R) 82845G Graphics Controller	45	\N	64 Мб	\N	\N
+24	GeForce4 MX 440 with AGP8X	24	\N	64 Мб	\N	\N
+25	NVIDIA GeForce FX 5200 (Microsoft Corporation)	24	\N	64 Мб	\N	\N
+26	NVIDIA GeForce 8300	24	\N	512 Мб	\N	\N
+27	NVIDIA GeForce 6100 nForce 430	24	\N	128 Мб	\N	\N
+28	VIA Chrome9 HC IGP	23	\N	64 Мб	\N	\N
+29	NVIDIA RIVA TNT2 Model 64/Model 64 Pro	24	\N	32 Мб	\N	\N
+30	SiS 661FX	200	\N	32 Мб	\N	\N
+31	RADEON 9250 - Secondary	94	\N	128 Мб	\N	\N
+32	NVIDIA GeForce4 MX 4000	24	\N	64 Мб	\N	\N
+33	ATI Technologies, Inc. 3D RAGE PRO AGP 2X	94	\N	8 Мб	\N	\N
+34	NVIDIA RIVA TNT2/TNT2 Pro	24	\N	32 Мб	\N	\N
+35	SiS 651	200	\N	32 Мб	\N	\N
+36	NVIDIA GeForce FX 5200	24	\N	256 Мб	\N	\N
+37	RAGE XL PCI Family (Microsoft Corporation)	94	\N	8 Мб	\N	\N
+38	ATI Technologies, Inc. RAGE XL PCI	94	\N	8 Мб	\N	\N
+39	NVIDIA GeForce 7300 GS	24	\N	512 Мб	\N	\N
+40	NVIDIA GeForce 8200	24	\N	512 Мб	\N	\N
+41	Intel(R) G41 Express Chipset	45	\N	1024 Мб	\N	\N
+\.
+
+
+--
+-- TOC entry 3160 (class 0 OID 0)
+-- Dependencies: 291
+-- Name: spr_svga_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_svga_id_seq', 41, true);
+
+
+--
+-- TOC entry 2962 (class 0 OID 17164)
+-- Dependencies: 292
+-- Data for Name: spr_tip; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_tip (id, tip, proizv, prim, a, b, c) FROM stdin;
+2	Рабочая станция	0	\N	\N	\N	\N
+3	Сервер	0	\N	\N	\N	\N
+\.
+
+
+--
+-- TOC entry 3161 (class 0 OID 0)
+-- Dependencies: 293
+-- Name: spr_tip_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_tip_id_seq', 3, true);
+
+
+--
+-- TOC entry 2964 (class 0 OID 17173)
+-- Dependencies: 294
+-- Data for Name: spr_tip_po; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_tip_po (id, name, prim) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3162 (class 0 OID 0)
+-- Dependencies: 295
+-- Name: spr_tip_po_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_tip_po_id_seq', 1, false);
+
+
+--
+-- TOC entry 2966 (class 0 OID 17181)
+-- Dependencies: 296
+-- Data for Name: spr_tip_z; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_tip_z (id, name, prim) FROM stdin;
+1	Электронная	
+2	Письменная	
+3	Устная	
+\.
+
+
+--
+-- TOC entry 3163 (class 0 OID 0)
+-- Dependencies: 297
+-- Name: spr_tip_z_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_tip_z_id_seq', 3, true);
+
+
+--
+-- TOC entry 2968 (class 0 OID 17189)
+-- Dependencies: 298
+-- Data for Name: spr_uroven; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_uroven (id, uroven, proizv, prim, a, b, c) FROM stdin;
+1	Высокий	36				 
+2	Низкий	36				 
+\.
+
+
+--
+-- TOC entry 3164 (class 0 OID 0)
+-- Dependencies: 299
+-- Name: spr_uroven_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_uroven_id_seq', 2, true);
+
+
+--
+-- TOC entry 2970 (class 0 OID 17198)
+-- Dependencies: 300
+-- Data for Name: spr_usb; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_usb (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3165 (class 0 OID 0)
+-- Dependencies: 301
+-- Name: spr_usb_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_usb_id_seq', 1, false);
+
+
+--
+-- TOC entry 2972 (class 0 OID 17207)
+-- Dependencies: 302
+-- Data for Name: spr_user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_user (id, name, proizv, prim, a, b, c) FROM stdin;
+2	ivanovii	0	\N	Иванов И.И.	\N	\N
+\.
+
+
+--
+-- TOC entry 3166 (class 0 OID 0)
+-- Dependencies: 303
+-- Name: spr_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_user_id_seq', 2, true);
+
+
+--
+-- TOC entry 2974 (class 0 OID 17216)
+-- Dependencies: 304
+-- Data for Name: spr_vip; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_vip (id, name, proizv, prim, a, b, c) FROM stdin;
+1	Выполнено	0		\N	\N	\N
+2	Ожидание	0		\N	\N	\N
+3	Отказ	0		\N	\N	\N
+\.
+
+
+--
+-- TOC entry 3167 (class 0 OID 0)
+-- Dependencies: 305
+-- Name: spr_vip_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_vip_id_seq', 3, true);
+
+
+--
+-- TOC entry 2976 (class 0 OID 17225)
+-- Dependencies: 306
+-- Data for Name: spr_zip; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY spr_zip (id, name, proizv, prim, a, b, c) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3168 (class 0 OID 0)
+-- Dependencies: 307
+-- Name: spr_zip_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('spr_zip_id_seq', 1, false);
+
+
+--
+-- TOC entry 2978 (class 0 OID 17234)
+-- Dependencies: 308
+-- Data for Name: t_log; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY t_log (id, user_id, activity, date, "time") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3169 (class 0 OID 0)
+-- Dependencies: 309
+-- Name: t_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('t_log_id_seq', 33, true);
+
+
+--
+-- TOC entry 2980 (class 0 OID 17242)
+-- Dependencies: 310
+-- Data for Name: t_que; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY t_que (id, sqlsq, name) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3170 (class 0 OID 0)
+-- Dependencies: 311
+-- Name: t_que_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('t_que_id_seq', 1, false);
+
+
+--
+-- TOC entry 2982 (class 0 OID 17250)
+-- Dependencies: 312
+-- Data for Name: t_user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY t_user (id, user_id, password, name, level, setup, pcadd, pcdel, capadd, capdel, repadd, reped, repdel, poadd, podel, cartr, po, sclad) FROM stdin;
+4	ADMINISTRATOR	SWY\\X	ADMINISTRATOR	Admin	f	f	f	f	f	f	f	f	f	f	f	f	f
+\.
+
+
+--
+-- TOC entry 3171 (class 0 OID 0)
+-- Dependencies: 313
+-- Name: t_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('t_user_id_seq', 6, true);
+
+
+--
+-- TOC entry 2984 (class 0 OID 17268)
+-- Dependencies: 314
+-- Data for Name: tbl_bios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_bios (id, id_comp, bu, ba) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3172 (class 0 OID 0)
+-- Dependencies: 315
+-- Name: tbl_bios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tbl_bios_id_seq', 1, false);
+
+
+--
+-- TOC entry 2986 (class 0 OID 17274)
+-- Dependencies: 316
+-- Data for Name: tbl_dev_oid; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_dev_oid (id, device, developer, model, location_oid, netname_oid, contact_oid, model_oid, ser_num_oid, time_battery_oid, zariad_battary_oid, sost_battary_oid, zamena_battary_oid, uptime_oid, mac_oid, in_tok_oid, out_tok_oid, output_freq_oid, output_load_oid, output_status_oid, selftest_oid, selftest_day_oid, temperature_oid, temperature2_oid) FROM stdin;
+1	IBP	\N	surt2000	\N	\N	\N	\N	1.3.6.1.4.1.318.1.1.1.1.2.3.0	1.3.6.1.4.1.318.1.1.1.2.2.3.0	1.3.6.1.4.1.318.1.1.1.2.2.1.0	1.3.6.1.4.1.318.1.1.1.2.1.1.0	1.3.6.1.4.1.318.1.1.1.2.2.4.0	1.3.6.1.2.1.1.3.0	1.3.6.1.2.1.2.2.1.6.2	1.3.6.1.4.1.318.1.1.1.3.2.1.0	1.3.6.1.4.1.318.1.1.1.3.2.3.0	\N	1.3.6.1.4.1.318.1.1.1.4.2.3.0	1.3.6.1.4.1.318.1.1.1.4.1.1.0	1.3.6.1.4.1.318.1.1.1.7.2.3.0	1.3.6.1.4.1.318.1.1.1.7.2.4.0	1.3.6.1.4.1.318.1.1.25.1.2.1.6.1.1	1.3.6.1.4.1.318.1.1.1.4.2.3.0
+\.
+
+
+--
+-- TOC entry 3173 (class 0 OID 0)
+-- Dependencies: 317
+-- Name: tbl_dev_oid_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tbl_dev_oid_id_seq', 1, true);
+
+
+--
+-- TOC entry 2988 (class 0 OID 17282)
+-- Dependencies: 318
+-- Data for Name: tbl_net_mag; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_net_mag (id, id_line, tip_cab, dlin_cab, tip_cab_line, svt, net_port_svt, phone, svt_memo, commutator, net_port_commutator, commutator_memo, pref, sid) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3174 (class 0 OID 0)
+-- Dependencies: 319
+-- Name: tbl_net_mag_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tbl_net_mag_id_seq', 1, false);
+
+
+--
+-- TOC entry 2990 (class 0 OID 17294)
+-- Dependencies: 320
+-- Data for Name: tbl_ppr; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tbl_ppr (id, id_comp, tip_to, kvartal_to, year_to) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3175 (class 0 OID 0)
+-- Dependencies: 321
+-- Name: tbl_ppr_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tbl_ppr_id_seq', 1, false);
+
+
+--
+-- TOC entry 2992 (class 0 OID 17302)
+-- Dependencies: 322
+-- Data for Name: trebovanie; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY trebovanie (id, nomer, datasost, otdel, computer, cherezkogo, zatreboval, model, tiporgtex, cena, kolich, filial) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3176 (class 0 OID 0)
+-- Dependencies: 323
+-- Name: trebovanie_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('trebovanie_id_seq', 1, false);
+
+
+--
+-- TOC entry 2994 (class 0 OID 17312)
+-- Dependencies: 324
+-- Data for Name: update_log; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY update_log (id, id_comp, komcl_old, kompl_new, date, "time") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3177 (class 0 OID 0)
+-- Dependencies: 325
+-- Name: update_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('update_log_id_seq', 1, false);
+
+
+--
+-- TOC entry 2996 (class 0 OID 17321)
+-- Dependencies: 326
+-- Data for Name: user_comp; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY user_comp (id, id_comp, username, password, email, epass, fio, icq, pdc, memo, jabber) FROM stdin;
+2	82	ivanovii	[EU[YAQP	ivanovii@server.ru	[EU[YAQP	Иванов И.И.	12345678	f		ivanovii@server.ru
+\.
+
+
+--
+-- TOC entry 3178 (class 0 OID 0)
+-- Dependencies: 327
+-- Name: user_comp_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('user_comp_id_seq', 2, true);
+
+
+--
+-- TOC entry 2998 (class 0 OID 17331)
+-- Dependencies: 328
+-- Data for Name: zam_otd; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY zam_otd (id, id_zam, date, zametka, id_otd, master, uroven, vip) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3179 (class 0 OID 0)
+-- Dependencies: 329
+-- Name: zam_otd_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('zam_otd_id_seq', 1, false);
+
+
+--
+-- TOC entry 3000 (class 0 OID 17339)
+-- Dependencies: 330
+-- Data for Name: zametki; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY zametki (id, date, id_comp, zametki, master, nomerzamkomp, comp_name, mesto_compa) FROM stdin;
+2	2013-02-16	82	Заметка	Иванов И.И.	1	TRANS_SRV	Филиал/Отдел/Кабинет
+\.
+
+
+--
+-- TOC entry 3180 (class 0 OID 0)
+-- Dependencies: 331
+-- Name: zametki_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('zametki_id_seq', 2, true);
+
+
+--
+-- TOC entry 2697 (class 2606 OID 17432)
+-- Name: actos_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY actos
+    ADD CONSTRAINT actos_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2699 (class 2606 OID 17434)
+-- Name: akt_sp_os3_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY akt_sp_os3
+    ADD CONSTRAINT akt_sp_os3_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2703 (class 2606 OID 17436)
+-- Name: cartridg_d_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY cartridg_d
+    ADD CONSTRAINT cartridg_d_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2701 (class 2606 OID 17438)
+-- Name: cartridg_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY cartridg
+    ADD CONSTRAINT cartridg_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2705 (class 2606 OID 17440)
+-- Name: cartridg_z_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY cartridg_z
+    ADD CONSTRAINT cartridg_z_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2707 (class 2606 OID 17444)
+-- Name: dvig_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY dvig
+    ADD CONSTRAINT dvig_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2709 (class 2606 OID 17446)
+-- Name: garant_comp_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY garant_comp
+    ADD CONSTRAINT garant_comp_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2711 (class 2606 OID 17448)
+-- Name: garantia_sis_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY garantia_sis
+    ADD CONSTRAINT garantia_sis_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2837 (class 2606 OID 17656)
+-- Name: kompy_pr; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY kompy
+    ADD CONSTRAINT kompy_pr PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2713 (class 2606 OID 17452)
+-- Name: net_port_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY net_port
+    ADD CONSTRAINT net_port_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2715 (class 2606 OID 17454)
+-- Name: otd_o_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY otd_o
+    ADD CONSTRAINT otd_o_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2717 (class 2606 OID 17456)
+-- Name: pci_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY pci
+    ADD CONSTRAINT pci_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2719 (class 2606 OID 17458)
+-- Name: remont_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY remont
+    ADD CONSTRAINT remont_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2721 (class 2606 OID 17460)
+-- Name: remonty_plus_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY remonty_plus
+    ADD CONSTRAINT remonty_plus_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2723 (class 2606 OID 17462)
+-- Name: sclad_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY sclad
+    ADD CONSTRAINT sclad_pk PRIMARY KEY (number);
+
+
+--
+-- TOC entry 2725 (class 2606 OID 17464)
+-- Name: ses_pass_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY ses_pass
+    ADD CONSTRAINT ses_pass_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2727 (class 2606 OID 17466)
+-- Name: sheduler_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY sheduler
+    ADD CONSTRAINT sheduler_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2729 (class 2606 OID 17468)
+-- Name: soft_install_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY soft_install
+    ADD CONSTRAINT soft_install_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2731 (class 2606 OID 17470)
+-- Name: spr_asistem_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_asistem
+    ADD CONSTRAINT spr_asistem_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2733 (class 2606 OID 17472)
+-- Name: spr_bp_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_bp
+    ADD CONSTRAINT spr_bp_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2735 (class 2606 OID 17474)
+-- Name: spr_cart_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_cart
+    ADD CONSTRAINT spr_cart_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2737 (class 2606 OID 17476)
+-- Name: spr_case_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_case
+    ADD CONSTRAINT spr_case_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2739 (class 2606 OID 17478)
+-- Name: spr_complect_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_complect
+    ADD CONSTRAINT spr_complect_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2741 (class 2606 OID 17480)
+-- Name: spr_cpu_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_cpu
+    ADD CONSTRAINT spr_cpu_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2743 (class 2606 OID 17482)
+-- Name: spr_creader_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_creader
+    ADD CONSTRAINT spr_creader_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2745 (class 2606 OID 17484)
+-- Name: spr_dev_net_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_dev_net
+    ADD CONSTRAINT spr_dev_net_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2747 (class 2606 OID 17486)
+-- Name: spr_fax_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_fax
+    ADD CONSTRAINT spr_fax_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2749 (class 2606 OID 17488)
+-- Name: spr_fdd_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_fdd
+    ADD CONSTRAINT spr_fdd_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2751 (class 2606 OID 17490)
+-- Name: spr_fs_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_fs
+    ADD CONSTRAINT spr_fs_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2753 (class 2606 OID 17492)
+-- Name: spr_hdd_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_hdd
+    ADD CONSTRAINT spr_hdd_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2755 (class 2606 OID 17494)
+-- Name: spr_ibp_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_ibp
+    ADD CONSTRAINT spr_ibp_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2757 (class 2606 OID 17496)
+-- Name: spr_keyboard_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_keyboard
+    ADD CONSTRAINT spr_keyboard_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2759 (class 2606 OID 17498)
+-- Name: spr_kopir_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_kopir
+    ADD CONSTRAINT spr_kopir_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2761 (class 2606 OID 17500)
+-- Name: spr_lic_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_lic
+    ADD CONSTRAINT spr_lic_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2763 (class 2606 OID 17502)
+-- Name: spr_mb_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_mb
+    ADD CONSTRAINT spr_mb_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2765 (class 2606 OID 17504)
+-- Name: spr_mesto_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_mesto
+    ADD CONSTRAINT spr_mesto_pk PRIMARY KEY (mestoid);
+
+
+--
+-- TOC entry 2767 (class 2606 OID 17506)
+-- Name: spr_mfu_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_mfu
+    ADD CONSTRAINT spr_mfu_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2769 (class 2606 OID 17508)
+-- Name: spr_modem_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_modem
+    ADD CONSTRAINT spr_modem_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2771 (class 2606 OID 17510)
+-- Name: spr_monitor_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_monitor
+    ADD CONSTRAINT spr_monitor_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2773 (class 2606 OID 17512)
+-- Name: spr_mouse_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_mouse
+    ADD CONSTRAINT spr_mouse_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2777 (class 2606 OID 17514)
+-- Name: spr_net_dev_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_net_dev
+    ADD CONSTRAINT spr_net_dev_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2775 (class 2606 OID 17516)
+-- Name: spr_net_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_net
+    ADD CONSTRAINT spr_net_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2779 (class 2606 OID 17518)
+-- Name: spr_optical_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_optical
+    ADD CONSTRAINT spr_optical_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2781 (class 2606 OID 17520)
+-- Name: spr_os_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_os
+    ADD CONSTRAINT spr_os_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2783 (class 2606 OID 17522)
+-- Name: spr_otd_filial_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_otd_filial
+    ADD CONSTRAINT spr_otd_filial_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2785 (class 2606 OID 17524)
+-- Name: spr_oth_dev_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_oth_dev
+    ADD CONSTRAINT spr_oth_dev_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2787 (class 2606 OID 17526)
+-- Name: spr_otv_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_otv
+    ADD CONSTRAINT spr_otv_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2789 (class 2606 OID 17528)
+-- Name: spr_pci_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_pci
+    ADD CONSTRAINT spr_pci_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2791 (class 2606 OID 17530)
+-- Name: spr_pdc_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_pdc
+    ADD CONSTRAINT spr_pdc_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2793 (class 2606 OID 17532)
+-- Name: spr_phone_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_phone
+    ADD CONSTRAINT spr_phone_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2795 (class 2606 OID 17534)
+-- Name: spr_photo_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_photo
+    ADD CONSTRAINT spr_photo_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2797 (class 2606 OID 17536)
+-- Name: spr_po_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_po
+    ADD CONSTRAINT spr_po_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2799 (class 2606 OID 17538)
+-- Name: spr_postav_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_postav
+    ADD CONSTRAINT spr_postav_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2801 (class 2606 OID 17540)
+-- Name: spr_printer_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_printer
+    ADD CONSTRAINT spr_printer_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2803 (class 2606 OID 17542)
+-- Name: spr_ram_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_ram
+    ADD CONSTRAINT spr_ram_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2805 (class 2606 OID 17544)
+-- Name: spr_scaner_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_scaner
+    ADD CONSTRAINT spr_scaner_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2807 (class 2606 OID 17546)
+-- Name: spr_sound_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_sound
+    ADD CONSTRAINT spr_sound_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2809 (class 2606 OID 17548)
+-- Name: spr_svga_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_svga
+    ADD CONSTRAINT spr_svga_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2811 (class 2606 OID 17550)
+-- Name: spr_tip_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_tip
+    ADD CONSTRAINT spr_tip_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2813 (class 2606 OID 17552)
+-- Name: spr_tip_po_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_tip_po
+    ADD CONSTRAINT spr_tip_po_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2815 (class 2606 OID 17554)
+-- Name: spr_usb_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_usb
+    ADD CONSTRAINT spr_usb_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2817 (class 2606 OID 17556)
+-- Name: spr_user_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_user
+    ADD CONSTRAINT spr_user_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2819 (class 2606 OID 17558)
+-- Name: spr_zip_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY spr_zip
+    ADD CONSTRAINT spr_zip_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2821 (class 2606 OID 17560)
+-- Name: t_log_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY t_log
+    ADD CONSTRAINT t_log_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2823 (class 2606 OID 17562)
+-- Name: t_user_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY t_user
+    ADD CONSTRAINT t_user_pk PRIMARY KEY (user_id);
+
+
+--
+-- TOC entry 2825 (class 2606 OID 17564)
+-- Name: tbl_bios_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tbl_bios
+    ADD CONSTRAINT tbl_bios_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2827 (class 2606 OID 17566)
+-- Name: trebovanie_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY trebovanie
+    ADD CONSTRAINT trebovanie_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2829 (class 2606 OID 17568)
+-- Name: update_log_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY update_log
+    ADD CONSTRAINT update_log_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2831 (class 2606 OID 17570)
+-- Name: user_comp_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY user_comp
+    ADD CONSTRAINT user_comp_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2833 (class 2606 OID 17572)
+-- Name: zam_otd_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY zam_otd
+    ADD CONSTRAINT zam_otd_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2835 (class 2606 OID 17574)
+-- Name: zametki_pk; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY zametki
+    ADD CONSTRAINT zametki_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3012 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2013-02-16 15:13:54
+
+--
+-- PostgreSQL database dump complete
+--
+

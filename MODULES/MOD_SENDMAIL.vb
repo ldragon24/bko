@@ -14,18 +14,18 @@ Module MOD_SENDMAIL
 
         Try
 
-            '    Dim AESkey As New AesCryptoServiceProvider()
-            '    AESkey.IV = UnicodeEncoding.Unicode.GetBytes(Mid(sCRTKey, 1, 8)) 'вектор
-            '    AESkey.Key = UnicodeEncoding.Unicode.GetBytes(Mid(sCRTKey, 9, 16)) 'Ключ
-            '    Dim inBlock() As Byte = UnicodeEncoding.Unicode.GetBytes(sTEXTBLOC)
-            '    Dim AEStransForm As ICryptoTransform = AESkey.CreateEncryptor()
-            '    Dim outBlock() As Byte = AEStransForm.TransformFinalBlock(inBlock, 0, inBlock.Length)
+            Dim AESkey As New AesCryptoServiceProvider()
+            AESkey.IV = UnicodeEncoding.Unicode.GetBytes(Mid(sCRTKey, 1, 8)) 'вектор
+            AESkey.Key = UnicodeEncoding.Unicode.GetBytes(Mid(sCRTKey, 9, 16)) 'Ключ
+            Dim inBlock() As Byte = UnicodeEncoding.Unicode.GetBytes(sTEXTBLOC)
+            Dim AEStransForm As ICryptoTransform = AESkey.CreateEncryptor()
+            Dim outBlock() As Byte = AEStransForm.TransformFinalBlock(inBlock, 0, inBlock.Length)
 
-            '    Return Convert.ToBase64String(outBlock)
+            Return Convert.ToBase64String(outBlock)
 
         Catch ex As Exception
 
-            '    Return "ERR_" + ex.Message
+            Return "ERR_" + ex.Message
         End Try
 
     End Function
@@ -36,18 +36,18 @@ Module MOD_SENDMAIL
 
         Try
 
-            '    Dim AESkey As New AesCryptoServiceProvider()
-            '    AESkey.IV = UnicodeEncoding.Unicode.GetBytes(Mid(sCRTKey, 1, 8)) 'вектор
-            '    AESkey.Key = UnicodeEncoding.Unicode.GetBytes(Mid(sCRTKey, 9, 16)) 'Ключ
-            '    Dim inBytes() As Byte = Convert.FromBase64String(sTEXTBLOC)
-            '    Dim AEStransForm As ICryptoTransform = AESkey.CreateDecryptor()
-            '    Dim outBlock() As Byte = AEStransForm.TransformFinalBlock(inBytes, 0, inBytes.Length)
+            Dim AESkey As New AesCryptoServiceProvider()
+            AESkey.IV = UnicodeEncoding.Unicode.GetBytes(Mid(sCRTKey, 1, 8)) 'вектор
+            AESkey.Key = UnicodeEncoding.Unicode.GetBytes(Mid(sCRTKey, 9, 16)) 'Ключ
+            Dim inBytes() As Byte = Convert.FromBase64String(sTEXTBLOC)
+            Dim AEStransForm As ICryptoTransform = AESkey.CreateDecryptor()
+            Dim outBlock() As Byte = AEStransForm.TransformFinalBlock(inBytes, 0, inBytes.Length)
 
-            '    Return UnicodeEncoding.Unicode.GetString(outBlock)
+            Return UnicodeEncoding.Unicode.GetString(outBlock)
 
         Catch ex As Exception
 
-            '    Return "ERR_" + ex.Message
+            Return "ERR_" + ex.Message
         End Try
 
     End Function

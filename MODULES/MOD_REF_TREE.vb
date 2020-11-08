@@ -14,6 +14,7 @@ Module MOD_REF_TREE
     Private P_NAME As String = ""
     Private L_NAME As String = ""
     Private stmREMONT As Integer = 0
+    Private stmNotWork As String = ""
     Private tmpTAGkey As String = ""
 
     Private Sub FILING_FILIAL()
@@ -35,14 +36,14 @@ Module MOD_REF_TREE
                 '    "SELECT id, mesto, filial, tip_compa, tiptehn, PSEVDONIM, NET_NAME, kabn, Spisan, OS, PRINTER_NAME_4,balans FROM kompy WHERE filial ='" &
                 '    FILIAL1 & "' AND mesto ='" & OTDEL1 & "' AND kabn ='" & KABINET1 &
                 '    "'  AND PCL =0 ORDER BY PSEVDONIM, tiptehn"
-                sSQL = "SELECT id, mesto, filial, tip_compa, tiptehn, PSEVDONIM, NET_NAME, kabn, Spisan, OS, PRINTER_NAME_4,balans, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE filial ='" & FILIAL1 & "' AND mesto ='" & OTDEL1 & "' AND kabn ='" & KABINET1 & "'  AND PCL =0 ORDER BY PSEVDONIM, tiptehn"
+                sSQL = "SELECT id, mesto, filial, tip_compa, tiptehn, PSEVDONIM, NET_NAME, kabn, Spisan, OS, PRINTER_NAME_4,balans, notwork, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE filial ='" & FILIAL1 & "' AND mesto ='" & OTDEL1 & "' AND kabn ='" & KABINET1 & "'  AND PCL =0 ORDER BY PSEVDONIM, tiptehn"
             Case 1
 
                 'sSQL4 =
                 '    "SELECT id, mesto, filial, tip_compa, tiptehn, PSEVDONIM, NET_NAME, kabn, Spisan, OS, PRINTER_NAME_4,balans FROM kompy WHERE filial ='" &
                 '    FILIAL1 & "' AND mesto ='" & OTDEL1 & "' AND kabn ='" & KABINET1 &
                 '    "' AND PCL =0 ORDER BY tiptehn, PSEVDONIM"
-                sSQL = "SELECT id, mesto, filial, tip_compa, tiptehn, PSEVDONIM, NET_NAME, kabn, Spisan, OS, PRINTER_NAME_4,balans, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE filial ='" & FILIAL1 & "' AND mesto ='" & OTDEL1 & "' AND kabn ='" & KABINET1 & "'  AND PCL =0 ORDER BY tiptehn, PSEVDONIM"
+                sSQL = "SELECT id, mesto, filial, tip_compa, tiptehn, PSEVDONIM, NET_NAME, kabn, Spisan, OS, PRINTER_NAME_4,balans, notwork, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE filial ='" & FILIAL1 & "' AND mesto ='" & OTDEL1 & "' AND kabn ='" & KABINET1 & "'  AND PCL =0 ORDER BY tiptehn, PSEVDONIM"
 
         End Select
 
@@ -65,9 +66,10 @@ Module MOD_REF_TREE
                 If Not IsDBNull(.Fields("PRINTER_NAME_4").Value) Then iA7 = .Fields("PRINTER_NAME_4").Value
                 If Not IsDBNull(.Fields("Balans").Value) Then iA8 = .Fields("Balans").Value
                 tmpRemont = .Fields("rem").Value
+                If Not IsDBNull(.Fields("NotWork").Value) Then stmNotWork = .Fields("NotWork").Value
                 iID = .Fields("id").Value
 
-                Call FILING_TREE(lstgroups1, iA5, iA1, iA2, iA3, iID, iA4, BrancheNode1, iA6, iA7, iA8, tmpRemont)
+                Call FILING_TREE(lstgroups1, iA5, iA1, iA2, iA3, iID, iA4, BrancheNode1, iA6, iA7, iA8, tmpRemont, stmNotWork)
 
                 .MoveNext()
             Loop
@@ -467,7 +469,7 @@ ERR1:
     Public Sub FILING_TREE(ByVal lstgroups As TreeView, ByVal iTipTehn As String, ByVal TipPC As String,
                             ByVal NET_NAME As String, ByVal PSEVDONIM As String, ByVal iD As String,
                             ByVal Spisan As String, ByVal DepNode As TreeNode, ByVal OS As String, ByVal n_set As String,
-                            ByVal balans As String, ByVal REMONT As Integer)
+                            ByVal balans As String, ByVal REMONT As Integer, ByVal NotWork As String)
 
         Dim iC As String
         Dim iA As String
@@ -520,6 +522,8 @@ ERR1:
             Case "Сервер для тонких клиентов"
                 iC = "Сервер"
             Case "Сервер видео наблюдения"
+                iC = "Сервер"
+            Case "Виртуальный сервер"
                 iC = "Сервер"
         End Select
 
@@ -636,6 +640,7 @@ ERR1:
 
                 Call checkOther(lstgroups, iD, TEHNodeCNT, Spisan, balans)
                 Call checkRemont(iD, TEHNodeCNT, REMONT)
+                Call checkNotWork(iD, TEHNodeCNT, stmNotWork)
 
                 '#####################################################################
                 '#####################################################################
@@ -671,13 +676,13 @@ ERR1:
                             Case 0
 
                                 sSQL4 =
-                                    "SELECT id, tiptehn, PSEVDONIM, NET_NAME, Spisan, tip_compa,PRINTER_NAME_4,balans, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE PCL =" &
+                                    "SELECT id,notwork, tiptehn, PSEVDONIM, NET_NAME, Spisan, tip_compa,PRINTER_NAME_4,balans, notwork, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE PCL =" &
                                     iD & " ORDER BY PSEVDONIM, tiptehn"
 
                             Case 1
 
                                 sSQL4 =
-                                    "SELECT id, tiptehn, PSEVDONIM, NET_NAME, Spisan, tip_compa,PRINTER_NAME_4,balans, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE PCL =" &
+                                    "SELECT id,notwork, tiptehn, PSEVDONIM, NET_NAME, Spisan, tip_compa,PRINTER_NAME_4,balans, notwork, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE PCL =" &
                                     iD & " ORDER BY tiptehn, PSEVDONIM"
 
                         End Select
@@ -691,6 +696,7 @@ ERR1:
                             Do While Not .EOF
                                 Spisan = .Fields("Spisan").Value
                                 balans = .Fields("balans").Value
+                                stmNotWork = .Fields("notwork").Value
 
                                 Select Case sTREENAME
 
@@ -752,7 +758,7 @@ ERR1:
                                         TEHNodeCNT.Nodes.Add(TEHNodePC)
                                         iD = .Fields("id").Value
 
-                                        Select Case n_set
+                                        Select Case .Fields("PRINTER_NAME_4").Value
 
                                             Case "Off"
                                                 TEHNodePC.ForeColor = Color.Red
@@ -769,6 +775,7 @@ ERR1:
 
                                         Call checkOther(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans)
                                         Call checkRemont(.Fields("id").Value, TEHNodePC, .Fields("rem").Value)
+                                        Call checkNotWork(.Fields("id").Value, TEHNodePC, .Fields("NotWork").Value)
 
                                     Case "PC"
 
@@ -801,6 +808,8 @@ ERR1:
                                                 iC = "Сервер"
                                             Case "Сервер видео наблюдения"
                                                 iC = "Сервер"
+                                            Case "Виртуальный сервер"
+                                                iC = "Сервер"
                                         End Select
 
                                         Select Case iC
@@ -828,6 +837,8 @@ ERR1:
 
                                         Call checkOther(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans)
                                         Call checkRemont(.Fields("id").Value, TEHNodePC, .Fields("rem").Value)
+                                        Call checkNotWork(.Fields("id").Value, TEHNodePC, .Fields("NotWork").Value)
+
 
                                         '#####################################################################
                                         '#####################################################################
@@ -858,13 +869,13 @@ ERR1:
                                                     Case 0
 
                                                         sSQL4 =
-                                                            "SELECT id, tiptehn, PSEVDONIM, NET_NAME, Spisan, tip_compa,balans, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE PCL =" &
+                                                            "SELECT id, tiptehn, PSEVDONIM, NET_NAME, Spisan, tip_compa,balans, notwork, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE PCL =" &
                                                             iD & " ORDER BY PSEVDONIM, tiptehn"
 
                                                     Case 1
 
                                                         sSQL4 =
-                                                            "SELECT id, tiptehn, PSEVDONIM, NET_NAME, Spisan, tip_compa,balans, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE PCL =" &
+                                                            "SELECT id, tiptehn, PSEVDONIM, NET_NAME, Spisan, tip_compa,balans, notwork, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE PCL =" &
                                                             iD & " ORDER BY tiptehn, PSEVDONIM"
 
                                                 End Select
@@ -879,6 +890,9 @@ ERR1:
 
                                                         Spisan = .Fields("Spisan").Value
                                                         balans = .Fields("balans").Value
+
+                                                        stmREMONT = .Fields("rem").Value
+                                                        stmNotWork = .Fields("notwork").Value
 
                                                         Select Case sTREENAME
 
@@ -929,34 +943,32 @@ ERR1:
 
                                                         End Select
 
-                                                        stmREMONT = .Fields("rem").Value
-
                                                         Select Case .Fields("tiptehn").Value
 
                                                             Case "Printer"
 
                                                                 Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC,
-                                                                                  Spisan, balans, L_NAME, 7)
+                                                                                  Spisan, balans, L_NAME, 7, stmNotWork)
 
                                                             Case "MFU"
 
                                                                 Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC,
-                                                                                  Spisan, balans, L_NAME, 8)
+                                                                                  Spisan, balans, L_NAME, 8, stmNotWork)
 
                                                             Case "SCANER"
 
                                                                 Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC,
-                                                                                  Spisan, balans, L_NAME, 14)
+                                                                                  Spisan, balans, L_NAME, 14, stmNotWork)
 
                                                             Case "ZIP"
 
                                                                 Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC,
-                                                                                  Spisan, balans, L_NAME, 15)
+                                                                                  Spisan, balans, L_NAME, 15, stmNotWork)
 
                                                             Case "PHONE"
 
                                                                 Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC,
-                                                                                  Spisan, balans, L_NAME, 12)
+                                                                                  Spisan, balans, L_NAME, 12, stmNotWork)
 
                                                             Case "OT"
 
@@ -999,43 +1011,43 @@ ERR1:
                                                                 End Select
 
                                                                 Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC,
-                                                                                  Spisan, balans, L_NAME, iA)
+                                                                                  Spisan, balans, L_NAME, iA, .Fields("NotWork").Value)
 
                                                             Case "MONITOR"
 
                                                                 Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC,
-                                                                                  Spisan, balans, L_NAME, 17)
+                                                                                  Spisan, balans, L_NAME, 17, .Fields("NotWork").Value)
 
                                                                 '--------------VIP_Graff Добавление новой перефирии Начало-----------------
                                                             Case "USB"
 
                                                                 Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC,
-                                                                                  Spisan, balans, L_NAME, 18)
+                                                                                  Spisan, balans, L_NAME, 18, .Fields("NotWork").Value)
 
                                                             Case "SOUND"
 
                                                                 Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC,
-                                                                                  Spisan, balans, L_NAME, 44)
+                                                                                  Spisan, balans, L_NAME, 44, .Fields("NotWork").Value)
 
                                                             Case "IBP"
 
                                                                 Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC,
-                                                                                  Spisan, balans, L_NAME, 41)
+                                                                                  Spisan, balans, L_NAME, 41, .Fields("NotWork").Value)
 
                                                             Case "FS"
 
                                                                 Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC,
-                                                                                  Spisan, balans, L_NAME, 61)
+                                                                                  Spisan, balans, L_NAME, 61, .Fields("NotWork").Value)
 
                                                             Case "KEYB"
 
                                                                 Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC,
-                                                                                  Spisan, balans, L_NAME, 46)
+                                                                                  Spisan, balans, L_NAME, 46, .Fields("NotWork").Value)
 
                                                             Case "MOUSE"
 
                                                                 Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC,
-                                                                                  Spisan, balans, L_NAME, 47)
+                                                                                  Spisan, balans, L_NAME, 47, .Fields("NotWork").Value)
 
                                                                 '--------------VIP_Graff Добавление новой перефирии Конец------------------
 
@@ -1058,39 +1070,35 @@ ERR1:
                                         '#####################################################################
 
                                         stmREMONT = .Fields("rem").Value
+                                        stmNotWork = .Fields("notwork").Value
 
                                     Case "PHOTO"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 11)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 11, stmNotWork)
 
 
                                     Case "Printer"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME,
-                                                          7)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 7, stmNotWork)
 
 
                                     Case "MFU"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME,
-                                                          8)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 8, stmNotWork)
 
 
                                     Case "SCANER"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME,
-                                                          14)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 14, stmNotWork)
 
 
                                     Case "ZIP"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME,
-                                                          15)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 15, stmNotWork)
 
                                     Case "PHONE"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME,
-                                                          12)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 12, stmNotWork)
 
                                     Case "OT"
 
@@ -1133,44 +1141,36 @@ ERR1:
 
                                         End Select
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME,
-                                                          iA)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, iA, .Fields("NotWork").Value)
 
                                     Case "MONITOR"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME,
-                                                          17)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 17, .Fields("NotWork").Value)
 
                                         '--------------VIP_Graff Добавление новой перефирии Начало-----------------
                                     Case "USB"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME,
-                                                          18)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 18, .Fields("NotWork").Value)
 
                                     Case "SOUND"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME,
-                                                          44)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 44, .Fields("NotWork").Value)
 
                                     Case "IBP"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME,
-                                                          41)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 41, .Fields("NotWork").Value)
 
                                     Case "FS"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME,
-                                                          61)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 61, .Fields("NotWork").Value)
 
                                     Case "KEYB"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME,
-                                                          46)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 46, .Fields("NotWork").Value)
 
                                     Case "MOUSE"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME,
-                                                          47)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodeCNT, Spisan, balans, L_NAME, 47, .Fields("NotWork").Value)
 
                                         '--------------VIP_Graff Добавление новой перефирии Конец------------------
                                     Case Else
@@ -1193,6 +1193,7 @@ ERR1:
 
             Case "PC"
                 stmREMONT = REMONT
+                stmNotWork = NotWork
 
                 Dim TEHNodePC As New TreeNode(L_NAME, iA, iB)
 
@@ -1206,6 +1207,7 @@ ERR1:
 
                 Call checkOther(lstgroups, iD, TEHNodePC, Spisan, balans)
                 Call checkRemont(iD, TEHNodePC, REMONT)
+                Call checkNotWork(iD, TEHNodePC, NotWork)
 
                 '########################################################################
                 '########################################################################
@@ -1239,13 +1241,13 @@ ERR1:
                             Case 0
 
                                 sSQL4 =
-                                    "SELECT id, tiptehn, PSEVDONIM, NET_NAME, Spisan, tip_compa,PRINTER_NAME_4,balans, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE PCL =" &
+                                    "SELECT id,NotWork, tiptehn, PSEVDONIM, NET_NAME, Spisan, tip_compa,PRINTER_NAME_4,balans, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE PCL =" &
                                     iD & " ORDER BY PSEVDONIM, tiptehn"
 
                             Case 1
 
                                 sSQL4 =
-                                    "SELECT id, tiptehn, PSEVDONIM, NET_NAME, Spisan, tip_compa,PRINTER_NAME_4,balans, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE PCL =" &
+                                    "SELECT id,NotWork, tiptehn, PSEVDONIM, NET_NAME, Spisan, tip_compa,PRINTER_NAME_4,balans, (Select count(*) as t_n FROM Remont Where id_comp=kompy.id and zakryt = 0) as rem FROM kompy WHERE PCL =" &
                                     iD & " ORDER BY tiptehn, PSEVDONIM"
 
                         End Select
@@ -1260,6 +1262,7 @@ ERR1:
 
                                 Spisan = .Fields("Spisan").Value
                                 balans = .Fields("balans").Value
+                                stmNotWork = .Fields("NotWork").Value
 
                                 Select Case sTREENAME
 
@@ -1312,35 +1315,31 @@ ERR1:
                                 End Select
 
                                 stmREMONT = .Fields("rem").Value
+                                stmNotWork = .Fields("notwork").Value
 
                                 Select Case .Fields("tiptehn").Value
 
                                     Case "Printer"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME,
-                                                          7)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME, 7, stmNotWork)
 
                                     Case "MFU"
 
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME,
-                                                          8)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME, 8, NotWork)
 
 
                                     Case "SCANER"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME,
-                                                          14)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME, 14, NotWork)
 
                                     Case "ZIP"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME,
-                                                          15)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME, 15, NotWork)
 
                                     Case "PHONE"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME,
-                                                          12)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME, 12, NotWork)
 
 
                                     Case "OT"
@@ -1383,45 +1382,37 @@ ERR1:
 
                                         End Select
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME,
-                                                          iA)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME, iA, .Fields("NotWork").Value)
 
                                     Case "MONITOR"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME,
-                                                          17)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME, 17, .Fields("NotWork").Value)
 
                                         '--------------VIP_Graff Добавление новой перефирии Начало-----------------
                                     Case "USB"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME,
-                                                          18)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME, 18, .Fields("NotWork").Value)
 
                                     Case "SOUND"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME,
-                                                          44)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME, 44, .Fields("NotWork").Value)
 
                                     Case "IBP"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME,
-                                                          41)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME, 41, .Fields("NotWork").Value)
 
 
                                     Case "FS"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME,
-                                                          61)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME, 61, .Fields("NotWork").Value)
 
                                     Case "KEYB"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME,
-                                                          46)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME, 46, .Fields("NotWork").Value)
 
                                     Case "MOUSE"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME,
-                                                          47)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePC, Spisan, balans, L_NAME, 47, .Fields("NotWork").Value)
 
                                         '--------------VIP_Graff Добавление новой перефирии Конец------------------
 
@@ -1439,18 +1430,22 @@ ERR1:
 
             Case "Printer"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 7)
+                stmNotWork = NotWork
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 7, NotWork)
 
             Case "MFU"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 8)
+                stmNotWork = NotWork
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 8, NotWork)
 
             Case "KOpir"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 9)
+                stmNotWork = NotWork
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 9, NotWork)
 
             Case "NET"
                 stmREMONT = REMONT
+                stmNotWork = NotWork
                 Dim TEHNode As New TreeNode(L_NAME, 10, 10)
                 TEHNode.Tag = "C|" & iD
                 TEHNode.Text = L_NAME
@@ -1474,10 +1469,13 @@ ERR1:
 
                 Call checkOther(lstgroups, iD, TEHNode, Spisan, balans)
                 Call checkRemont(iD, TEHNode, REMONT)
+                Call checkNotWork(iD, TEHNode, NotWork)
 
 
             Case "PHOTO"
                 stmREMONT = REMONT
+                stmNotWork = NotWork
+
                 iA = 11
                 iB = 11
 
@@ -1492,7 +1490,7 @@ ERR1:
 
                 Call checkOther(lstgroups, iD, TEHNodePHOTO, Spisan, balans)
                 Call checkRemont(iD, TEHNodePHOTO, REMONT)
-
+                Call checkNotWork(iD, TEHNodePHOTO, NotWork)
 
                 Dim sText As String = objIniFile.GetString("general", "Tree_S", 0)
                 Dim sSQL4 As String
@@ -1541,6 +1539,7 @@ ERR1:
                                 Spisan = .Fields("Spisan").Value
                                 balans = .Fields("balans").Value
                                 stmREMONT = .Fields("rem").Value
+                                stmNotWork = .Fields("notwork").Value
 
                                 Select Case sTREENAME
 
@@ -1635,13 +1634,11 @@ ERR1:
 
                                         End Select
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePHOTO, Spisan, balans, L_NAME,
-                                                          iA)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePHOTO, Spisan, balans, L_NAME, iA, stmNotWork)
 
                                     Case "USB"
 
-                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePHOTO, Spisan, balans, L_NAME,
-                                                          18)
+                                        Filling_TREE_DATA(lstgroups, .Fields("id").Value, TEHNodePHOTO, Spisan, balans, L_NAME, 18, stmNotWork)
 
                                     Case Else
 
@@ -1657,19 +1654,22 @@ ERR1:
 
             Case "PHONE"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 12)
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 12, stmNotWork)
 
             Case "FAX"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 13)
+                stmNotWork = NotWork
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 13, stmNotWork)
 
             Case "SCANER"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 14)
+                stmNotWork = NotWork
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 14, stmNotWork)
 
             Case "ZIP"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 15)
+                stmNotWork = NotWork
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 15, stmNotWork)
 
             Case "OT"
                 stmREMONT = REMONT
@@ -1686,8 +1686,7 @@ ERR1:
 
                         Dim rsOT As Recordset
                         rsOT = New Recordset
-                        rsOT.Open("SELECT A FROM spr_other where Name ='" & TipPC & "'", DB7, CursorTypeEnum.adOpenDynamic,
-                                  LockTypeEnum.adLockOptimistic)
+                        rsOT.Open("SELECT A FROM spr_other where Name ='" & TipPC & "'", DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
                         uname = ""
 
@@ -1714,36 +1713,36 @@ ERR1:
 
                 End Select
 
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, iA)
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, iA, stmNotWork)
 
             Case "MONITOR"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 17)
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 17, stmNotWork)
 
                 '--------------VIP_Graff Добавление новой перефирии Начало-----------------
             Case "USB"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 18)
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 18, stmNotWork)
 
             Case "SOUND"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 44)
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 44, stmNotWork)
 
             Case "IBP"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 41)
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 41, stmNotWork)
 
             Case "FS"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 61)
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 61, stmNotWork)
 
             Case "KEYB"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 46)
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 46, stmNotWork)
 
             Case "MOUSE"
                 stmREMONT = REMONT
-                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 47)
+                Filling_TREE_DATA(lstgroups, iD, DepNode, Spisan, balans, L_NAME, 47, stmNotWork)
 
                 '--------------VIP_Graff Добавление новой перефирии Конец------------------
 
@@ -1754,9 +1753,9 @@ ERR1:
 
     Public Sub Filling_TREE_DATA(ByVal lstgroups As TreeView, ByVal sID As Integer, ByVal TEHNodePCL As TreeNode,
                                  ByVal Spisan As String, ByVal balans As String, ByVal L_NAME As String,
-                                 ByVal sNUM As Decimal)
+                                 ByVal sNUM As Decimal, ByVal NotWork As String)
 
-        On Error Resume Next
+        On Error GoTo err1
 
         Dim TEHNodeCNT As New TreeNode(L_NAME, sNUM, sNUM)
         TEHNodeCNT.Tag = "C|" & sID
@@ -1766,7 +1765,10 @@ ERR1:
 
         Call checkOther(lstgroups, sID, TEHNodeCNT, Spisan, balans)
         Call checkRemont(sID, TEHNodeCNT, stmREMONT)
+        Call checkNotWork(sID, TEHNodeCNT, NotWork)
 
+err1:
+        'MsgBox(Err.Description)
     End Sub
 
     Public Sub checkRemont(ByVal sID As Integer, ByVal TEHNodePCL As TreeNode, ByVal remont As Integer)
@@ -1785,6 +1787,19 @@ ERR1:
 
                 End Select
 
+        End Select
+
+    End Sub
+
+    Public Sub checkNotWork(ByVal sID As Integer, ByVal TEHNodePCL As TreeNode, ByVal NotWork As String)
+
+        Select Case NotWork
+
+            Case False
+
+            Case True
+                TEHNodePCL.ForeColor = Color.Red
+                TEHNodePCL.NodeFont = New Font(frmComputers.lstGroups.Font, 2)
         End Select
 
     End Sub
@@ -1825,10 +1840,10 @@ ERR1:
 
                             TEHNodeCNT.NodeFont = New Font(lstgroups.Font, 10)
                         Case "True"
-                            
+
                             TEHNodeCNT.NodeFont = New Font(lstgroups.Font, 10)
                         Case "-1"
-                            
+
                             TEHNodeCNT.NodeFont = New Font(lstgroups.Font, 10)
 
                         Case Else
@@ -2100,13 +2115,14 @@ ERR1:
                             If Not IsDBNull(.Fields("PRINTER_NAME_4").Value) Then iA7 = .Fields("PRINTER_NAME_4").Value
                             If Not IsDBNull(.Fields("Balans").Value) Then iA8 = .Fields("Balans").Value
                             tmpRemont = .Fields("rem").Value
+                            stmNotWork = .Fields("notwork").Value
                         End With
 
                         rs.Close()
                         rs = Nothing
 
                         'Добавляем объект в дерево
-                        FILING_TREE(frmComputers.lstGroups, iA5, iA1, iA2, iA3, sID, iA4, frmComputers.lstGroups.SelectedNode, iA6, iA7, iA8, tmpRemont)
+                        FILING_TREE(frmComputers.lstGroups, iA5, iA1, iA2, iA3, sID, iA4, frmComputers.lstGroups.SelectedNode, iA6, iA7, iA8, tmpRemont, stmNotWork)
 
                         '###########################
                         'Ищем технику
@@ -2160,6 +2176,7 @@ ERR1:
                     If Not IsDBNull(.Fields("PRINTER_NAME_4").Value) Then iA7 = .Fields("PRINTER_NAME_4").Value
                     If Not IsDBNull(.Fields("Balans").Value) Then iA8 = .Fields("Balans").Value
                     tmpRemont = .Fields("rem").Value
+                    stmNotWork = .Fields("notwork").Value
                 End With
 
                 rs.Close()
@@ -2169,7 +2186,7 @@ ERR1:
                 objIniFile.WriteString("general", "Default", 0)
 
                 'Добавляем объект в контейнер в дереве
-                Call FILING_TREE(frmComputers.lstGroups, iA5, iA1, iA2, iA3, sID, iA4, frmComputers.lstGroups.SelectedNode, iA6, iA7, iA8, tmpRemont)
+                Call FILING_TREE(frmComputers.lstGroups, iA5, iA1, iA2, iA3, sID, iA4, frmComputers.lstGroups.SelectedNode, iA6, iA7, iA8, tmpRemont, stmNotWork)
 
         End Select
 

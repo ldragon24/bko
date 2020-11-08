@@ -63,7 +63,10 @@ Partial Class frmSetup
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtSA = New System.Windows.Forms.TextBox()
         Me.txtORG = New System.Windows.Forms.TextBox()
-        Me.btnSave = New System.Windows.Forms.Button()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtPRG = New System.Windows.Forms.TextBox()
+        Me.txtBigBoss = New System.Windows.Forms.TextBox()
         Me.gbSMTP = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel8 = New System.Windows.Forms.TableLayoutPanel()
         Me.lblServ = New System.Windows.Forms.Label()
@@ -77,10 +80,9 @@ Partial Class frmSetup
         Me.txtPort = New System.Windows.Forms.TextBox()
         Me.txtMUser = New System.Windows.Forms.TextBox()
         Me.txtMPassword = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.txtPRG = New System.Windows.Forms.TextBox()
-        Me.txtBigBoss = New System.Windows.Forms.TextBox()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.txtLDAP = New System.Windows.Forms.TextBox()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.gbSetup = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -574,16 +576,18 @@ Partial Class frmSetup
         Me.TableLayoutPanel2.Controls.Add(Me.Label10, 0, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.txtSA, 1, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.txtORG, 1, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.btnSave, 0, 6)
-        Me.TableLayoutPanel2.Controls.Add(Me.gbSMTP, 1, 7)
         Me.TableLayoutPanel2.Controls.Add(Me.Label8, 0, 4)
         Me.TableLayoutPanel2.Controls.Add(Me.Label11, 0, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.txtPRG, 1, 4)
         Me.TableLayoutPanel2.Controls.Add(Me.txtBigBoss, 1, 3)
+        Me.TableLayoutPanel2.Controls.Add(Me.gbSMTP, 1, 8)
+        Me.TableLayoutPanel2.Controls.Add(Me.btnSave, 0, 7)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label14, 0, 6)
+        Me.TableLayoutPanel2.Controls.Add(Me.txtLDAP, 1, 6)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 8
+        Me.TableLayoutPanel2.RowCount = 9
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
@@ -591,7 +595,8 @@ Partial Class frmSetup
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8.0!))
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(967, 620)
         Me.TableLayoutPanel2.TabIndex = 8
         '
@@ -649,20 +654,45 @@ Partial Class frmSetup
         Me.txtORG.Size = New System.Drawing.Size(802, 20)
         Me.txtORG.TabIndex = 3
         '
-        'btnSave
+        'Label8
         '
-        Me.btnSave.Location = New System.Drawing.Point(3, 133)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(75, 23)
-        Me.btnSave.TabIndex = 7
-        Me.btnSave.Text = "Сохранить"
-        Me.btnSave.UseVisualStyleBackColor = True
+        Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(3, 110)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(153, 13)
+        Me.Label8.TabIndex = 2
+        Me.Label8.Text = "Заголовок окна программы:"
+        '
+        'Label11
+        '
+        Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(3, 84)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(153, 13)
+        Me.Label11.TabIndex = 8
+        Me.Label11.Text = "Начальник службы"
+        '
+        'txtPRG
+        '
+        Me.txtPRG.Location = New System.Drawing.Point(162, 107)
+        Me.txtPRG.Name = "txtPRG"
+        Me.txtPRG.Size = New System.Drawing.Size(783, 20)
+        Me.txtPRG.TabIndex = 6
+        '
+        'txtBigBoss
+        '
+        Me.txtBigBoss.Location = New System.Drawing.Point(162, 81)
+        Me.txtBigBoss.Name = "txtBigBoss"
+        Me.txtBigBoss.Size = New System.Drawing.Size(783, 20)
+        Me.txtBigBoss.TabIndex = 9
         '
         'gbSMTP
         '
         Me.gbSMTP.AutoSize = True
         Me.gbSMTP.Controls.Add(Me.TableLayoutPanel8)
-        Me.gbSMTP.Location = New System.Drawing.Point(162, 163)
+        Me.gbSMTP.Location = New System.Drawing.Point(162, 197)
         Me.gbSMTP.Name = "gbSMTP"
         Me.gbSMTP.Size = New System.Drawing.Size(510, 175)
         Me.gbSMTP.TabIndex = 10
@@ -801,39 +831,31 @@ Partial Class frmSetup
         Me.txtMPassword.Size = New System.Drawing.Size(246, 20)
         Me.txtMPassword.TabIndex = 10
         '
-        'Label8
+        'btnSave
         '
-        Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(3, 110)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(153, 13)
-        Me.Label8.TabIndex = 2
-        Me.Label8.Text = "Заголовок окна программы:"
+        Me.btnSave.Location = New System.Drawing.Point(3, 163)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(75, 23)
+        Me.btnSave.TabIndex = 7
+        Me.btnSave.Text = "Сохранить"
+        Me.btnSave.UseVisualStyleBackColor = True
         '
-        'Label11
+        'Label14
         '
-        Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(3, 84)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(153, 13)
-        Me.Label11.TabIndex = 8
-        Me.Label11.Text = "Начальник службы"
+        Me.Label14.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(3, 138)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(153, 13)
+        Me.Label14.TabIndex = 11
+        Me.Label14.Text = "LDAP:"
         '
-        'txtPRG
+        'txtLDAP
         '
-        Me.txtPRG.Location = New System.Drawing.Point(162, 107)
-        Me.txtPRG.Name = "txtPRG"
-        Me.txtPRG.Size = New System.Drawing.Size(783, 20)
-        Me.txtPRG.TabIndex = 6
-        '
-        'txtBigBoss
-        '
-        Me.txtBigBoss.Location = New System.Drawing.Point(162, 81)
-        Me.txtBigBoss.Name = "txtBigBoss"
-        Me.txtBigBoss.Size = New System.Drawing.Size(783, 20)
-        Me.txtBigBoss.TabIndex = 9
+        Me.txtLDAP.Location = New System.Drawing.Point(162, 133)
+        Me.txtLDAP.Name = "txtLDAP"
+        Me.txtLDAP.Size = New System.Drawing.Size(783, 20)
+        Me.txtLDAP.TabIndex = 12
         '
         'TabPage1
         '
@@ -1596,7 +1618,6 @@ Partial Class frmSetup
         '
         'RadioButton12
         '
-        Me.RadioButton12.Dock = System.Windows.Forms.DockStyle.Fill
         Me.RadioButton12.Location = New System.Drawing.Point(3, 3)
         Me.RadioButton12.Name = "RadioButton12"
         Me.RadioButton12.Size = New System.Drawing.Size(176, 102)
@@ -1607,7 +1628,6 @@ Partial Class frmSetup
         '
         'RadioButton13
         '
-        Me.RadioButton13.Dock = System.Windows.Forms.DockStyle.Fill
         Me.RadioButton13.Location = New System.Drawing.Point(185, 3)
         Me.RadioButton13.Name = "RadioButton13"
         Me.RadioButton13.Size = New System.Drawing.Size(176, 102)
@@ -1886,4 +1906,6 @@ Partial Class frmSetup
     Friend WithEvents TableLayoutPanel11 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents RadioButton12 As System.Windows.Forms.RadioButton
     Friend WithEvents RadioButton13 As System.Windows.Forms.RadioButton
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents txtLDAP As System.Windows.Forms.TextBox
 End Class

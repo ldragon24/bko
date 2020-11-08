@@ -79,6 +79,9 @@ Module MOD_INF_TECH_LOAD
 
             If Not IsDBNull(.Fields("Spisan").Value) Then frmComputers.chkNETspis.Checked = .Fields("Spisan").Value
             If Not IsDBNull(.Fields("Balans").Value) Then frmComputers.chkNETNNb.Checked = .Fields("Balans").Value
+            If Not IsDBNull(.Fields("NomNom").Value) Then frmComputers.txtNomNomNET.Text = .Fields("NomNom").Value
+            If Not IsDBNull(.Fields("notwork").Value) Then frmComputers.chkNotWorkNET.Checked = .Fields("notwork").Value
+
 
             Select Case frmComputers.chkNETspis.Checked
 
@@ -469,6 +472,9 @@ Module MOD_INF_TECH_LOAD
 
             If Not IsDBNull(.Fields("Spisan").Value) Then frmComputers.chkOTHspis.Checked = .Fields("Spisan").Value
             If Not IsDBNull(.Fields("Balans").Value) Then frmComputers.chkOTHNNb.Checked = .Fields("Balans").Value
+            If Not IsDBNull(.Fields("NomNom").Value) Then frmComputers.txtNomNomOTH.Text = .Fields("NomNom").Value
+            If Not IsDBNull(.Fields("notwork").Value) Then frmComputers.chkNotWorkOTH.Checked = .Fields("notwork").Value
+
 
             If Not IsDBNull(.Fields("PCL").Value) Then
                 unaPCL = .Fields("PCL").Value
@@ -568,6 +574,15 @@ Module MOD_INF_TECH_LOAD
             If Not IsDBNull(.Fields("NET_IP_1")) Then frmComputers.txtPrnIP.Text = .Fields("NET_IP_1").Value
             If Not IsDBNull(.Fields("MOL").Value) Then frmComputers.cmbPrMol.Text = .Fields("MOL").Value
 
+            frmComputers.lblPRNPage.Text = ""
+
+            If frmComputers.txtPrnIP.Text <> "" Then
+
+                Call REQUEST_OID_PRN_DB(frmComputers.txtPrnIP.Text, "public")
+
+            End If
+
+
             '###################################################################################
             'Ищем устройства использующие принтер
             '###################################################################################
@@ -580,7 +595,7 @@ Module MOD_INF_TECH_LOAD
 
                 Case Else
 
-                    sSQL1 = "SELECT count(*) as t_n FROM kompy WHERE PORT_1 like'IP_" & frmComputers.txtPrnIP.Text & "' or PORT_2 like 'IP_" & frmComputers.txtPrnIP.Text & "' or PORT_3 like 'IP_" & frmComputers.txtPrnIP.Text & "' "
+                    sSQL1 = "SELECT count(*) as t_n FROM kompy WHERE PORT_1 like'%" & frmComputers.txtPrnIP.Text & "' or PORT_2 like '%" & frmComputers.txtPrnIP.Text & "' or PORT_3 like '%" & frmComputers.txtPrnIP.Text & "' "
                     rs1 = New Recordset
                     rs1.Open(sSQL1, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
 
@@ -646,6 +661,9 @@ Module MOD_INF_TECH_LOAD
 
             If Not IsDBNull(.Fields("Spisan").Value) Then frmComputers.chkPRNspis.Checked = .Fields("Spisan").Value
             If Not IsDBNull(.Fields("Balans").Value) Then frmComputers.chkPRNNNb.Checked = .Fields("Balans").Value
+            If Not IsDBNull(.Fields("NomNom").Value) Then frmComputers.txtNomNomPrn.Text = .Fields("NomNom").Value
+            If Not IsDBNull(.Fields("notwork").Value) Then frmComputers.chkNotWorkPRN.Checked = .Fields("notwork").Value
+
 
             Select Case frmComputers.chkPRNspis.Checked
 
@@ -789,7 +807,6 @@ Module MOD_INF_TECH_LOAD
 
 
         Call LOAD_CRT(sID)
-
         Call LOAD_GARs(sID, frmComputers.cmbPRNPostav, frmComputers.dtGPRNPr, frmComputers.dtGPRNok)
 
         'Call LOAD_NOTES(sID, frmComputers.lvNotesPRN)
@@ -801,7 +818,7 @@ Module MOD_INF_TECH_LOAD
         On Error Resume Next
         'Обнаруженные картриджи
         frmComputers.lvPRNCartr.Items.Clear()
-        frmComputers.lblPRNPage.Text = ""
+        'frmComputers.lblPRNPage.Text = ""
 
         Dim kol As Long
         Dim uname As String
@@ -822,6 +839,7 @@ Module MOD_INF_TECH_LOAD
         rs1 = Nothing
 
         If kol = 0 Then
+
 
         Else
 
@@ -885,8 +903,11 @@ Module MOD_INF_TECH_LOAD
                     rs2 = Nothing
 
 
-                    frmComputers.lblPRNPage.Text = uname1
 
+                    If Len(frmComputers.lblPRNPage.Text) = 0 Then
+                        frmComputers.lblPRNPage.Text = uname1
+                    Else
+                    End If
 
                     sSQL2 = "SELECT COUNT(*) as total_num FROM CARTRIDG_Z where ID_C =" & scid
                     rs2 = New Recordset
@@ -912,7 +933,6 @@ Module MOD_INF_TECH_LOAD
             End With
 
         End If
-
 
         ResList(frmComputers.lvPRNCartr)
     End Sub
@@ -1734,9 +1754,11 @@ Module MOD_INF_TECH_LOAD
             'sOffice = .Fields("kabn").Value
             sName = .Fields("NET_NAME").Value
 
-            If Not IsDBNull(.Fields("OTvetstvennyj").Value) Then _
-                frmComputers.cmbResponsible.Text = .Fields("OTvetstvennyj").Value
+            If Not IsDBNull(.Fields("OTvetstvennyj").Value) Then frmComputers.cmbResponsible.Text = .Fields("OTvetstvennyj").Value
             If Not IsDBNull(.Fields("MOL").Value) Then frmComputers.cmbMOL.Text = .Fields("MOL").Value
+
+            If Not IsDBNull(.Fields("NomNom").Value) Then frmComputers.txtNomNom.Text = .Fields("NomNom").Value
+
 
             If Not IsDBNull(.Fields("TELEPHONE").Value) Then frmComputers.txtPHONE.Text = .Fields("TELEPHONE").Value
             If Not IsDBNull(.Fields("TIP_COMPA").Value) Then _
@@ -1815,6 +1837,9 @@ Module MOD_INF_TECH_LOAD
 
 
             If Not IsDBNull(.Fields("Balans").Value) Then frmComputers.chkPCNNb.Checked = .Fields("Balans").Value
+
+            If Not IsDBNull(.Fields("notwork").Value) Then frmComputers.chkNotWorkPC.Checked = .Fields("notwork").Value
+
 
             If Not IsDBNull(.Fields("PCL").Value) Then
 
@@ -1982,6 +2007,9 @@ Module MOD_INF_TECH_LOAD
 
             If Not IsDBNull(.Fields("Spisan").Value) Then frmComputers.chkOTHspis.Checked = .Fields("Spisan").Value
             If Not IsDBNull(.Fields("Balans").Value) Then frmComputers.chkOTHNNb.Checked = .Fields("Balans").Value
+            If Not IsDBNull(.Fields("NomNom").Value) Then frmComputers.txtNomNomOTH.Text = .Fields("NomNom").Value
+            If Not IsDBNull(.Fields("notwork").Value) Then frmComputers.chkNotWorkOTH.Checked = .Fields("notwork").Value
+
 
             If Not IsDBNull(.Fields("PCL").Value) Then
                 unaPCL = .Fields("PCL").Value
@@ -2036,7 +2064,6 @@ Module MOD_INF_TECH_LOAD
 
         lstSoftware.Sorting = SortOrder.None
         lstSoftware.ListViewItemSorter = Nothing
-
 
         Dim rs As Recordset 'Объявляем рекордсет
         Dim sSQL As String 'Переменная, где будет размещён SQL запрос

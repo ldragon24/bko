@@ -510,6 +510,8 @@ Public Class frmSetup
         ComboBox2.Text = objIniFile.GetString("General", "TechINF", "AIDA64(Everest)")
         sTechINF = ComboBox2.Text
 
+        txtLDAP.Text = objIniFile.GetString("General", "LDAP", "")
+
 
         Dim rs As Recordset
         rs = New Recordset
@@ -1082,6 +1084,11 @@ Public Class frmSetup
         End Select
 
         DB7.Execute(sSQL)
+
+        Dim objIniFile As New IniFile(PrPath & "base.ini")
+
+        objIniFile.WriteString("General", "LDAP", txtLDAP.Text)
+
 
         'rs = New Recordset
         'rs.Open("Select * from CONFIGURE", DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)

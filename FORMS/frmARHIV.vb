@@ -61,8 +61,6 @@ Public Class frmARHIV
         Me.lvArh.Sorting() = SortOrder.Ascending
         Me.lvArh.ListViewItemSorter() = New ListViewItemComparer(0)
 
-
-
         Try
             ' Only get files that begin with the letter "c."
             Dim dirs As String() = Directory.GetFiles(PrPath, "arhiv\*.zip")
@@ -98,20 +96,14 @@ Public Class frmARHIV
                     My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build & "." &
                     My.Application.Info.Version.Revision & ".zip"
 
+        dirs = Replace(BasePath, "\\", "\")
 
         Dim folderName As String = dirs
 
-        If _
-            (((Not folderName Is Nothing) AndAlso (folderName <> "")) AndAlso
-             ((Not sFIleName Is Nothing) AndAlso (sFIleName <> ""))) Then
+        If (((Not folderName Is Nothing) AndAlso (folderName <> "")) AndAlso ((Not sFIleName Is Nothing) AndAlso (sFIleName <> ""))) Then
 
             If File.Exists(sFIleName) Then
-                If _
-                    (MessageBox.Show(
-                        String.Format(
-                            "The file you have specified ({0}) already exists.  Do you want to overwrite this file?",
-                            sFIleName), "Confirmation is Required",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) <> DialogResult.Yes) Then
+                If (MessageBox.Show(String.Format("The file you have specified ({0}) already exists.  Do you want to overwrite this file?", sFIleName), "Confirmation is Required", MessageBoxButtons.YesNo, MessageBoxIcon.Question) <> DialogResult.Yes) Then
                     Return
                 End If
                 File.Delete(sFIleName)

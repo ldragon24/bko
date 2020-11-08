@@ -1,13 +1,13 @@
 ﻿Imports Microsoft.Office.Interop.Word
 
 Module MOD_INVENT
+
     Public Sub INVENT()
 
         Dim uname As String
         Dim sSQL, bTEH, sTEH As String
 
         Dim LNGIniFile As New IniFile(sLANGPATH)
-
 
         Dim TEH1 As String
         Dim TEH2 As String
@@ -1194,13 +1194,13 @@ Module MOD_INVENT
         rs.Close()
         rs = Nothing
 
-        Select sOfficePACK
+        Select Case sOfficePACK
 
             Case "OpenOffice.org"
 
                 Dim oSM As Object                 'Root object for accessing OpenOffice FROM VB
                 Dim oDesk, oDoc As Object 'First objects FROM the API
-                Dim arg(- 1) As Object                 'Ignore it for the moment !
+                Dim arg(-1) As Object                 'Ignore it for the moment !
                 'Dim mmerge As Object
                 Dim objCoreReflection As Object ' objects from OOo API 
 
@@ -1226,12 +1226,10 @@ Module MOD_INVENT
                 ' replace all
                 ' Dim oSrch As Object
 
-
                 objCursor.setPropertyValue("CharColor", 255)
                 objCursor.setPropertyValue("CharShadowed", True)
 
                 'LNGIniFile.GetString("MOD_INVENT", "MSG1", "Количество единиц техники по типам:")
-
 
                 objText.insertString(objCursor,
                                      LNGIniFile.GetString("MOD_INVENT", "MSG1", "Количество единиц техники по типам:") &

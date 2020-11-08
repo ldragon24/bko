@@ -902,11 +902,11 @@ nextA:
         uname = everIniFile.GetString("Принтеры", "Принтеры1|Свойства принтера|Имя принтера", "")
 
 
-        If uname = "Fax" Or uname = "Microsoft XPS Document Writer" Or uname = "Отправить в OneNote 2010" Then
+        If uname = "Fax" Or uname = "PDF24" Or uname = "Microsoft XPS Document Writer" Or uname = "Отправить в OneNote 2010" Then
             uname = everIniFile.GetString("Суммарная информация", "Периферийные устройства|Принтер1", "")
         End If
 
-        If uname = "Fax" Or uname = "Microsoft XPS Document Writer" Or uname = "Отправить в OneNote 2010" Then
+        If uname = "Fax" Or uname = "PDF24" Or uname = "Microsoft XPS Document Writer" Or uname = "Отправить в OneNote 2010" Then
 
         Else
             frmComputers.cmbPrinters1.Text = uname
@@ -919,11 +919,11 @@ nextA:
         uname = everIniFile.GetString("Принтеры", "Принтеры2|Свойства принтера|Имя принтера", "")
 
 
-        If uname = "Fax" Or uname = "Microsoft XPS Document Writer" Or uname = "Отправить в OneNote 2010" Then
+        If uname = "Fax" Or uname = "PDF24" Or uname = "Microsoft XPS Document Writer" Or uname = "Отправить в OneNote 2010" Then
             uname = everIniFile.GetString("Суммарная информация", "Периферийные устройства|Принтер2", "")
         End If
 
-        If uname = "Fax" Or uname = "Microsoft XPS Document Writer" Or uname = "Отправить в OneNote 2010" Then
+        If uname = "Fax" Or uname = "PDF24" Or uname = "Microsoft XPS Document Writer" Or uname = "Отправить в OneNote 2010" Then
 
         Else
             frmComputers.cmbPrinters2.Text = uname
@@ -935,11 +935,11 @@ nextA:
         uname = everIniFile.GetString("Принтеры", "Принтеры1|Свойства принтера|Имя принтера", "")
 
 
-        If uname = "Fax" Or uname = "Microsoft XPS Document Writer" Or uname = "Отправить в OneNote 2010" Then
+        If uname = "Fax" Or uname = "PDF24" Or uname = "Microsoft XPS Document Writer" Or uname = "Отправить в OneNote 2010" Then
             uname = everIniFile.GetString("Суммарная информация", "Периферийные устройства|Принтер3", "")
         End If
 
-        If uname = "Fax" Or uname = "Microsoft XPS Document Writer" Or uname = "Отправить в OneNote 2010" Then
+        If uname = "Fax" Or uname = "PDF24" Or uname = "Microsoft XPS Document Writer" Or uname = "Отправить в OneNote 2010" Then
 
         Else
             frmComputers.cmbPrinters3.Text = uname

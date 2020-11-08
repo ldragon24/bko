@@ -626,21 +626,20 @@ Module MOD_LOAD_WMI
         Dim intj As Integer = 1
         For Each queryObj As ManagementObject In searcher.Get()
 
-            Select Case intj
 
-                Case 1
+            Select Case queryObj("Name")
 
-                    frmComputers.cmbPrinters1.Text = queryObj("Name")
-                    'frmComputers.PROizV34.Text = queryObj("Manufacturer")
+                Case "Fax"
 
-                Case 2
+                Case "PDF24"
 
-                    frmComputers.cmbPrinters2.Text = queryObj("Name")
-                    'frmComputers.PROizV35.Text = queryObj("Manufacturer")
-                Case 3
+                Case "Microsoft XPS Document Writer"
 
-                    frmComputers.cmbPrinters3.Text = queryObj("Name")
-                    'frmComputers.PROizV36.Text = queryObj("Manufacturer")
+                Case Else
+
+                    If Len(frmComputers.cmbPrinters1.Text) = 0 Then
+                        frmComputers.cmbPrinters1.Text = queryObj("Name")
+                    End If
 
             End Select
 

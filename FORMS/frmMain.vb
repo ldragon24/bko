@@ -831,7 +831,7 @@ err_:
     End Sub
 
     Private Sub BugTrackerToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BugTrackerToolStripMenuItem.Click
-        System.Diagnostics.Process.Start("http://code.google.com/p/bko/issues/list")
+        System.Diagnostics.Process.Start("https://github.com/ldragon24/bko/issues")
     End Sub
 
     Private Sub MailToAuthors_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MailToAuthors.Click
@@ -964,7 +964,7 @@ err_:
 
     Private Sub ПроверитьОбновлениеToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ПроверитьОбновлениеToolStripMenuItem.Click
 
-        System.Diagnostics.Process.Start("http://code.google.com/p/bko/downloads/list")
+        System.Diagnostics.Process.Start("https://github.com/ldragon24/bko")
 
         'Dim reader As XmlNodeReader = Nothing
 
@@ -1032,7 +1032,6 @@ err_:
         Dim sTMP As String
         Dim ePatch As String
 
-
         ePatch = Directory.GetParent(Application.ExecutablePath).ToString & "\blanks"
 
         Dim fdlg As OpenFileDialog = New OpenFileDialog()
@@ -1061,13 +1060,11 @@ err_:
 
                 If Len(sTMP) > 3 Then Call blanks_my_o(fdlg.FileName)
 
-
             Case Else
 
                 If Len(sTMP) > 3 Then Call blanks_my_wrd(fdlg.FileName)
 
         End Select
-
 
         Me.Cursor = Cursors.Default
     End Sub
@@ -1390,6 +1387,8 @@ err_:
 
         Call LOAD_PCL(frmComputers.cmbOTHFil.Text, frmComputers.cmbOTHDepart.Text, frmComputers.cmbOTHOffice.Text, frmComputers.cmbOTHPCL, frmComputers.cmbOTHotv.Text, frmComputers.sCOUNT)
 
+
+
     End Sub
 
     Private Sub ЗагрузитьИзCSVEverestToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ЗагрузитьИзCSVEverestToolStripMenuItem.Click
@@ -1402,10 +1401,10 @@ err_:
         Dim fdlg As OpenFileDialog = New OpenFileDialog()
         Dim LNGIniFile As New IniFile(sLANGPATH)
 
-        fdlg.Title = LNGIniFile.GetString("frmMain", "MSG3", "Загрузка из Everest Corporate Edition")
+        fdlg.Title = LNGIniFile.GetString("frmMain", "MSG12", "Загрузка из CHECKCFG")
 
         fdlg.InitialDirectory = ePatch
-        fdlg.Filter = "csv files (*.csv)|*.csv"
+        fdlg.Filter = "CHECKCFG files (*.*)|*.*"
         fdlg.FilterIndex = 2
 
         fdlg.RestoreDirectory = True
@@ -1413,7 +1412,7 @@ err_:
         If fdlg.ShowDialog() = DialogResult.OK Then
             Me.Cursor = Cursors.WaitCursor
 
-            EverestFilePatch = fdlg.FileName
+            CHECKCFGFilePatch = fdlg.FileName
 
         End If
         frmComputers.selectTECMesto()
@@ -1427,11 +1426,15 @@ err_:
         frmComputers.sSTAB4.Visible = False
         frmComputers.sSTAB5.Visible = False
 
-        'If Len(EverestFilePatch) > 3 Then Call ReadFromFile(EverestFilePatch)
+        If Len(CHECKCFGFilePatch) > 3 Then Call CHECKCFG_Load()
 
         frmComputers.cmbBranch.Text = sBranch
         frmComputers.cmbDepartment.Text = sDepartment
         frmComputers.cmbOffice.Text = sOffice
+
+        Call LOAD_PCL(sBranch, sDepartment, sOffice, frmComputers.cmbPCLK, frmComputers.cmbResponsible.Text, frmComputers.sCOUNT)
+
+        'Call LOAD_PCL(frmComputers.cmbOTHFil.Text, frmComputers.cmbOTHDepart.Text, frmComputers.cmbOTHOffice.Text, frmComputers.cmbOTHPCL, frmComputers.cmbcmbResponsibleOTHotv.Text, frmComputers.sCOUNT)
 
         Me.Cursor = Cursors.Default
 
@@ -1674,6 +1677,8 @@ err_:
         frmComputers.cmbOffice.Text = sOffice
 
         Me.Cursor = Cursors.Default
+        Call LOAD_PCL(sBranch, sDepartment, sOffice, frmComputers.cmbPCLK, frmComputers.cmbResponsible.Text, frmComputers.sCOUNT)
+
 
     End Sub
 
@@ -1980,6 +1985,7 @@ ADD:
 
         frmComputers.EDT = False
         TipTehn = "PC"
+        Call LOAD_PCL(sBranch, sDepartment, sOffice, frmComputers.cmbPCLK, frmComputers.cmbResponsible.Text, frmComputers.sCOUNT)
 
     End Sub
 

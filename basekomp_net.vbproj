@@ -12,7 +12,7 @@
     <AssemblyName>basekomp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -126,24 +126,33 @@
     <ManifestKeyFile>basekomp_net_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="adodb, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.2, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Release\Ionic.Zip.dll</HintPath>
+      <HintPath>.\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>bin\Release\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>.\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>bin\Release\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>.\Microsoft.Office.Interop.Word.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="SnmpSharpNet">
+    <Reference Include="SnmpSharpNet, Version=0.9.4.0, Culture=neutral, PublicKeyToken=b2181aa3b9571feb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>.\SnmpSharpNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Messaging" />
@@ -392,6 +401,7 @@
     <Compile Include="MODULES\factors.vb" />
     <Compile Include="MODULES\ListViewComparer.vb">
     </Compile>
+    <Compile Include="MODULES\MOD_CHECKCFG_LOAD.vb" />
     <Compile Include="MODULES\MOD_QRCODE.vb" />
     <Compile Include="MODULES\MOD_ALTER_DB.vb" />
     <Compile Include="MODULES\MOD_ASTRA_LOAD.vb" />
@@ -575,15 +585,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="ADODB">
-      <Guid>{2A75196C-D9EB-4129-B803-931327F72D5C}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>8</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="JRO">
       <Guid>{AC3B8B4C-B6CA-11D1-9F31-00C04FC29D52}</Guid>
       <VersionMajor>2</VersionMajor>

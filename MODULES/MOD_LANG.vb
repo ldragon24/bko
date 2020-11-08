@@ -1055,6 +1055,16 @@ Module modLang
         frmComputers.РаспискаToolStripMenuItem.Text = objIniFile.GetString("frmserviceDesc", "Button1", "Расписка")
         frmComputers.БланкToolStripMenuItem.Text = objIniFile.GetString("frmMain", "19", "Бланк")
 
+        frmComputers.chkNotWorkPC.Text = objIniFile.GetString("frmComputers", "chkNotWorkPC", "Не в работе")
+        frmComputers.chkNotWorkOTH.Text = objIniFile.GetString("frmComputers", "chkNotWorkOTH", "Не в работе")
+        frmComputers.chkNotWorkPRN.Text = objIniFile.GetString("frmComputers", "chkNotWorkPRN", "Не в работе")
+        frmComputers.chkNotWorkNET.Text = objIniFile.GetString("frmComputers", "chkNotWorkNET", "Не в работе")
+
+        frmComputers.lblNomNom.Text = objIniFile.GetString("frmComputers", "lblNomNom", "Номенклатурный номер")
+        frmComputers.lblNomNomOTH.Text = objIniFile.GetString("frmComputers", "lblNomNomOTH", "Номенклатурный номер")
+        frmComputers.lblNomNomPrn.Text = objIniFile.GetString("frmComputers", "lblNomNomPRN", "Номенклатурный номер")
+        frmComputers.lblNomNomNET.Text = objIniFile.GetString("frmComputers", "lblNomNomNET", "Номенклатурный номер")
+
 
 
         Exit Sub
