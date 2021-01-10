@@ -49,7 +49,6 @@
         txtMHZ2.Left = txtMHZ1.Left
         txtMHZ2.Width = txtMHZ1.Width
 
-
         Select Case sTEXT
 
             Case "CPU"
@@ -60,6 +59,8 @@
                 FillComboNET(Me.cmbCPU3, "Name", "SPR_CPU", "", False, True)
                 FillComboNET(Me.cmbCPU4, "Name", "SPR_CPU", "", False, True)
 
+                Me.Height = 310
+
             Case "RAM"
                 gbcpu.Text = objIniFile.GetString("frmGarCPL", "MSG2", "Память")
                 FillComboNET(Me.cmbCPU1, "Name", "SPR_RAM", "", False, True)
@@ -67,12 +68,16 @@
                 FillComboNET(Me.cmbCPU3, "Name", "SPR_RAM", "", False, True)
                 FillComboNET(Me.cmbCPU4, "Name", "SPR_RAM", "", False, True)
 
+                Me.Height = 310
+
             Case "HDD"
                 gbcpu.Text = objIniFile.GetString("frmGarCPL", "MSG3", "Жесткий диск")
                 FillComboNET(Me.cmbCPU1, "Name", "SPR_HDD", "", False, True)
                 FillComboNET(Me.cmbCPU2, "Name", "SPR_HDD", "", False, True)
                 FillComboNET(Me.cmbCPU3, "Name", "SPR_HDD", "", False, True)
                 FillComboNET(Me.cmbCPU4, "Name", "SPR_HDD", "", False, True)
+
+                Me.Height = 310
 
             Case "SVGA"
                 gbcpu.Text = objIniFile.GetString("frmGarCPL", "MSG4", "Видео карта")
@@ -96,8 +101,7 @@
                 gbPost.Top = 81
                 btnAdd.Top = 178
                 btnCancel.Top = 178
-                Me.Height = 231
-
+                Me.Height = 241
 
                 FillComboNET(Me.cmbCPU1, "Name", "SPR_SVGA", "", False, True)
                 FillComboNET(Me.cmbCPU2, "Name", "SPR_SVGA", "", False, True)
@@ -109,7 +113,7 @@
                 gbPost.Top = 52
                 btnAdd.Top = 149
                 btnCancel.Top = 149
-                Me.Height = 198
+                Me.Height = 208
 
                 cmbCPU2.Visible = False
                 cmbCPU3.Visible = False
@@ -140,7 +144,7 @@
                 gbPost.Top = 81
                 btnAdd.Top = 178
                 btnCancel.Top = 178
-                Me.Height = 231
+                Me.Height = 241
 
                 cmbCPU2.Visible = False
                 cmbCPU3.Visible = False
@@ -165,7 +169,7 @@
                 gbPost.Top = 102
                 btnAdd.Top = 198
                 btnCancel.Top = 198
-                Me.Height = 248
+                Me.Height = 258
 
                 cmbCPU4.Visible = False
                 txtMHZ4.Visible = False
@@ -196,7 +200,7 @@
                 gbPost.Top = 81
                 btnAdd.Top = 178
                 btnCancel.Top = 178
-                Me.Height = 231
+                Me.Height = 241
 
                 FillComboNET(Me.cmbCPU1, "Name", "SPR_NET", "", False, True)
                 FillComboNET(Me.cmbCPU2, "Name", "SPR_NET", "", False, True)
@@ -208,7 +212,7 @@
                 gbPost.Top = 52
                 btnAdd.Top = 149
                 btnCancel.Top = 149
-                Me.Height = 198
+                Me.Height = 208
 
                 cmbCPU2.Visible = False
                 cmbCPU3.Visible = False
@@ -232,7 +236,7 @@
                 gbPost.Top = 52
                 btnAdd.Top = 149
                 btnCancel.Top = 149
-                Me.Height = 198
+                Me.Height = 208
 
                 cmbCPU2.Visible = False
                 cmbCPU3.Visible = False
@@ -268,7 +272,7 @@
                 gbPost.Top = 81
                 btnAdd.Top = 178
                 btnCancel.Top = 178
-                Me.Height = 231
+                Me.Height = 241
 
                 FillComboNET(Me.cmbCPU1, "Name", "SPR_MONITOR", "", False, True)
                 FillComboNET(Me.cmbCPU2, "Name", "SPR_MONITOR", "", False, True)
@@ -281,7 +285,7 @@
                 gbPost.Top = 52
                 btnAdd.Top = 149
                 btnCancel.Top = 149
-                Me.Height = 198
+                Me.Height = 208
 
                 cmbCPU2.Visible = False
                 cmbCPU3.Visible = False
@@ -305,7 +309,7 @@
                 gbPost.Top = 52
                 btnAdd.Top = 149
                 btnCancel.Top = 149
-                Me.Height = 198
+                Me.Height = 208
 
                 cmbCPU2.Visible = False
                 cmbCPU3.Visible = False
@@ -329,7 +333,7 @@
                 gbPost.Top = 52
                 btnAdd.Top = 149
                 btnCancel.Top = 149
-                Me.Height = 198
+                Me.Height = 208
 
                 cmbCPU2.Visible = False
                 cmbCPU3.Visible = False
@@ -354,7 +358,7 @@
                 gbPost.Top = 52
                 btnAdd.Top = 149
                 btnCancel.Top = 149
-                Me.Height = 198
+                Me.Height = 208
 
                 cmbCPU2.Visible = False
                 cmbCPU3.Visible = False

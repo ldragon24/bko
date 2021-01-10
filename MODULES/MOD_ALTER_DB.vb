@@ -69,11 +69,100 @@ Module MOD_ALTER_DB
 
                 frmLogin.Invoke(New MethodInvoker(AddressOf ALTER_DB_1763))
 
+
+            Case "1.7.6.3"
+
+                frmLogin.Invoke(New MethodInvoker(AddressOf ALTER_DB_1764))
+
             Case Else
 
                 _DBALTER = True
 
         End Select
+
+    End Sub
+
+    Public Sub ALTER_DB_1764()
+        On Error GoTo err_
+
+        If _DBALTER = False Then Exit Sub
+
+        Dim sSQL As String
+
+        sSQL = "ALTER TABLE kompy ADD Part_N_SIS TEXT(50),  dtPlomb Date, Nplomb TEXT(255)"
+
+        Select Case DB_N
+
+            Case "MS SQL 2008"
+
+                sSQL = "ALTER TABLE " & DBtabl & ".dbo.kompy ADD Part_N_SIS nvarchar(255), dtPlomb datetime, Nplomb nvarchar(255)"
+                DB7.Execute(sSQL)
+
+            Case "MS SQL"
+
+                sSQL = "ALTER TABLE " & DBtabl & ".dbo.kompy ADD Part_N_SIS nvarchar(255), dtPlomb datetime, Nplomb nvarchar(255)"
+                DB7.Execute(sSQL)
+
+            Case "MS Access"
+
+                Call frmMain.COMPARE_DB()
+
+                DB7.Execute(sSQL)
+
+            Case "MS Access 2007"
+
+                Call frmMain.COMPARE_DB()
+
+                DB7.Execute(sSQL)
+
+            Case "MySQL"
+
+                sSQL = "ALTER TABLE kompy ADD COLUMN Part_N_SIS varchar(255), ADD COLUMN dtPlomb datetime, ADD COLUMN Nplomb varchar(255)"
+
+                DB7.Execute(sSQL)
+
+            Case "MySQL (MyODBC 5.1)"
+
+                sSQL = "ALTER TABLE kompy ADD COLUMN Part_N_SIS varchar(255), ADD COLUMN dtPlomb datetime, ADD COLUMN Nplomb varchar(255)"
+
+                DB7.Execute(sSQL)
+
+            Case "PostgreSQL"
+
+                sSQL = "ALTER TABLE kompy ADD COLUMN Part_N_SIS varchar(255), ADD COLUMN dtPlomb Date, ADD COLUMN Nplomb varchar(255)"
+
+                DB7.Execute(sSQL)
+
+            Case "SQLLite"
+
+
+            Case "DSN"
+
+                sSQL = "ALTER TABLE kompy ADD COLUMN Part_N_SIS varchar(255), ADD COLUMN dtPlomb Date, ADD COLUMN Nplomb varchar(255)"
+
+                DB7.Execute(sSQL)
+
+        End Select
+
+
+        DB7.Execute("UPDATE kompy SET INV_NO_SYSTEM=INV_NO_PRINTER WHERE TipTehn <> 'PC' And INV_NO_PRINTER <>''")
+        DB7.Execute("UPDATE kompy SET INV_NO_PRINTER='' WHERE TipTehn <> 'PC' And INV_NO_PRINTER <>''")
+
+        DB7.Execute("UPDATE kompy SET INV_NO_SYSTEM=PRINTER_PROIZV_3 WHERE TipTehn = 'NET' And PRINTER_PROIZV_3 <>''")
+        DB7.Execute("UPDATE kompy SET PRINTER_PROIZV_3='' WHERE TipTehn = 'NET' And PRINTER_PROIZV_3 <>''")
+
+
+        DB7.Execute("Update CONFIGURE SET access='1.7.6.4' WHERE access<>'1.7.6.4'")
+
+        _DBALTER = False
+
+        Call NULL_DEL()
+
+        Exit Sub
+err_:
+        MsgBox(Err.Description)
+
+        _DBALTER = True
 
     End Sub
 
@@ -143,33 +232,7 @@ Module MOD_ALTER_DB
         DB7.Execute("Update CONFIGURE SET access='1.7.6.3' WHERE access<>'1.7.6.3'")
         _DBALTER = False
 
-        '####################################################################
-        '####################################################################
-        '####################################################################
-        ' Убираем поля с NULL
-
-        On Error Resume Next
-
-        Dim rs As Recordset
-        rs = New Recordset
-        rs.Open("select * from kompy", DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
-
-        Dim uname As Integer
-
-        If DB_N <> "MS Access" Or DB_N <> "MS Access 2007" Then uname = 2 Else uname = 1
-
-        For lngCounter = 0 To rs.Fields.Count - uname
-
-            If rs.Fields(lngCounter).Name = "id" Or rs.Fields(lngCounter).Name = "ID" Then
-
-            Else
-
-                DB7.Execute("UPDATE kompy SET " & rs.Fields(lngCounter).Name & "= WHERE " & rs.Fields(lngCounter).Name & " IS NULL")
-
-            End If
-        Next
-
-        rs.Close()
+        Call ALTER_DB_1764()
 
         Exit Sub
 err_:
@@ -273,33 +336,7 @@ err_:
         DB7.Execute("Update CONFIGURE SET access='1.7.6.0' WHERE access<>'1.7.6.0'")
         _DBALTER = False
 
-        '####################################################################
-        '####################################################################
-        '####################################################################
-        ' Убираем поля с NULL
-
-        On Error Resume Next
-
-        Dim rs As Recordset
-        rs = New Recordset
-        rs.Open("select * from kompy", DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
-
-        Dim uname As Integer
-
-        If DB_N <> "MS Access" Or DB_N <> "MS Access 2007" Then uname = 2 Else uname = 1
-
-        For lngCounter = 0 To rs.Fields.Count - uname
-
-            If rs.Fields(lngCounter).Name = "id" Or rs.Fields(lngCounter).Name = "ID" Then
-
-            Else
-
-                DB7.Execute("UPDATE kompy SET " & rs.Fields(lngCounter).Name & "= WHERE " & rs.Fields(lngCounter).Name & " IS NULL")
-
-            End If
-        Next
-
-        rs.Close()
+        Call ALTER_DB_1763()
 
         Exit Sub
 err_:
@@ -308,7 +345,6 @@ err_:
         _DBALTER = True
 
     End Sub
-
 
     Public Sub ALTER_DB_17351()
 
@@ -2659,5 +2695,40 @@ err_:
 
         _DBALTER = True
     End Sub
+
+    Public Sub NULL_DEL()
+
+        On Error Resume Next
+
+        Dim rs As Recordset
+        rs = New Recordset
+        rs.Open("select * from kompy", DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
+
+        Dim uname As Integer
+
+        If DB_N <> "MS Access" Or DB_N <> "MS Access 2007" Then uname = 2 Else uname = 1
+
+        For lngCounter = 0 To rs.Fields.Count - uname
+
+            If rs.Fields(lngCounter).Name = "id" Or rs.Fields(lngCounter).Name = "ID" Then
+
+            Else
+
+                DB7.Execute("UPDATE kompy SET " & rs.Fields(lngCounter).Name & "='' WHERE " & rs.Fields(lngCounter).Name & " IS NULL")
+
+            End If
+
+        Next
+
+        rs.Close()
+
+        Exit Sub
+err_:
+        MsgBox(Err.Description)
+
+        _DBALTER = True
+
+    End Sub
+
 
 End Module

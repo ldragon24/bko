@@ -472,6 +472,7 @@ ADR:
 
 
                         If Not IsDBNull(.Fields("stoptime").Value) Then
+
                             If Not IsDBNull(.Fields("startdate").Value) Then
 
                                 Dim A1 As Integer
@@ -494,6 +495,8 @@ ADR:
                                 lvRemont.Items(CInt(intCount)).SubItems.Add("")
 
                             End If
+                        Else
+                            lvRemont.Items(CInt(intCount)).SubItems.Add("")
 
                         End If
 
@@ -1288,7 +1291,7 @@ err:
                     cmbReport2fil.Text = langIni.GetString("frmReports", "MSG1", "Все") And
                     cmbReport2Department.Text = langIni.GetString("frmReports", "MSG1", "Все") Then
 
-                    sSQL = "SELECT Mb_name, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'PC' group by mb"
+                    sSQL = "SELECT Mb_name, COUNT(tiptehn) as tot_num FROM kompy WHERE tiptehn = 'PC' group by Mb_name"
 
                 Else
 
@@ -1296,13 +1299,13 @@ err:
 
 
                         sSQL = "SELECT Mb_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
-                               cmbReport2fil.Text & "' AND tiptehn = 'PC' group by mb"
+                               cmbReport2fil.Text & "' AND tiptehn = 'PC' group by Mb_name"
 
                     Else
 
                         sSQL = "SELECT Mb_name, COUNT(tiptehn) as tot_num FROM kompy WHERE kompy.FILIAL='" &
                                cmbReport2fil.Text & "' and kompy.MESTO='" & cmbReport2Department.Text &
-                               "' AND tiptehn = 'PC' group by mb"
+                               "' AND tiptehn = 'PC' group by Mb_name"
 
                     End If
                 End If
@@ -2839,7 +2842,7 @@ err_:
             cifTeh(52) = 0
         End If
 
-       
+
     End Sub
 
     Private Sub Refresh_otdellist()
@@ -3561,8 +3564,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3581,8 +3584,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3600,8 +3603,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3619,8 +3622,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3638,8 +3641,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3657,8 +3660,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3684,8 +3687,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("-")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("-")
                             End If
@@ -3703,8 +3706,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3722,8 +3725,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_MONITOR").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_MONITOR").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3735,7 +3738,7 @@ Error_:
                             LvKompOtd.Items(CInt(intj)).SubItems.Add(langIni.GetString("frmReports", "B(62)",
                                                                                        "Сетевое оборудование"))
                             LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("PORT_1").Value)
-                            LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("PRINTER_PROIZV_3").Value)
+                            LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
 
                             ' LvKompOtd.Items(CInt(intj)).SubItems.Add(tUNAME)
 
@@ -3750,8 +3753,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3768,8 +3771,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3786,8 +3789,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3805,8 +3808,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3824,8 +3827,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3844,8 +3847,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3864,8 +3867,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3883,8 +3886,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -3903,8 +3906,8 @@ Error_:
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                LvKompOtd.Items(CInt(intj)).SubItems.Add(rs.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 LvKompOtd.Items(CInt(intj)).SubItems.Add("")
                             End If
@@ -5181,8 +5184,8 @@ Err_:
                         lvOTV.Items.Add(
                             langIni.GetString("frmReports", "MSG30", "Принтер") & " - " & .Fields("NET_NAME").Value)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5203,8 +5206,8 @@ Err_:
                         lvOTV.Items.Add(
                             langIni.GetString("frmReports", "MSG30", "Принтер") & " - " & .Fields("NET_NAME").Value)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5238,8 +5241,8 @@ Err_:
 
                         lvOTV.Items.Add(unameZ)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5261,8 +5264,8 @@ Err_:
                         lvOTV.Items.Add(
                             langIni.GetString("frmReports", "MSG31", "Копир") & " - " & .Fields("NET_NAME").Value)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5283,7 +5286,7 @@ Err_:
                         lvOTV.Items.Add(
                             langIni.GetString("frmReports", "MSG32", "Сетевое оборудование") & " - " &
                             .Fields("NET_NAME").Value)
-                        lvOTV.Items(intj).SubItems.Add(.Fields("PRINTER_PROIZV_3").Value)
+                        lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         lvOTV.Items(intj).SubItems.Add(.Fields("port_1").Value)
                         lvOTV.Items(intj).SubItems.Add(
                             .Fields("FILIAL").Value & "/" & .Fields("mesto").Value & "/" & .Fields("kabn").Value)
@@ -5293,8 +5296,8 @@ Err_:
                         lvOTV.Items.Add(
                             langIni.GetString("frmReports", "MSG24", "Фотоаппарат") & " - " & .Fields("NET_NAME").Value)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5315,8 +5318,8 @@ Err_:
                         lvOTV.Items.Add(
                             langIni.GetString("frmReports", "MSG22", "Телефон") & " - " & .Fields("NET_NAME").Value)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5338,8 +5341,8 @@ Err_:
                         lvOTV.Items.Add(
                             langIni.GetString("frmReports", "MSG23", "Факс") & " - " & .Fields("NET_NAME").Value)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5360,8 +5363,8 @@ Err_:
                         lvOTV.Items.Add(
                             langIni.GetString("frmReports", "MSG33", "Сканер") & " - " & .Fields("NET_NAME").Value)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5382,8 +5385,8 @@ Err_:
                         lvOTV.Items.Add(
                             langIni.GetString("frmReports", "MSG34", "Дисковод ZIP") & " - " & .Fields("NET_NAME").Value)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5404,7 +5407,7 @@ Err_:
                     Case "MONITOR"
                         lvOTV.Items.Add(
                             langIni.GetString("frmReports", "MSG9", "Монитор") & " - " & .Fields("NET_NAME").Value)
-                        lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_MONITOR").Value)
+                        lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         lvOTV.Items(intj).SubItems.Add(.Fields("MONITOR_SN").Value)
                         lvOTV.Items(intj).SubItems.Add(
                             .Fields("FILIAL").Value & "/" & .Fields("mesto").Value & "/" & .Fields("kabn").Value)
@@ -5428,8 +5431,8 @@ Err_:
 
                         lvOTV.Items.Add(unameZ)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5464,8 +5467,8 @@ Err_:
 
                         lvOTV.Items.Add(unameZ)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5500,8 +5503,8 @@ Err_:
 
                         lvOTV.Items.Add(unameZ)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5535,8 +5538,8 @@ Err_:
 
                         lvOTV.Items.Add(unameZ)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5571,8 +5574,8 @@ Err_:
 
                         lvOTV.Items.Add(unameZ)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 
@@ -5607,8 +5610,8 @@ Err_:
 
                         lvOTV.Items.Add(unameZ)
 
-                        If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                        If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                            lvOTV.Items(intj).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                         Else
                             lvOTV.Items(intj).SubItems.Add("")
 

@@ -146,41 +146,30 @@ Public Class frmComputers
 
             Case "0"
 
-                ОтделитьПринтерыИМониторыToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG1",
-                                                                                     "Отделить периферию")
-                ВернутьПерефериюToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG1.1",
-                                                                            "Присоеденить периферию")
+                ОтделитьПринтерыИМониторыToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG1", "Отделить периферию")
+                ВернутьПерефериюToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG1.1", "Присоеденить периферию")
 
             Case "1"
 
-                ОтделитьПринтерыИМониторыToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG2",
-                                                                                     "Отделить мониторы")
-                ВернутьПерефериюToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG2.1",
-                                                                            "Присоеденить мониторы")
+                ОтделитьПринтерыИМониторыToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG2", "Отделить мониторы")
+                ВернутьПерефериюToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG2.1", "Присоеденить мониторы")
             Case "2"
 
-                ОтделитьПринтерыИМониторыToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG3",
-                                                                                     "Отделить принтеры")
-                ВернутьПерефериюToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG3.1",
-                                                                            "Присоеденить принтеры")
+                ОтделитьПринтерыИМониторыToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG3", "Отделить принтеры")
+                ВернутьПерефериюToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG3.1", "Присоеденить принтеры")
             Case "3"
 
-                ОтделитьПринтерыИМониторыToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG4",
-                                                                                     "Отделить ИБП")
+                ОтделитьПринтерыИМониторыToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG4", "Отделить ИБП")
                 ВернутьПерефериюToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG4.1", "Присоеденить ИБП")
 
             Case "4"
 
-                ОтделитьПринтерыИМониторыToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG5",
-                                                                                     "Отделить клавиатуры и мыши")
-                ВернутьПерефериюToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG5.1",
-                                                                            "Присоеденить клавиатуры и мыши")
+                ОтделитьПринтерыИМониторыToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG5", "Отделить клавиатуры и мыши")
+                ВернутьПерефериюToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG5.1", "Присоеденить клавиатуры и мыши")
             Case "5"
 
-                ОтделитьПринтерыИМониторыToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG6",
-                                                                                     " Отделить сетевые фильтры")
-                ВернутьПерефериюToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG6.1",
-                                                                            "Присоеденить сетевые фильтры")
+                ОтделитьПринтерыИМониторыToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG6", " Отделить сетевые фильтры")
+                ВернутьПерефериюToolStripMenuItem.Text = langfile.GetString("frmComputers", "MSG6.1", "Присоеденить сетевые фильтры")
         End Select
 
         MassRazdelPerf.Text = ОтделитьПринтерыИМониторыToolStripMenuItem.Text
@@ -270,6 +259,7 @@ Public Class frmComputers
         dtNETSpisanie.Value = Date.Today
         dtPRNSpisanie.Value = Date.Today
         dtOTHSpisanie.Value = Date.Today
+        dtPlomb.Value = Date.Today
 
     End Sub
 
@@ -446,6 +436,7 @@ Public Class frmComputers
         ToolTip1.SetToolTip(PROizV41, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
         ToolTip1.SetToolTip(PROizV42, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
         ToolTip1.SetToolTip(PROizV43, LNGIniFile.GetString("frmComputers", "ToolTips24", "Производитель"))
+        ToolTip1.SetToolTip(txtPNSB, LNGIniFile.GetString("frmComputers", "ToolTips25", "Парт номер"))
 
         ToolTip1.SetToolTip(txtRamSN1, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
         ToolTip1.SetToolTip(txtRamSN2, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
@@ -481,6 +472,7 @@ Public Class frmComputers
         ToolTip1.SetToolTip(txtSNIBP, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
         ToolTip1.SetToolTip(txtPRNSN, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
         ToolTip1.SetToolTip(txtOTHSN, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+
     End Sub
 
     Private Sub frmComputers_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
@@ -677,6 +669,7 @@ Public Class frmComputers
         WaterMark.Edit_SetCueBannerTextFocused(txtSNIBP, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
         WaterMark.Edit_SetCueBannerTextFocused(txtPRNSN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
         WaterMark.Edit_SetCueBannerTextFocused(txtOTHSN, False, LNGIniFile.GetString("frmComputers", "ToolTips6", "Cерийный номер"))
+        WaterMark.Edit_SetCueBannerTextFocused(txtPNSB, False, LNGIniFile.GetString("frmComputers", "ToolTips25", "Парт номер"))
 
         WaterMark.ComboBox_SetCueBannerText(txtUserName, lblUsername.Text)
         WaterMark.Edit_SetCueBannerTextFocused(txtUserPass, False, lbluserPassword.Text)
@@ -969,6 +962,9 @@ Error_:
         Call selectTECMesto()
 
         chkSNMP.Checked = False
+        lblSNMP.Visible = False
+        txtSNMP.Visible = False
+        gbSNMP.Visible = False
 
         Me.Cursor = Cursors.WaitCursor
 
@@ -1250,6 +1246,10 @@ Error_:
                         sSTAB4.Visible = False
                         sSTAB5.Visible = False
 
+                        chkSNMP.Visible = False
+                        lblSNMP.Visible = False
+                        txtSNMP.Visible = False
+
                         lblOTPCL.Visible = False
                         cmbOTHPCL.Visible = False
 
@@ -1279,6 +1279,10 @@ Error_:
                         sSTAB4.Visible = False
                         sSTAB5.Visible = False
 
+                        chkSNMP.Visible = False
+                        lblSNMP.Visible = False
+                        txtSNMP.Visible = False
+
                         lblOTPCL.Visible = False
                         cmbOTHPCL.Visible = False
 
@@ -1301,6 +1305,9 @@ Error_:
                         txtOTHMAC.Visible = True
                         cmbOTHPCL.Visible = True
 
+                        chkSNMP.Visible = False
+                        lblSNMP.Visible = False
+                        txtSNMP.Visible = False
 
                         UpdateToolStripMenuItem.Enabled = False
                         sSTAB3.Visible = True
@@ -1332,6 +1339,9 @@ Error_:
                         txtOTHIP.Visible = False
                         txtOTHMAC.Visible = False
 
+                        chkSNMP.Visible = False
+                        lblSNMP.Visible = False
+                        txtSNMP.Visible = False
 
                         UpdateToolStripMenuItem.Enabled = False
                         sSTAB3.Visible = True
@@ -1362,6 +1372,9 @@ Error_:
                         txtOTHIP.Visible = False
                         txtOTHMAC.Visible = False
 
+                        chkSNMP.Visible = False
+                        lblSNMP.Visible = False
+                        txtSNMP.Visible = False
 
                         UpdateToolStripMenuItem.Enabled = False
                         sSTAB3.Visible = True
@@ -1396,6 +1409,10 @@ Error_:
                         txtOTHMAC.Visible = False
                         lblOTPCL.Visible = True
                         cmbOTHPCL.Visible = True
+
+                        chkSNMP.Visible = False
+                        lblSNMP.Visible = False
+                        txtSNMP.Visible = False
 
                         ' CopyToolStripMenuItem.Enabled = False
                         UpdateToolStripMenuItem.Enabled = False
@@ -1443,6 +1460,9 @@ Error_:
                         txtOTHIP.Visible = False
                         txtOTHMAC.Visible = False
 
+                        chkSNMP.Visible = False
+                        lblSNMP.Visible = False
+                        txtSNMP.Visible = False
 
                         UpdateToolStripMenuItem.Enabled = False
                         sSTAB3.Visible = True
@@ -1473,6 +1493,9 @@ Error_:
                         txtOTHIP.Visible = False
                         txtOTHMAC.Visible = False
 
+                        chkSNMP.Visible = False
+                        lblSNMP.Visible = False
+                        txtSNMP.Visible = False
 
                         UpdateToolStripMenuItem.Enabled = False
                         sSTAB3.Visible = True
@@ -1504,6 +1527,9 @@ Error_:
                         txtOTHIP.Visible = True
                         txtOTHMAC.Visible = True
 
+                        chkSNMP.Visible = True
+                        lblSNMP.Visible = True
+                        txtSNMP.Visible = True
 
                         UpdateToolStripMenuItem.Enabled = False
                         sSTAB3.Visible = True
@@ -1546,6 +1572,9 @@ Error_:
                         txtOTHIP.Visible = False
                         txtOTHMAC.Visible = False
 
+                        chkSNMP.Visible = False
+                        lblSNMP.Visible = False
+                        txtSNMP.Visible = False
 
                         UpdateToolStripMenuItem.Enabled = False
                         sSTAB3.Visible = True
@@ -1576,6 +1605,9 @@ Error_:
                         txtOTHIP.Visible = False
                         txtOTHMAC.Visible = False
 
+                        chkSNMP.Visible = False
+                        lblSNMP.Visible = False
+                        txtSNMP.Visible = False
 
                         UpdateToolStripMenuItem.Enabled = False
                         sSTAB3.Visible = True
@@ -1606,6 +1638,9 @@ Error_:
                         txtOTHIP.Visible = False
                         txtOTHMAC.Visible = False
 
+                        chkSNMP.Visible = False
+                        lblSNMP.Visible = False
+                        txtSNMP.Visible = False
 
                         UpdateToolStripMenuItem.Enabled = False
                         sSTAB3.Visible = True
@@ -1638,6 +1673,9 @@ Error_:
                         txtOTHIP.Visible = False
                         txtOTHMAC.Visible = False
 
+                        chkSNMP.Visible = False
+                        lblSNMP.Visible = False
+                        txtSNMP.Visible = False
 
                         UpdateToolStripMenuItem.Enabled = False
                         sSTAB3.Visible = True
@@ -1656,6 +1694,7 @@ Error_:
                         Me.BeginInvoke(New MethodInvoker(AddressOf D_P_LOAD_t))
 
                 End Select
+
 
                 Call QR_CODE_GENERATE(pb, d(1))
 
@@ -3663,7 +3702,7 @@ err_:
 
         'As the mouse moves over nodes, provide feedback to the user
         'by highlighting the node that is the current drop target
-        Dim pt As Drawing.Point = CType(sender, TreeView).PointToClient(New Drawing.Point(e.X, e.Y))
+        Dim pt As System.Drawing.Point = CType(sender, TreeView).PointToClient(New System.Drawing.Point(e.X, e.Y))
         Dim targetNode As TreeNode = selectedTreeview.GetNodeAt(pt)
 
         'See if the targetNode is currently selected, if so no need to validate again
@@ -4807,7 +4846,7 @@ err_:
         ExLoadParTwo(cmbIBP.Text, PROizV43, "SPR_IBP")
     End Sub
 
-    Private Sub cmbDevNet_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbDevNet.SelectedIndexChanged
+    Private Sub cmbDevNet_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
 
         Dim unI As Long
         Dim uname As String
@@ -6534,12 +6573,11 @@ err_1:
 
     End Sub
 
-    Private Sub treebranche_SelectedValueChanged(ByVal sender As Object, ByVal e As EventArgs) _
-      Handles treebranche.SelectedValueChanged
+    'Private Sub treebranche_SelectedValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles treebranche.SelectedValueChanged
 
-        Me.BeginInvoke(New MethodInvoker(AddressOf TreeBrancheDU))
+    '    ' Me.BeginInvoke(New MethodInvoker(AddressOf TreeBrancheDU))
 
-    End Sub
+    'End Sub
 
     Private Sub TreeBrancheDU()
 
@@ -6553,10 +6591,10 @@ err_1:
         Call RefFilTree(lstGroups)
         '     Me.BeginInvoke(New MethodInvoker(AddressOf R_T_LOAD))
 
-        lstGroups.ExpandAll()
+        ' lstGroups.ExpandAll()
     End Sub
 
-    Private Sub cmbOTHConnect_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cmbOTHConnect.SelectedIndexChanged
+    Private Sub cmbOTHConnect_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
 
         On Error GoTo err_
 
@@ -7104,20 +7142,23 @@ err_:
 
     Private Sub БиркаИнвентарныйНомерToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles БиркаИнвентарныйНомерToolStripMenuItem.Click
 
-
-        Dim oWord As Application
-        Dim oDoc As Document
-        Dim oTable As Table
-        Dim LNGIniFile As New IniFile(sLANGPATH)
-
-        oWord = CreateObject("Word.Application")
-        oWord.Visible = True
-        oDoc = oWord.Documents.Add
-
         Dim rs As Recordset
-        Dim rs1 As Recordset
-
         Dim sSQL As String
+        Dim PIctureLocation As String
+        Dim LNGIniFile As New IniFile(sLANGPATH)
+        Dim INV, INVT As String
+        Dim ORG As String
+
+        rs = New Recordset
+        rs.Open("SELECT ORG FROM CONFIGURE", DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
+
+        With rs
+            If Not IsDBNull(.Fields("ORG").Value) Then ORG = .Fields("ORG").Value
+        End With
+
+        rs.Close()
+        rs = Nothing
+
         sSQL = "SELECT * FROM kompy WHERE id=" & sCOUNT
 
         rs = New Recordset
@@ -7125,28 +7166,115 @@ err_:
 
         With rs
 
-            Dim PIctureLocation As String = PrPath & "\QR_CODE\" & sCOUNT & "_" & .Fields("NET_NAME").Value & ".png"
+            If Not IO.File.Exists(PrPath & "\QR_CODE\" & sCOUNT & "_" & .Fields("NET_NAME").Value & ".png") Then ' Проверка файла
 
-            oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 2)
-            oTable.Range.ParagraphFormat.SpaceAfter = 6
-            oTable.Borders.Enable = True
+            Else
+                PIctureLocation = PrPath & "\QR_CODE\" & sCOUNT & "_" & .Fields("NET_NAME").Value & ".png"
 
-            rs1 = New Recordset
-            rs1.Open("SELECT ORG FROM CONFIGURE", DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
-            Dim ORG As String
+            End If
 
-            With rs1
-                If Not IsDBNull(.Fields("ORG").Value) Then ORG = .Fields("ORG").Value
-            End With
+            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then INV = .Fields("INV_NO_SYSTEM").Value
 
-            rs1.Close()
-            rs1 = Nothing
+            INVT = LNGIniFile.GetString("MOD_OPENOFFICE", "MSG8", "Инвентарный номер")
+
+            If Len(INV) = 0 Then
+                If Not IsDBNull(.Fields("NomNom").Value) Then INV = .Fields("NomNom").Value
+                INVT = LNGIniFile.GetString("MOD_OPENOFFICE", "MSG67", "Номенклатурный номер")
+            End If
+
+            Select Case sOfficePACK
+
+                Case "OpenOffice.org"
+                    '#####################################################################################################
+
+                    Dim oSM As Object                 'Root object for accessing OpenOffice FROM VB
+                    Dim oDesk, oDoc As Object 'First objects FROM the API
+                    Dim arg(-1) As Object                 'Ignore it for the moment !
+                    Dim objCoreReflection As Object ' objects from OOo API 
+
+                    '#####################################################################################################
+                    'Графика
+
+                    '#####################################################################################################
+
+                    oSM = CreateObject("com.sun.star.ServiceManager")
+                    objCoreReflection = oSM.createInstance("com.sun.star.reflection.CoreReflection")
+                    oDesk = oSM.createInstance("com.sun.star.frame.Desktop")
+                    oDoc = oDesk.loadComponentFROMURL("private:factory/swriter", "_blank", 0, arg)
+
+                    Dim objText As Object, objCursor As Object
+                    Dim objTable As Object
+                    Dim objRows, objRow As Object
+
+                    objText = oDoc.GetText
+                    objCursor = objText.createTextCursor
+
+                    objText.insertString(objCursor, " " & vbLf, False)
+                    objCursor.setPropertyValue("CharColor", 255)
+                    objCursor.setPropertyValue("CharShadowed", True)
+
+                    objTable = oDoc.createInstance("com.sun.star.text.TextTable")
+                    objTable.Initialize(1, 2)
+
+                    objText.insertTextContent(objCursor, objTable, False)
+
+                    objRows = objTable.GetRows
+                    objRow = objRows.getByIndex(0)
+
+                    objTable.setPropertyValue("BackTransparent", False)
+                    objTable.setPropertyValue("BackColor", 16777215)
+
+                    objRow.setPropertyValue("BackTransparent", False)
+                    objRow.setPropertyValue("BackColor", 16777215)
+
+                    insertIntoCell("A1", INVT & " №:" & vbNewLine & INV & vbNewLine & .Fields("NET_NAME").Value & vbNewLine & ORG, objTable)
+
+                    If Not IO.File.Exists(PrPath & "\QR_CODE\" & sCOUNT & "_" & .Fields("NET_NAME").Value & ".png") Then ' Проверка файла
+
+                        insertIntoCell("B1", "QR Code", objTable)
+
+                    Else
+
+                        'Тут надо сделать код вставки картинки в документ
+                        insertIntoCell("B1", "QR Code", objTable)
+
+                    End If
 
 
+                    objText.insertControlCharacter(objCursor, 0, False)
 
-            oTable.Cell(1, 1).Range.Text = LNGIniFile.GetString("MOD_OPENOFFICE", "MSG8", "Инвентарный номер") & " №:" & vbNewLine & .Fields("INV_NO_SYSTEM").Value & vbNewLine & .Fields("NET_NAME").Value & vbNewLine & ORG
-            oTable.Cell(1, 2).Range.InlineShapes.AddPicture(PIctureLocation, LinkToFile:=False, SaveWithDocument:=True)
 
+                    '#####################################################################################################
+
+                Case Else
+                    '#####################################################################################################
+
+                    Dim oWord As Application
+                    Dim oDoc As Document
+                    Dim oTable As Table
+                    oWord = CreateObject("Word.Application")
+                    oWord.Visible = True
+                    oDoc = oWord.Documents.Add
+
+                    oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 1, 2)
+                    oTable.Range.ParagraphFormat.SpaceAfter = 6
+                    oTable.Borders.Enable = True
+
+                    oTable.Cell(1, 1).Range.Text = INVT & " №:" & vbNewLine & INV & vbNewLine & .Fields("NET_NAME").Value & vbNewLine & ORG
+
+                    If Not IO.File.Exists(PrPath & "\QR_CODE\" & sCOUNT & "_" & .Fields("NET_NAME").Value & ".png") Then ' Проверка файла
+
+                        oTable.Cell(1, 2).Range.Text = "QR Code"
+
+                    Else
+                        oTable.Cell(1, 2).Range.InlineShapes.AddPicture(PIctureLocation, LinkToFile:=False, SaveWithDocument:=True)
+
+                    End If
+
+                    '#####################################################################################################
+
+
+            End Select
 
         End With
 
@@ -7350,5 +7478,8 @@ er1:
         MsgBox(Err.Description)
     End Sub
 
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+
+    End Sub
 End Class
 

@@ -225,8 +225,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin", "MSG6",
                                                                                                  "Принтер"))
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -236,8 +236,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin",
                                                                                                  "MSG13", "Копир"))
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -246,8 +246,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin", "MSG3",
                                                                                                  "Монитор"))
 
-                            If Not IsDBNull(.Fields("INV_NO_MONITOR").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_MONITOR").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -258,8 +258,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin", "MSG8",
                                                                                                  "Сканер"))
 
-                            If Not IsDBNull(.Fields("INV_NO_SCANER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SCANER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -270,8 +270,8 @@
                                                                                                  "MSG14",
                                                                                                  "Сетевое оборудование"))
 
-                            If Not IsDBNull(.Fields("PRINTER_PROIZV_3").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("PRINTER_PROIZV_3").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -282,8 +282,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin",
                                                                                                  "MSG15", "Фотоаппарат"))
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -293,8 +293,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(
                                 .Fields("NET_NAME").Value & " " & .Fields("TIP_COMPA").Value)
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -304,8 +304,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(
                                 .Fields("NET_NAME").Value & " " & .Fields("TIP_COMPA").Value)
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -315,8 +315,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin",
                                                                                                  "MSG18", "Дисковод ZIP"))
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -326,8 +326,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin",
                                                                                                  "MSG16", "Телефон"))
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -337,8 +337,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin", "MSG7",
                                                                                                  "МФУ"))
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -349,8 +349,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin",
                                                                                                  "MSG17", "Факс"))
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -366,8 +366,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin", "MSG9",
                                                                                                  "Источник бесперебойного питания"))
 
-                            If Not IsDBNull(.Fields("INV_NO_IBP").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_IBP").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -377,8 +377,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin", "MSG5",
                                                                                                  "Сетевой фильтр"))
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -388,8 +388,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin", "MSG4",
                                                                                                  "Акустическая система"))
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -398,8 +398,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin", "MSG1",
                                                                                                  "Клавиатура"))
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If
@@ -409,8 +409,8 @@
                             lvNetMagazin.Items(CInt(intCount)).SubItems.Add(LNGIniFile.GetString("frmNetMagazin", "MSG2",
                                                                                                  "Мышь"))
 
-                            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then
-                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_PRINTER").Value)
+                            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then
+                                lvNetMagazin.Items(CInt(intCount)).SubItems.Add(.Fields("INV_NO_SYSTEM").Value)
                             Else
                                 lvNetMagazin.Items(CInt(intCount)).SubItems.Add("")
                             End If

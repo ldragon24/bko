@@ -148,6 +148,7 @@ Partial Class frmMain
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ArhToolZipbutton = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.УдалениеСтрокНулевойДлинныToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
@@ -422,7 +423,7 @@ Partial Class frmMain
         '
         'ОбслуживаниеБДToolStripMenuItem
         '
-        Me.ОбслуживаниеБДToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CompareDBToolStripMenuItem, Me.ЗапросыToolStripMenuItem, Me.CleerDBToolStripMenuItem, Me.ПроверитьФилиалыОтделыToolStripMenuItem})
+        Me.ОбслуживаниеБДToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CompareDBToolStripMenuItem, Me.ЗапросыToolStripMenuItem, Me.CleerDBToolStripMenuItem, Me.ПроверитьФилиалыОтделыToolStripMenuItem, Me.УдалениеСтрокНулевойДлинныToolStripMenuItem})
         Me.ОбслуживаниеБДToolStripMenuItem.Name = "ОбслуживаниеБДToolStripMenuItem"
         Me.ОбслуживаниеБДToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.ОбслуживаниеБДToolStripMenuItem.Text = "Обслуживание БД"
@@ -430,25 +431,25 @@ Partial Class frmMain
         'CompareDBToolStripMenuItem
         '
         Me.CompareDBToolStripMenuItem.Name = "CompareDBToolStripMenuItem"
-        Me.CompareDBToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.CompareDBToolStripMenuItem.Size = New System.Drawing.Size(255, 22)
         Me.CompareDBToolStripMenuItem.Text = "Сжатие"
         '
         'ЗапросыToolStripMenuItem
         '
         Me.ЗапросыToolStripMenuItem.Name = "ЗапросыToolStripMenuItem"
-        Me.ЗапросыToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.ЗапросыToolStripMenuItem.Size = New System.Drawing.Size(255, 22)
         Me.ЗапросыToolStripMenuItem.Text = "Запросы"
         '
         'CleerDBToolStripMenuItem
         '
         Me.CleerDBToolStripMenuItem.Name = "CleerDBToolStripMenuItem"
-        Me.CleerDBToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.CleerDBToolStripMenuItem.Size = New System.Drawing.Size(255, 22)
         Me.CleerDBToolStripMenuItem.Text = "Очистка"
         '
         'ПроверитьФилиалыОтделыToolStripMenuItem
         '
         Me.ПроверитьФилиалыОтделыToolStripMenuItem.Name = "ПроверитьФилиалыОтделыToolStripMenuItem"
-        Me.ПроверитьФилиалыОтделыToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.ПроверитьФилиалыОтделыToolStripMenuItem.Size = New System.Drawing.Size(255, 22)
         Me.ПроверитьФилиалыОтделыToolStripMenuItem.Text = "Проверить структуру"
         '
         'QRCodeTestingToolStripMenuItem
@@ -984,6 +985,12 @@ Partial Class frmMain
         Me.ToolStripButton1.Size = New System.Drawing.Size(52, 19)
         Me.ToolStripButton1.Text = "Отчеты"
         '
+        'УдалениеСтрокНулевойДлинныToolStripMenuItem
+        '
+        Me.УдалениеСтрокНулевойДлинныToolStripMenuItem.Name = "УдалениеСтрокНулевойДлинныToolStripMenuItem"
+        Me.УдалениеСтрокНулевойДлинныToolStripMenuItem.Size = New System.Drawing.Size(255, 22)
+        Me.УдалениеСтрокНулевойДлинныToolStripMenuItem.Text = "Удаление строк нулевой длинны"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1134,5 +1141,6 @@ Partial Class frmMain
     Friend WithEvents ReloginToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Services_ADD As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents СинхронизацияПОToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents УдалениеСтрокНулевойДлинныToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

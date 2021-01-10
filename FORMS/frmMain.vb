@@ -1152,6 +1152,9 @@ err_:
         frmComputers.lblOtIp.Visible = False
         frmComputers.txtOTHIP.Visible = False
         frmComputers.txtOTHMAC.Visible = False
+        frmComputers.chkSNMP.Visible = False
+        frmComputers.lblSNMP.Visible = False
+        frmComputers.txtSNMP.Visible = False
 
         frmComputers.sSTAB3.Visible = True
         frmComputers.sSTAB1.Visible = False
@@ -1185,6 +1188,9 @@ err_:
         frmComputers.lblOtIp.Visible = False
         frmComputers.txtOTHIP.Visible = False
         frmComputers.txtOTHMAC.Visible = False
+        frmComputers.chkSNMP.Visible = False
+        frmComputers.lblSNMP.Visible = False
+        frmComputers.txtSNMP.Visible = False
 
         frmComputers.sSTAB3.Visible = True
         frmComputers.sSTAB1.Visible = False
@@ -1216,6 +1222,9 @@ err_:
         FillComboNET(frmComputers.cmbOTH, "name", "spr_phone", "", False, True)
         frmComputers.lblTipOther.Visible = False
         frmComputers.cmbOTHConnect.Visible = False
+        frmComputers.chkSNMP.Visible = False
+        frmComputers.lblSNMP.Visible = False
+        frmComputers.txtSNMP.Visible = False
 
         frmComputers.lblOTMac.Visible = True
         frmComputers.lblOtIp.Visible = True
@@ -1255,6 +1264,9 @@ err_:
         frmComputers.lblOtIp.Visible = False
         frmComputers.txtOTHIP.Visible = False
         frmComputers.txtOTHMAC.Visible = False
+        frmComputers.chkSNMP.Visible = False
+        frmComputers.lblSNMP.Visible = False
+        frmComputers.txtSNMP.Visible = False
 
         frmComputers.sSTAB3.Visible = True
         frmComputers.sSTAB1.Visible = False
@@ -1374,6 +1386,9 @@ err_:
         frmComputers.txtMonDum.Visible = True
         'frmComputers.txtOTHSN.Left = "471" 'esq 130612"355"
         'frmComputers.txtOTHSN.Width = "146" 'esq 130612"108"
+        frmComputers.chkSNMP.Visible = False
+        frmComputers.lblSNMP.Visible = False
+        frmComputers.txtSNMP.Visible = False
 
         frmComputers.lblTipOther.Visible = False
         frmComputers.cmbOTHConnect.Visible = False
@@ -2020,6 +2035,9 @@ ADD:
         frmComputers.lblOtIp.Visible = False
         frmComputers.txtOTHIP.Visible = False
         frmComputers.txtOTHMAC.Visible = False
+        frmComputers.chkSNMP.Visible = False
+        frmComputers.lblSNMP.Visible = False
+        frmComputers.txtSNMP.Visible = False
 
         frmComputers.sSTAB3.Visible = True
         frmComputers.sSTAB1.Visible = False
@@ -2056,6 +2074,11 @@ ADD:
         frmComputers.txtOTHIP.Visible = True
         frmComputers.txtOTHMAC.Visible = True
 
+        frmComputers.chkSNMP.Visible = True
+        frmComputers.lblSNMP.Visible = True
+        frmComputers.txtSNMP.Visible = True
+
+
         frmComputers.sSTAB3.Visible = True
         frmComputers.sSTAB1.Visible = False
         frmComputers.sSTAB2.Visible = False
@@ -2085,6 +2108,9 @@ ADD:
         FillComboNET(frmComputers.cmbOTH, "name", "SPR_ASISTEM", "", False, True)
         frmComputers.lblTipOther.Visible = False
         frmComputers.cmbOTHConnect.Visible = False
+        frmComputers.chkSNMP.Visible = False
+        frmComputers.lblSNMP.Visible = False
+        frmComputers.txtSNMP.Visible = False
 
         frmComputers.lblOTMac.Visible = False
         frmComputers.lblOtIp.Visible = False
@@ -2126,6 +2152,9 @@ ADD:
         frmComputers.lblOtIp.Visible = False
         frmComputers.txtOTHIP.Visible = False
         frmComputers.txtOTHMAC.Visible = False
+        frmComputers.chkSNMP.Visible = False
+        frmComputers.lblSNMP.Visible = False
+        frmComputers.txtSNMP.Visible = False
 
         frmComputers.sSTAB3.Visible = True
         frmComputers.sSTAB1.Visible = False
@@ -2162,6 +2191,9 @@ ADD:
         frmComputers.lblOtIp.Visible = False
         frmComputers.txtOTHIP.Visible = False
         frmComputers.txtOTHMAC.Visible = False
+        frmComputers.chkSNMP.Visible = False
+        frmComputers.lblSNMP.Visible = False
+        frmComputers.txtSNMP.Visible = False
 
         frmComputers.sSTAB3.Visible = True
         frmComputers.sSTAB1.Visible = False
@@ -2198,6 +2230,9 @@ ADD:
         frmComputers.lblOtIp.Visible = False
         frmComputers.txtOTHIP.Visible = False
         frmComputers.txtOTHMAC.Visible = False
+        frmComputers.chkSNMP.Visible = False
+        frmComputers.lblSNMP.Visible = False
+        frmComputers.txtSNMP.Visible = False
 
         frmComputers.sSTAB3.Visible = True
         frmComputers.sSTAB1.Visible = False
@@ -2853,4 +2888,10 @@ err_:
     End Sub
     'esq *********
 
+    Private Sub УдалениеСтрокНулевойДлинныToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles УдалениеСтрокНулевойДлинныToolStripMenuItem.Click
+
+        Call NULL_DEL()
+
+
+    End Sub
 End Class

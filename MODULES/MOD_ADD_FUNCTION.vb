@@ -103,9 +103,9 @@ ERR1:
                 LockTypeEnum.adLockOptimistic)
 
         With rs
-           
+
             uname = .Fields("id").Value
-               
+
         End With
         rs.Close()
         rs = Nothing
@@ -117,8 +117,8 @@ ERR1:
         AddFOwPar = 1
 
         Exit Function
-        ERR1:
-        AddFOwPar = - 1
+ERR1:
+        AddFOwPar = -1
     End Function
 
     Public Function AddTreePar(ByVal sGroupName As String, ByVal sMHZ As String, ByVal sPR As String,
@@ -153,8 +153,8 @@ ERR1:
 
         AddTreePar = 1
         Exit Function
-        ERR1:
-        AddTreePar = - 1
+ERR1:
+        AddTreePar = -1
     End Function
 
     Public Function AddDepartment(ByVal sBR As String, ByVal sDP As String) As Long
@@ -168,8 +168,8 @@ ERR1:
         AddDepartment = 1
 
         Exit Function
-        ERR1:
-        AddDepartment = - 1
+ERR1:
+        AddDepartment = -1
     End Function
 
     Public Function AddOffice(ByVal sBR As String, ByVal sDP As String, ByVal sOFF As String) As Long
@@ -191,7 +191,30 @@ ERR1:
         AddOffice = 1
 
         Exit Function
-        ERR1:
-        AddOffice = - 1
+ERR1:
+        AddOffice = -1
     End Function
+
+    Public Function AddOTV(ByVal sGroupName As String, ByVal sPhone As String, ByVal sCOMBO As ComboBox) As Long
+        On Error GoTo ERR1
+
+        If Len(sGroupName) = 0 Then Exit Function
+
+        DB7.Execute("INSERT INTO SPR_OTV (Name,C) VALUES ('" & sGroupName & "', '" & sPhone & "')")
+
+        ' sCOMBO.Items.Add(sGroupName)
+
+        frmComputers.cmbPRNotv.Items.Add(sGroupName)
+        frmComputers.cmbNETotv.Items.Add(sGroupName)
+        frmComputers.cmbOTHotv.Items.Add(sGroupName)
+        frmComputers.cmbResponsible.Items.Add(sGroupName)
+
+        AddOTV = 1
+
+        Exit Function
+ERR1:
+        AddOTV = -1
+    End Function
+
+
 End Module

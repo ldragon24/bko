@@ -257,7 +257,7 @@ err_:
         End Select
 
         If Not (RSExists("otv", "name", Trim(frmComputers.cmbOTHotv.Text))) Then
-            AddOnePar(frmComputers.cmbOTHotv.Text, "NAME", "SPR_OTV", frmComputers.cmbOTHotv)
+            AddOTV(frmComputers.cmbOTHotv.Text, frmComputers.txtOTHphone.Text, frmComputers.cmbOTHotv)
         End If
 
         If Not (RSExists("MONITOR", "name", frmComputers.cmbOTH.Text)) Then
@@ -306,11 +306,11 @@ sAR:
 
             Case False
 
-                sSQL = "INSERT INTO kompy (MONITOR_NAME,MONITOR_DUM,MONITOR_SN,Ser_N_SIS,MONITOR_PROIZV,port_1,INV_NO_MONITOR,FILIAL,MESTO,kabn,TELEPHONE,TIPtehn,NET_NAME,PSEVDONIM,PCL) VALUES ('" & frmComputers.cmbOTH.Text & "','" & frmComputers.txtMonDum.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.PROiZV39.Text & "','" & frmComputers.txtOTHmemo.Text & "','" & frmComputers.txtOTHinnumber.Text & "','" & frmComputers.cmbOTHFil.Text & "','" & frmComputers.cmbOTHDepart.Text & "','" & frmComputers.cmbOTHOffice.Text & "','" & frmComputers.txtOTHphone.Text & "','" & TipTehn & "','" & frmComputers.cmbOTH.Text & "','" & frmComputers.cmbOTH.Text & "'," & unaPCL & ")"
+                sSQL = "INSERT INTO kompy (MONITOR_NAME,MONITOR_DUM,MONITOR_SN,Ser_N_SIS,MONITOR_PROIZV,port_1,INV_NO_SYSTEM,FILIAL,MESTO,kabn,TELEPHONE,TIPtehn,NET_NAME,PSEVDONIM,PCL) VALUES ('" & frmComputers.cmbOTH.Text & "','" & frmComputers.txtMonDum.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.PROiZV39.Text & "','" & frmComputers.txtOTHmemo.Text & "','" & frmComputers.txtOTHinnumber.Text & "','" & frmComputers.cmbOTHFil.Text & "','" & frmComputers.cmbOTHDepart.Text & "','" & frmComputers.cmbOTHOffice.Text & "','" & frmComputers.txtOTHphone.Text & "','" & TipTehn & "','" & frmComputers.cmbOTH.Text & "','" & frmComputers.cmbOTH.Text & "'," & unaPCL & ")"
 
             Case True
 
-                sSQL = "UPDATE kompy SET MONITOR_NAME='" & frmComputers.cmbOTH.Text & "', MONITOR_DUM='" & frmComputers.txtMonDum.Text & "', MONITOR_SN='" & frmComputers.txtOTHSN.Text & "', Ser_N_SIS='" & frmComputers.txtOTHSN.Text & "', MONITOR_PROIZV='" & frmComputers.PROiZV39.Text & "', port_1='" & frmComputers.txtOTHmemo.Text & "', INV_NO_MONITOR='" & frmComputers.txtOTHinnumber.Text & "', PCL=" & unaPCL & " WHERE id =" & sSID
+                sSQL = "UPDATE kompy SET MONITOR_NAME='" & frmComputers.cmbOTH.Text & "', MONITOR_DUM='" & frmComputers.txtMonDum.Text & "', MONITOR_SN='" & frmComputers.txtOTHSN.Text & "', Ser_N_SIS='" & frmComputers.txtOTHSN.Text & "', MONITOR_PROIZV='" & frmComputers.PROiZV39.Text & "', port_1='" & frmComputers.txtOTHmemo.Text & "', INV_NO_SYSTEM='" & frmComputers.txtOTHinnumber.Text & "', PCL=" & unaPCL & " WHERE id =" & sSID
 
         End Select
 
@@ -354,6 +354,14 @@ sAR:
         If Len(sSID) = 0 Then
             sSID = frmComputers.sCOUNT
         End If
+
+
+        sSQL = "UPDATE kompy SET " &
+      "Nplomb='" & frmComputers.txtNplombOT.Text & "'," &
+      "dtPlomb='" & frmComputers.dtPlombOT.Value &
+      "' WHERE id =" & sSID
+
+        DB7.Execute(sSQL)
 
 
         sSQL = "UPDATE kompy SET notwork=" & frmComputers.chkNotWorkOTH.Checked & " WHERE id =" & sSID
@@ -584,11 +592,11 @@ sAR:
 
             Case False
 
-                sSQL = "INSERT INTO kompy (PRINTER_NAME_1,PRINTER_SN_1,Ser_N_SIS,PRINTER_PROIZV_1,port_1,INV_NO_PRINTER,TIPtehn,PCL,tip_compa,NET_IP_1) VALUES ('" & frmComputers.cmbOTH.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.PROiZV39.Text & "','" & frmComputers.txtOTHmemo.Text & "','" & frmComputers.txtOTHinnumber.Text & "','" & TipTehn & "'," & unaPCL & ",'" & frmComputers.cmbOTHConnect.Text & "','" & frmComputers.txtOTHIP.Text & "')"
+                sSQL = "INSERT INTO kompy (PRINTER_NAME_1,PRINTER_SN_1,Ser_N_SIS,PRINTER_PROIZV_1,port_1,INV_NO_SYSTEM,TIPtehn,PCL,tip_compa,NET_IP_1) VALUES ('" & frmComputers.cmbOTH.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.txtOTHSN.Text & "','" & frmComputers.PROiZV39.Text & "','" & frmComputers.txtOTHmemo.Text & "','" & frmComputers.txtOTHinnumber.Text & "','" & TipTehn & "'," & unaPCL & ",'" & frmComputers.cmbOTHConnect.Text & "','" & frmComputers.txtOTHIP.Text & "')"
 
             Case True
 
-                sSQL = "UPDATE kompy SET PRINTER_NAME_1='" & frmComputers.cmbOTH.Text & "', PRINTER_SN_1='" & frmComputers.txtOTHSN.Text & "', Ser_N_SIS='" & frmComputers.txtOTHSN.Text & "', PRINTER_PROIZV_1='" & frmComputers.PROiZV39.Text & "', port_1='" & frmComputers.txtOTHMeMo.Text & "', INV_NO_PRINTER='" & frmComputers.txtOTHinnumber.Text & "', TIPtehn='" & TipTehn & "', PCL=" & unaPCL & " , tip_compa='" & frmComputers.cmbOTHConnect.Text & "', NET_IP_1='" & frmComputers.txtOTHIP.Text & "' WHERE id =" & sSID
+                sSQL = "UPDATE kompy SET PRINTER_NAME_1='" & frmComputers.cmbOTH.Text & "', PRINTER_SN_1='" & frmComputers.txtOTHSN.Text & "', Ser_N_SIS='" & frmComputers.txtOTHSN.Text & "', PRINTER_PROIZV_1='" & frmComputers.PROiZV39.Text & "', port_1='" & frmComputers.txtOTHmemo.Text & "', INV_NO_SYSTEM='" & frmComputers.txtOTHinnumber.Text & "', TIPtehn='" & TipTehn & "', PCL=" & unaPCL & " , tip_compa='" & frmComputers.cmbOTHConnect.Text & "', NET_IP_1='" & frmComputers.txtOTHIP.Text & "' WHERE id =" & sSID
 
         End Select
 
@@ -632,6 +640,16 @@ sAR:
         If Len(sSID) = 0 Then
             sSID = frmComputers.sCOUNT
         End If
+
+
+        sSQL = "UPDATE kompy SET " &
+              "Nplomb='" & frmComputers.txtNplombOT.Text & "'," &
+              "dtPlomb='" & frmComputers.dtPlombOT.Value &
+              "' WHERE id =" & sSID
+
+        DB7.Execute(sSQL)
+
+
 
         sSQL = "UPDATE kompy SET notwork=" & frmComputers.chkNotWorkOTH.Checked & " WHERE id =" & sSID
         DB7.Execute(sSQL)
@@ -894,6 +912,13 @@ sAR:
         Call UPDATE_INFORMARION(frmComputers.cmbBranch.Text, frmComputers.cmbDepartment.Text, frmComputers.cmbOffice.Text, frmComputers.txtPHONE.Text, frmComputers.txtSNAME.Text, frmComputers.txtPSEUDONIM.Text, frmComputers.cmbResponsible.Text, frmComputers.cmbMOL.Text, frmComputers.txtNomNom.Text, sSID)
 
         sSQL = "UPDATE kompy SET " &
+                      "Nplomb='" & frmComputers.txtNplomb.Text & "'," &
+                      "dtPlomb='" & frmComputers.dtPlomb.Value &
+                      "' WHERE id =" & sSID
+
+        DB7.Execute(sSQL)
+
+        sSQL = "UPDATE kompy SET " &
                        "CPU1='" & frmComputers.cmbCPU1.Text & "'," &
                        "CPUmhz1='" & frmComputers.txtMHZ1.Text & "'," &
                        "CPUSocket1='" & frmComputers.txtSoc1.Text & "'," &
@@ -1091,6 +1116,7 @@ sAR:
         sSQL = "UPDATE kompy SET " &
             "SYS_PR='" & frmComputers.PROizV27.Text & "'," &
             "Ser_N_SIS='" & frmComputers.txtSNSB.Text & "'," &
+            "Part_N_SIS='" & frmComputers.txtPNSB.Text & "'," &
             "PATH='" & frmComputers.txtModSB.Text & "' " &
                 " WHERE id =" & sSID
 
@@ -1220,8 +1246,8 @@ sAR:
 
                         DB7.Execute("update kompy set OTvetstvennyj='" & frmComputers.cmbResponsible.Text & "', FILIAL='" &
                             frmComputers.cmbBranch.Text & "', mesto='" & frmComputers.cmbDepartment.Text & "', kabn='" &
-                            frmComputers.cmbOffice.Text & "', NomNom='" &
-                            frmComputers.txtNomNom.Text & "' WHERE PCL=" & frmComputers.sCOUNT)
+                            frmComputers.cmbOffice.Text & "', NomNom='" & 
+                            "' WHERE PCL=" & frmComputers.sCOUNT)
 
                 End Select
 
@@ -1806,7 +1832,7 @@ err_:
         End Select
 
         If Not (RSExists("otv", "name", Trim(frmComputers.cmbPRNotv.Text))) Then
-            AddOnePar(frmComputers.cmbPRNotv.Text, "NAME", "SPR_OTV", frmComputers.cmbPRNotv)
+            AddOTV(frmComputers.cmbPRNotv.Text, frmComputers.txtPRNphone.Text, frmComputers.cmbPRNotv)
         End If
 
         Dim rs As Recordset
@@ -1852,7 +1878,7 @@ sAR:
             Case False
 
                 sSQL = "INSERT INTO kompy (PRINTER_NAME_1,PRINTER_SN_1,Ser_N_SIS,PRINTER_PROIZV_1,port_1," &
-                    "INV_NO_PRINTER,TIPtehn,PCL,D_T,os,NET_IP_1,NET_MAC_1,port_2) VALUES ('" &
+                    "INV_NO_SYSTEM,TIPtehn,PCL,D_T,os,NET_IP_1,NET_MAC_1,port_2) VALUES ('" &
                     frmComputers.cmbPRN.Text & "','" &
                     frmComputers.txtPRNSN.Text & "','" &
                     frmComputers.txtPRNSN.Text & "','" &
@@ -1871,7 +1897,7 @@ sAR:
 
                 sSQL = "UPDATE kompy SET PRINTER_NAME_1='" & frmComputers.cmbPRN.Text & "', PRINTER_SN_1='" &
                     frmComputers.txtPRNSN.Text & "', Ser_N_SIS='" & frmComputers.txtPRNSN.Text & "', PRINTER_PROIZV_1='" &
-                    frmComputers.PROiZV38.Text & "', port_1='" & frmComputers.cmbFormat.Text & "', INV_NO_PRINTER='" &
+                    frmComputers.PROiZV38.Text & "', port_1='" & frmComputers.cmbFormat.Text & "', INV_NO_SYSTEM='" &
                     frmComputers.txtPRNinnumber.Text & "', PCL=" & unaPCL & ", os='" & frmComputers.cmbModCartr.Text &
                     "', NET_IP_1='" & frmComputers.txtPrnIP.Text & "',NET_MAC_1='" & frmComputers.txtPRNMAC.Text &
                     "',port_2='" & frmComputers.cmbPRNConnect.Text & "' WHERE id =" & sSID
@@ -2035,7 +2061,7 @@ sAR:
         Dim sSQL As String 'Переменная, где будет размещён SQL запрос
 
         If Not (RSExists("otv", "name", Trim(frmComputers.cmbNETotv.Text))) Then
-            AddOnePar(frmComputers.cmbNETotv.Text, "NAME", "SPR_OTV", frmComputers.cmbNETotv)
+            AddOTV(frmComputers.cmbNETotv.Text, frmComputers.txtNETphone.Text, frmComputers.cmbNETotv)
         End If
 
         If Not (RSExists("DNDEV", "name", frmComputers.cmbNetDev.Text)) Then
@@ -2066,7 +2092,7 @@ sAR:
 
             Case False
 
-                sSQL = "INSERT INTO kompy (PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,NET_IP_1,NET_MAC_1,PRINTER_SN_2,PRINTER_PROIZV_3,PRINTER_SN_3,PRINTER_NAME_4,PRINTER_PROIZV_4,PRINTER_SN_4," &
+                sSQL = "INSERT INTO kompy (PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,NET_IP_1,NET_MAC_1,PRINTER_SN_2,INV_NO_SYSTEM,PRINTER_SN_3,PRINTER_NAME_4,PRINTER_PROIZV_4,PRINTER_SN_4," &
                         "port_2,port_1,Ser_N_SIS,TIPtehn,PCL) VALUES ('" &
                         frmComputers.cmbNetDev.Text & "','" &
                         frmComputers.cmbDevNet.Text & "','" &
@@ -2090,7 +2116,7 @@ sAR:
                         "PRINTER_NAME_1='" & frmComputers.cmbNetDev.Text & "'," &
                         "PRINTER_SN_1='" & frmComputers.cmbDevNet.Text & "'," & "PRINTER_PROIZV_1='" & frmComputers.PROiZV40.Text & "'," &
                         "NET_IP_1='" & frmComputers.txtNetIP.Text & "'," & "NET_MAC_1='" & frmComputers.txtNetMac.Text & "'," &
-                        "PRINTER_SN_2='" & frmComputers.txtNetPort.Text & "'," & "PRINTER_PROIZV_3='" & frmComputers.txtNetINN.Text & "'," &
+                        "PRINTER_SN_2='" & frmComputers.txtNetPort.Text & "'," & "INV_NO_SYSTEM='" & frmComputers.txtNetINN.Text & "'," &
                         "PRINTER_SN_3='" & frmComputers.txtNetIsp.Text & "'," & "PRINTER_NAME_4='" & frmComputers.cmbNetVkl.Text & "'," &
                         "PRINTER_PROIZV_4='" & frmComputers.cmbNetCable.Text & "'," & "PRINTER_SN_4='" & frmComputers.txtNetCableCat.Text & "'," &
                         "port_2='" & frmComputers.txtNetNumberPorts.Text & "'," &
@@ -2138,6 +2164,15 @@ sAR:
         If Len(sSID) = 0 Then
             sSID = frmComputers.sCOUNT
         End If
+
+        sSQL = "UPDATE kompy SET " &
+              "Nplomb='" & frmComputers.txtNplombNET.Text & "'," &
+              "dtPlomb='" & frmComputers.dtPlombNET.Value &
+              "' WHERE id =" & sSID
+
+        DB7.Execute(sSQL)
+
+
 
         sSQL = "UPDATE kompy SET notwork=" & frmComputers.chkNotWorkNET.Checked & " WHERE id =" & sSID
         DB7.Execute(sSQL)
@@ -2511,9 +2546,8 @@ Error_:
         'End If
 
         If Not (RSExists("otv", "name", Trim(frmComputers.cmbResponsible.Text))) Then
-            AddOnePar(frmComputers.cmbResponsible.Text, "NAME", "SPR_OTV", frmComputers.cmbResponsible)
+            AddOTV(frmComputers.cmbResponsible.Text, frmComputers.txtPHONE.Text, frmComputers.cmbResponsible)
         End If
-
 
         If Not (RSExists("TIPS", "TIP", Trim(frmComputers.cmbAppointment.Text))) Then
             AddOnePar(frmComputers.cmbAppointment.Text, "TIP", "SPR_TIP", frmComputers.cmbAppointment)
@@ -2924,7 +2958,7 @@ Error_:
                 rs.Close()
                 rs = Nothing
 
-                sSQL = "SELECT id,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,port_2,INV_NO_PRINTER FROM kompy where PCL=" & sSID & " and tiptehn = 'Printer'"
+                sSQL = "SELECT id,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,port_2,INV_NO_SYSTEM FROM kompy where PCL=" & sSID & " and tiptehn = 'Printer'"
 
                 rs = New Recordset
                 rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
@@ -2947,7 +2981,7 @@ Error_:
                         sSQL = "UPDATE kompy SET " & pField1 & "='" & rs.Fields("PRINTER_NAME_1").Value &
                         "'," & pField2 & "='" & rs.Fields("PRINTER_SN_1").Value &
                         "'," & pField3 & "='" & rs.Fields("PRINTER_PROIZV_1").Value &
-                        "',INV_NO_PRINTER='" & rs.Fields("INV_NO_PRINTER").Value &
+                        "',INV_NO_SYSTEM='" & rs.Fields("INV_NO_SYSTEM").Value &
                         "'," & pField4 & "='" & rs.Fields("port_2").Value &
                         "' where id=" & sSID
 
@@ -2998,7 +3032,7 @@ Error_:
                 rs = Nothing
 
                 'ИБП
-                sSQL = "SELECT id,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,port_1,INV_NO_PRINTER FROM kompy where PCL=" & sSID & " and tiptehn = 'IBP'"
+                sSQL = "SELECT id,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,port_1,INV_NO_SYSTEM FROM kompy where PCL=" & sSID & " and tiptehn = 'IBP'"
 
                 rs = New Recordset
                 rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
@@ -3012,7 +3046,7 @@ Error_:
                         sSQL = "UPDATE kompy SET IBP_NAME='" & rs.Fields("PRINTER_NAME_1").Value & "',IBP_SN='" &
                          rs.Fields("PRINTER_SN_1").Value & "',IBP_PROIZV='" &
                          rs.Fields("PRINTER_PROIZV_1").Value & "',INV_NO_IBP='" &
-                         rs.Fields("INV_NO_PRINTER").Value & "' where id=" & sSID
+                         rs.Fields("INV_NO_SYSTEM").Value & "' where id=" & sSID
 
                         DB7.Execute(sSQL)
 
@@ -3369,7 +3403,7 @@ Error_:
                 rs.Close()
                 rs = Nothing
 
-                sSQL = "SELECT id.PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,INV_NO_PRINTER,port_2 FROM kompy where PCL=" & sSID & " and tiptehn = 'Printer'"
+                sSQL = "SELECT id.PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,INV_NO_SYSTEM,port_2 FROM kompy where PCL=" & sSID & " and tiptehn = 'Printer'"
 
                 rs = New Recordset
                 rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
@@ -3393,7 +3427,7 @@ Error_:
                         sSQL = "UPDATE kompy SET " & pField1 & "='" & rs.Fields("PRINTER_NAME_1").Value &
                         "'," & pField2 & "='" & rs.Fields("PRINTER_SN_1").Value &
                         "'," & pField3 & "='" & rs.Fields("PRINTER_PROIZV_1").Value &
-                        "',INV_NO_PRINTER='" & rs.Fields("INV_NO_PRINTER").Value &
+                        "',INV_NO_SYSTEM='" & rs.Fields("INV_NO_SYSTEM").Value &
                         "'," & pField4 & "='" & rs.Fields("port_2").Value &
                         "' where id=" & sSID
 
@@ -3444,7 +3478,7 @@ Error_:
 
             Case 3 'ИБП
 
-                sSQL = "SELECT id,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,INV_NO_PRINTER FROM kompy where PCL=" & sSID & " and tiptehn = 'IBP'"
+                sSQL = "SELECT id,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,INV_NO_SYSTEM FROM kompy where PCL=" & sSID & " and tiptehn = 'IBP'"
 
                 rs = New Recordset
                 rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
@@ -3458,7 +3492,7 @@ Error_:
                         sSQL = "UPDATE kompy SET IBP_NAME='" & rs.Fields("PRINTER_NAME_1").Value &
                             "',IBP_SN='" & rs.Fields("PRINTER_SN_1").Value &
                             "',IBP_PROIZV='" & rs.Fields("PRINTER_PROIZV_1").Value &
-                            "',INV_NO_IBP='" & rs.Fields("INV_NO_PRINTER").Value & "' where id=" & sSID
+                            "',INV_NO_IBP='" & rs.Fields("INV_NO_SYSTEM").Value & "' where id=" & sSID
 
                         DB7.Execute(sSQL)
 
@@ -3501,7 +3535,7 @@ Error_:
                 rs = Nothing
             Case 4 'Клавиатуры мыши
 
-                sSQL = "SELECT id,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,INV_NO_PRINTER FROM kompy where PCL=" & sSID & " and tiptehn = 'KEYB'"
+                sSQL = "SELECT id,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,INV_NO_SYSTEM FROM kompy where PCL=" & sSID & " and tiptehn = 'KEYB'"
 
                 rs = New Recordset
                 rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
@@ -3556,7 +3590,7 @@ Error_:
                 rs = Nothing
 
 
-                sSQL = "SELECT id,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,INV_NO_PRINTER FROM kompy where PCL=" & sSID & " and tiptehn = 'MOUSE'"
+                sSQL = "SELECT id,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,INV_NO_SYSTEM FROM kompy where PCL=" & sSID & " and tiptehn = 'MOUSE'"
 
                 rs = New Recordset
                 rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
@@ -3613,7 +3647,7 @@ Error_:
 
             Case 5 'Сетевые фильтры
 
-                sSQL = "SELECT id,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,INV_NO_PRINTER FROM kompy where PCL=" & sSID & " and tiptehn = 'FS'"
+                sSQL = "SELECT id,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1,INV_NO_SYSTEM FROM kompy where PCL=" & sSID & " and tiptehn = 'FS'"
 
                 rs = New Recordset
                 rs.Open(sSQL, DB7, CursorTypeEnum.adOpenDynamic, LockTypeEnum.adLockOptimistic)
@@ -3780,7 +3814,7 @@ Error_:
                         Dim sSQL As String
 
                         sSQL = "INSERT INTO kompy (D_T,TIPtehn,PRINTER_NAME_1,PRINTER_SN_1,PRINTER_PROIZV_1" &
-                               ",INV_NO_PRINTER,port_1,FILIAL,mesto,kabn,OTvetstvennyj,TELEPHONE,NET_IP_1,NET_MAC_1,OS," &
+                               ",INV_NO_SYSTEM,port_1,FILIAL,mesto,kabn,OTvetstvennyj,TELEPHONE,NET_IP_1,NET_MAC_1,OS," &
                                "NET_NAME,PSEVDONIM,PCL,port_2," &
                                "SFAktNo,CenaRub,StoimRub,Zaiavk,DataVVoda,dataSF,Spisan,Balans) VALUES ('" &
                                Date.Today &

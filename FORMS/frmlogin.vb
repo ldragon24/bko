@@ -196,7 +196,7 @@ START:
                 Dim rs25 As Recordset
                 rs25 = New Recordset
                 Dim sSQL As String
-                sSQL = "INSERT INTO CONFIGURE (ORG,SISADM,Name_Prog,Nr,access) VALUES ('BKO.SHATKI.INFO','SISADM','BKO.NET','Yes','1.7.5.2')"
+                sSQL = "INSERT INTO CONFIGURE (ORG,SISADM,Name_Prog,Nr,access) VALUES ('BKO.SHATKI.INFO','SISADM','BKO.NET','Yes','1.7.5.4')"
 
                 DB7.Execute(sSQL)
 
@@ -231,7 +231,7 @@ START:
 
         Select Case sVERSIA
 
-            Case "1.7.6.3"
+            Case "1.7.6.4"
 
 
             Case Else

@@ -1116,13 +1116,12 @@ ASE:
         End If
 
 
-        OS_OS$ = OS_OS$ & " " &
-                 everIniFile.GetString("Операционная система", "Свойства операционной системы|Пакет обновления ОС", "")
+        OS_OS$ = OS_OS$ & " " & everIniFile.GetString("Операционная система", "Свойства операционной системы|Пакет обновления ОС", "")
         frmComputers.lstSoftware.Items.Add(frmComputers.lstSoftware.Items.Count + 1)
         intcount = frmComputers.lstSoftware.Items.Count - 1 'esq 151119
         'frmComputers.lstSoftware.Items(intcount).SubItems.Add(frmComputers.lstSoftware.Items.Count)
         frmComputers.lstSoftware.Items(intcount).SubItems.Add(OS_OS$)
-        frmComputers.lstSoftware.Items(intcount).SubItems.Add("")
+        frmComputers.lstSoftware.Items(intcount).SubItems.Add(everIniFile.GetString("Операционная система", "Свойства операционной системы|Версия ОС", ""))
         frmComputers.lstSoftware.Items(intcount).SubItems.Add(SAGAZOD$)
         frmComputers.lstSoftware.Items(intcount).SubItems.Add("")
         frmComputers.lstSoftware.Items(intcount).SubItems.Add(Date.Today)
@@ -1134,19 +1133,45 @@ ASE:
 
         A = everIniFile.GetString("Антивирус", "Антивирус1", "")
         B = everIniFile.GetString("Антивирус", A & "|Версия программы", "")
-        frmComputers.lstSoftware.Items.Add(frmComputers.lstSoftware.Items.Count + 1)
-        intcount = frmComputers.lstSoftware.Items.Count - 1 'esq 151119
-        frmComputers.lstSoftware.Items(intcount).SubItems.Add(frmComputers.lstSoftware.Items.Count)
-        frmComputers.lstSoftware.Items(intcount).SubItems.Add(A & " " & B)
-        frmComputers.lstSoftware.Items(intcount).SubItems.Add("")
 
-        frmComputers.lstSoftware.Items(intcount).SubItems.Add("")
+        If Len(A) = 0 Then
 
+        Else
+            frmComputers.lstSoftware.Items.Add(frmComputers.lstSoftware.Items.Count + 1)
+            intcount = frmComputers.lstSoftware.Items.Count - 1 'esq 151119
+            ' frmComputers.lstSoftware.Items(intcount).SubItems.Add(frmComputers.lstSoftware.Items.Count)
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add(A)
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add(B)
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add("")
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add("")
 
-        frmComputers.lstSoftware.Items(intcount).SubItems.Add(Date.Today)
-        frmComputers.lstSoftware.Items(intcount).SubItems.Add(Date.Today)
-        frmComputers.lstSoftware.Items(intcount).SubItems.Add("")
-        frmComputers.lstSoftware.Items(intcount).SubItems.Add("Антивирус")
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add(Date.Today)
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add(Date.Today)
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add("")
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add("Антивирус")
+
+        End If
+        A = everIniFile.GetString("Антивирус", "Антивирус2", "")
+        B = everIniFile.GetString("Антивирус", A & "|Версия программы", "")
+
+        If Len(A) = 0 Then
+
+        Else
+            frmComputers.lstSoftware.Items.Add(frmComputers.lstSoftware.Items.Count + 1)
+            intcount = frmComputers.lstSoftware.Items.Count - 1 'esq 151119
+            ' frmComputers.lstSoftware.Items(intcount).SubItems.Add(frmComputers.lstSoftware.Items.Count)
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add(A)
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add(B)
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add("")
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add("")
+
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add(Date.Today)
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add(Date.Today)
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add("")
+            frmComputers.lstSoftware.Items(intcount).SubItems.Add("Антивирус")
+
+        End If
+
 
         intcount = intcount + 1
 

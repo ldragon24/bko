@@ -149,6 +149,7 @@ Partial Class frmSetup
         Me.Label9 = New System.Windows.Forms.Label()
         Me.chkFonts = New System.Windows.Forms.CheckBox()
         Me.SStab1 = New System.Windows.Forms.TabControl()
+        Me.chkQR = New System.Windows.Forms.CheckBox()
         Me.TabPage5.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.gbUsers.SuspendLayout()
@@ -1378,7 +1379,7 @@ Partial Class frmSetup
         Me.TableLayoutPanel10.ColumnCount = 3
         Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.0!))
         Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.0!))
-        Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
+        Me.TableLayoutPanel10.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80.0!))
         Me.TableLayoutPanel10.Controls.Add(Me.btnServiceColor, 2, 1)
         Me.TableLayoutPanel10.Controls.Add(Me.btnNbColor, 2, 2)
         Me.TableLayoutPanel10.Controls.Add(Me.btnSpisanColor, 2, 3)
@@ -1390,10 +1391,11 @@ Partial Class frmSetup
         Me.TableLayoutPanel10.Controls.Add(Me.Label13, 1, 4)
         Me.TableLayoutPanel10.Controls.Add(Me.TableLayoutPanel6, 0, 6)
         Me.TableLayoutPanel10.Controls.Add(Me.TableLayoutPanel11, 0, 7)
+        Me.TableLayoutPanel10.Controls.Add(Me.chkQR, 0, 8)
         Me.TableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel10.Location = New System.Drawing.Point(3, 16)
         Me.TableLayoutPanel10.Name = "TableLayoutPanel10"
-        Me.TableLayoutPanel10.RowCount = 8
+        Me.TableLayoutPanel10.RowCount = 9
         Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle())
@@ -1401,7 +1403,8 @@ Partial Class frmSetup
         Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15.0!))
+        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
+        Me.TableLayoutPanel10.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel10.Size = New System.Drawing.Size(370, 380)
         Me.TableLayoutPanel10.TabIndex = 28
         '
@@ -1410,9 +1413,9 @@ Partial Class frmSetup
         Me.btnServiceColor.AutoSize = True
         Me.btnServiceColor.BackColor = System.Drawing.Color.Olive
         Me.btnServiceColor.ForeColor = System.Drawing.Color.Yellow
-        Me.btnServiceColor.Location = New System.Drawing.Point(303, 102)
+        Me.btnServiceColor.Location = New System.Drawing.Point(292, 102)
         Me.btnServiceColor.Name = "btnServiceColor"
-        Me.btnServiceColor.Size = New System.Drawing.Size(50, 26)
+        Me.btnServiceColor.Size = New System.Drawing.Size(42, 26)
         Me.btnServiceColor.TabIndex = 24
         Me.btnServiceColor.Text = "Цвет"
         Me.btnServiceColor.UseVisualStyleBackColor = False
@@ -1421,9 +1424,9 @@ Partial Class frmSetup
         '
         Me.btnNbColor.AutoSize = True
         Me.btnNbColor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.btnNbColor.Location = New System.Drawing.Point(303, 134)
+        Me.btnNbColor.Location = New System.Drawing.Point(292, 134)
         Me.btnNbColor.Name = "btnNbColor"
-        Me.btnNbColor.Size = New System.Drawing.Size(50, 26)
+        Me.btnNbColor.Size = New System.Drawing.Size(42, 26)
         Me.btnNbColor.TabIndex = 26
         Me.btnNbColor.Text = "Цвет"
         Me.btnNbColor.UseVisualStyleBackColor = False
@@ -1432,9 +1435,9 @@ Partial Class frmSetup
         '
         Me.btnSpisanColor.AutoSize = True
         Me.btnSpisanColor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.btnSpisanColor.Location = New System.Drawing.Point(303, 166)
+        Me.btnSpisanColor.Location = New System.Drawing.Point(292, 166)
         Me.btnSpisanColor.Name = "btnSpisanColor"
-        Me.btnSpisanColor.Size = New System.Drawing.Size(50, 26)
+        Me.btnSpisanColor.Size = New System.Drawing.Size(42, 26)
         Me.btnSpisanColor.TabIndex = 25
         Me.btnSpisanColor.Text = "Цвет"
         Me.btnSpisanColor.UseVisualStyleBackColor = False
@@ -1445,7 +1448,7 @@ Partial Class frmSetup
         Me.GroupBox5.Controls.Add(Me.TableLayoutPanel9)
         Me.GroupBox5.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(294, 93)
+        Me.GroupBox5.Size = New System.Drawing.Size(283, 93)
         Me.GroupBox5.TabIndex = 27
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Отображение в дереве"
@@ -1465,7 +1468,7 @@ Partial Class frmSetup
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
         Me.TableLayoutPanel9.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667!))
-        Me.TableLayoutPanel9.Size = New System.Drawing.Size(288, 74)
+        Me.TableLayoutPanel9.Size = New System.Drawing.Size(277, 74)
         Me.TableLayoutPanel9.TabIndex = 23
         '
         'RadioButton1
@@ -1543,7 +1546,7 @@ Partial Class frmSetup
         '
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"24*24", "32*32"})
-        Me.ComboBox1.Location = New System.Drawing.Point(303, 198)
+        Me.ComboBox1.Location = New System.Drawing.Point(292, 198)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(56, 21)
         Me.ComboBox1.TabIndex = 0
@@ -1552,7 +1555,7 @@ Partial Class frmSetup
         '
         Me.Label13.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(212, 202)
+        Me.Label13.Location = New System.Drawing.Point(201, 202)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(85, 13)
         Me.Label13.TabIndex = 29
@@ -1613,14 +1616,15 @@ Partial Class frmSetup
         Me.TableLayoutPanel11.Name = "TableLayoutPanel11"
         Me.TableLayoutPanel11.RowCount = 1
         Me.TableLayoutPanel11.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel11.Size = New System.Drawing.Size(364, 108)
+        Me.TableLayoutPanel11.Size = New System.Drawing.Size(364, 44)
         Me.TableLayoutPanel11.TabIndex = 31
         '
         'RadioButton12
         '
+        Me.RadioButton12.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadioButton12.Location = New System.Drawing.Point(3, 3)
         Me.RadioButton12.Name = "RadioButton12"
-        Me.RadioButton12.Size = New System.Drawing.Size(176, 102)
+        Me.RadioButton12.Size = New System.Drawing.Size(176, 38)
         Me.RadioButton12.TabIndex = 0
         Me.RadioButton12.TabStop = True
         Me.RadioButton12.Text = "Динамически обновляемое дерево"
@@ -1628,9 +1632,10 @@ Partial Class frmSetup
         '
         'RadioButton13
         '
+        Me.RadioButton13.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RadioButton13.Location = New System.Drawing.Point(185, 3)
         Me.RadioButton13.Name = "RadioButton13"
-        Me.RadioButton13.Size = New System.Drawing.Size(176, 102)
+        Me.RadioButton13.Size = New System.Drawing.Size(176, 38)
         Me.RadioButton13.TabIndex = 1
         Me.RadioButton13.TabStop = True
         Me.RadioButton13.Text = "Статически обновляемое дерево"
@@ -1724,6 +1729,16 @@ Partial Class frmSetup
         Me.SStab1.SelectedIndex = 0
         Me.SStab1.Size = New System.Drawing.Size(975, 646)
         Me.SStab1.TabIndex = 0
+        '
+        'chkQR
+        '
+        Me.chkQR.AutoSize = True
+        Me.chkQR.Location = New System.Drawing.Point(3, 319)
+        Me.chkQR.Name = "chkQR"
+        Me.chkQR.Size = New System.Drawing.Size(144, 17)
+        Me.chkQR.TabIndex = 32
+        Me.chkQR.Text = "Не генерировать QR код"
+        Me.chkQR.UseVisualStyleBackColor = True
         '
         'frmSetup
         '
@@ -1908,4 +1923,5 @@ Partial Class frmSetup
     Friend WithEvents RadioButton13 As System.Windows.Forms.RadioButton
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents txtLDAP As System.Windows.Forms.TextBox
+    Friend WithEvents chkQR As System.Windows.Forms.CheckBox
 End Class

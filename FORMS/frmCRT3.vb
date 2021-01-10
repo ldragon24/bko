@@ -2636,7 +2636,7 @@ err_:
 
         'As the mouse moves over nodes, provide feedback to the user
         'by highlighting the node that is the current drop target
-        Dim pt As Drawing.Point = CType(sender, TreeView).PointToClient(New Drawing.Point(e.X, e.Y))
+        Dim pt As System.Drawing.Point = CType(sender, TreeView).PointToClient(New System.Drawing.Point(e.X, e.Y))
         Dim targetNode As TreeNode = selectedTreeview.GetNodeAt(pt)
 
         'See if the targetNode is currently selected, if so no need to validate again

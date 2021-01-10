@@ -6,7 +6,6 @@ Public Class frmSetup
     Private uCOUNTs As String
     Private uEDT As Boolean
 
-
     Public Function changeFont(ByVal FontWindow As FontDialog, ByVal str As Control)
         ' Dim wndFont As FontDialog
         Dim DialogResult As DialogResult
@@ -474,6 +473,18 @@ Public Class frmSetup
 
                 chkSP.Checked = False
                 SPVisible = False
+        End Select
+
+        uname = objIniFile.GetString("General", "QRCODE", "0")
+
+        Select Case uname
+
+            Case "0"
+
+                chkQR.Checked = True
+            Case "1"
+
+                chkQR.Checked = False
         End Select
 
         txtSMTP.Text = objIniFile.GetString("SMTP", "Server", "")
@@ -1678,5 +1689,25 @@ err_:
         Dim objIniFile As New IniFile(PrPath & "base.ini")
         objIniFile.WriteString("General", "TREE_REFRESH", "1")
         TREE_REFRESH = 1
+    End Sub
+
+    Private Sub chkQR_CheckedChanged(sender As Object, e As EventArgs) Handles chkQR.CheckedChanged
+
+        Select Case chkQR.Checked
+
+            Case True
+
+                Dim objIniFile As New IniFile(PrPath & "base.ini")
+                objIniFile.WriteString("General", "QRCODE", "0")
+
+            Case Else
+
+                Dim objIniFile As New IniFile(PrPath & "base.ini")
+                objIniFile.WriteString("General", "QRCODE", "1")
+
+        End Select
+
+
+
     End Sub
 End Class

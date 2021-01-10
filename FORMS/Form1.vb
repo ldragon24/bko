@@ -16,7 +16,5 @@
 
     End Sub
 
-    Private Sub chkSNMP_CheckedChanged(sender As Object, e As EventArgs) Handles chkSNMP.CheckedChanged
 
-    End Sub
 End Class

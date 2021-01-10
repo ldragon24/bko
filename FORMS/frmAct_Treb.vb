@@ -22,7 +22,7 @@ Public Class frmAct_Treb
 
         SendFonts(Me)
 
-        TabControl1.Font = New Drawing.Font(FontN, fontS)
+        TabControl1.Font = New System.Drawing.Font(FontN, fontS)
         SendFonts(TabControl1.TabPages(0))
         SendFonts(TabControl1.TabPages(1))
         SendFonts(TabControl1.TabPages(2))

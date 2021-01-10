@@ -49,9 +49,9 @@ Module MOD_INVENT
         Dim sTEH16 As String
         Dim sTEH17 As String
         Dim sTEH18 As String
-        Dim sTEH19 As String
-        Dim sTEH20 As String
-        Dim sTEH21 As String
+        ' Dim sTEH19 As String
+        '  Dim sTEH20 As String
+        '  Dim sTEH21 As String
 
         Dim bTEH1 As String
         Dim bTEH2 As String

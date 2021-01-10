@@ -67,6 +67,7 @@ Module MOD_Database
                     "Driver={SQL Server Native Client 10.0};Server=" & DBserv & ";Database=" & DBtabl & ";Uid=" & DBuser & ";Pwd=" & DBpass & ";")
 
                 Base_Name = DBserv & "\" & DBtabl
+
             Case "MS SQL"
 
                 '2000

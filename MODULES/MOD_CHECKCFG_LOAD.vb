@@ -33,7 +33,7 @@
 
         uname = everIniFile.GetString("Hardware", "MEM1 info", "")
 
-        If uname <> 0 And uname <> "DIMM Synchronous DDR2 Memory device not installed" And uname <> "DIMM Memory device not installed" Then
+        If uname <> 0 And uname <> "DIMM Synchronous DDR2 Memory device not installed" And uname <> "DIMM Memory device not installed" And uname <> "Memory device not installed" Then
 
             arrAnimals = Split(uname, ",")
 
@@ -47,7 +47,7 @@
 
         uname = everIniFile.GetString("Hardware", "MEM2 info", "")
 
-        If uname <> 0 And uname <> "DIMM Synchronous DDR2 Memory device not installed" And uname <> "DIMM Memory device not installed" Then
+        If uname <> 0 And uname <> "DIMM Synchronous DDR2 Memory device not installed" And uname <> "DIMM Memory device not installed" And uname <> "Memory device not installed" Then
 
             arrAnimals = Split(uname, ",")
 
@@ -60,7 +60,7 @@
 
         uname = everIniFile.GetString("Hardware", "MEM3 info", "")
 
-        If uname <> 0 And uname <> "DIMM Synchronous DDR2 Memory device not installed" And uname <> "DIMM Memory device not installed" Then
+        If uname <> 0 And uname <> "DIMM Synchronous DDR2 Memory device not installed" And uname <> "DIMM Memory device not installed" And uname <> "Memory device not installed" Then
 
             arrAnimals = Split(uname, ",")
 
@@ -73,7 +73,7 @@
 
         uname = everIniFile.GetString("Hardware", "MEM4 info", "")
 
-        If uname <> 0 And uname <> "DIMM Synchronous DDR2 Memory device not installed" And uname <> "DIMM Memory device not installed" Then
+        If uname <> 0 And uname <> "DIMM Synchronous DDR2 Memory device not installed" And uname <> "DIMM Memory device not installed" And uname <> "Memory device not installed" Then
 
             arrAnimals = Split(uname, ",")
 

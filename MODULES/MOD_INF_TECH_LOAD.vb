@@ -42,8 +42,8 @@ Module MOD_INF_TECH_LOAD
             If Not IsDBNull(.Fields("PRINTER_SN_2").Value) Then _
                 frmComputers.txtNetPort.Text = .Fields("PRINTER_SN_2").Value
 
-            If Not IsDBNull(.Fields("PRINTER_PROIZV_3").Value) Then _
-                frmComputers.txtNetINN.Text = .Fields("PRINTER_PROIZV_3").Value
+            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then _
+                frmComputers.txtNetINN.Text = .Fields("INV_NO_SYSTEM").Value
             If Not IsDBNull(.Fields("PRINTER_SN_3").Value) Then _
                 frmComputers.txtNetIsp.Text = .Fields("PRINTER_SN_3").Value
 
@@ -82,6 +82,8 @@ Module MOD_INF_TECH_LOAD
             If Not IsDBNull(.Fields("NomNom").Value) Then frmComputers.txtNomNomNET.Text = .Fields("NomNom").Value
             If Not IsDBNull(.Fields("notwork").Value) Then frmComputers.chkNotWorkNET.Checked = .Fields("notwork").Value
 
+            If Not IsDBNull(.Fields("Nplomb").Value) Then frmComputers.txtNplombNET.Text = .Fields("Nplomb").Value
+            If Not IsDBNull(.Fields("dtPlomb").Value) Then frmComputers.dtPlombNET.Value = .Fields("dtPlomb").Value
 
             Select Case frmComputers.chkNETspis.Checked
 
@@ -357,7 +359,7 @@ Module MOD_INF_TECH_LOAD
 
 
         Exit Sub
-        err_:
+err_:
         MsgBox(Err.Description)
     End Sub
 
@@ -386,8 +388,8 @@ Module MOD_INF_TECH_LOAD
             If Not IsDBNull(.Fields("port_1").Value) Then frmComputers.txtOTHmemo.Text = .Fields("port_1").Value
             If Not IsDBNull(.Fields("OTvetstvennyj").Value) Then _
                 frmComputers.cmbOTHotv.Text = .Fields("OTvetstvennyj").Value
-            If Not IsDBNull(.Fields("INV_NO_PRINTER").Value) Then _
-                frmComputers.txtOTHinnumber.Text = .Fields("INV_NO_PRINTER").Value
+            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then _
+                frmComputers.txtOTHinnumber.Text = .Fields("INV_NO_SYSTEM").Value
 
             If Not IsDBNull(.Fields("FILIAL").Value) Then frmComputers.cmbOTHFil.Text = .Fields("FILIAL").Value
             If Not IsDBNull(.Fields("MESTO").Value) Then frmComputers.cmbOTHDepart.Text = .Fields("MESTO").Value
@@ -397,12 +399,13 @@ Module MOD_INF_TECH_LOAD
 
             If Not IsDBNull(.Fields("NET_IP_1").Value) Then frmComputers.txtOTHIP.Text = .Fields("NET_IP_1").Value
             If Not IsDBNull(.Fields("NET_MAC_1").Value) Then frmComputers.txtOTHMAC.Text = .Fields("NET_MAC_1").Value
-            If Not IsDBNull(.Fields("TIP_COMPA").Value) Then _
-                frmComputers.cmbOTHConnect.Text = .Fields("TIP_COMPA").Value
-
+            If Not IsDBNull(.Fields("TIP_COMPA").Value) Then frmComputers.cmbOTHConnect.Text = .Fields("TIP_COMPA").Value
 
             If Len(frmComputers.cmbOTH.Text) = 0 Then frmComputers.cmbOTH.Text = .Fields("net_name").Value
             If Not IsDBNull(.Fields("MOL").Value) Then frmComputers.cmbOTHMOL.Text = .Fields("MOL").Value
+
+            If Not IsDBNull(.Fields("Nplomb").Value) Then frmComputers.txtNplombOT.Text = .Fields("Nplomb").Value
+            If Not IsDBNull(.Fields("dtPlomb").Value) Then frmComputers.dtPlombOT.Value = .Fields("dtPlomb").Value
 
 
             If Len(.Fields("NET_IP_1").Value) > 4 And TipTehn = "IBP" Then
@@ -561,8 +564,8 @@ Module MOD_INF_TECH_LOAD
             If Not IsDBNull(.Fields("PRINTER_SN_1")) Then frmComputers.txtPRNSN.Text = .Fields("PRINTER_SN_1").Value
             If Not IsDBNull(.Fields("PRINTER_PROIZV_1")) Then _
                 frmComputers.PROiZV38.Text = .Fields("PRINTER_PROIZV_1").Value
-            If Not IsDBNull(.Fields("INV_NO_PRINTER")) Then _
-                frmComputers.txtPRNinnumber.Text = .Fields("INV_NO_PRINTER").Value
+            If Not IsDBNull(.Fields("INV_NO_SYSTEM")) Then _
+                frmComputers.txtPRNinnumber.Text = .Fields("INV_NO_SYSTEM").Value
             If Not IsDBNull(.Fields("port_1")) Then frmComputers.cmbFormat.Text = .Fields("port_1").Value
 
             If Not IsDBNull(.Fields("FILIAL")) Then frmComputers.cmbPRNFil.Text = .Fields("FILIAL").Value
@@ -1608,6 +1611,9 @@ Module MOD_INF_TECH_LOAD
             'Серийный номер системного блока
             If Not IsDBNull(.Fields("Ser_N_SIS").Value) Then frmComputers.txtSNSB.Text = .Fields("Ser_N_SIS").Value
 
+            'Парт номер системного блока
+            If Not IsDBNull(.Fields("Part_N_SIS").Value) Then frmComputers.txtPNSB.Text = .Fields("Part_N_SIS").Value
+
             'Модель системного блока
             If Not IsDBNull(.Fields("PATH").Value) Then frmComputers.txtModSB.Text = .Fields("PATH").Value
 
@@ -1748,6 +1754,9 @@ Module MOD_INF_TECH_LOAD
             If Not IsDBNull(.Fields("FILIAL").Value) Then frmComputers.cmbBranch.Text = .Fields("FILIAL").Value
             If Not IsDBNull(.Fields("MESTO").Value) Then frmComputers.cmbDepartment.Text = .Fields("MESTO").Value
             If Not IsDBNull(.Fields("kabn").Value) Then frmComputers.cmbOffice.Text = .Fields("kabn").Value
+
+            If Not IsDBNull(.Fields("Nplomb").Value) Then frmComputers.txtNplomb.Text = .Fields("Nplomb").Value
+            If Not IsDBNull(.Fields("dtPlomb").Value) Then frmComputers.dtPlomb.Value = .Fields("dtPlomb").Value
 
             'sBranch = .Fields("FILIAL").Value
             'sDepartment = .Fields("MESTO").Value
@@ -1972,12 +1981,12 @@ Module MOD_INF_TECH_LOAD
             ' If Not IsDBNull(.Fields("MONITOR_NAME").Value) Then frmComputers.cmbOTH.Text = .Fields("MONITOR_NAME").Value
 
             If Not IsDBNull(.Fields("NET_NAME").Value) Then frmComputers.cmbOTH.Text = .Fields("NET_NAME").Value
-           
+
             If Not IsDBNull(.Fields("MONITOR_DUM").Value) Then frmComputers.txtMonDum.Text = .Fields("MONITOR_DUM").Value
             If Not IsDBNull(.Fields("MONITOR_SN").Value) Then frmComputers.txtOTHSN.Text = .Fields("MONITOR_SN").Value
             If Not IsDBNull(.Fields("MONITOR_PROIZV").Value) Then frmComputers.PROiZV39.Text = .Fields("MONITOR_PROIZV").Value
             If Not IsDBNull(.Fields("OTvetstvennyj").Value) Then frmComputers.cmbOTHotv.Text = .Fields("OTvetstvennyj").Value
-            If Not IsDBNull(.Fields("INV_NO_MONITOR").Value) Then frmComputers.txtOTHinnumber.Text = .Fields("INV_NO_MONITOR").Value
+            If Not IsDBNull(.Fields("INV_NO_SYSTEM").Value) Then frmComputers.txtOTHinnumber.Text = .Fields("INV_NO_SYSTEM").Value
             If Not IsDBNull(.Fields("port_1").Value) Then frmComputers.txtOTHmemo.Text = .Fields("port_1").Value
 
             'txtOTHmemo
@@ -1993,22 +2002,24 @@ Module MOD_INF_TECH_LOAD
             'If Not IsDBNull(.Fields("NET_MAC_1").Value) Then frmComputers.txtOTHMAC.Text = .Fields("NET_MAC_1").Value
             'If Not IsDBNull(.Fields("TIP_COMPA").Value) Then frmComputers.cmbOTHConnect.Text = .Fields("TIP_COMPA").Value
 
-            frmComputers.txtOTHphone.Text = .Fields("TELEPHONE").Value
-
+            If Not IsDBNull(.Fields("TELEPHONE").Value) Then frmComputers.txtOTHphone.Text = .Fields("TELEPHONE").Value
 
             If Not IsDBNull(.Fields("SFAktNo").Value) Then frmComputers.txtOTHSfN.Text = .Fields("SFAktNo").Value
             If Not IsDBNull(.Fields("CenaRub").Value) Then frmComputers.txtOTHcash.Text = .Fields("CenaRub").Value
             If Not IsDBNull(.Fields("StoimRub").Value) Then frmComputers.txtOTHSumm.Text = .Fields("StoimRub").Value
             If Not IsDBNull(.Fields("Zaiavk").Value) Then frmComputers.txtOTHZay.Text = .Fields("Zaiavk").Value
 
-            If Not IsDBNull(.Fields("DataVVoda").Value) Then _
-                frmComputers.dtOTHdataVvoda.Value = .Fields("DataVVoda").Value
+            If Not IsDBNull(.Fields("DataVVoda").Value) Then frmComputers.dtOTHdataVvoda.Value = .Fields("DataVVoda").Value
             If Not IsDBNull(.Fields("dataSF").Value) Then frmComputers.dtOTHSFdate.Value = .Fields("dataSF").Value
 
             If Not IsDBNull(.Fields("Spisan").Value) Then frmComputers.chkOTHspis.Checked = .Fields("Spisan").Value
             If Not IsDBNull(.Fields("Balans").Value) Then frmComputers.chkOTHNNb.Checked = .Fields("Balans").Value
             If Not IsDBNull(.Fields("NomNom").Value) Then frmComputers.txtNomNomOTH.Text = .Fields("NomNom").Value
             If Not IsDBNull(.Fields("notwork").Value) Then frmComputers.chkNotWorkOTH.Checked = .Fields("notwork").Value
+
+            If Not IsDBNull(.Fields("Nplomb").Value) Then frmComputers.txtNplombOT.Text = .Fields("Nplomb").Value
+            If Not IsDBNull(.Fields("dtPlomb").Value) Then frmComputers.dtPlombOT.Value = .Fields("dtPlomb").Value
+
 
 
             If Not IsDBNull(.Fields("PCL").Value) Then

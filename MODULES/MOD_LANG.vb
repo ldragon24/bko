@@ -631,7 +631,7 @@ Module modLang
         frmSetup.btnSMTP_Save.Text = LNGIniFile.GetString("frmSetup", "btnSMTP_Save", "Сохранить")
         frmSetup.btnSMTP_Clear.Text = LNGIniFile.GetString("frmSetup", "btnSMTP_Clear", "Очистить")
 
-
+        frmSetup.chkQR.Text = LNGIniFile.GetString("frmSetup", "chkQR", "Не генерировать QR код")
 
         '        GroupBox4 = Дерево
         'RadioButton10 = Обновлять после каждого сохранения
